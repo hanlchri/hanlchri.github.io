@@ -109,16 +109,10 @@
                 <ul>
                     <li><a href="#">Coin Flip Problem</a></li>
                     <li><a href="#">Fox Goose Grain Problem</a></li>
-                    
-                  <!  ------------------------------------------------------------                       -->
-                  <!  ACTUALLY NOT BONUS FOR JAVA                                                          -->
-                  <!  <li><a href="https://www.sololearn.com/learning/1157">Learn Python</a></li>          -->
-                  <!  <li><a href="https://www.sololearn.com/learning/1051">Learn C++</a></li>             -->
-                  <!  <li><a href="https://www.sololearn.com/learning/1014">Learn HTML/CSS/JS</a></li>     -->
-                  <! ---------------------------------------------------------------------------           -->
                 </ul>
             </div>
         </div>
+        
         <div class="background-options">
             <p class="bgtitle">
                 Background Options:
@@ -130,6 +124,7 @@
         </div>
     </div>
 </body>
+
 <script>
     document.getElementById("nav").classList.toggle("active"); //initially inactive
     document.getElementsByClassName("assigntab")[0].classList.toggle("active"); //initially inactive
@@ -140,6 +135,8 @@
     //document.getElementById("background").style.zIndex = -1000000000;
     document.getElementById("words").addEventListener("onclick", dropdown);
     //document.getElementById("words").addEventListener("mouseout", dropdown);
+    
+    
     function randBack() {
         var x = Math.floor(Math.random() * (2)) + 1;
         if (x == 1) document.getElementsByClassName("backbut")[0].click();
@@ -195,7 +192,7 @@
         document.getElementsByClassName("resourcebut")[0].rotate(450);
     }
 
-
+  <! Animate the bonus button -->
     function spin4() {
         document.getElementsByClassName("bonusbut")[0].classList.toggle("active"); //initially inactive
         document.getElementsByClassName("bonusbut")[0].rotate(450);
