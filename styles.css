@@ -99,6 +99,8 @@ video {
   right: 0;
   position: fixed;
   filter: opacity(50%);
+  min-width: 100%;
+  min-height: 100%;
 }
 
 .hamburger {
