@@ -3,5 +3,6 @@
 .assignformat {
    background-color: rgb(0, 0, 0);
     font-family: "Merriweather","Roboto", sans-serif;
+    font-size: 40px;
     -webkit-font-smoothing: antialiased;
 }
