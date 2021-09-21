@@ -54,6 +54,10 @@ body {
   }
 }*/
 
+.author{
+  color: white;
+  margin: 80vh 0 0 80vw;
+}
 .button a {
   color: white;
   border: 1px solid white;
@@ -101,6 +105,7 @@ video {
   filter: opacity(50%);
   min-width: 100%;
   min-height: 100%;
+  z-index: -1000;
 }
 
 .hamburger {
