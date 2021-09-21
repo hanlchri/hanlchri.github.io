@@ -1,0 +1,138 @@
+<head>
+    <link href="searchpagestyles.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="hamburgers.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Special+Elite" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/jpg" href="Site Logo.png"/>
+    <head>
+        <meta name="author" content="Ishan Swali, Class of 2023">
+        <style>
+            body {
+                overflow: hidden;
+                margin: 0;
+            }
+        </style>
+        <title>Search</title>
+    </head>
+
+<body>
+
+
+
+
+
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
+<div class="content">
+
+</div>
+
+<!---->
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search">
+
+<ul id="myUL">
+    <li><a href="#">Cookbook</a></li>
+    <li><a href="#">Java Assignment 1: Console Applications</a></li>
+    <li><a href="#">Java Assignment 2: Currency Converter</a></li>
+    <li><a href="#">Java Assignment 2.5: Change Calculator</a></li>
+    <li><a href="#">Java Assignment 3: Loop Practice</a></li>
+    <li><a href="#">Java Assignment 4: Arrays: Family Budget</a></li>
+    <li><a href="#">Java Assignment 4: Arrays: RackO</a></li>
+    <li><a href="#">Java Assignment 5: Swing Practice</a></li>
+    <li><a href="#">Java Assignment 6: Final Project: Tic Tac Toe</a></li>
+    <li><a href="#">Unit 1: Intro to Computers</a></li>
+    <li><a href="#">Unit 2: Data and Variables</a></li>
+    <li><a href="#">Unit 3: Control Flow</a></li>
+    <li><a href="#">Unit 4: Looping and Random</a></li>
+    <li><a href="#">Unit 5: Methods/Functions</a></li>
+    <li><a href="#">Netbeans Setup</a></li>
+    <li><a href="#">GUI Survival Guide</a></li>
+    <li><a href="#">Java Bonus: Coin Flip Problem</a></li>
+    <li><a href="#">Java Bonus: Fox Goose Grain</a></li>
+    <li><a href="#">Summer Assignment</a></li>
+    <li><a href="#">APCS Assignment 1: Computer Components</a></li>
+    <li><a href="#">APCS Assignment 2: Operations Calculator</a></li>
+    <li><a href="#">APCS Assignment 3: Stairway To Heaven</a></li>
+    <li><a href="#">APCS Assignment 4: Tidbit Computer Store</a></li>
+    <li><a href="#">APCS Assignment 5: Input Verifiers</a></li>
+    <li><a href="#">APCS Assignment 6: Group Presentations</a></li>
+    <li><a href="#">APCS Assignment 7: Object Oriented Programming</a></li>
+    <li><a href="#">APCS Assignment 8: Additional Class Features</a></li>
+    <li><a href="#">APCS Assignment 9: String Methods</a></li>
+    <li><a href="#">APCS Assignment 10: 2-Dimensional Arrays</a></li>
+    <li><a href="#">APCS Assignment 11: List Management</a></li>
+    <li><a href="#">APCS Assignment 12: Object Oriented Polymorphism</a></li>
+    <li><a href="#">APCS Assignment 13: Ethical Software</a></li>
+    <li><a href="#">APCS Assignment 14: Stacks</a></li>
+    <li><a href="#">APCS Assignment 15: Method Recursion</a></li>
+    <li><a href="#">APCS Assignment 16: Intel Pentium Bug</a></li>
+    <li><a href="#">APCS Assignment 17: Searching and Sorting</a></li>
+    <li><a href="#">APCS Assignment 18: Hangman</a></li>
+    <li><a href="#">Final Project: Connect 4</a></li>
+    <li><a href="#">Unit 1: Systems</a></li>
+    <li><a href="#">Unit 2: Math Operations</a></li>
+    <li><a href="#">Unit 3: Primitives/Objects</a></li>
+    <li><a href="#">Unit 4: Object Oriented</a></li>
+    <li><a href="#">Unit 5: Strings</a></li>
+    <li><a href="#">Unit 6: Arrays & ArrayLists</a></li>
+    <li><a href="#">Unit 7: File IO</a></li>
+    <li><a href="#">Unit 8: Inheritance & Polymorphism</a></li>
+    <li><a href="#">Unit 9: Recursion</a></li>
+    <li><a href="#">Unit 10: Stacks</a></li>
+    <li><a href="#">Unit 11: Ethical Issues</a></li>
+    <li><a href="#">Unit 12: Searching and Sorting</a></li>
+    <li><a href="#">PNZ Game</a></li>
+    <li><a href="#">Blackjack Game</a></li>
+    <li><a href="#">Yahtzee Game</a></li>
+    <li><a href="#">Hotel System</a></li>
+    <li><a href="#">Risk Game</a></li>
+    <li><a href="#">Battleship</a></li>
+    <li><a href="#">W3Schools</a></li>
+    <li><a href="#">SoloLearn</a></li>
+    <li><a href="#">Programiz</a></li>
+    <li><a href="#">Code Academy</a></li>
+
+
+</ul>
+
+
+     <div class="menu">
+        <div class="label"><a href="index.html">Return to site</a></div>
+       <!-- <div class="spacer"></div>
+        <div class="item"><span><a href="home.html">Home</a></span></div>
+        <div class="item"><span><a href="JavaPage.html">Java</a></span></div>
+        <div class="item"><span><a href="APCSPage.html">APCS</a></span></div>
+        <div class="item"><span> <a href="References.html">References</a></span></div>
+        <div class="item"><span> <a href="mailto:hanlchri@shenschools.org" target="_blank">Contact</a></span></div>-->
+      </div>
+
+</body>
+
+</html>
+<script src="suggestions.js"></script>
+<script src="searchscript.js"></script>
+<script>
+    function myFunction() {
+        // Declare variables
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById('myInput');
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myUL");
+        li = ul.getElementsByTagName('li');
+
+        // Loop through all list items, and hide those who don't match the search query
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+</script>
