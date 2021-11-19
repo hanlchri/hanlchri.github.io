@@ -8,9 +8,17 @@ canvas{
   z-index: -100000 !important;
 }
 
-
+#web{
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -10000;
+}
 .search {
-  color:white;
+  color: white;
   float: right;
   position: absolute;
   padding: 5vh 5vh 0vh 90vw;
@@ -222,16 +230,19 @@ a:active {
   z-index: 100000;
 }
 
-#words {
+.words {
   margin-top: -5vh;
   margin-left: 4.6vh;
   color: white;
   font-size: 5vh;
 }
 
-#words:hover{
+
+.words:hover{
   color: rgb(73, 226, 137);
 }
+
+
 
 .assignbut {
   border: black;
@@ -336,7 +347,7 @@ a:active {
   transform: rotate(0deg);
 }
 
-.bonusbut.active {
+.bonusbut .active {
   transition: 0.5s;
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;
@@ -408,4 +419,8 @@ a:active {
   position: absolute;
   height: 100%;
   width: 100%;
+}
+
+.party li:hover{
+  color: rgb(73, 226, 137);
 }

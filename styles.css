@@ -13,46 +13,7 @@ body {
   padding-top: 10vh;
   max-width: 10px;
   max-height: 10px;
-}/*
-.x {
-  animation: x 5s linear infinite alternate;
 }
-
-.y {
-  animation: y 4s linear infinite alternate;
-}
-
-@keyframes x {
-  100% {
-    transform: translateX(calc(90vw - 10vw));
-  }
-}
-
-@keyframes y {
-  100% {
-    transform: translateY(calc(80vh - 10vh));
-  }
-}
-
-.i {
-  animation: x 3s linear infinite alternate;
-}
-
-.j {
-  animation: y 4s linear infinite alternate;
-}
-
-@keyframes i {
-  100% {
-    transform: translateX(calc(100vw - 10vw));
-  }
-}
-
-@keyframes j {
-  100% {
-    transform: translateY(calc(100vh - 10vh));
-  }
-}*/
 
 .author{
   color: white;
@@ -72,6 +33,7 @@ body {
   transition: all 200ms ease;
   padding: 10px 15px;
 }
+
 .button a:hover {
   background: white;
   color: black;
@@ -106,6 +68,12 @@ video {
   min-width: 100%;
   min-height: 100%;
   z-index: -1000;
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+
 }
 
 .hamburger {

@@ -1,7 +1,7 @@
-<link href="aboutstyles.css" rel="stylesheet" />
-<link href="hamburgers.css" rel="stylesheet" />
-<link rel="preconnect" href="https://fonts.gstatic.com" />
-<link href="https://fonts.googleapis.com/css?family=Special+Elite" rel="stylesheet" />
+<link href="aboutstyles.css" rel="stylesheet"/>
+<link href="hamburgers.css" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.gstatic.com"/>
+<link href="https://fonts.googleapis.com/css?family=Special+Elite" rel="stylesheet"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather">
 
 <head>
@@ -39,19 +39,13 @@
 </header>
 
 <div class="paragraph">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat ipsum rhoncus magna condimentum
-        egestas. Nullam vel mauris tincidunt, elementum massa condimentum, tempor quam. Vestibulum nisi lacus, elementum
-        efficitur est sed, ornare efficitur leo. In ac lobortis felis. Phasellus fringilla ullamcorper ipsum nec
-        posuere. Nam porttitor, orci pellentesque accumsan aliquam, sapien dolor tincidunt ante, varius molestie dui
-        sapien non ex. Nulla id lorem vehicula, vulputate velit et, efficitur ante.
+    <p> Mr. Chris Hanley is a Java, AP Computer Science, and Digital Electronics teacher at Shenendehowa High School. He
+        has taught at Shen for _____ years. He attended Gordon College and majored in Math and Computer Science. Mr.
+        Hanley enjoys playing tennis, Smash Ultimate, and Minecraft.
 
-        Sed luctus metus nec purus aliquam ultrices. Curabitur quis risus at lacus feugiat condimentum vel non odio.
-        Vivamus eu massa eros. Nunc tristique metus sit amet dui accumsan, non maximus tortor lobortis. Cras in nisi
-        condimentum, sodales eros id, tempus metus. Aenean vestibulum ligula sit amet placerat accumsan. Nulla mollis
-        tellus eget diam vestibulum venenatis sit amet vitae tellus. Nunc nec ligula sed orci convallis tristique id a
-        ante. Nam maximus quam sit amet ullamcorper consectetur. Quisque non blandit augue. Nullam id turpis ut nisi
-        placerat lacinia. Maecenas sodales quam at finibus consequat. Vestibulum in lacinia justo.
+        <br> <br> <br> <br>
 
+        ADD EXTRA PARAGRAPH HERE
     </p>
 </div>
 
@@ -71,7 +65,6 @@
 <canvas id="bgCanvas"></canvas>
 
 
-
 </body>
 
 <script>document.getElementById("nav").classList.toggle("active"); //initially inactive</script>
@@ -81,17 +74,17 @@
 <script src="util.js"></script>
 <script src="aboutscript.js"></script>
 <script>
-    function randomPic(){
-        let x=Math.floor(Math.random() * 8)+1;
+    function randomPic() {
+        let x = Math.floor(Math.random() * 8) + 1;
 
-        if(x<8) {
-            document.getElementById("image").src="media/Hanley"+x+".jpeg";
-            document.getElementById("image").style.width="400";
-            document.getElementById("image").style.height="auto";
-            if(x==7) document.getElementById("image").style.marginTop="100px";
+        if (x < 8) {
+            document.getElementById("image").src = "media/Hanley" + x + ".jpeg";
+            document.getElementById("image").style.width = "400";
+            document.getElementById("image").style.height = "auto";
+            if (x == 7) document.getElementById("image").style.marginTop = "100px";
         } else {
-            document.getElementById("video").src="media/HanleyVid.mp4";
-            document.getElementById("video").style.marginTop="50px";
+            document.getElementById("video").src = "media/HanleyVid.mp4";
+            document.getElementById("video").style.marginTop = "50px";
         }
     }
 </script>
