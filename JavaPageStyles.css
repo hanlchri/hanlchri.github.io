@@ -8,6 +8,27 @@ canvas{
   z-index: -100000 !important;
 }
 
+#assignment-content ul li a:hover, #lesson-content ul li a:hover, #resource-content ul li a:hover,
+#bonus-content ul li a:hover {
+  color: rgb(73, 226, 137);
+}
+
+.assignbut, .lessonbut, .resourcebut, .bonusbut{
+  background: none;
+  border: none;
+  color: white;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
 #web{
   object-fit: cover;
   width: 100vw;
@@ -124,7 +145,7 @@ canvas{
   display: block;
 }
 
-.assignment-content ul li {
+.assignment-content ul li, .lesson-content ul li, .resource-content ul li,  .bonus-content ul li{
   list-style: none;
   color: white;
   font-size: 3vh;
@@ -135,70 +156,10 @@ canvas{
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
 }
-.assignment-content ul li a:link,
-a:visited,
-a:hover,
-a:active {
-  color: white;
-  text-decoration: none;
-}
-
-.lesson-content ul li {
-  list-style: none;
-  color: white;
-  font-size: 3vh;
-  padding: 0;
-  text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.lesson-content ul li a:link,
-a:visited,
-a:hover,
-a:active {
-  color: white;
-  text-decoration: none;
-}
-
-.resource-content ul li {
-  list-style: none;
-  color: white;
-  font-size: 3vh;
-  padding: 0;
-  text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.resource-content ul li a:link,
-a:visited,
-a:hover,
-a:active {
-  color: white;
-  text-decoration: none;
-}
-
-.bonus-content ul li {
-  list-style: none;
-  color: white;
-  font-size: 3vh;
-  padding: 0;
-  text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
+.assignment-content ul li a:link, .lesson-content ul li a:link, .resource-content ul li a:link,
 .bonus-content ul li a:link,
-a:visited,
-a:hover,
-a:active {
+.nav ul li a:link,
+a:visited, a:hover, a:active {
   color: white;
   text-decoration: none;
 }
@@ -206,28 +167,24 @@ a:active {
 .content {
   padding-top: 25vh;
 }
-.assigntab {
-  padding: 0vh 0vh 0vh 15vh;
+.assigntab, .lessontab, .resourcetab, .bonustab{
   display: inline-block;
-  z-index: 100000;
+}
+.assigntab {
+  padding: 0 0 0 15vh;
+
 }
 
 .lessontab {
-  padding: 0vh 0vh 0vh 20vh;
-  display: inline-block;
-  z-index: 100000;
+  padding: 0 0 0 20vh;
 }
 
 .resourcetab {
-  padding: 0vh 0vh 0vh 20vh;
-  display: inline-block;
-  z-index: 100000;
+  padding: 0 0 0 20vh;
 }
 
 .bonustab {
-  padding: 0vh 0vh 0vh 12vh;
-  display: inline-block;
-  z-index: 100000;
+  padding: 0 0 0 12vh;
 }
 
 .words {
@@ -243,11 +200,9 @@ a:active {
 }
 
 
-
-.assignbut {
+.assignbut, .lessonbut, .resourcebut, .bonusbut{
   border: black;
   color: white;
-  background-color: black;
   transition: 0.5s;
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;
@@ -260,94 +215,7 @@ a:active {
   transform: rotate(0deg);
 }
 
-.assignbut.active {
-  transition: 0.5s;
-  -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -o-transition: 0.5s;
-  -webkit-transform: rotate(450deg);
-  -moz-transform: rotate(450deg);
-  -o-transform: rotate(450deg);
-  -ms-transform: rotate(450deg);
-  transform: rotate(450deg);
-}
-
-.lessonbut {
-  border: black;
-  color: white;
-  background-color: black;
-  transition: 0.5s;
-  -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -o-transition: 0.5s;
-  -webkit-transform: rotate(0deg);
-  -moz-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
-}
-
-.lessonbut.active {
-  transition: 0.5s;
-  -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -o-transition: 0.5s;
-  -webkit-transform: rotate(450deg);
-  -moz-transform: rotate(450deg);
-  -o-transform: rotate(450deg);
-  -ms-transform: rotate(450deg);
-  transform: rotate(450deg);
-}
-
-.resourcebut {
-  border: black;
-  color: white;
-  background-color: black;
-  transition: 0.5s;
-  -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -o-transition: 0.5s;
-  -webkit-transform: rotate(0deg);
-  -moz-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
-}
-
-.resourcebut.active {
-  transition: 0.5s;
-  -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -o-transition: 0.5s;
-  -webkit-transform: rotate(450deg);
-  -moz-transform: rotate(450deg);
-  -o-transform: rotate(450deg);
-  -ms-transform: rotate(450deg);
-  transform: rotate(450deg);
-}
-
-.bonusbut {
-  border: black;
-  color: white;
-  background-color: black;
-  transition: 0.5s;
-  -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -o-transition: 0.5s;
-  -webkit-transform: rotate(0deg);
-  -moz-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
-}
-
-.bonusbut .active {
+.assignbut.active, .lessonbut.active, .resourcebut.active, .bonusbut.active {
   transition: 0.5s;
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;
@@ -378,7 +246,6 @@ a:active {
 }
 .nav {
   transition: all 300ms ease-in-out;
-  transform: translate(-50%, -50%) scale(1);
   margin-left: 5vw;
   top: 50%;
   -ms-transform: translateY(-50%);
@@ -398,13 +265,6 @@ a:active {
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
-}
-.nav ul li a:link,
-a:visited,
-a:hover,
-a:active {
-  color: white;
-  text-decoration: none;
 }
 .nav.active {
   transition: all 300ms ease-in-out;

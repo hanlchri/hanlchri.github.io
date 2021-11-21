@@ -51,7 +51,7 @@
 </div>
 
 <div class="search">
-    <p><a href="searchpage.html" style="text-decoration: none; color:white">Search</a></p>
+    <p><a href="searchpage.html" style="text-decoration: none;">Search</a></p>
 </div>
 
 <div class="pagetitle">
@@ -148,21 +148,16 @@
     document.getElementsByClassName("resourcetab")[0].classList.toggle("active"); //initially inactive
     document.getElementsByClassName("bonustab")[0].classList.toggle("active"); //initially inactive
     document.getElementsByTagName("canvas").style.zIndex = -10000;
-    //document.getElementById("background").style.zIndex = -1000000000;
     document.getElementById("words").addEventListener("onclick", dropdown);
-
-    //document.getElementById("words").addEventListener("mouseout", dropdown);
-
 
     function randBack() {
         var x = Math.floor(Math.random() * (2)) + 1;
-        if (x == 1) document.getElementsByClassName("backbut")[0].click();
+        if (x === 1) document.getElementsByClassName("backbut")[0].click();
         else document.getElementsByClassName("backbut")[1].click();
 
 
     }
 
-    //document.getElementsByClassName("assigntab")[0].addEventListener("mouseout", dropdown);
     function clickSnow() {
         document.getElementById("web").style.display = "none";
     }
@@ -201,23 +196,19 @@
     }
 
     function spin() {
-        document.getElementsByClassName("assignbut")[0].classList.toggle("active"); //initially inactive
         document.getElementsByClassName("assignbut")[0].rotate(450);
     }
 
     function spin2() {
-        document.getElementsByClassName("lessonbut")[0].classList.toggle("active"); //initially inactive
         document.getElementsByClassName("lessonbut")[0].rotate(450);
     }
 
     function spin3() {
-        document.getElementsByClassName("resourcebut")[0].classList.toggle("active"); //initially inactive
         document.getElementsByClassName("resourcebut")[0].rotate(450);
     }
 
 
     function spin4() {
-        document.getElementsByClassName("bonusbut")[0].classList.toggle("active"); //initially inactive
         document.getElementsByClassName("bonusbut")[0].rotate(450);
     }
 

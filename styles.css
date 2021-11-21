@@ -11,8 +11,8 @@ body {
 
 #about {
   padding-top: 10vh;
-  max-width: 10px;
-  max-height: 10px;
+  max-width: .7vw;
+  max-height: 1.5vh;
 }
 
 .author{
@@ -31,7 +31,7 @@ body {
   transform: translate3d(-50%, 50%, 0);
   text-decoration: none;
   transition: all 200ms ease;
-  padding: 10px 15px;
+  padding: 1.5vh 1vw;
 }
 
 .button a:hover {
@@ -94,7 +94,6 @@ video {
 }
 .nav {
   transition: all 300ms ease-in-out;
-  transform: translate(-50%, -50%) scale(1);
   margin-left: 5vw;
   top: 50%;
   -ms-transform: translateY(-50%);
@@ -135,4 +134,10 @@ a:active {
   position: absolute;
   height: 100%;
   width: 100%;
+}
+
+@media only screen and (max-width: 1000px)  {
+  .button a {
+    top: 40%;
+  }
 }

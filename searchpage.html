@@ -1,3 +1,4 @@
+<html>
 <head>
     <link href="searchpagestyles.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -18,12 +19,7 @@
         <title>Search</title>
     </head>
 
-<body>
-
-
-
-
-
+<body onload="remove()" onkeyup="show()">
 <div class="bg"></div>
 <div class="bg bg2"></div>
 <div class="bg bg3"></div>
@@ -31,10 +27,19 @@
 
 </div>
 
-<!---->
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search">
 
-<ul id="myUL">
+<script>
+    function show(){
+        document.getElementById("myUL").style.display="block";
+    }
+
+    function remove(){
+        document.getElementById("myUL").style.display="none";
+    }
+</script>
+
+<ul id="myUL" >
     <li><a href="#">Cookbook</a></li>
     <li><a href="#">Java Assignment 1: Console Applications</a></li>
     <li><a href="#">Java Assignment 2: Currency Converter</a></li>
@@ -99,20 +104,19 @@
 
 </ul>
 
-
      <div class="menu">
         <div class="label"><a href="index.html">Return to site</a></div>
-       <!-- <div class="spacer"></div>
-        <div class="item"><span><a href="home.html">Home</a></span></div>
+       <div class="spacer"></div>
+        <div class="item"><span><a href="index.html">Home</a></span></div>
         <div class="item"><span><a href="JavaPage.html">Java</a></span></div>
         <div class="item"><span><a href="APCSPage.html">APCS</a></span></div>
         <div class="item"><span> <a href="References.html">References</a></span></div>
-        <div class="item"><span> <a href="mailto:hanlchri@shenschools.org" target="_blank">Contact</a></span></div>-->
+        <div class="item"><span> <a href="mailto:hanlchri@shenschools.org" target="_blank">Contact</a></span></div>
       </div>
 
 </body>
-
 </html>
+
 <script src="suggestions.js"></script>
 <script src="searchscript.js"></script>
 <script>
