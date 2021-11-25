@@ -1,13 +1,14 @@
+<!--IN ORDER FOR SEARCH TO WORK, MUST CHANGE URL TO ACTUAL SITE URL"-->
 <html>
 <head>
-    <link href="searchpagestyles.css" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="hamburgers.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Special+Elite" rel="stylesheet" />
+    <link href="searchpagestyles.css" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com"/>
+    <link href="hamburgers.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Special+Elite" rel="stylesheet"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/jpg" href="Site Logo.png"/>
+    <link rel="shortcut icon" type="image/jpg" href="img/Site Logo.png"/>
     <head>
         <meta name="author" content="Ishan Swali, Class of 2023">
         <style>
@@ -18,7 +19,15 @@
         </style>
         <title>Search</title>
     </head>
+    <script>
+        function show() {
+            document.getElementById("myUL").style.display = "block";
+        }
 
+        function remove() {
+            document.getElementById("myUL").style.display = "none";
+        }
+    </script>
 <body onload="remove()" onkeyup="show()">
 <div class="bg"></div>
 <div class="bg bg2"></div>
@@ -29,17 +38,7 @@
 
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search">
 
-<script>
-    function show(){
-        document.getElementById("myUL").style.display="block";
-    }
-
-    function remove(){
-        document.getElementById("myUL").style.display="none";
-    }
-</script>
-
-<ul id="myUL" >
+<ul id="myUL">
     <li><a href="#">Cookbook</a></li>
     <li><a href="#">Java Assignment 1: Console Applications</a></li>
     <li><a href="#">Java Assignment 2: Currency Converter</a></li>
@@ -104,15 +103,15 @@
 
 </ul>
 
-     <div class="menu">
-        <div class="label"><a href="index.html">Return to site</a></div>
-       <div class="spacer"></div>
-        <div class="item"><span><a href="index.html">Home</a></span></div>
-        <div class="item"><span><a href="JavaPage.html">Java</a></span></div>
-        <div class="item"><span><a href="APCSPage.html">APCS</a></span></div>
-        <div class="item"><span> <a href="References.html">References</a></span></div>
-        <div class="item"><span> <a href="mailto:hanlchri@shenschools.org" target="_blank">Contact</a></span></div>
-      </div>
+<div class="menu">
+    <div class="label"><a href="index.html">Return to site</a></div>
+    <div class="spacer"></div>
+    <div class="item"><span><a href="index.html">Home</a></span></div>
+    <div class="item"><span><a href="JavaPage.html">Java</a></span></div>
+    <div class="item"><span><a href="APCSPage.html">APCS</a></span></div>
+    <div class="item"><span> <a href="References.html">References</a></span></div>
+    <div class="item"><span> <a href="mailto:hanlchri@shenschools.org" target="_blank">Contact</a></span></div>
+</div>
 
 </body>
 </html>

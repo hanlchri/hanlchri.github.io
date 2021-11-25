@@ -281,6 +281,6 @@ a:visited, a:hover, a:active {
   width: 100%;
 }
 
-.party li:hover{
+.ul li:hover{
   color: rgb(73, 226, 137);
 }
