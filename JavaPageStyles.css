@@ -105,6 +105,7 @@ canvas{
   position: absolute;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+
 }
 
 
@@ -145,7 +146,19 @@ canvas{
   display: block;
 }
 
-.assignment-content ul li, .lesson-content ul li, .resource-content ul li,  .bonus-content ul li{
+.lesson-content ul li{
+  font-size: 2.75vh;
+  list-style: none;
+  color: white;
+  padding: 0;
+  text-decoration: none;
+  -webkit-user-select: none; /* Safari, Chrome */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+.assignment-content ul li, .resource-content ul li,  .bonus-content ul li{
   list-style: none;
   color: white;
   font-size: 3vh;

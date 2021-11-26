@@ -72,6 +72,7 @@ canvas {
 }
 
 .assignment-content {
+    background-color:rgba(0, 0, 0, 0.15);
     margin-top: -5vh;
     margin-left: -1vh;
     animation: growDown 300ms ease-in-out forwards;
@@ -83,6 +84,7 @@ canvas {
 }
 
 .lesson-content {
+    background-color:rgba(0, 0, 0, 0.15);
     margin-top: -5vh;
     margin-left: -1vh;
     animation: growDown 300ms ease-in-out forwards;
@@ -95,6 +97,7 @@ canvas {
 
 
 .resource-content {
+    background-color:rgba(0, 0, 0, 0.15);
     margin-top: -5vh;
     margin-left: -1vh;
     animation: growDown 300ms ease-in-out forwards;
@@ -106,6 +109,7 @@ canvas {
 }
 
 .bonus-content {
+    background-color:rgba(0, 0, 0, 0.15);
     margin-top: -5vh;
     margin-left: -1vh;
     animation: growDown 300ms ease-in-out forwards;
@@ -117,6 +121,7 @@ canvas {
 }
 
 .hw-content {
+    background-color:rgba(0, 0, 0, 0.15);
     margin-top: -5vh;
     margin-left: -1vh;
     animation: growDown 300ms ease-in-out forwards;
@@ -162,10 +167,11 @@ a:active {
     text-decoration: none;
 }
 
+
 .lesson-content ul li {
     list-style: none;
     color: white;
-    font-size: 2.5vh;
+    font-size: 2vh;
     padding: 0;
     text-decoration: none;
     -webkit-user-select: none;
