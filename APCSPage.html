@@ -1,7 +1,6 @@
 <!--  This is the page for the APCS class at Shen-->
 <!--  It uses the styles.css, hamburgers.css and tthe fonts.gstatic.com which I guess grabs fonts from a website -->
 <!--  8/9/2021  Uploaded Summer Assignment and Assignment 1, let's see if I can link them !!!!!! -->
-
 <head>
     <link href="APCSPageStyles.css" rel="stylesheet"/>
     <link rel="preconnect" href="https://fonts.gstatic.com"/>
@@ -12,34 +11,30 @@
     <link rel="shortcut icon" type="image/jpg" href="Site Logo.png"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
-
-
-    <head>
-        <meta name="author" content="Ishan Swali, Class of 2023">
-        <style>
-            body {
-                overflow: hidden;
-                margin: 0;
-            }
-        </style>
-        <title>AP Computer Science</title>
-    </head>
+    <meta name="author" content="Ishan Swali, Class of 2023">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        body {
+            overflow: hidden;
+            margin: 0;
+        }
+    </style>
+    <title>AP Computer Science</title>
+</head>
 
 <body onload="randBack()">
-
 <script src="https://d23jutsnau9x47.cloudfront.net/back/v1.0.9/viewer.js" data-option="{|environment|:{|gradient|:|horizontal|,|sensitivity|:1.5,|colorStart|:[0,0,0,1],|colorEnd|:
-        [0,0,0,1]},|particle|:{|life|:5,|power|:0.5,|texture|:|https://res.cloudinary.com/naker-io/image/upload/v1566560053/circle_05.png|,
-        |number|:2000,|colorStart|:[129, 197, 200,0.13],|colorEnd|:[29, 197, 200,1],|sizeStart|:0.63,|sizeEnd|:1.26,|direction1|:
-        {|x|:0,|y|:0,|z|:0},|direction2|:{|x|:0,|y|:0,|z|:0}},|waterMark|:false}"></script>
+      [0,0,0,1]},|particle|:{|life|:5,|power|:0.5,|texture|:|https://res.cloudinary.com/naker-io/image/upload/v1566560053/circle_05.png|,
+      |number|:2000,|colorStart|:[129, 197, 200,0.13],|colorEnd|:[29, 197, 200,1],|sizeStart|:0.63,|sizeEnd|:1.26,|direction1|:
+      {|x|:0,|y|:0,|z|:0},|direction2|:{|x|:0,|y|:0,|z|:0}},|waterMark|:false}"></script>
+
 
 <div id="web"></div>
-
-
 <div class="header">
     <button class="hamburger hamburger--collapse hamburger--accessible js-hamburger" id="menu-toggle" type="button">
-            <span class="hamburger-box">
-                <span class="hamburger-inner"></span>
-            </span>
+      <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+      </span>
     </button>
     <div class="nav" id="nav">
         <ul>
@@ -51,20 +46,17 @@
         </ul>
     </div>
 </div>
-
 <div class="search">
     <p><a href="searchpage.html" style="text-decoration: none; color:white;">Search</a></p>
 </div>
-
 <div class="pagetitle">
     <h1>AP Computer Science</h1>
 </div>
-
-
 <div id="parallax"></div>
 <div class="content" style="font-family: Merriweather">
-    <div class="assigntab" onclick="dropdown()">
-        <button onclick="spin()" class="assignbut" type="button"><span class="material-icons">chevron_right</span>
+    <div class="assigntab" onclick="dropdown('assignment-content','assignbut')">
+        <button onclick="spin('assignbut');" class="assignbut" type="button"><span
+                class="material-icons">chevron_right</span>
         </button>
         <p id="words">Assignments</p>
         <div id="assignment-content" class="assignment-content">
@@ -72,167 +64,225 @@
                 <li><a href="apcs/assigns/APCS_Assignment0_SummerAssignment.pdf" target="_blank">Summer Assignment</a>
                 </li>
                 <li><a href="apcs/assigns/APCS_Assignment1_ComputerComponents.pdf" target="_blank">1: Computer
-                    Components</a></li>
-                <!--<li><a href="apcs/assigns/assign2details.html">2: Operations Calculator</a></li>-->
-                <li><a href="apcs/assigns/APCS_Assignment2_Operations Calculator.pdf" target="_blank"
+                    Components</a>
+                </li>
+                <li><a id="assign2">2: Operations Calculator</a></li>
+
+                <!--<li><a href="/apcs/assigns/APCS_Assignment2_Operations Calculator.pdf" target="_blank"
                        onclick="window.open('https://www.youtube.com/watch?v=Hrn66uHLPSE&feature=youtu.be');">2:
-                    Operations Calculator</a></li>
-                <li><a href="apcs/assigns/APCS_Assignment3_StairwayToHeaven.pdf" target="_blank">
-                    <!--onclick="window.open('')"-->3: Stairway to Heaven</a></li>
-                <li><a href="apcs/assigns/APCS_Assignment4_TidbitComputerStore.pdf" target="_blank">4: Tidbit Computer
-                    Store</a></li>
-                <li><a href="apcs/assigns/APCS_Assignment5_DoubleIntVerifier.pdf" target="_blank">5: Input
-                    Verifiers</a></li>
-                <li><a href="apcs/assigns/APCS_Assignment6_GroupPresentations.pdf" target="_blank">6: Group
-                    Presentations</a></li>
-                <li><a href="apcs/assigns/APCS_Assignment7_OOPPractice.pdf" target="_blank">7: Object Oriented
-                    Programming</a></li>
-                <li><a href="apcs/assigns/APCS_Assignment8_OOPRound2.pdf" target="_blank">8: Additional Class
-                    Features</a></li>
-                <li><a href="apcs/assigns/APCS_Assignment9_Strings.pdf" target="_blank">9: String Methods</a></li>
-                <li><a href="apcs/assigns/APCS_Assignment10_2DArrays.pdf" target="_blank">10: 2-Dimensional Arrays</a>
+                    Operations Calculator</a>
+                    </li>-->
+                <li>
+                    <a href="apcs/assigns/assign3details.html" target="_blank">
+                        <!--onclick="window.open('')"-->3: Stairway to Heaven
+                    </a>
                 </li>
-                <li><a href="apcs/assigns/APCS_Assignment11_ListManager.pdf" target="_blank">11: List Management</a>
+                <li><a href="/apcs/assigns/APCS_Assignment4_TidbitComputerStore.pdf" target="_blank">4: Tidbit Computer
+                    Store</a>
                 </li>
-                <li><a href="apcs/assigns/APCS_Assignment12_Polymorphism.pdf" target="_blank">12: Object Oriented
-                    Polymorphism</a></li>
+                <li><a href="/apcs/assigns/APCS_Assignment5_DoubleIntVerifier.pdf" target="_blank">5: Input
+                    Verifiers</a>
+                </li>
+                <li><a href="/apcs/assigns/APCS_Assignment6_GroupPresentations.pdf" target="_blank">6: Group
+                    Presentations</a>
+                </li>
+                <li><a href="/apcs/assigns/APCS_Assignment7_OOPPractice.pdf" target="_blank">7: Object Oriented
+                    Programming</a>
+                </li>
+                <li><a href="/apcs/assigns/APCS_Assignment8_OOPRound2.pdf" target="_blank">8: Additional Class
+                    Features</a>
+                </li>
+                <li><a href="/apcs/assigns/APCS_Assignment9_Strings.pdf" target="_blank">9: String Methods</a></li>
+                <li><a href="/apcs/assigns/APCS_Assignment10_2DArrays.pdf" target="_blank">10: 2-Dimensional Arrays</a>
+                </li>
+                <li><a href="/apcs/assigns/APCS_Assignment11_ListManager.pdf" target="_blank">11: List Management</a>
+                </li>
+                <li><a href="/apcs/assigns/APCS_Assignment12_Polymorphism.pdf" target="_blank">12: Object Oriented
+                    Polymorphism</a>
+                </li>
                 <li><a href="/apcs/assigns/APCS_Assignment13_SoftwareEssay.pdf" target="_blank">13: Ethical Software</a>
                 </li>
                 <li><a href="/apcs/assigns/APCS_Assignment14_Stacks.pdf" target="_blank">14: Stacks</a></li>
                 <li><a href="/apcs/assigns/APCS_Assignment15_Recursion.pdf" target="_blank">15: Recursion</a></li>
                 <li><a href="/apcs/assigns/APCS_Assignment16_IntelPentiumBugEssay.pdf" target="_blank">16: Intel Pentium
-                    Bug</a></li>
+                    Bug</a>
+                </li>
                 <li><a href="/apcs/assigns/APCS_Assignment17_SearchingSorting.pdf" target="_blank">17: Searching and
-                    Sorting</a></li>
+                    Sorting</a>
+                </li>
                 <li><a href="/apcs/assigns/APCS_Assignment18_Hangman.pdf" target="_blank">18: Hangman</a></li>
                 <li><a href="/apcs/assigns/APCS_FinalProject_Connect4.pdf" target="_blank">Final Project</a></li>
             </ul>
         </div>
+    </div>
+    <style>
+        #Assign2Links {
+            position: absolute;
+            color: white;
+            display: none;
+            margin-left: 6vw;
+        }
+
+        #subtitle {
+            font-size: 1.25em;
+        }
+
+        #Assign2Links ul {
+            list-style: none;
+            margin-top: 1vh;
+            margin-left: 2vw;
+        }
+
+        #Assign2Links ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        #Assign2Links ul li a:hover {
+            color: rgb(29, 197, 200);
+        }
+    </style>
+    <div id="Assign2Links">
+        <a id="subtitle">Assignment 2: Operations Calculator</a>
+        <ul>
+            <li><a href="apcs/assigns/APCS_Assignment2_Operations%20Calculator.pdf" target="_blank">Assignment
+                Details</a></li>
+            <li><a href="https://youtu.be/Hrn66uHLPSE" target="_blank">Assignment Run-through</a></li>
+        </ul>
 
     </div>
 
-    <div class="lessontab" onclick="dropdown2()">
-        <button onclick="spin2()" class="lessonbut" type="button"><span class="material-icons">chevron_right</span>
+    <div class="lessontab" onclick="dropdown('lesson-content','lessonbut')">
+        <button onclick="spin('lessonbut')" class="lessonbut" type="button"><span
+                class="material-icons">chevron_right</span>
         </button>
-        <p id="words">Lessons</p>
-
+        <p id="words" class="lesson-title">Lessons</p>
         <div id="lesson-content" class="lesson-content" style="font-size: 2vh">
             <ul>
-                <li>Unit 1, Systems:</li>
+                <li class="lesson-title">Unit 1, Systems:</li>
                 <li>&nbsp&nbsp&nbsp&nbsp&nbspReview: <a
                         href="apcs/lessons/Unit%201_Computer_Number_Systems/APCS_Lesson_JavaReview_Blank.docx"
                         target="_blank">Blank</a> |
                     <a href="apcs/lessons/Unit%201_Computer_Number_Systems/APCS_Lesson_JavaReview_FilledOut.docx"
-                       target="_blank">Filled</a></li>
-
+                       target="_blank">Filled</a>
+                </li>
                 <li>&nbsp&nbsp&nbsp&nbsp&nbspImports: <a
                         href="apcs/lessons/Unit%201_Computer_Number_Systems/APCS_Lesson_ClassImports_Blank.docx"
                         target="_blank">Blank</a> |
                     <a href="apcs/lessons/Unit%201_Computer_Number_Systems/APCS_Lesson_ClassImports_FilledOut.docx"
-                       target="_blank">Filled</a></li>
-
+                       target="_blank">Filled</a>
+                </li>
                 <li>&nbsp&nbsp&nbsp&nbsp&nbspBases: <a
                         href="apcs/lessons/Unit%201_Computer_Number_Systems/APCS_Lesson_AssigningBases_Blank.docx"
                         target="_blank">Blank</a> |
                     <a href="apcs/lessons/Unit%201_Computer_Number_Systems/APCS_Lesson_AssigningBases_FilledOut.docx"
-                       target="_blank">Filled</a></li>
-
+                       target="_blank">Filled</a>
+                </li>
                 <li>&nbsp&nbsp&nbsp&nbsp&nbspRounding: <a
                         href="apcs/lessons/Unit%201_Computer_Number_Systems/APCS_Lesson_RoundOffError_Blank.docx"
                         target="_blank">Blank</a> |
                     <a href="apcs/lessons/Unit%201_Computer_Number_Systems/APCS_Lesson_RoundOffError_FilledOut.docx"
-                       target="_blank">Filled</a></li>
-
-
-                <li>Unit 2, Math Operations:</li>
+                       target="_blank">Filled</a>
+                </li>
+                <li class="lesson-title">Unit 2, Math Operations:</li>
                 <li>&nbsp&nbsp&nbsp&nbsp&nbspRandom: <a
                         href="apcs/lessons/Unit%202_Math_System_Design/APCS_Lesson_Random_Blank.docx" target="_blank">Blank</a>
                     | <a href="apcs/lessons/Unit%202_Math_System_Design/APCS_Lesson_Random_FilledOut.docx"
-                         target="_blank">Filled</a></li>
-
-                <li>Unit 3, Primitives/Objects:</li>
+                         target="_blank">Filled</a>
+                </li>
+                <li class="lesson-title">Unit 3, Primitives/Objects:</li>
                 <li>&nbsp&nbsp&nbsp&nbsp&nbspObjects: <a
                         href="apcs/lessons/Unit%203_Objects_References/APCS_Lesson_Objects_Blank.pptx" target="_blank">Blank</a>
                     | <a href="apcs/lessons/Unit%203_Objects_References/APCS_Lesson_Objects_FilledOut.pptx"
-                         target="_blank">Filled</a></li>
-
-                <li>Unit 4, Object Oriented:</li>
+                         target="_blank">Filled</a>
+                </li>
+                <li class="lesson-title">Unit 4, Object Oriented:</li>
                 <li>&nbsp&nbsp&nbsp&nbsp&nbspOOP: <a href="apcs/lessons/Unit%204_OOP/APCS_Lesson_OOP_Blank.docx"
                                                      target="_blank">Blank</a>
-                    | <a href="apcs/lessons/Unit%204_OOP/APCS_Lesson_OOP_FilledOut.docx" target="_blank">Filled</a></li>
-
+                    | <a href="apcs/lessons/Unit%204_OOP/APCS_Lesson_OOP_FilledOut.docx" target="_blank">Filled</a>
+                </li>
                 <li>&nbsp&nbsp&nbsp&nbsp&nbspOOP Part 2: <a
                         href="apcs/lessons/Unit%204_OOP/APCS_Lesson_AdvancedOOP_Blank.docx" target="_blank">Blank</a>
                     | <a href="apcs/lessons/Unit%204_OOP/APCS_Lesson_AdvancedOOP_FilledOut.docx"
-                         target="_blank">Filled</a></li>
-
+                         target="_blank">Filled</a>
+                </li>
                 <li>&nbsp&nbsp&nbsp&nbsp&nbspInterfaces: <a
                         href="apcs/lessons/Unit%204_OOP/APCS_Lesson_Interfaces_Blank.docx" target="_blank">Blank</a>
                     | <a href="apcs/lessons/Unit%204_OOP/APCS_Lesson_Interfaces_FilledOut.docx"
-                         target="_blank">Filled</a></li>
-
-                <li>Unit 5, Strings:</li>
+                         target="_blank">Filled</a>
+                </li>
+                <li class="lesson-title">Unit 5, Strings:</li>
                 <li>&nbsp&nbsp&nbsp&nbsp&nbspStrings: <a
                         href="apcs/lessons/Unit%205_Strings_ShortCircuit/APCS_Lesson_Strings_Blank.docx"
                         target="_blank">Blank</a>
                     | <a href="apcs/lessons/Unit%205_Strings_ShortCircuit/APCS_Lesson_Strings_FilledOut.docx"
-                         target="_blank">Filled</a></li>
-
+                         target="_blank">Filled</a>
+                </li>
                 <li>&nbsp&nbsp&nbsp&nbsp&nbspShort Circuit Evals: <a
                         href="apcs/lessons/Unit%205_Strings_ShortCircuit/APCS_Lesson_ShortEval_Blank.docx"
                         target="_blank">Blank</a>
                     | <a href="apcs/lessons/Unit%205_Strings_ShortCircuit/APCS_Lesson_ShortEval_FilledOut.docx"
-                         target="_blank">Filled</a></li>
-
-                <li>Unit 6, Arrays & ArrayLists:</li>
+                         target="_blank">Filled</a>
+                </li>
+                <li class="lesson-title">Unit 6, Arrays & ArrayLists:</li>
                 <li>&nbsp&nbsp&nbsp&nbsp&nbspArrays: <a
                         href="apcs/lessons/Unit%206_Arrays_ArrayLists/APCS_Lesson_Arrays_Blank.docx"
                         target="_blank">Blank</a>
                     | <a href="apcs/lessons/Unit%206_Arrays_ArrayLists/APCS_Lesson_Arrays_FilledOut.docx"
-                         target="_blank">Filled</a></li>
+                         target="_blank">Filled</a>
+                </li>
                 <li>&nbsp&nbsp&nbsp&nbsp&nbspArrayLists: <a
                         href="apcs/lessons/Unit%206_Arrays_ArrayLists/APCS_Lesson_ArrayLists_Blank.docx"
                         target="_blank">Blank</a>
                     | <a href="apcs/lessons/Unit%206_Arrays_ArrayLists/APCS_Lesson_ArrayLists_FilledOut.docx"
-                         target="_blank">Filled</a></li>
-
-                <li>Unit 7, File IO:</li>
+                         target="_blank">Filled</a>
+                </li>
+                <li class="lesson-title">Midterm Review</li>
+                <li>&nbsp&nbsp&nbsp&nbsp&nbspReview: <a
+                        href="apcs/lessons/Midterm%20Review/APCS_Lesson_MidermReview_Blank.docx"
+                        target="_blank">Blank</a>
+                    | <a href="apcs/lessons/Midterm%20Review/APCS_Lesson_MidermReview_FilledOut.docx"
+                         target="_blank">Filled</a>
+                </li>
+                <li>&nbsp&nbsp&nbsp&nbsp&nbspArrayLists: <a
+                        href="apcs/lessons/Unit%206_Arrays_ArrayLists/APCS_Lesson_ArrayLists_Blank.docx"
+                        target="_blank">Blank</a>
+                    | <a href="apcs/lessons/Unit%206_Arrays_ArrayLists/APCS_Lesson_ArrayLists_FilledOut.docx"
+                         target="_blank">Filled</a>
+                </li>
+                <li class="lesson-title">Unit 7, File IO:</li>
                 <li>&nbsp&nbsp&nbsp&nbsp&nbspInheritance: <a
                         href="apcs/lessons/Unit%207_Files_IO/APCS_Lesson_FilesIO_Blank.docx"
                         target="_blank">Blank</a>
                     | <a href="apcs/lessons/Unit%207_Files_IO/APCS_Lesson_FilesIO_FilledOut.docx"
-                         target="_blank">Filled</a></li>
-
-                <li>Unit 8, Inheritance & Polymorphism:</li>
+                         target="_blank">Filled</a>
+                </li>
+                <li class="lesson-title">Unit 8, Inheritance & Polymorphism:</li>
                 <li>&nbsp&nbsp&nbsp&nbsp&nbspFiles and IO: <a
                         href="apcs/lessons/Unit%208_Inheritance_Polymorphism/APCS_Lesson_Inheritance_Blank.docx"
                         target="_blank">Blank</a>
                     | <a href="apcs/lessons/Unit%208_Inheritance_Polymorphism/APCS_Lesson_Inheritance_FilledOut.docx"
                          target="_blank">Filled</a> | <a
                             href="apcs/lessons/Unit%208_Inheritance_Polymorphism/APCS_Lesson_InheritancePowerpoint.pptx"
-                            target="_blank">Powerpoint</a></li>
-
-
-                <li>Unit 9, Recursion:</li>
+                            target="_blank">Powerpoint</a>
+                </li>
+                <li class="lesson-title">Unit 9, Recursion:</li>
                 <li>&nbsp&nbsp&nbsp&nbsp&nbspRecursion: <a
                         href="apcs/lessons/Unit%209_Recursion/APCS_Lesson_Recursion_Blank.docx"
                         target="_blank">Blank</a>
                     | <a href="apcs/lessons/Unit%209_Recursion/APCS_Lesson_Recursion_FilledOut.docx"
-                         target="_blank">Filled</a></li>
-
-
+                         target="_blank">Filled</a>
+                </li>
                 <!-- <li><a href="#">Unit 6 - Object Oriented Programming</a></li>
-                    <li><a href="#">Unit 7 - Graphical User Interfaces</a></li>-->
+                   <li><a href="#">Unit 7 - Graphical User Interfaces</a></li>-->
                 <!--No notes sheet yet^ add when access to notesheet-->
             </ul>
         </div>
     </div>
-
-    <div class="resourcetab" onclick="dropdown3()">
-        <button onclick="spin3()" class="resourcebut" type="button"><span class="material-icons">chevron_right</span>
+    <div class="resourcetab" onclick="dropdown('resource-content','resourcebut')">
+        <button onclick="spin('resourcebut')" class="resourcebut" type="button"><span class="material-icons">chevron_right</span>
         </button>
         <p id="words">Resources</p>
-
         <div id="resource-content" class="resource-content">
             <ul>
                 <li><a href="resources/Cookbock.pdf" target="_blank">The Cookbook</a></li>
@@ -240,53 +290,47 @@
                 <li><a href="resources/GUISurvivalGuide.pdf" target="_blank">GUI Survival Guide</a></li>
                 <li><a href="/resources/SoundFile.wav" target="_blank">Sound Files</a></li>
                 <li><a href="References.html" target="_blank">References</a></li>
-
             </ul>
         </div>
     </div>
-
-    <div class="bonustab" onclick="dropdown4()">
-        <button onclick="spin4()" class="bonusbut" type="button"><span class="material-icons">chevron_right</span>
+    <div class="bonustab" onclick="dropdown('bonus-content','bonusbut')">
+        <button onclick="spin('bonusbut')" class="bonusbut" type="button"><span
+                class="material-icons">chevron_right</span>
         </button>
         <p id="words">Bonuses</p>
-
         <div id="bonus-content" class="bonus-content">
             <ul>
-                <li><a href="apcs/bonuses/APCS_Bonus_BaseConverter.pdf" target="_blank"></a></li>
-                <li><a href="apcs/bonuses/APCS_Bonus_PNZ.pdf" target="_blank">1st Quarter: PNZ</a></li>
-                <li><a href="apcs/bonuses/APCS_Bonus_BlackJack.pdf" target="_blank">2nd Quarter: Blackjack</a></li>
-                <li><a href="apcs/bonuses/APCS_Bonus_Yahtzee.pdf" target="_blank">3rd Quarter: Yahtzee</a></li>
-                <li><a href="apcs/bonuses/APCS_Bonus_HotelSystem.pdf" target="_blank">Hotel System</a></li>
-                <li><a href="apcs/bonuses/APCS_Bonus_Risk.pdf" target="_blank">Risk</a></li>
-                <!--<li><a href="apcs/bonuses/">Battleship</a></li>-->
+                <li><a href="/apcs/bonuses/APCS_Bonus_BaseConverter.pdf" target="_blank"></a></li>
+                <li><a href="/apcs/bonuses/APCS_Bonus_PNZ.pdf" target="_blank">1st Quarter: PNZ</a></li>
+                <li><a href="/apcs/bonuses/APCS_Bonus_BlackJack.pdf" target="_blank">2nd Quarter: Blackjack</a></li>
+                <li><a href="/apcs/bonuses/APCS_Bonus_Yahtzee.pdf" target="_blank">3rd Quarter: Yahtzee</a></li>
+                <li><a href="/apcs/bonuses/APCS_Bonus_HotelSystem.pdf" target="_blank">Hotel System</a></li>
+                <li><a href="/apcs/bonuses/APCS_Bonus_Risk.pdf" target="_blank">Risk</a></li>
+                <!--<li><a href="/apcs/bonuses/">Battleship</a></li>-->
                 <!--Link on previous site was .exe, need pdf upload-->
                 <li><a href="https://www.sololearn.com/learning/1157" target="_blank">Learn Python</a></li>
                 <li><a href="https://www.sololearn.com/learning/1051" target="_blank">Learn C++</a></li>
                 <li><a href="https://www.sololearn.com/learning/1014" target="_blank">Learn HTML/CSS/JS</a></li>
-
             </ul>
         </div>
-
     </div>
-
-    <div class="hwtab" onclick="dropdown5()">
-        <button onclick="spin5()" class="hwbut" type="button"><span class="material-icons">chevron_right</span></button>
+    <div class="hwtab" onclick="dropdown('hw-content','hwbut')">
+        <button onclick="spin('hwbut')" class="hwbut" type="button"><span class="material-icons">chevron_right</span>
+        </button>
         <p id="words">Homeworks</p>
-
         <div id="hw-content" class="hw-content">
             <ul>
-                <li><a href="apcs/homeworks/APCS_Homework_PythagoreanTriples.pdf">Pythagorean Triples</a></li>
-                <li><a href="apcs/homeworks/APCS_Homework_SpreadStars.pdf">Spread out the Stars</a></li>
-                <li><a href="apcs/homeworks/APCS_Homework_ArrayCopying.pdf">Array Copying</a></li>
-                <li><a href="apcs/homeworks/APCS_Homework_RoachPopulation.pdf">Roach Population</a></li>
-                <li><a href="apcs/homeworks/APCS_Homework_PaintBullsEyeHouse.pdf">Paint BullsEye and Scalable House</a>
+                <li><a href="/apcs/homeworks/APCS_Homework_PythagoreanTriples.pdf">Pythagorean Triples</a></li>
+                <li><a href="/apcs/homeworks/APCS_Homework_SpreadStars.pdf">Spread out the Stars</a></li>
+                <li><a href="/apcs/homeworks/APCS_Homework_ArrayCopying.pdf">Array Copying</a></li>
+                <li><a href="/apcs/homeworks/APCS_Homework_RoachPopulation.pdf">Roach Population</a></li>
+                <li><a href="/apcs/homeworks/APCS_Homework_PaintBullsEyeHouse.pdf">Paint BullsEye and Scalable House</a>
                 </li>
-                <li><a href="apcs/homeworks/APCS_Homework_InheritanceHierarchy.pdf">Inheritance Hierarchy</a></li>
-                <li><a href="apcs/homeworks/APCS_Homework_CoffeeTrader.pdf">Coffee Trader</a></li>
-                <li><a href="apcs/homeworks/APCS_Homework_EniacEssay.pdf">ENIAC Essay</a></li>
+                <li><a href="/apcs/homeworks/APCS_Homework_InheritanceHierarchy.pdf">Inheritance Hierarchy</a></li>
+                <li><a href="/apcs/homeworks/APCS_Homework_CoffeeTrader.pdf">Coffee Trader</a></li>
+                <li><a href="/apcs/homeworks/APCS_Homework_EniacEssay.pdf">ENIAC Essay</a></li>
             </ul>
         </div>
-
     </div>
     <div class="background-options">
         <p class="bgtitle">
@@ -298,10 +342,9 @@
         <input class="backbut" onclick="clickWeb()" type="radio" name="options">
     </div>
 
+
 </div>
 </body>
-
-
 <script>
     document.getElementById("nav").classList.toggle("active"); //initially inactive
     document.getElementsByClassName("assigntab")[0].classList.toggle("active"); //initially inactive
@@ -309,11 +352,7 @@
     document.getElementsByClassName("resourcetab")[0].classList.toggle("active"); //initially inactive
     document.getElementsByClassName("bonustab")[0].classList.toggle("active"); //initially inactive
     document.getElementsByClassName("hwtab")[0].classList.toggle("active"); //initially inactive
-
-
     document.getElementById("words").addEventListener("onclick", dropdown);
-    //document.getElementById("words").addEventListener("mouseout", dropdown);
-
     document.getElementsByTagName("canvas").style.zIndex = -10000;
 
     function randBack() {
@@ -323,8 +362,8 @@
         document.getElementById("assignment-content").click();
         document.getElementsByClassName("lesson-content").style.fontsize("2vh");
 
-
     }
+
 
     function clickSnow() {
         document.getElementById("web").style.display = "none";
@@ -334,63 +373,17 @@
         document.getElementById("web").style.display = "block";
     }
 
-    function dropdown() {
-        document.getElementById("assignment-content").classList.toggle("show");
+    function dropdown(string1, string2) {
+        document.getElementById(string1).classList.toggle("show");
+        if ((document.getElementsByClassName(string2)[0].getAttribute("active") !== "active")) {
+            document.getElementsByClassName(string2)[0].classList.toggle("active"); //initially inactive
 
-        if ((document.getElementsByClassName("assignbut")[0].getAttribute("active") != "active")) {
-            document.getElementsByClassName("assignbut")[0].classList.toggle("active"); //initially inactive
-        }
-
-    }
-
-    function dropdown2() {
-        document.getElementById("lesson-content").classList.toggle("show");
-        if ((document.getElementsByClassName("lessonbut")[0].getAttribute("active") != "active")) {
-            document.getElementsByClassName("lessonbut")[0].classList.toggle("active"); //initially inactive
         }
     }
 
-    function dropdown3() {
-        document.getElementById("resource-content").classList.toggle("show");
-        if ((document.getElementsByClassName("resourcebut")[0].getAttribute("active") != "active")) {
-            document.getElementsByClassName("resourcebut")[0].classList.toggle("active"); //initially inactive
-        }
-    }
 
-    function dropdown4() {
-        document.getElementById("bonus-content").classList.toggle("show");
-        if ((document.getElementsByClassName("bonusbut")[0].getAttribute("active") != "active")) {
-            document.getElementsByClassName("bonusbut")[0].classList.toggle("active"); //initially inactive
-        }
-    }
-
-    function dropdown5() {
-        document.getElementById("hw-content").classList.toggle("show");
-        if ((document.getElementsByClassName("hwbut")[0].getAttribute("active") != "active")) {
-            document.getElementsByClassName("hwbut")[0].classList.toggle("active"); //initially inactive
-        }
-    }
-
-    function spin() {
-
-        document.getElementsByClassName("assignbut")[0].rotate(450);
-    }
-
-    function spin2() {
-        document.getElementsByClassName("lessonbut")[0].rotate(450);
-    }
-
-    function spin3() {
-        document.getElementsByClassName("resourcebut")[0].rotate(450);
-    }
-
-
-    function spin4() {
-        document.getElementsByClassName("bonusbut")[0].rotate(450);
-    }
-
-    function spin5() {
-        document.getElementsByClassName("hwbut")[0].rotate(450);
+    function spin(name) {
+        document.getElementsByClassName(name)[0].rotate(450);
     }
 
     function openAssign() {
@@ -426,13 +419,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/2.1.3/parallax.min.js"></script>
 <script src="util.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r126/three.min.js"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.21/vanta.net.min.js"></script>
-
-
-<script src="three.r119.min.js"></script>
-<script src="vanta.net.min.js"></script>
+<script src="APCSscript.js"></script>
 <script type="text/javascript">
+
     VANTA.NET({
         el: "#web",
         mouseControls: true,
