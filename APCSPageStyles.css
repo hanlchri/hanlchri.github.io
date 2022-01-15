@@ -7,6 +7,34 @@ body {
 canvas {
     z-index: -100000 !important;
 }
+/*---------------------*/
+.submenu {
+    position: absolute;
+    color: white;
+    display: none;
+    margin-left: 6vw;
+}
+
+.subtitle {
+    font-size: 2.75vh;
+}
+
+.submenu ul {
+    list-style: none;
+    align-content: center;
+    text-align: left;
+}
+
+.submenu ul li a  {
+    text-decoration: none;
+    color: white;
+}
+
+.submenu ul li a:hover {
+    color: rgb(29, 197, 200);
+}
+
+/*---------------------*/
 
 
 #web {
