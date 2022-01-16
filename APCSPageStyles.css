@@ -7,6 +7,39 @@ body {
 canvas {
     z-index: -100000 !important;
 }
+
+#assignment-content ul{
+    height: 60vh;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+#lesson-content ul{
+    height: 64vh;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    color: white;
+    border-radius: 5px;
+    border-color: white;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+
+}
+
 /*---------------------*/
 .submenu {
     position: absolute;
