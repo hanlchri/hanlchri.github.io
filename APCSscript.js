@@ -1,6 +1,5 @@
-
 $(document).ready(function () {
-    
+
     $("#assign2").click(function () {
         $("#Assign2Links").toggle();
     })
@@ -59,7 +58,6 @@ $(document).ready(function () {
         $("#Assign17Links").hide();
         $("#Assign18Links").hide();
     })
-   
- 
-});
 
+
+});
