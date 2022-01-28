@@ -59,8 +59,9 @@ $(document).ready(function () {
         $("#Assign18Links").hide();
     })
     
-     Use for HW$("#assign18").click(function () {
-        $("#Assign18Links").toggle();
+     $("#hwArrayCopy").click(function () {
+        $("#HWArrayCopyingSubMenu").toggle();
     })
+    
 
 });
