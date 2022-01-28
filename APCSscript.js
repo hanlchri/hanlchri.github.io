@@ -58,6 +58,9 @@ $(document).ready(function () {
         $("#Assign17Links").hide();
         $("#Assign18Links").hide();
     })
-
+    
+     Use for HW$("#assign18").click(function () {
+        $("#Assign18Links").toggle();
+    })
 
 });
