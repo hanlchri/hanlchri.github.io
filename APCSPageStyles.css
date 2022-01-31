@@ -39,6 +39,32 @@ canvas {
 ::-webkit-scrollbar-thumb:hover {
 
 }
+.submenuHWs {
+    position: absolute;
+    color: white;
+    display: none;
+    margin-left: 6vw;
+}
+
+.subtitleHWs {
+    font-size: 2.75vh;
+}
+
+.submenuHWs ul {
+    list-style: none;
+    align-content: center;
+    text-align: left;
+}
+
+.submenuHWs ul li a  {
+    text-decoration: none;
+    color: white;
+}
+
+.submenuHWs ul li a:hover {
+    color: rgb(29, 197, 200);
+}
+
 
 /*---------------------*/
 .submenu {
