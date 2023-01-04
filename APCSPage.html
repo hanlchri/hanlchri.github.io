@@ -241,6 +241,7 @@
     </div>
 
 
+
     <div class="lessontab" onclick="dropdown('lesson-content','lessonbut')">
         <button onclick="spin('lessonbut')" class="lessonbut" type="button"><span
                 class="material-icons">chevron_right</span>
@@ -391,7 +392,7 @@
                 <li><a href="resources/NetbeansPrintingGuide.pdf" target="_blank">Printing from Netbeans</a></li>
                 <li><a href="resources/GUISurvivalGuide.pdf" target="_blank">GUI Survival Guide</a></li>
                 <li><a href="/resources/SoundFile.wav" target="_blank">Sound Files</a></li>
-                <li><a href="/resources/JTattoo-1.6.13.jar" target="_blank">JTattoo-1.6.13.jar for making round buttons</a></li>
+                <li><a href="/resources/JTattoo-1.6.13.jar" target="_blank">Making round buttons</a></li>
                 <li><a href="References.html" target="_blank">References</a></li>
             </ul>
         </div>
@@ -400,12 +401,12 @@
         <button onclick="spin('bonusbut')" class="bonusbut" type="button"><span
                 class="material-icons">chevron_right</span>
         </button>
-        <p id="words">Bonuses</p>
+        <p id="words" class="bonus-title">Bonuses</p>
         <div id="bonus-content" class="bonus-content">
             <ul>
                 <li><a href="/apcs/bonuses/APCS_Bonus_BaseConverter.pdf" target="_blank"></a></li>
                 <li><a href="/apcs/bonuses/APCS_Bonus_PNZ.pdf" target="_blank">1st Quarter: PNZ</a></li>
-                <li><a id="blackjackbonus" target="_blank">BlackJack Bonus 2nd Qtr</a></li>
+                <li><a id="blackjackbonus">2nd Quarter: BlackJack</a></li>
                 
                 <li><a href="/apcs/bonuses/APCS_Bonus_Yahtzee.pdf" target="_blank">3rd Quarter: Yahtzee</a></li>
                 <li><a href="/apcs/bonuses/APCS_Bonus_HotelSystem.pdf" target="_blank">Hotel System</a></li>
@@ -419,24 +420,23 @@
         </div>
     </div>
 
-    <div id="blackjackbonusLinks" class="submenu">
+    <div id="blackjackbonusLinks" class="submenuBonuses">
         <a class="subtitle">Black Jack Bonus</a>
         <ul>
             <li><a href="/apcs/bonuses/APCS_Bonus_BlackJack.pdf" target="_blank">Blackjack Details</a></li>
-            <li><a href="apcs/Assignment resources/BlackJackSkeletonLISTPROJECT.zip" target="_blank">Black Jack Skeleton</a></li>
+            <li><a href="apcs/Assignment Resources/BlackJackSkeletonLISTPROJECT.zip" target="_blank">Black Jack Skeleton</a></li>
         </ul>
     </div>
    
     <div class="hwtab" onclick="dropdown('hw-content','hwbut')">
         <button onclick="spin('hwbut')" class="hwbut" type="button"><span class="material-icons">chevron_right</span>
         </button>
-        <p id="words">Homework</p>
+        <p id="words" class="homework-title" >Homework</p>
         <div id="hw-content" class="hw-content">
             <ul>
                 <li><a href="/apcs/homeworks/APCS_Homework_PythagoreanTriples.pdf">Pythagorean Triples</a></li>
                 <li><a href="/apcs/homeworks/APCS_Homework_SpreadStars.pdf">Spread out the Stars</a></li>
-                <li><a id="HWArrayCopyingSubMenu">Array Copying</a></li>
-                <li><a href="/apcs/homeworks/APCS_Homework_ArrayCopying.pdf">Array Copying</a></li>
+                <li><a id="arraycopyinghw">Array Copying</a></li>
                 <li><a href="/apcs/homeworks/APCS_Homework_RoachPopulation.pdf">Roach Population</a></li>
                 <li><a href="/apcs/homeworks/APCS_Homework_PaintBullsEyeHouse.pdf">Paint BullsEye and Scalable House</a></li>
                 <li><a href="/apcs/homeworks/APCS_Homework_InheritanceHierarchy.pdf">Inheritance Hierarchy</a></li>
@@ -449,7 +449,7 @@
     
  
     
-    <div id="HWArrayCopyingSubMenu" class="submenuHWs">
+    <div id="HWArrayCopyingLinks" class="submenuHWs">
         <a class="subtitle">ArrayCopying</a>
         <ul>
             <li><a href="apcs/homeworks/APCS_Homework_ArrayCopying.pdf" target="_blank">Assignment

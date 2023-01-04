@@ -57,11 +57,24 @@ $(document).ready(function () {
         $("#Assign15Links").hide();
         $("#Assign17Links").hide();
         $("#Assign18Links").hide();
+        $("#blackjackbonusLinks").hide()
+
     })
-    
-     $("#hwArrayCopy").click(function () {
-        $("#HWArrayCopyingSubMenu").toggle();
+
+    $(".homework-title").click(function(){
+        $("#HWArrayCopyingLinks").hide();
     })
-    
+
+    $(".bonus-title").click(function (){
+        $("#blackjackbonusLinks").hide()
+    })
+
+     $("#arraycopyinghw").click(function () {
+        $("#HWArrayCopyingLinks").toggle();
+    })
+
+    $("#blackjackbonus").click(function (){
+        $("#blackjackbonusLinks").toggle()
+    })
 
 });
