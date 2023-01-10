@@ -15,6 +15,8 @@
  * m-r-h-a-n-l-e-y-c-.c-o-m~~~~~~~~~~t-e-a-m-2-0-.-c-o-m~~~~~~~~~~~~~~~~~~~~~~
  */
 
+import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -73,6 +75,8 @@ public class ArrayPractice_Copying_Skeleton {
     }
 
     public ArrayPractice_Copying_Skeleton() {
+        PrintStream out = new PrintStream(System.out, true, StandardCharsets.UTF_8);
+        System.setOut(out);
         menu();
     }
 
