@@ -58,6 +58,7 @@ $(document).ready(function () {
         $("#Assign17Links").hide();
         $("#Assign18Links").hide();
         $("#blackjackbonusLinks").hide()
+        $("#yahtzeebonusLinks").hide()
 
     })
 
