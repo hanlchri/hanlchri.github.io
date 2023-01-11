@@ -67,6 +67,7 @@ $(document).ready(function () {
 
     $(".bonus-title").click(function (){
         $("#blackjackbonusLinks").hide()
+        $("#yahtzeebonusLinks").hide()
     })
 
      $("#arraycopyinghw").click(function () {
