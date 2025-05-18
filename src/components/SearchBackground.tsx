@@ -25,7 +25,7 @@ const SearchBackground: React.FC = () => {
     
     let animationFrameId: number;
     let searchNodes: SearchNode[] = [];
-    const maxNodes = 12;
+    const maxNodes = 10; // Reduced from 12 to 10
     let lastNodeTime = 0;
     
     // Set canvas dimensions
@@ -61,7 +61,7 @@ const SearchBackground: React.FC = () => {
         x: posX,
         y: posY,
         radius: 5 + Math.random() * 10,
-        speed: 0.5 + Math.random() * 1.5,
+        speed: 0.2 + Math.random() * 0.5, // Reduced from 0.5-2.0 to 0.2-0.7
         opacity: 0.1 + Math.random() * 0.3,
         expanding: true,
         color
@@ -77,8 +77,8 @@ const SearchBackground: React.FC = () => {
     const animate = (timestamp: number) => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Add new nodes periodically
-      if (timestamp - lastNodeTime > 800 && searchNodes.length < maxNodes) {
+      // Add new nodes periodically - reduced frequency from 800ms to 1200ms
+      if (timestamp - lastNodeTime > 1200 && searchNodes.length < maxNodes) {
         addSearchNode();
         lastNodeTime = timestamp;
       }
@@ -90,17 +90,17 @@ const SearchBackground: React.FC = () => {
       for (let i = searchNodes.length - 1; i >= 0; i--) {
         const node = searchNodes[i];
         
-        // Update radius
+        // Update radius - slower expansion/contraction
         if (node.expanding) {
-          node.radius += node.speed;
-          node.opacity -= 0.002;
+          node.radius += node.speed * 0.5; // Added 0.5 multiplier to slow down
+          node.opacity -= 0.001; // Reduced from 0.002 to 0.001
           
           if (node.radius > 100) {
             node.expanding = false;
           }
         } else {
-          node.radius -= node.speed * 0.3;
-          node.opacity -= 0.005;
+          node.radius -= node.speed * 0.15; // Reduced from 0.3 to 0.15
+          node.opacity -= 0.002; // Reduced from 0.005 to 0.002
           
           if (node.radius <= 0 || node.opacity <= 0) {
             searchNodes.splice(i, 1);
@@ -113,13 +113,13 @@ const SearchBackground: React.FC = () => {
           const dx = node.x - mousePosition.x;
           const dy = node.y - mousePosition.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
-          const maxDistance = 150;
+          const maxDistance = 120; // Reduced from 150 to 120
           
           if (distance < maxDistance) {
-            // Create a ripple effect from cursor
-            const force = 0.1 * (1 - distance / maxDistance);
-            node.radius += force * 2;
-            node.opacity = Math.min(node.opacity + force * 0.05, 0.5);
+            // Create a ripple effect from cursor - reduced from 0.1 to 0.03
+            const force = 0.03 * (1 - distance / maxDistance);
+            node.radius += force * 0.5; // Reduced from 2 to 0.5
+            node.opacity = Math.min(node.opacity + force * 0.02, 0.5); // Reduced from 0.05 to 0.02
           }
         }
         
@@ -137,8 +137,8 @@ const SearchBackground: React.FC = () => {
         ctx.fill();
       }
       
-      // If clicked, add a node at mouse position
-      if (mouseMoved && Math.random() < 0.01 && searchNodes.length < maxNodes * 1.5) {
+      // If clicked, add a node at mouse position - reduced probability from 0.01 to 0.003
+      if (mouseMoved && Math.random() < 0.003 && searchNodes.length < maxNodes * 1.5) {
         addSearchNode(mousePosition.x, mousePosition.y);
       }
       

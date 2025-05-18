@@ -26,12 +26,12 @@ const ReferencesBackground: React.FC = () => {
     
     let animationFrameId: number;
     let lines: Line[] = [];
-    const maxLines = 50;
+    const maxLines = 40; // Reduced from 50 to 40
     
-    // Initialize lines - MOVED BEFORE resizeCanvas
+    // Initialize lines
     const initLines = () => {
       lines = [];
-      for (let i = 0; i < 25; i++) {
+      for (let i = 0; i < 20; i++) { // Reduced from 25 to 20
         addRandomLine();
       }
     };
@@ -53,7 +53,8 @@ const ReferencesBackground: React.FC = () => {
       
       // Set line properties
       const width = 1 + Math.random() * 2;
-      const speed = 0.005 + Math.random() * 0.01;
+      // Reduced speed from 0.005-0.015 to 0.0025-0.005
+      const speed = 0.0025 + Math.random() * 0.0025;
       
       // Turquoise/cyan color theme for references page
       const hue = 170 + Math.random() * 30;
@@ -85,8 +86,8 @@ const ReferencesBackground: React.FC = () => {
       setMousePosition({ x: e.clientX, y: e.clientY });
       setMouseMoved(true);
       
-      // Add new lines from mouse position occasionally
-      if (Math.random() < 0.05 && lines.length < maxLines) {
+      // Add new lines from mouse position occasionally - reduced probability from 0.05 to 0.01
+      if (Math.random() < 0.01 && lines.length < maxLines) {
         addLine(e.clientX, e.clientY);
       }
     };
@@ -95,8 +96,8 @@ const ReferencesBackground: React.FC = () => {
     
     // Animation loop
     const animate = () => {
-      // Use a semi-transparent clear for a trail effect
-      ctx.fillStyle = 'rgba(26, 31, 44, 0.1)';
+      // Use a semi-transparent clear for a trail effect - reduced opacity from 0.1 to 0.05 for longer trails
+      ctx.fillStyle = 'rgba(26, 31, 44, 0.05)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
       // Process each line
@@ -141,7 +142,7 @@ const ReferencesBackground: React.FC = () => {
         ctx.fillStyle = line.color;
         ctx.fill();
         
-        // Mouse interaction - very subtle bend in lines
+        // Mouse interaction - very subtle bend in lines - reduced force from 0.2 to 0.05
         if (mouseMoved) {
           const midX = (line.startX + currentEndX) / 2;
           const midY = (line.startY + currentEndY) / 2;
@@ -151,9 +152,9 @@ const ReferencesBackground: React.FC = () => {
           const maxDistance = 150;
           
           if (distance < maxDistance) {
-            const force = 0.2 * (1 - distance / maxDistance);
-            line.endX += dx * force * 0.1;
-            line.endY += dy * force * 0.1;
+            const force = 0.05 * (1 - distance / maxDistance);
+            line.endX += dx * force * 0.04; // Reduced from 0.1 to 0.04
+            line.endY += dy * force * 0.04; // Reduced from 0.1 to 0.04
           }
         }
       }

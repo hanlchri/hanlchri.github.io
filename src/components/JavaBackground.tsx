@@ -60,7 +60,7 @@ const JavaBackground: React.FC = () => {
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      initNodes(); // Now this call is valid since initNodes is defined before being called
+      initNodes();
     };
     
     window.addEventListener('resize', resizeCanvas);
@@ -140,11 +140,11 @@ const JavaBackground: React.FC = () => {
       
       // Update node positions with mouse interaction
       nodes.forEach((node, i) => {
-        // Apply subtle circular motion
-        const time = Date.now() * 0.001;
+        // Apply much slower circular motion
+        const time = Date.now() * 0.0005; // Reduced from 0.001 to 0.0005
         const angle = time * 0.1 + i * 0.2;
-        node.x += Math.cos(angle) * 0.2;
-        node.y += Math.sin(angle) * 0.2;
+        node.x += Math.cos(angle) * 0.05; // Reduced from 0.2 to 0.05
+        node.y += Math.sin(angle) * 0.05; // Reduced from 0.2 to 0.05
         
         // Keep within bounds
         if (node.x < node.size) node.x = node.size;
@@ -152,17 +152,18 @@ const JavaBackground: React.FC = () => {
         if (node.y < node.size) node.y = node.size;
         if (node.y > canvas.height - node.size) node.y = canvas.height - node.size;
         
-        // Mouse interaction - very subtle
+        // Mouse interaction - significantly reduced sensitivity
         if (mouseMoved) {
           const dx = node.x - mousePosition.x;
           const dy = node.y - mousePosition.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
-          const maxDistance = 150;
+          const maxDistance = 100; // Reduced from 150 to 100
           
           if (distance < maxDistance) {
             const forceDirectionX = dx / distance;
             const forceDirectionY = dy / distance;
-            const force = (maxDistance - distance) / maxDistance * 0.3;
+            // Reduced force significantly from 0.3 to 0.05
+            const force = (maxDistance - distance) / maxDistance * 0.05;
             
             node.x += forceDirectionX * force;
             node.y += forceDirectionY * force;

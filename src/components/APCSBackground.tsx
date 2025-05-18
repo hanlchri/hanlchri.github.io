@@ -26,7 +26,7 @@ const APCSBackground: React.FC = () => {
     let hexagons: Hexagon[] = [];
     const hexagonCount = 40;
     
-    // Initialize hexagons - MOVED BEFORE resizeCanvas
+    // Initialize hexagons
     const initHexagons = () => {
       hexagons = [];
       
@@ -44,7 +44,7 @@ const APCSBackground: React.FC = () => {
         
         // Random rotation
         const angle = Math.random() * Math.PI * 2;
-        const rotationSpeed = (Math.random() - 0.5) * 0.005;
+        const rotationSpeed = (Math.random() - 0.5) * 0.003; // Reduced from 0.005 to 0.003
         
         hexagons.push({ x, y, size, color, angle, rotationSpeed });
       }
@@ -126,18 +126,18 @@ const APCSBackground: React.FC = () => {
           const dx = hexagon.x - mousePosition.x;
           const dy = hexagon.y - mousePosition.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
-          const maxDistance = 200;
+          const maxDistance = 150; // Reduced from 200 to 150
           
           if (distance < maxDistance) {
-            // Apply subtle force based on distance
-            const force = 0.1 * (1 - distance / maxDistance);
+            // Apply subtle force based on distance - reduced from 0.1 to 0.02
+            const force = 0.02 * (1 - distance / maxDistance);
             const angle = Math.atan2(dy, dx);
             
             hexagon.x += Math.cos(angle) * force;
             hexagon.y += Math.sin(angle) * force;
             
-            // Slightly increase rotation speed when near mouse
-            hexagon.rotationSpeed *= 1.001;
+            // Slightly increase rotation speed when near mouse - reduced from 1.001 to 1.0005
+            hexagon.rotationSpeed *= 1.0005;
           }
         }
         
@@ -150,9 +150,9 @@ const APCSBackground: React.FC = () => {
         if (hexagon.y < -hexagon.size) hexagon.y = canvas.height + hexagon.size;
         if (hexagon.y > canvas.height + hexagon.size) hexagon.y = -hexagon.size;
         
-        // Add subtle drift
-        hexagon.x += Math.sin(Date.now() * 0.0005 + hexagon.size) * 0.1;
-        hexagon.y += Math.cos(Date.now() * 0.0005 + hexagon.size) * 0.1;
+        // Add subtle drift - reduced from 0.1 to 0.03
+        hexagon.x += Math.sin(Date.now() * 0.0002 + hexagon.size) * 0.03; // Reduced from 0.0005 to 0.0002
+        hexagon.y += Math.cos(Date.now() * 0.0002 + hexagon.size) * 0.03;
       });
       
       animationFrameId = requestAnimationFrame(animate);

@@ -25,9 +25,9 @@ const ContactBackground: React.FC = () => {
     
     let animationFrameId: number;
     let dots: Dot[] = [];
-    const dotCount = 100;
+    const dotCount = 80; // Reduced from 100 to 80
     
-    // Initialize dots - MOVED BEFORE resizeCanvas
+    // Initialize dots
     const initDots = () => {
       dots = [];
       
@@ -37,8 +37,8 @@ const ContactBackground: React.FC = () => {
         const y = Math.random() * canvas.height;
         const size = 1 + Math.random() * 2;
         
-        // Random movement speed and direction
-        const speed = 0.2 + Math.random() * 0.5;
+        // Random movement speed and direction - reduced from 0.2-0.7 to 0.1-0.3
+        const speed = 0.1 + Math.random() * 0.2;
         const angle = Math.random() * Math.PI * 2;
         const dirX = Math.cos(angle) * speed;
         const dirY = Math.sin(angle) * speed;
@@ -73,46 +73,46 @@ const ContactBackground: React.FC = () => {
     
     // Animation loop
     const animate = () => {
-      // Semi-transparent clear for a subtle trail effect
-      ctx.fillStyle = 'rgba(26, 31, 44, 0.1)';
+      // Semi-transparent clear for a subtle trail effect - reduced from 0.1 to 0.05
+      ctx.fillStyle = 'rgba(26, 31, 44, 0.05)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
       // Process each dot
       dots.forEach(dot => {
         // Update position
-        dot.x += dot.dirX;
-        dot.y += dot.dirY;
+        dot.x += dot.dirX * 0.5; // Added 0.5 multiplier to slow down movement
+        dot.y += dot.dirY * 0.5; // Added 0.5 multiplier to slow down movement
         
         // Bounce off edges
         if (dot.x < 0 || dot.x > canvas.width) dot.dirX *= -1;
         if (dot.y < 0 || dot.y > canvas.height) dot.dirY *= -1;
         
-        // Mouse interaction - very subtle
+        // Mouse interaction - very subtle - reduced from 0.05 to 0.01
         if (mouseMoved) {
           const dx = dot.x - mousePosition.x;
           const dy = dot.y - mousePosition.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
-          const maxDistance = 100;
+          const maxDistance = 80; // Reduced from 100 to 80
           
           if (distance < maxDistance) {
-            // Create a flowing effect around cursor
+            // Create a flowing effect around cursor - reduced forces
             const angle = Math.atan2(dy, dx);
-            const force = 0.05 * (1 - distance / maxDistance);
+            const force = 0.01 * (1 - distance / maxDistance); // Reduced from 0.05 to 0.01
             
-            // Add a circular flow component
+            // Add a circular flow component - reduced from 2 to 0.5
             const perpAngle = angle + Math.PI / 2;
-            dot.dirX += Math.cos(perpAngle) * force * 2;
-            dot.dirY += Math.sin(perpAngle) * force * 2;
+            dot.dirX += Math.cos(perpAngle) * force * 0.5;
+            dot.dirY += Math.sin(perpAngle) * force * 0.5;
             
-            // Add small repulsion
-            dot.dirX += Math.cos(angle) * force * 0.2;
-            dot.dirY += Math.sin(angle) * force * 0.2;
+            // Add small repulsion - reduced from 0.2 to 0.05
+            dot.dirX += Math.cos(angle) * force * 0.05;
+            dot.dirY += Math.sin(angle) * force * 0.05;
             
             // Cap speed
             const currentSpeed = Math.sqrt(dot.dirX * dot.dirX + dot.dirY * dot.dirY);
-            if (currentSpeed > dot.speed * 3) {
-              dot.dirX = (dot.dirX / currentSpeed) * dot.speed * 3;
-              dot.dirY = (dot.dirY / currentSpeed) * dot.speed * 3;
+            if (currentSpeed > dot.speed * 2) { // Reduced from 3 to 2
+              dot.dirX = (dot.dirX / currentSpeed) * dot.speed * 2;
+              dot.dirY = (dot.dirY / currentSpeed) * dot.speed * 2;
             }
           }
         }
@@ -136,11 +136,11 @@ const ContactBackground: React.FC = () => {
           const dx = dots[i].x - dots[j].x;
           const dy = dots[i].y - dots[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
-          const maxDistance = 80;
+          const maxDistance = 60; // Reduced from 80 to 60
           
           if (distance < maxDistance) {
             // Draw connection with opacity based on distance
-            const opacity = 0.4 * (1 - distance / maxDistance);
+            const opacity = 0.3 * (1 - distance / maxDistance); // Reduced from 0.4 to 0.3
             
             ctx.beginPath();
             ctx.moveTo(dots[i].x, dots[i].y);
