@@ -28,20 +28,20 @@ const APCSBackground: React.FC = () => {
 
     // MOUSE_INTERACTION_RADIUS: Defines how far (in pixels) the mouse's influence extends.
     // Suggested range: 100 to 300.
-    const MOUSE_INTERACTION_RADIUS = 150;
+    const MOUSE_INTERACTION_RADIUS = 300;
 
     // MOVEMENT_FORCE_MULTIPLIER: Controls the strength of the "push" effect on hexagons.
     // Higher values = stronger push. Start low and increase.
     // Suggested range: 0.01 (very subtle) to 0.5 (quite noticeable).
     // Your previous very subtle value was around 0.002.
-    const MOVEMENT_FORCE_MULTIPLIER = 0.1;
+    const MOVEMENT_FORCE_MULTIPLIER = 0.25;
 
     // ROTATION_EFFECT_MULTIPLIER: Factor by which rotation speed is multiplied during interaction.
     // 1.0 = no change. >1.0 speeds up (in current direction), <1.0 slows down.
     // Suggested range: 1.0005 (very subtle) to 1.01 (more noticeable).
     // Your previous very subtle value was around 1.00005.
     // Note: If a hexagon's initial rotationSpeed is 0, this won't make it rotate.
-    const ROTATION_EFFECT_MULTIPLIER = 1.002;
+    const ROTATION_EFFECT_MULTIPLIER = 1.005;
 
     // ENABLE_ROTATION_REVERSION: If true, rotation speed reverts to original when mouse moves away.
     const ENABLE_ROTATION_REVERSION = true;
@@ -49,11 +49,11 @@ const APCSBackground: React.FC = () => {
     // ROTATION_REVERSION_LERP_FACTOR: How quickly rotation speed reverts (if enabled).
     // 0.01 means it moves 1% towards the original speed per frame.
     // Suggested range: 0.01 to 0.1.
-    const ROTATION_REVERSION_LERP_FACTOR = 0.02;
+    const ROTATION_REVERSION_LERP_FACTOR = 0.015;
 
     // --- END OF ADJUSTABLE PARAMETERS ---
 
-    const hexagonCount = 40;
+    const hexagonCount = 45;
 
     const initHexagons = () => {
       hexagonsRef.current = [];
