@@ -6,7 +6,7 @@ const TerminalBackground: React.FC = () => {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const animationFrameRef = useRef<number | null>(null);
   
-  // Terminal code snippets
+  // Terminal code snippets - extended for smoother scrolling
   const codeLines = [
     'public class Main {',
     '  public static void main(String[] args) {',
@@ -47,7 +47,34 @@ const TerminalBackground: React.FC = () => {
     '@Override',
     'public String toString() {',
     '  return "Computer Science";',
-    '}'
+    '}',
+    '',
+    'public class Student {',
+    '  private String name;',
+    '  private int grade;',
+    '  ',
+    '  public Student(String name, int grade) {',
+    '    this.name = name;',
+    '    this.grade = grade;',
+    '  }',
+    '}',
+    '',
+    'HashMap<String, Integer> scores = new HashMap<>();',
+    'scores.put("Alice", 95);',
+    'scores.put("Bob", 87);',
+    'scores.put("Charlie", 92);',
+    '',
+    'public static void bubbleSort(int[] arr) {',
+    '  for (int i = 0; i < arr.length - 1; i++) {',
+    '    for (int j = 0; j < arr.length - i - 1; j++) {',
+    '      if (arr[j] > arr[j + 1]) {',
+    '        int temp = arr[j];',
+    '        arr[j] = arr[j + 1];',
+    '        arr[j + 1] = temp;',
+    '      }',
+    '    }',
+    '  }',
+    '}',
   ];
   
   // Set up canvas dimensions
@@ -87,41 +114,39 @@ const TerminalBackground: React.FC = () => {
       ctx.font = '14px "JetBrains Mono", monospace';
       ctx.fillStyle = 'rgba(57, 255, 20, 0.7)';
       
-      // Draw code lines with scrolling effect
-      const startLine = Math.floor(yOffset / lineHeight);
-      const visibleLines = Math.ceil(canvas.height / lineHeight) + 1;
-      
-      for (let i = startLine; i < startLine + visibleLines; i++) {
+      // Draw code lines with continuous scrolling effect
+      for (let i = 0; i < codeLines.length * 2; i++) { // Draw text twice to create seamless scroll
         const lineIndex = i % codeLines.length;
-        const y = (i * lineHeight) - (yOffset % lineHeight);
+        // Calculate y position with wrap-around effect
+        const y = ((i * lineHeight) - yOffset) % (totalHeight * 2);
         
-        // Randomize some characters for a "glitchy" effect
-        let codeLine = codeLines[lineIndex];
-        if (Math.random() < 0.01) {
-          const pos = Math.floor(Math.random() * codeLine.length);
-          const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
-          const randomChar = chars.charAt(Math.floor(Math.random() * chars.length));
-          codeLine = codeLine.substring(0, pos) + randomChar + codeLine.substring(pos + 1);
-        }
-        
-        // Add slight opacity variation
-        ctx.globalAlpha = 0.7 + Math.random() * 0.3;
-        
-        // Draw code line
-        for (let x = 0; x < codeLine.length; x++) {
-          const char = codeLine.charAt(x);
-          const xPos = x * 8 + (Math.random() < 0.005 ? Math.random() * 2 - 1 : 0);
-          ctx.fillText(char, xPos + 20, y);
+        // Only draw lines that are visible
+        if (y > -lineHeight && y < canvas.height) {
+          let codeLine = codeLines[lineIndex];
+          
+          // Randomize some characters for a "glitchy" effect, but less frequently
+          if (Math.random() < 0.003) {
+            const pos = Math.floor(Math.random() * codeLine.length);
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+            const randomChar = chars.charAt(Math.floor(Math.random() * chars.length));
+            codeLine = codeLine.substring(0, pos) + randomChar + codeLine.substring(pos + 1);
+          }
+          
+          // Add slight opacity variation
+          ctx.globalAlpha = 0.7 + Math.random() * 0.3;
+          
+          // Draw code line
+          ctx.fillText(codeLine, 20, y);
         }
       }
       
       // Reset opacity
       ctx.globalAlpha = 1.0;
       
-      // Increment offset for scrolling effect
-      yOffset += 0.5;
-      if (yOffset > totalHeight) {
-        yOffset = 0;
+      // Increment offset for scrolling effect (slower speed)
+      yOffset += 0.3;
+      if (yOffset >= totalHeight) {
+        yOffset = 0; // Seamless reset
       }
       
       animationFrameRef.current = requestAnimationFrame(animate);

@@ -56,13 +56,13 @@ const RetroGridBackground: React.FC = () => {
       for (let y = horizonY; y < canvas.height; y += gridSize) {
         // Calculate perspective factor
         const perspectiveFactor = (y - horizonY) / (canvas.height - horizonY);
-        const amplitude = Math.min(50 * perspectiveFactor, 30);
+        const amplitude = Math.min(40 * perspectiveFactor, 25); // Reduced amplitude
         
         ctx.beginPath();
         
-        // Add some wave effect
+        // Add some wave effect - slowed down
         for (let x = 0; x < canvas.width; x += 5) {
-          const waveY = y + Math.sin(time * 0.5 + x * 0.01) * amplitude * Math.pow(perspectiveFactor, 2);
+          const waveY = y + Math.sin(time * 0.2 + x * 0.01) * amplitude * Math.pow(perspectiveFactor, 2); // Slowed from 0.5 to 0.2
           
           if (x === 0) {
             ctx.moveTo(x, waveY);
@@ -74,7 +74,7 @@ const RetroGridBackground: React.FC = () => {
         ctx.stroke();
       }
       
-      // Vertical lines (with perspective)
+      // Vertical lines (with perspective) - slowed down
       const numVerticals = 30;
       const spacing = canvas.width / numVerticals;
       
@@ -86,11 +86,11 @@ const RetroGridBackground: React.FC = () => {
         ctx.beginPath();
         ctx.moveTo(xPos, horizonY);
         
-        // Draw curved line with some wave effect
+        // Draw curved line with slower wave effect
         for (let y = horizonY; y < canvas.height; y += 5) {
           const t = (y - horizonY) / (canvas.height - horizonY);
           const xOffset = normalizedPos * t * canvas.width * 0.5;
-          const waveX = vanishingPointX + xOffset + Math.sin(time * 0.3 + y * 0.01) * 10 * t;
+          const waveX = vanishingPointX + xOffset + Math.sin(time * 0.15 + y * 0.01) * 10 * t; // Slowed from 0.3 to 0.15
           
           ctx.lineTo(waveX, y);
         }
@@ -98,15 +98,15 @@ const RetroGridBackground: React.FC = () => {
         ctx.stroke();
       }
       
-      // Add some particles
-      const numParticles = 20;
+      // Add some particles - slowed down
+      const numParticles = 15; // Reduced from 20
       ctx.fillStyle = 'rgba(139, 92, 246, 0.7)';
       
       for (let i = 0; i < numParticles; i++) {
-        const t = (time + i * 100) % 1000 / 1000;
+        const t = (time * 0.5 + i * 100) % 1500 / 1500; // Slowed down
         const size = 2 + Math.sin(t * Math.PI) * 2;
         
-        const x = (Math.sin(i * 0.4 + time * 0.001) * 0.5 + 0.5) * canvas.width;
+        const x = (Math.sin(i * 0.4 + time * 0.0005) * 0.5 + 0.5) * canvas.width; // Slowed down
         const y = horizonY - 100 + t * 300;
         
         if (y < canvas.height) {
@@ -116,8 +116,8 @@ const RetroGridBackground: React.FC = () => {
         }
       }
       
-      // Update time
-      time += 1;
+      // Update time at a slower rate
+      time += 0.5; // Reduced from 1
       
       animationFrameId = requestAnimationFrame(animate);
     };

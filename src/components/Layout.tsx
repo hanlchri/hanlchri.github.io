@@ -5,6 +5,11 @@ import NavBar from './NavBar';
 import NetworkBackground from './NetworkBackground';
 import TerminalBackground from './TerminalBackground';
 import RetroGridBackground from './RetroGridBackground';
+import JavaBackground from './JavaBackground';
+import APCSBackground from './APCSBackground';
+import ReferencesBackground from './ReferencesBackground';
+import ContactBackground from './ContactBackground';
+import SearchBackground from './SearchBackground';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -17,19 +22,49 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const renderBackground = () => {
     if (location.pathname === '/') {
       return (
-        <div className="terminal-bg min-h-screen">
+        <div className="terminal-bg fixed inset-0">
           <TerminalBackground />
         </div>
       );
     } else if (location.pathname === '/about') {
       return (
-        <div className="retro-grid-bg min-h-screen">
+        <div className="retro-grid-bg fixed inset-0">
           <RetroGridBackground />
+        </div>
+      );
+    } else if (location.pathname === '/java') {
+      return (
+        <div className="network-bg fixed inset-0">
+          <JavaBackground />
+        </div>
+      );
+    } else if (location.pathname === '/ap-cs') {
+      return (
+        <div className="network-bg fixed inset-0">
+          <APCSBackground />
+        </div>
+      );
+    } else if (location.pathname === '/references') {
+      return (
+        <div className="network-bg fixed inset-0">
+          <ReferencesBackground />
+        </div>
+      );
+    } else if (location.pathname === '/contact') {
+      return (
+        <div className="network-bg fixed inset-0">
+          <ContactBackground />
+        </div>
+      );
+    } else if (location.pathname === '/search') {
+      return (
+        <div className="network-bg fixed inset-0">
+          <SearchBackground />
         </div>
       );
     } else {
       return (
-        <div className="network-bg min-h-screen">
+        <div className="network-bg fixed inset-0">
           <NetworkBackground />
         </div>
       );
@@ -37,10 +72,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
       {renderBackground()}
       <NavBar />
-      <main className="pt-20 pb-12 container mx-auto px-4">
+      <main className="relative pt-16 pb-12 container mx-auto px-4">
         <div className="animate-fade-in">
           {children}
         </div>

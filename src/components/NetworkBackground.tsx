@@ -109,21 +109,21 @@ const NetworkBackground: React.FC = () => {
         if (particle.y < 0) particle.y = canvas.height;
         if (particle.y > canvas.height) particle.y = 0;
         
-        // Mouse interaction
+        // Mouse interaction - significantly reduced sensitivity
         if (mouseMoved) {
           const dx = particle.x - mousePosition.x;
           const dy = particle.y - mousePosition.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
-          const maxDistance = 200;
+          const maxDistance = 150; // Reduced from 200
           
           if (distance < maxDistance) {
-            // Repel particles from mouse position
+            // Reduced repulsion effect by 70%
             const forceDirectionX = dx / distance;
             const forceDirectionY = dy / distance;
-            const force = (maxDistance - distance) / maxDistance;
+            const force = (maxDistance - distance) / maxDistance * 0.3; // Reduced from 1
             
-            particle.x += forceDirectionX * force * 1;
-            particle.y += forceDirectionY * force * 1;
+            particle.x += forceDirectionX * force;
+            particle.y += forceDirectionY * force;
           }
         }
         
