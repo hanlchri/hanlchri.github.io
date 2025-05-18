@@ -26,8 +26,8 @@ const SearchBackground: React.FC = () => {
     if (!ctx) return;
 
     // --- START OF ADJUSTABLE PARAMETERS ---
-    const MAX_NODES_ON_SCREEN = 12;
-    const INITIAL_NODE_COUNT = 4;
+    const MAX_NODES_ON_SCREEN = 20;
+    const INITIAL_NODE_COUNT = 6;
     const NODE_SPAWN_INTERVAL_MS = 1100; // Time between automatic new nodes
 
     const NODE_MIN_INITIAL_RADIUS = 5;
@@ -45,13 +45,13 @@ const SearchBackground: React.FC = () => {
     const NODE_INITIAL_MIN_OPACITY = 0.2;
     const NODE_INITIAL_MAX_OPACITY = 0.5;
 
-    const MOUSE_INTERACTION_RADIUS = 130; // Pixels for mouse influence
-    const MOUSE_RIPPLE_FORCE_MULTIPLIER = 0.04; // Base strength of ripple effect
+    const MOUSE_INTERACTION_RADIUS = 3000; // Pixels for mouse influence
+    const MOUSE_RIPPLE_FORCE_MULTIPLIER = 0.08; // Base strength of ripple effect
     const MOUSE_RIPPLE_RADIUS_EFFECT_SCALAR = 0.8; // How much radius is affected by ripple
     const MOUSE_RIPPLE_OPACITY_EFFECT_SCALAR = 0.03; // How much opacity is affected
     const MAX_OPACITY_FROM_RIPPLE = 0.6; // Max opacity a node can reach from ripple
 
-    const ADD_NODE_ON_PSEUDO_CLICK_PROBABILITY = 0.000; // Set to 0 to disable, or e.g., 0.003 for low chance on move
+    const ADD_NODE_ON_PSEUDO_CLICK_PROBABILITY = 0.005; // Set to 0 to disable, or e.g., 0.003 for low chance on move
                                                       // True click handling would need an actual event listener.
     const MAX_NODES_WITH_CLICK_SPAWN = MAX_NODES_ON_SCREEN + 3; // Allow a few extra if click-spawned
 
