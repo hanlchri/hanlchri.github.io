@@ -33,20 +33,20 @@ const JavaBackground: React.FC = () => {
     const MIN_CONNECTIONS_PER_NODE = 2;
     const MAX_CONNECTIONS_PER_NODE = 3; // Max additional connections (so 2 to 2+3=5)
 
-    const ORBIT_RADIUS_SCALE = 0.35; // Scale of overall circular pattern relative to canvas size
+    const ORBIT_RADIUS_SCALE = 0.4; // Scale of overall circular pattern relative to canvas size
     const ORBIT_RANDOMNESS = 0.3;  // How much nodes deviate from perfect circle
 
-    const NODE_DRIFT_SPEED_FACTOR = 0.0003; // Time factor for circular motion
+    const NODE_DRIFT_SPEED_FACTOR = 0.003; // Time factor for circular motion
     const NODE_DRIFT_AMPLITUDE = 0.1;    // Amplitude of the gentle drift
 
-    const MOUSE_INTERACTION_RADIUS = 120; // Pixels for mouse influence
-    const MOUSE_REPULSION_FORCE = 0.1; // Strength of mouse push effect (max force at 0 distance)
+    const MOUSE_INTERACTION_RADIUS = 300; // Pixels for mouse influence
+    const MOUSE_REPULSION_FORCE = 0.3; // Strength of mouse push effect (max force at 0 distance)
 
     const CONNECTION_MAX_DIST_OPACITY_CALC = 350; // Max distance used for calculating connection opacity
     const CONNECTION_OPACITY_MULTIPLIER = 0.6; // Multiplier for connection line opacity
     const CONNECTION_LINE_WIDTH = 1;
 
-    const JAVA_SYMBOL_OPACITY = 0.04;
+    const JAVA_SYMBOL_OPACITY = 0.15;
     const JAVA_SYMBOL_SIZE_SCALE = 0.3; // Relative to canvas height
     // --- END OF ADJUSTABLE PARAMETERS ---
 
