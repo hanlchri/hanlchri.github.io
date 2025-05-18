@@ -36,9 +36,9 @@ const ReferencesBackground: React.FC = () => {
     const LINE_MIN_LENGTH = 50;
     const LINE_MAX_LENGTH = 200;
 
-    const MOUSE_INTERACTION_RADIUS = 160; // Pixels for mouse influence
-    const MOUSE_BEND_BASE_FORCE = 0.06;   // Base strength of the bend effect
-    const MOUSE_BEND_SCALAR = 0.05;      // How much the line's endpoint is displaced by the force
+    const MOUSE_INTERACTION_RADIUS = 3000; // Pixels for mouse influence
+    const MOUSE_BEND_BASE_FORCE = 0.12;   // Base strength of the bend effect
+    const MOUSE_BEND_SCALAR = 0.1;      // How much the line's endpoint is displaced by the force
     const ENABLE_BEND_REVERSION = true;
     const BEND_REVERSION_LERP_FACTOR = 0.05; // Speed of reverting to original endpoint
 
