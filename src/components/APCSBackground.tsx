@@ -126,7 +126,7 @@ const APCSBackground: React.FC = () => {
           const dx = hexagon.x - mousePosition.x;
           const dy = hexagon.y - mousePosition.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
-          const maxDistance = 150; // Reduced from 200 to 150
+          const maxDistance = 100; // Reduced from 200 to 150
           
           if (distance < maxDistance) {
             // Apply subtle force based on distance - reduced from 0.1 to 0.02
@@ -151,8 +151,8 @@ const APCSBackground: React.FC = () => {
         if (hexagon.y > canvas.height + hexagon.size) hexagon.y = -hexagon.size;
         
         // Add subtle drift - reduced from 0.1 to 0.03
-        hexagon.x += Math.sin(Date.now() * 0.0002 + hexagon.size) * 0.03; // Reduced from 0.0005 to 0.0002
-        hexagon.y += Math.cos(Date.now() * 0.0002 + hexagon.size) * 0.03;
+        hexagon.x += Math.sin(Date.now() * 0.00002 + hexagon.size) * 0.03; // Reduced from 0.0005 to 0.0002
+        hexagon.y += Math.cos(Date.now() * 0.00002 + hexagon.size) * 0.03;
       });
       
       animationFrameId = requestAnimationFrame(animate);
