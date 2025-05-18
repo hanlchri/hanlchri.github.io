@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface CollapsibleSectionProps {
   title: string;
@@ -16,23 +17,42 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
-    <div className="collapsible-section mb-4">
-      <div 
+    <div className="collapsible-section mb-4 backdrop-blur-sm">
+      <motion.div 
         className="collapsible-header"
         onClick={() => setIsOpen(!isOpen)}
+        whileHover={{ backgroundColor: 'rgba(30, 41, 59, 0.8)' }}
+        whileTap={{ scale: 0.98 }}
       >
-        <h3 className="text-xl font-bold">{title}</h3>
-        {isOpen ? (
-          <ChevronUp className="h-5 w-5 text-tech-cyan" />
-        ) : (
-          <ChevronDown className="h-5 w-5 text-tech-purple" />
+        <h3 className="text-xl font-bold font-mono">{title}</h3>
+        <motion.div
+          initial={{ rotate: 0 }}
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          {isOpen ? (
+            <ChevronUp className="h-5 w-5 text-tech-cyan" />
+          ) : (
+            <ChevronDown className="h-5 w-5 text-tech-purple" />
+          )}
+        </motion.div>
+      </motion.div>
+      
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            <div className="p-4 bg-black/30 border-t border-border/30">
+              {children}
+            </div>
+          </motion.div>
         )}
-      </div>
-      {isOpen && (
-        <div className="p-4 bg-black/30">
-          {children}
-        </div>
-      )}
+      </AnimatePresence>
     </div>
   );
 };
