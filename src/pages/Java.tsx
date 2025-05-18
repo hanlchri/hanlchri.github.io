@@ -7,7 +7,7 @@ const Java = () => {
   return (
     <Layout>
       <div className="max-w-4xl mx-auto mt-10">
-        <div className="content-section">
+        <div className="content-section animate-slide-up" style={{ animationDelay: '0.1s' }}>
           <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center tech-text">Java</h1>
           
           <div className="space-y-8">
@@ -32,49 +32,6 @@ const Java = () => {
                 <li>Arrays and ArrayLists</li>
                 <li>Inheritance and Polymorphism</li>
               </ul>
-            </CollapsibleSection>
-            
-            <CollapsibleSection title="Tools and Resources">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="p-4 border border-tech-cyan/20 rounded-lg">
-                  <h3 className="font-bold text-lg mb-2">Websites</h3>
-                  <ul className="list-disc pl-6 space-y-1">
-                    <li>W3Schools</li>
-                    <li>SoloLearn</li>
-                    <li>Programiz</li>
-                    <li>Code Academy</li>
-                  </ul>
-                </div>
-                
-                <div className="p-4 border border-tech-purple/20 rounded-lg">
-                  <h3 className="font-bold text-lg mb-2">Practice</h3>
-                  <ul className="list-disc pl-6 space-y-1">
-                    <li>HackerRank</li>
-                    <li>CodingBat</li>
-                    <li>CodeChef</li>
-                    <li>CodeWars</li>
-                  </ul>
-                </div>
-                
-                <div className="p-4 border border-tech-purple/20 rounded-lg">
-                  <h3 className="font-bold text-lg mb-2">IDEs</h3>
-                  <ul className="list-disc pl-6 space-y-1">
-                    <li>Repl.it</li>
-                    <li>IDE One</li>
-                    <li>CodeChef IDE</li>
-                    <li>Codiva.io</li>
-                  </ul>
-                </div>
-                
-                <div className="p-4 border border-tech-cyan/20 rounded-lg">
-                  <h3 className="font-bold text-lg mb-2">Videos</h3>
-                  <ul className="list-disc pl-6 space-y-1">
-                    <li>Mr. Hanley</li>
-                    <li>Alex Lee Java</li>
-                    <li>TheNewBoston</li>
-                  </ul>
-                </div>
-              </div>
             </CollapsibleSection>
           </div>
         </div>
