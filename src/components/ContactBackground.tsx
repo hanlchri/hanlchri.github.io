@@ -27,25 +27,7 @@ const ContactBackground: React.FC = () => {
     let dots: Dot[] = [];
     const dotCount = 100;
     
-    // Set canvas dimensions
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      initDots();
-    };
-    
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-    
-    // Track mouse movement
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-      setMouseMoved(true);
-    };
-    
-    window.addEventListener('mousemove', handleMouseMove);
-    
-    // Initialize dots
+    // Initialize dots - MOVED BEFORE resizeCanvas
     const initDots = () => {
       dots = [];
       
@@ -70,6 +52,24 @@ const ContactBackground: React.FC = () => {
         dots.push({ x, y, size, speed, dirX, dirY, color });
       }
     };
+    
+    // Set canvas dimensions
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      initDots();
+    };
+    
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    
+    // Track mouse movement
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+      setMouseMoved(true);
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
     
     // Animation loop
     const animate = () => {
@@ -155,7 +155,6 @@ const ContactBackground: React.FC = () => {
       animationFrameId = requestAnimationFrame(animate);
     };
     
-    initDots();
     animate();
     
     return () => {

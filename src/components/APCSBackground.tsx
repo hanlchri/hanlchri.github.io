@@ -26,25 +26,7 @@ const APCSBackground: React.FC = () => {
     let hexagons: Hexagon[] = [];
     const hexagonCount = 40;
     
-    // Set canvas dimensions
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      initHexagons();
-    };
-    
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-    
-    // Track mouse movement
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-      setMouseMoved(true);
-    };
-    
-    window.addEventListener('mousemove', handleMouseMove);
-    
-    // Initialize hexagons
+    // Initialize hexagons - MOVED BEFORE resizeCanvas
     const initHexagons = () => {
       hexagons = [];
       
@@ -67,6 +49,24 @@ const APCSBackground: React.FC = () => {
         hexagons.push({ x, y, size, color, angle, rotationSpeed });
       }
     };
+    
+    // Set canvas dimensions
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      initHexagons();
+    };
+    
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    
+    // Track mouse movement
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+      setMouseMoved(true);
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
     
     // Draw a hexagon
     const drawHexagon = (x: number, y: number, size: number, color: string, angle: number) => {
@@ -158,7 +158,6 @@ const APCSBackground: React.FC = () => {
       animationFrameId = requestAnimationFrame(animate);
     };
     
-    initHexagons();
     animate();
     
     return () => {

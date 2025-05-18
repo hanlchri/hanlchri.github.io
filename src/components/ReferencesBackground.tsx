@@ -28,30 +28,7 @@ const ReferencesBackground: React.FC = () => {
     let lines: Line[] = [];
     const maxLines = 50;
     
-    // Set canvas dimensions
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      initLines();
-    };
-    
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-    
-    // Track mouse movement
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-      setMouseMoved(true);
-      
-      // Add new lines from mouse position occasionally
-      if (Math.random() < 0.05 && lines.length < maxLines) {
-        addLine(e.clientX, e.clientY);
-      }
-    };
-    
-    window.addEventListener('mousemove', handleMouseMove);
-    
-    // Initialize lines
+    // Initialize lines - MOVED BEFORE resizeCanvas
     const initLines = () => {
       lines = [];
       for (let i = 0; i < 25; i++) {
@@ -92,6 +69,29 @@ const ReferencesBackground: React.FC = () => {
         color
       });
     };
+    
+    // Set canvas dimensions
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      initLines();
+    };
+    
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    
+    // Track mouse movement
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+      setMouseMoved(true);
+      
+      // Add new lines from mouse position occasionally
+      if (Math.random() < 0.05 && lines.length < maxLines) {
+        addLine(e.clientX, e.clientY);
+      }
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
     
     // Animation loop
     const animate = () => {
@@ -161,7 +161,6 @@ const ReferencesBackground: React.FC = () => {
       animationFrameId = requestAnimationFrame(animate);
     };
     
-    initLines();
     animate();
     
     return () => {
