@@ -24,24 +24,6 @@ const JavaBackground: React.FC = () => {
     let nodes: Node[] = [];
     const nodeCount = 20;
     
-    // Set canvas dimensions
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      initNodes(); // Reinitialize nodes on resize
-    };
-    
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-    
-    // Track mouse movement
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-      setMouseMoved(true);
-    };
-    
-    window.addEventListener('mousemove', handleMouseMove);
-    
     // Initialize nodes in a circular pattern
     const initNodes = () => {
       nodes = [];
@@ -74,6 +56,24 @@ const JavaBackground: React.FC = () => {
       }
     };
     
+    // Set canvas dimensions
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      initNodes(); // Now this call is valid since initNodes is defined before being called
+    };
+    
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    
+    // Track mouse movement
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+      setMouseMoved(true);
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    
     // Draw connections between nodes
     const drawConnections = () => {
       nodes.forEach((node, i) => {
@@ -102,6 +102,33 @@ const JavaBackground: React.FC = () => {
           }
         });
       });
+    };
+    
+    // Helper function to draw a stylized Java cup symbol
+    const drawJavaSymbol = (ctx: CanvasRenderingContext2D, x: number, y: number, size: number) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.globalAlpha = 0.05;
+      
+      // Draw cup
+      ctx.fillStyle = '#F89820';
+      ctx.beginPath();
+      ctx.moveTo(-size * 0.3, -size * 0.4);
+      ctx.bezierCurveTo(-size * 0.35, size * 0.2, size * 0.35, size * 0.2, size * 0.3, -size * 0.4);
+      ctx.lineTo(size * 0.2, -size * 0.5);
+      ctx.lineTo(-size * 0.2, -size * 0.5);
+      ctx.closePath();
+      ctx.fill();
+      
+      // Draw steam
+      ctx.beginPath();
+      ctx.moveTo(0, -size * 0.5);
+      ctx.bezierCurveTo(size * 0.2, -size * 0.7, -size * 0.2, -size * 0.9, 0, -size * 0.7);
+      ctx.strokeStyle = '#F89820';
+      ctx.lineWidth = size * 0.05;
+      ctx.stroke();
+      
+      ctx.restore();
     };
     
     // Animation loop
@@ -154,35 +181,7 @@ const JavaBackground: React.FC = () => {
       
       animationFrameId = requestAnimationFrame(animate);
     };
-
-    // Helper function to draw a stylized Java cup symbol
-    const drawJavaSymbol = (ctx: CanvasRenderingContext2D, x: number, y: number, size: number) => {
-      ctx.save();
-      ctx.translate(x, y);
-      ctx.globalAlpha = 0.05;
-      
-      // Draw cup
-      ctx.fillStyle = '#F89820';
-      ctx.beginPath();
-      ctx.moveTo(-size * 0.3, -size * 0.4);
-      ctx.bezierCurveTo(-size * 0.35, size * 0.2, size * 0.35, size * 0.2, size * 0.3, -size * 0.4);
-      ctx.lineTo(size * 0.2, -size * 0.5);
-      ctx.lineTo(-size * 0.2, -size * 0.5);
-      ctx.closePath();
-      ctx.fill();
-      
-      // Draw steam
-      ctx.beginPath();
-      ctx.moveTo(0, -size * 0.5);
-      ctx.bezierCurveTo(size * 0.2, -size * 0.7, -size * 0.2, -size * 0.9, 0, -size * 0.7);
-      ctx.strokeStyle = '#F89820';
-      ctx.lineWidth = size * 0.05;
-      ctx.stroke();
-      
-      ctx.restore();
-    };
     
-    initNodes();
     animate();
     
     return () => {
