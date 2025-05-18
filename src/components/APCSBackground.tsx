@@ -130,14 +130,14 @@ const APCSBackground: React.FC = () => {
           
           if (distance < maxDistance) {
             // Apply subtle force based on distance - reduced from 0.1 to 0.02
-            const force = 0.02 * (1 - distance / maxDistance);
+            const force = 0.002 * (1 - distance / maxDistance);
             const angle = Math.atan2(dy, dx);
             
             hexagon.x += Math.cos(angle) * force;
             hexagon.y += Math.sin(angle) * force;
             
             // Slightly increase rotation speed when near mouse - reduced from 1.001 to 1.0005
-            hexagon.rotationSpeed *= 1.0005;
+            hexagon.rotationSpeed *= 1.00005;
           }
         }
         
