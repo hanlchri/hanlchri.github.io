@@ -13,10 +13,10 @@ const About = () => {
           
           <div className="flex flex-col md:flex-row gap-8 items-center">
             <div className="md:w-1/2">
-              <img 
-                src="/lovable-uploads/33ce3620-5527-4883-b107-ec91e1a2b3b2.png" 
-                alt="Chris Hanley" 
-                className="rounded-lg border-2 border-tech-purple/30 shadow-lg shadow-tech-purple/20 w-full max-w-md mx-auto"
+              <img
+                  src="/pictures/Hanley3.jpeg"
+                  alt="Chris Hanley" // You might want to update the alt text as well
+                  className="rounded-lg border-2 border-tech-purple/30 shadow-lg shadow-tech-purple/20 w-full max-w-md mx-auto"
               />
             </div>
             
