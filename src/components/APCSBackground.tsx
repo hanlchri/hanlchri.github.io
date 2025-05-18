@@ -7,13 +7,13 @@ interface Hexagon {
   color: string;
   angle: number;
   rotationSpeed: number;
-  originalRotationSpeed: number; // To potentially revert or cap rotation changes
+  originalRotationSpeed: number;
 }
 
 const APCSBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const mousePositionRef = useRef({ x: 0, y: 0 });
-  const firstMoveMadeRef = useRef(false); // Tracks if the mouse has moved
+  const firstMoveMadeRef = useRef(false);
   const hexagonsRef = useRef<Hexagon[]>([]);
   const animationFrameIdRef = useRef<number | null>(null);
 
@@ -24,10 +24,39 @@ const APCSBackground: React.FC = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    // --- START OF ADJUSTABLE PARAMETERS ---
+
+    // MOUSE_INTERACTION_RADIUS: Defines how far (in pixels) the mouse's influence extends.
+    // Suggested range: 100 to 300.
+    const MOUSE_INTERACTION_RADIUS = 150;
+
+    // MOVEMENT_FORCE_MULTIPLIER: Controls the strength of the "push" effect on hexagons.
+    // Higher values = stronger push. Start low and increase.
+    // Suggested range: 0.01 (very subtle) to 0.5 (quite noticeable).
+    // Your previous very subtle value was around 0.002.
+    const MOVEMENT_FORCE_MULTIPLIER = 0.1;
+
+    // ROTATION_EFFECT_MULTIPLIER: Factor by which rotation speed is multiplied during interaction.
+    // 1.0 = no change. >1.0 speeds up (in current direction), <1.0 slows down.
+    // Suggested range: 1.0005 (very subtle) to 1.01 (more noticeable).
+    // Your previous very subtle value was around 1.00005.
+    // Note: If a hexagon's initial rotationSpeed is 0, this won't make it rotate.
+    const ROTATION_EFFECT_MULTIPLIER = 1.002;
+
+    // ENABLE_ROTATION_REVERSION: If true, rotation speed reverts to original when mouse moves away.
+    const ENABLE_ROTATION_REVERSION = true;
+
+    // ROTATION_REVERSION_LERP_FACTOR: How quickly rotation speed reverts (if enabled).
+    // 0.01 means it moves 1% towards the original speed per frame.
+    // Suggested range: 0.01 to 0.1.
+    const ROTATION_REVERSION_LERP_FACTOR = 0.02;
+
+    // --- END OF ADJUSTABLE PARAMETERS ---
+
     const hexagonCount = 40;
 
     const initHexagons = () => {
-      hexagonsRef.current = []; // Clear and initialize
+      hexagonsRef.current = [];
       const currentWidth = canvas.width;
       const currentHeight = canvas.height;
 
@@ -62,7 +91,7 @@ const APCSBackground: React.FC = () => {
     };
 
     window.addEventListener('resize', resizeCanvas);
-    resizeCanvas(); // Initial setup
+    resizeCanvas();
 
     const handleMouseMove = (e: MouseEvent) => {
       mousePositionRef.current = { x: e.clientX, y: e.clientY };
@@ -114,29 +143,26 @@ const APCSBackground: React.FC = () => {
           const dx = hexagon.x - mousePositionRef.current.x;
           const dy = hexagon.y - mousePositionRef.current.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
-          
-          const maxDistance = 100; // Interaction radius
-          const forceMultiplier = 0.002; // Movement force strength
-          const rotationInteractionFactor = 1.00005; // How much rotation is affected
 
-          if (distance < maxDistance) {
-            const proximityFactor = (1 - distance / maxDistance); // 0 to 1
-            const interactionForce = forceMultiplier * proximityFactor;
+          if (distance < MOUSE_INTERACTION_RADIUS) {
+            const proximityFactor = (1 - distance / MOUSE_INTERACTION_RADIUS); // 0 (at edge) to 1 (at center)
+            const interactionForce = MOVEMENT_FORCE_MULTIPLIER * proximityFactor;
             const angleToMouse = Math.atan2(dy, dx);
 
             hexagon.x += Math.cos(angleToMouse) * interactionForce;
             hexagon.y += Math.sin(angleToMouse) * interactionForce;
             
-            hexagon.rotationSpeed *= rotationInteractionFactor;
-            // Optional: Cap rotation speed to prevent it from getting too fast
-            // const maxAbsRotation = 0.005;
-            // if (Math.abs(hexagon.rotationSpeed) > maxAbsRotation) {
-            //   hexagon.rotationSpeed = Math.sign(hexagon.rotationSpeed) * maxAbsRotation;
+            hexagon.rotationSpeed *= ROTATION_EFFECT_MULTIPLIER;
+            // Optional: Cap maximum rotation speed if it gets too high
+            // const maxAbsSpeed = 0.01; // Example cap
+            // if (Math.abs(hexagon.rotationSpeed) > maxAbsSpeed) {
+            //   hexagon.rotationSpeed = Math.sign(hexagon.rotationSpeed) * maxAbsSpeed;
             // }
+
           } else {
-            // Optional: Gradually revert rotation speed to original when mouse is not near
-            // This makes the rotation effect temporary and reactive rather than cumulative.
-            // hexagon.rotationSpeed += (hexagon.originalRotationSpeed - hexagon.rotationSpeed) * 0.01; 
+            if (ENABLE_ROTATION_REVERSION) {
+              hexagon.rotationSpeed += (hexagon.originalRotationSpeed - hexagon.rotationSpeed) * ROTATION_REVERSION_LERP_FACTOR;
+            }
           }
         }
 
@@ -156,16 +182,16 @@ const APCSBackground: React.FC = () => {
       animationFrameIdRef.current = requestAnimationFrame(animate);
     };
 
-    animate(); // Start animation
+    animate();
 
-    return () => { // Cleanup
+    return () => {
       window.removeEventListener('resize', resizeCanvas);
       window.removeEventListener('mousemove', handleMouseMove);
       if (animationFrameIdRef.current) {
         cancelAnimationFrame(animationFrameIdRef.current);
       }
     };
-  }, []); // Empty dependency array: runs once on mount, cleans up on unmount
+  }, []);
 
   return (
     <canvas
