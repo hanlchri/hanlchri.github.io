@@ -1,8 +1,19 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+
+interface Particle {
+  x: number;
+  y: number;
+  size: number;
+  speedX: number;
+  speedY: number;
+  color: string;
+}
 
 const NetworkBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [mouseMoved, setMouseMoved] = useState(false);
   
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -13,7 +24,7 @@ const NetworkBackground: React.FC = () => {
     
     let animationFrameId: number;
     let particles: Particle[] = [];
-    const particleCount = 50;
+    const particleCount = 60;
     const connectionDistance = 150;
     
     // Set canvas dimensions
@@ -25,49 +36,29 @@ const NetworkBackground: React.FC = () => {
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
     
-    // Particle class
-    class Particle {
-      x: number;
-      y: number;
-      size: number;
-      speedX: number;
-      speedY: number;
-      color: string;
-      
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2 + 1;
-        this.speedX = (Math.random() - 0.5) * 0.5;
-        this.speedY = (Math.random() - 0.5) * 0.5;
-        
-        // Create a color gradient from cyan to purple
-        const hue = Math.random() * 60 + 220; // 220 to 280 (cyan to purple)
-        this.color = `hsla(${hue}, 80%, 70%, 0.8)`;
-      }
-      
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        
-        // Wrap around screen edges
-        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-      }
-      
-      draw() {
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
+    // Track mouse movement
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+      setMouseMoved(true);
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
     
     // Initialize particles
     const init = () => {
       particles = [];
       for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        const size = Math.random() * 2 + 1;
+        const speedX = (Math.random() - 0.5) * 0.5;
+        const speedY = (Math.random() - 0.5) * 0.5;
+        
+        // Create a color gradient from cyan to purple
+        const hue = Math.random() * 60 + 220; // 220 to 280 (cyan to purple)
+        const color = `hsla(${hue}, 80%, 70%, 0.8)`;
+        
+        particles.push({ x, y, size, speedX, speedY, color });
       }
     };
     
@@ -106,9 +97,41 @@ const NetworkBackground: React.FC = () => {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
+      // Update particles with mouse interaction
       particles.forEach(particle => {
-        particle.update();
-        particle.draw();
+        // Normal movement
+        particle.x += particle.speedX;
+        particle.y += particle.speedY;
+        
+        // Wrap around screen edges
+        if (particle.x < 0) particle.x = canvas.width;
+        if (particle.x > canvas.width) particle.x = 0;
+        if (particle.y < 0) particle.y = canvas.height;
+        if (particle.y > canvas.height) particle.y = 0;
+        
+        // Mouse interaction
+        if (mouseMoved) {
+          const dx = particle.x - mousePosition.x;
+          const dy = particle.y - mousePosition.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          const maxDistance = 200;
+          
+          if (distance < maxDistance) {
+            // Repel particles from mouse position
+            const forceDirectionX = dx / distance;
+            const forceDirectionY = dy / distance;
+            const force = (maxDistance - distance) / maxDistance;
+            
+            particle.x += forceDirectionX * force * 1;
+            particle.y += forceDirectionY * force * 1;
+          }
+        }
+        
+        // Draw particle
+        ctx.fillStyle = particle.color;
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        ctx.fill();
       });
       
       connect();
@@ -121,9 +144,10 @@ const NetworkBackground: React.FC = () => {
     
     return () => {
       window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('mousemove', handleMouseMove);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [mousePosition, mouseMoved]);
   
   return (
     <canvas 

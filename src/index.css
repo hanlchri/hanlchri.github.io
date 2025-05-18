@@ -52,38 +52,77 @@
   }
 
   body {
-    @apply bg-background text-foreground overflow-x-hidden;
+    @apply bg-background text-foreground overflow-x-hidden font-sans;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans font-bold;
+  }
+  
+  code, pre {
+    @apply font-mono;
   }
 }
 
 @layer components {
+  /* Background Styles */
   .network-bg {
     background-color: rgba(26, 31, 44, 1);
-    background-image: 
-      radial-gradient(rgba(139, 92, 246, 0.1) 1px, transparent 1px),
-      radial-gradient(rgba(30, 174, 219, 0.1) 1px, transparent 1px);
-    background-size: 50px 50px;
-    background-position: 0 0, 25px 25px;
     position: relative;
     z-index: 0;
   }
   
-  .network-bg::before {
+  .terminal-bg {
+    @apply bg-black relative z-0 overflow-hidden;
+  }
+  
+  .terminal-bg::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%230ea5e9' stop-opacity='0.2'/%3E%3Cstop offset='50%25' stop-color='%238b5cf6' stop-opacity='0.2'/%3E%3Cstop offset='100%25' stop-color='%23ec4899' stop-opacity='0.2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M0,0 L100,100 M20,0 L100,80 M0,20 L80,100 M40,0 L100,60 M0,40 L60,100 M60,0 L100,40 M0,60 L40,100 M80,0 L100,20 M0,80 L20,100' stroke='url(%23grad)' stroke-width='1' stroke-dasharray='5,5' fill='none'/%3E%3C/svg%3E");
-    opacity: 0.5;
+    background: linear-gradient(rgba(18, 16, 16, 0.9) 50%, rgba(0, 0, 0, 0.8) 50%);
+    background-size: 100% 4px;
+    z-index: -1;
+    opacity: 0.15;
+    pointer-events: none;
+  }
+  
+  .terminal-text {
+    @apply font-mono text-tech-neon animate-terminal-blink;
+  }
+  
+  .retro-grid-bg {
+    @apply bg-tech-dark relative z-0 overflow-hidden;
+    background-image: 
+      linear-gradient(rgba(139, 92, 246, 0.15) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(139, 92, 246, 0.15) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+  
+  .retro-grid-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, transparent, rgba(26, 31, 44, 0.8));
     z-index: -1;
   }
   
+  /* Text Styles */
   .tech-text {
     @apply font-mono text-transparent bg-clip-text bg-gradient-to-r from-tech-cyan to-tech-purple;
   }
   
+  .terminal-title {
+    @apply font-mono text-tech-neon;
+  }
+  
+  /* Navigation Styles */
   .nav-link {
     @apply px-4 py-2 text-foreground/80 hover:text-tech-purple transition-colors relative text-lg font-medium;
   }
@@ -105,6 +144,7 @@
     @apply w-full;
   }
   
+  /* Content Styles */
   .content-section {
     @apply bg-black/30 backdrop-blur-md border border-border/50 rounded-lg p-6 animate-fade-in;
   }
@@ -118,6 +158,29 @@
   }
   
   .floating-card {
-    @apply bg-card border border-border/50 rounded-lg p-6 hover:border-tech-purple/50 transition-all duration-300 hover:shadow-[0_0_15px_rgba(139,92,246,0.3)];
+    @apply bg-card border border-border/50 rounded-lg p-6 hover:border-tech-purple/50 transition-all duration-300 hover:shadow-[0_0_15px_rgba(139,92,246,0.3)] animate-scale-in;
+  }
+  
+  /* Dropdown Animation */
+  .dropdown-content {
+    @apply animate-slide-down;
+  }
+  
+  /* Search Results Animation */
+  .search-results {
+    @apply animate-slide-up;
+  }
+  
+  /* Page Transition Animations */
+  .page-enter {
+    @apply animate-fade-in;
+  }
+  
+  .item-enter-right {
+    @apply animate-slide-in-right;
+  }
+  
+  .item-enter-left {
+    @apply animate-slide-in-left;
   }
 }

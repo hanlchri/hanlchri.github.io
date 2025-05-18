@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '@/components/Layout';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -23,23 +23,37 @@ const Search = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState<typeof mockResources>([]);
   const [hasSearched, setHasSearched] = useState(false);
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
   
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
+  // Debounce the search term to avoid excessive filtering
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm);
+    }, 300);
     
-    if (searchTerm.trim() === '') {
+    return () => clearTimeout(timerId);
+  }, [searchTerm]);
+  
+  // Filter results when debounced search term changes
+  useEffect(() => {
+    if (debouncedSearchTerm.trim() === '') {
       setResults([]);
-      setHasSearched(false);
       return;
     }
     
-    // Filter the mock resources based on search term
     const filteredResults = mockResources.filter(resource => 
-      resource.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-      resource.category.toLowerCase().includes(searchTerm.toLowerCase())
+      resource.title.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) || 
+      resource.category.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
     );
     
     setResults(filteredResults);
+    setHasSearched(true);
+  }, [debouncedSearchTerm]);
+  
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    // We're already searching as the user types, but this will trigger a search on submit
+    setDebouncedSearchTerm(searchTerm);
     setHasSearched(true);
   };
   
@@ -67,8 +81,8 @@ const Search = () => {
             </form>
           </div>
           
-          {hasSearched && (
-            <div>
+          {searchTerm.length > 0 && (
+            <div className="search-results">
               <h2 className="text-2xl font-bold mb-4">
                 {results.length > 0 
                   ? `Found ${results.length} results for "${searchTerm}"` 
@@ -77,8 +91,15 @@ const Search = () => {
               
               {results.length > 0 && (
                 <div className="space-y-4">
-                  {results.map((result) => (
-                    <div key={result.id} className="p-4 bg-card rounded-lg">
+                  {results.map((result, index) => (
+                    <div 
+                      key={result.id} 
+                      className="p-4 bg-card rounded-lg hover:border-tech-purple/50 border border-border/50 transition-all" 
+                      style={{ 
+                        animationDelay: `${index * 50}ms`,
+                        animationFillMode: 'both' 
+                      }}
+                    >
                       <div className="flex justify-between items-start">
                         <div>
                           <h3 className="text-xl font-bold text-tech-cyan">{result.title}</h3>
@@ -97,7 +118,7 @@ const Search = () => {
             </div>
           )}
           
-          {!hasSearched && (
+          {!hasSearched && !searchTerm && (
             <div className="text-center py-10">
               <p className="text-lg text-muted-foreground">
                 Enter a search term to find resources, assignments, lessons, and more.

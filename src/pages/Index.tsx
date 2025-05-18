@@ -1,21 +1,37 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import Layout from '@/components/Layout';
 import { Link } from 'react-router-dom';
 
 const Index = () => {
+  const [displayedText, setDisplayedText] = useState('');
+  const fullText = "Computer Science resources for Java and AP Computer Science students";
+  const [characterIndex, setCharacterIndex] = useState(0);
+  
+  useEffect(() => {
+    if (characterIndex < fullText.length) {
+      const timer = setTimeout(() => {
+        setDisplayedText(prev => prev + fullText[characterIndex]);
+        setCharacterIndex(characterIndex + 1);
+      }, 50); // Speed of typing effect
+      
+      return () => clearTimeout(timer);
+    }
+  }, [characterIndex, fullText]);
+  
   return (
     <Layout>
       <div className="flex flex-col items-center justify-center min-h-[80vh] text-center">
-        <h1 className="text-6xl md:text-8xl font-bold mb-6 tech-text animate-float">
+        <h1 className="text-6xl md:text-8xl font-bold mb-6 terminal-title animate-pulse">
           Hanley's Hood
         </h1>
         <div className="max-w-3xl mx-auto">
-          <p className="text-xl md:text-2xl mb-10 text-foreground/90">
-            Computer Science resources for Java and AP Computer Science students
+          <p className="text-xl md:text-2xl mb-10 font-mono h-16">
+            {displayedText}
+            <span className="animate-terminal-blink">_</span>
           </p>
-          <Button asChild className="bg-tech-purple hover:bg-tech-purple/80 text-white text-lg py-6 px-8">
+          <Button asChild className="bg-tech-neon hover:bg-tech-neon/80 text-black font-mono text-lg py-6 px-8 font-bold">
             <Link to="/about">About</Link>
           </Button>
         </div>

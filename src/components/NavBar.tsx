@@ -1,22 +1,38 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { 
+  Popover,
+  PopoverContent,
+  PopoverTrigger
+} from '@/components/ui/popover';
+import { Input } from '@/components/ui/input';
+
+// Mock search results data
+const mockResources = [
+  { id: 1, title: "Computer Components Assignment", category: "Assignments", path: "/ap-cs" },
+  { id: 2, title: "Java Arrays Tutorial", category: "Java", path: "/java" },
+  { id: 3, title: "Printing from Netbeans", category: "Resources", path: "/ap-cs" },
+  { id: 4, title: "Unit 1 Review", category: "Lessons", path: "/ap-cs" },
+  { id: 5, title: "W3Schools Reference", category: "References", path: "/references" },
+  { id: 6, title: "String Methods", category: "Assignments", path: "/ap-cs" },
+  { id: 7, title: "Inheritance Hierarchy", category: "Homework", path: "/ap-cs" },
+];
 
 const NavBar: React.FC = () => {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState<typeof mockResources>([]);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   // Track scrolling for navbar background change
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 20);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -32,15 +48,54 @@ const NavBar: React.FC = () => {
     return location.pathname === path ? 'active' : '';
   };
 
+  // Handle search input changes
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const term = e.target.value;
+    setSearchTerm(term);
+    
+    if (term.trim() === '') {
+      setSearchResults([]);
+      return;
+    }
+    
+    // Filter resources based on search term
+    const results = mockResources.filter(resource => 
+      resource.title.toLowerCase().includes(term.toLowerCase()) || 
+      resource.category.toLowerCase().includes(term.toLowerCase())
+    ).slice(0, 5); // Limit to top 5 results
+    
+    setSearchResults(results);
+  };
+
+  // Get background style based on current route
+  const getNavBackground = () => {
+    if (scrolled || isMenuOpen) {
+      return 'bg-black/80 backdrop-blur-md';
+    }
+    
+    if (location.pathname === '/') {
+      return 'bg-transparent';
+    } else if (location.pathname === '/about') {
+      return 'bg-transparent';
+    } else {
+      return 'bg-transparent';
+    }
+  };
+
   return (
     <header 
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled || isMenuOpen ? 'bg-black/80 backdrop-blur-md' : 'bg-transparent'
-      }`}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${getNavBackground()}`}
     >
       <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" className="text-2xl font-bold tech-text">Hanley's Hood</Link>
+        <Link 
+          to="/" 
+          className={`text-2xl font-bold transition-all duration-300 ${
+            location.pathname === '/' ? 'terminal-title' : 'tech-text'
+          }`}
+        >
+          Hanley's Hood
+        </Link>
         
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-1">
@@ -49,35 +104,136 @@ const NavBar: React.FC = () => {
           <Link to="/ap-cs" className={`nav-link ${isActive('/ap-cs')}`}>AP Computer Science</Link>
           <Link to="/references" className={`nav-link ${isActive('/references')}`}>References</Link>
           <Link to="/contact" className={`nav-link ${isActive('/contact')}`}>Contact</Link>
-          <Link to="/search" className={`nav-link ${isActive('/search')}`}>
-            Search
-          </Link>
+          <Link to="/about" className={`nav-link ${isActive('/about')}`}>About</Link>
+          
+          {/* Search Popover */}
+          <Popover open={isSearchOpen} onOpenChange={setIsSearchOpen}>
+            <PopoverTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="ml-2"
+                aria-label="Search"
+              >
+                <Search className="h-5 w-5" />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-80 p-0" align="end">
+              <div className="p-4 space-y-4">
+                <div className="flex items-center space-x-2">
+                  <Search className="h-4 w-4 text-muted-foreground" />
+                  <Input
+                    placeholder="Search resources..."
+                    value={searchTerm}
+                    onChange={handleSearchChange}
+                    className="border-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                    autoFocus
+                  />
+                </div>
+                
+                {searchResults.length > 0 && (
+                  <div className="search-results max-h-60 overflow-auto space-y-2">
+                    {searchResults.map((result) => (
+                      <Link 
+                        key={result.id}
+                        to={result.path} 
+                        className="block p-2 hover:bg-secondary rounded-md transition-colors"
+                        onClick={() => setIsSearchOpen(false)}
+                      >
+                        <div className="font-medium">{result.title}</div>
+                        <div className="text-sm text-muted-foreground">{result.category}</div>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+                
+                {searchTerm && searchResults.length === 0 && (
+                  <div className="text-center py-2 text-muted-foreground">
+                    No results found
+                  </div>
+                )}
+                
+                <div className="border-t pt-2">
+                  <Link 
+                    to="/search" 
+                    className="text-sm text-center block w-full text-muted-foreground hover:text-foreground transition-colors"
+                    onClick={() => setIsSearchOpen(false)}
+                  >
+                    Advanced Search
+                  </Link>
+                </div>
+              </div>
+            </PopoverContent>
+          </Popover>
         </div>
         
         {/* Mobile Menu Button */}
-        <Button
-          variant="ghost"
-          size="icon"
-          className="md:hidden"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          {isMenuOpen ? (
-            <X className="h-6 w-6 text-tech-purple" />
-          ) : (
-            <Menu className="h-6 w-6" />
-          )}
-        </Button>
+        <div className="md:hidden flex items-center space-x-1">
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                aria-label="Search"
+              >
+                <Search className="h-5 w-5" />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-72 p-0" align="end">
+              <div className="p-4 space-y-4">
+                <div className="flex items-center space-x-2">
+                  <Search className="h-4 w-4 text-muted-foreground" />
+                  <Input
+                    placeholder="Search resources..."
+                    value={searchTerm}
+                    onChange={handleSearchChange}
+                    className="border-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                    autoFocus
+                  />
+                </div>
+                
+                {searchResults.length > 0 && (
+                  <div className="search-results max-h-60 overflow-auto space-y-2">
+                    {searchResults.map((result) => (
+                      <Link 
+                        key={result.id}
+                        to={result.path} 
+                        className="block p-2 hover:bg-secondary rounded-md transition-colors"
+                      >
+                        <div className="font-medium">{result.title}</div>
+                        <div className="text-sm text-muted-foreground">{result.category}</div>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </PopoverContent>
+          </Popover>
+
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? (
+              <X className="h-6 w-6 text-tech-purple" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
+          </Button>
+        </div>
       </nav>
       
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden bg-black/95 backdrop-blur-md animate-fade-in">
+        <div className="md:hidden bg-black/95 backdrop-blur-md dropdown-content">
           <div className="container mx-auto px-4 py-4 flex flex-col">
             <Link to="/" className={`nav-link py-4 ${isActive('/')}`}>Home</Link>
             <Link to="/java" className={`nav-link py-4 ${isActive('/java')}`}>Java</Link>
             <Link to="/ap-cs" className={`nav-link py-4 ${isActive('/ap-cs')}`}>AP Computer Science</Link>
             <Link to="/references" className={`nav-link py-4 ${isActive('/references')}`}>References</Link>
             <Link to="/contact" className={`nav-link py-4 ${isActive('/contact')}`}>Contact</Link>
+            <Link to="/about" className={`nav-link py-4 ${isActive('/about')}`}>About</Link>
             <Link to="/search" className={`nav-link py-4 ${isActive('/search')}`}>Search</Link>
           </div>
         </div>
