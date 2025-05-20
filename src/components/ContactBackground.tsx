@@ -33,10 +33,10 @@ const ContactBackground: React.FC = () => {
     const DOT_MAX_BASE_SPEED = 0.15; // Reduced from 0.3
     const DOT_MOVEMENT_MULTIPLIER = 0.3; // Reduced from 0.5
 
-    const MOUSE_INTERACTION_RADIUS = 80; // Reduced from 100
-    const MOUSE_BASE_FORCE = 0.01; // Reduced from 0.02
+    const MOUSE_INTERACTION_RADIUS = 120; // Reduced from 100
+    const MOUSE_BASE_FORCE = 0.03; // Reduced from 0.02
     const MOUSE_CIRCULAR_FORCE_SCALAR = 0.4; // Reduced from 0.6
-    const MOUSE_REPULSION_FORCE_SCALAR = 0.05; // Reduced from 0.1
+    const MOUSE_REPULSION_FORCE_SCALAR = 0.075; // Reduced from 0.1
     const MAX_INTERACTION_SPEED_FACTOR = 2.0; // Reduced from 2.5
 
     const CONNECTION_MAX_DISTANCE = 70;
