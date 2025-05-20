@@ -38,7 +38,7 @@ const JavaBackground: React.FC = () => {
     const ORBIT_RANDOMNESS = 0.3;
 
     // Reduced speed and amplitude for more ambient movement
-    const NODE_DRIFT_SPEED_FACTOR = 0.02;  // Reduced from 0.04
+    const NODE_DRIFT_SPEED_FACTOR = 0.002;  // Reduced from 0.04
     const NODE_DRIFT_AMPLITUDE = 0.1;     // Reduced from 0.2
 
     // Reduced interaction for subtle cursor effect
