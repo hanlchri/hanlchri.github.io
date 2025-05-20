@@ -31,14 +31,14 @@ const APCSBackground: React.FC = () => {
     const HEXAGON_MAX_SIZE = 50;
     
     // Mouse interaction parameters
-    const MOUSE_INTERACTION_RADIUS = 150;
-    const MOVEMENT_FORCE_MULTIPLIER = 0.15;
-    const ROTATION_EFFECT_MULTIPLIER = 1.002;
+    const MOUSE_INTERACTION_RADIUS = 200;
+    const MOVEMENT_FORCE_MULTIPLIER = 0.2;
+    const ROTATION_EFFECT_MULTIPLIER = 1.003;
     const ENABLE_ROTATION_REVERSION = true;
     const ROTATION_REVERSION_LERP_FACTOR = 0.01;
     
     // Base drift parameters
-    const DRIFT_STRENGTH = 0.015; // Reduced for more ambient movement
+    const DRIFT_STRENGTH = 0.02; // Reduced for more ambient movement
     const TIME_FACTOR = 0.00001;  // Slower time progression
     
     // Visual style
