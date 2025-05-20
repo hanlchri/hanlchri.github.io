@@ -38,8 +38,8 @@ const ReferencesBackground: React.FC = () => {
     const LINE_MAX_LENGTH = 200;
 
     const MOUSE_INTERACTION_RADIUS = 200; // Reduced from 300
-    const MOUSE_BEND_BASE_FORCE = 0.05;  // Reduced from 0.12
-    const MOUSE_BEND_SCALAR = 0.05;      // Reduced from 0.1
+    const MOUSE_BEND_BASE_FORCE = 0.095;  // Reduced from 0.12
+    const MOUSE_BEND_SCALAR = 0.075;      // Reduced from 0.1
     const ENABLE_BEND_REVERSION = true;
     const BEND_REVERSION_LERP_FACTOR = 0.03; // Reduced from 0.05
 
