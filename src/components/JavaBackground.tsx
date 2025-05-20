@@ -38,12 +38,12 @@ const JavaBackground: React.FC = () => {
     const ORBIT_RANDOMNESS = 0.3;
 
     // Reduced speed and amplitude for more ambient movement
-    const NODE_DRIFT_SPEED_FACTOR = 0.002;  // Reduced from 0.04
+    const NODE_DRIFT_SPEED_FACTOR = 0.01;  // Reduced from 0.04
     const NODE_DRIFT_AMPLITUDE = 0.1;     // Reduced from 0.2
 
     // Reduced interaction for subtle cursor effect
-    const MOUSE_INTERACTION_RADIUS = 200;   // Reduced from 300
-    const MOUSE_REPULSION_FORCE = 0.1;     // Reduced from 0.3
+    const MOUSE_INTERACTION_RADIUS = 300;   // Reduced from 300
+    const MOUSE_REPULSION_FORCE = 0.25;     // Reduced from 0.3
 
     const CONNECTION_MAX_DIST_OPACITY_CALC = 350;
     const CONNECTION_OPACITY_MULTIPLIER = 0.6;
