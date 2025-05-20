@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 
 interface Line {
@@ -5,8 +6,8 @@ interface Line {
   startY: number;
   endX: number;
   endY: number;
-  originalEndX: number; // For reverting bend
-  originalEndY: number; // For reverting bend
+  originalEndX: number;
+  originalEndY: number;
   width: number;
   speed: number;
   progress: number;
@@ -31,27 +32,28 @@ const ReferencesBackground: React.FC = () => {
     const INITIAL_LINE_COUNT = 22;
     const LINE_MIN_WIDTH = 1;
     const LINE_MAX_WIDTH = 3;
-    const LINE_MIN_DRAW_SPEED = 0.002; // Progress per frame
-    const LINE_MAX_DRAW_SPEED = 0.006;
+    const LINE_MIN_DRAW_SPEED = 0.001; // Reduced from 0.002
+    const LINE_MAX_DRAW_SPEED = 0.003; // Reduced from 0.006
     const LINE_MIN_LENGTH = 50;
     const LINE_MAX_LENGTH = 200;
 
-    const MOUSE_INTERACTION_RADIUS = 3000; // Pixels for mouse influence
-    const MOUSE_BEND_BASE_FORCE = 0.12;   // Base strength of the bend effect
-    const MOUSE_BEND_SCALAR = 0.1;      // How much the line's endpoint is displaced by the force
+    const MOUSE_INTERACTION_RADIUS = 200; // Reduced from 300
+    const MOUSE_BEND_BASE_FORCE = 0.05;  // Reduced from 0.12
+    const MOUSE_BEND_SCALAR = 0.05;      // Reduced from 0.1
     const ENABLE_BEND_REVERSION = true;
-    const BEND_REVERSION_LERP_FACTOR = 0.05; // Speed of reverting to original endpoint
+    const BEND_REVERSION_LERP_FACTOR = 0.03; // Reduced from 0.05
 
-    const ADD_LINE_ON_MOUSE_PROBABILITY = 0.015; // Chance to add line on mouse move (0 to 1)
+    // Reduced for less frequent line additions
+    const ADD_LINE_ON_MOUSE_PROBABILITY = 0.008; // Reduced from 0.015
     
-    const TRAIL_EFFECT_ALPHA = 0.06; // Alpha for clearing canvas (trails)
+    const TRAIL_EFFECT_ALPHA = 0.1; // Increased for smoother trails
     const BACKGROUND_COLOR_FOR_TRAIL = `rgba(26, 31, 44, ${TRAIL_EFFECT_ALPHA})`;
     const GLOW_OPACITY = 0.4;
     // --- END OF ADJUSTABLE PARAMETERS ---
     
     const addLine = (startX?: number, startY?: number, fromMouse = false) => {
-      if (linesRef.current.length >= MAX_LINES && !fromMouse) return; // Don't add random if full
-      if (linesRef.current.length >= MAX_LINES + 5 && fromMouse) return; // Allow a few more from mouse
+      if (linesRef.current.length >= MAX_LINES && !fromMouse) return;
+      if (linesRef.current.length >= MAX_LINES + 5 && fromMouse) return;
 
       const sX = startX ?? Math.random() * canvas.width;
       const sY = startY ?? Math.random() * canvas.height;
@@ -114,7 +116,7 @@ const ReferencesBackground: React.FC = () => {
 
         if (line.progress >= 1) {
           linesRef.current.splice(i, 1);
-          if (linesRef.current.length < MAX_LINES * 0.8) { // Keep some minimum density
+          if (linesRef.current.length < MAX_LINES * 0.8) {
              addLine();
           }
           continue;

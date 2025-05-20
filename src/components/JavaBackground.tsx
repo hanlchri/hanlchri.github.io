@@ -1,15 +1,16 @@
+
 import React, { useEffect, useRef } from 'react';
 
 interface Node {
-  id: number; // Added for easier original position tracking
+  id: number;
   x: number;
   y: number;
-  originalX: number; // To help with bounded movement or return
+  originalX: number;
   originalY: number;
-  connections: number[]; // Indices of other nodes
+  connections: number[];
   size: number;
   color: string;
-  angleOffset: number; // For individual motion pattern
+  angleOffset: number;
 }
 
 const JavaBackground: React.FC = () => {
@@ -27,27 +28,29 @@ const JavaBackground: React.FC = () => {
     if (!ctx) return;
 
     // --- START OF ADJUSTABLE PARAMETERS ---
-    const NODE_COUNT = 35; // Number of nodes
+    const NODE_COUNT = 35;
     const NODE_MIN_SIZE = 2.5;
     const NODE_MAX_SIZE = 5.5;
     const MIN_CONNECTIONS_PER_NODE = 2;
-    const MAX_CONNECTIONS_PER_NODE = 3; // Max additional connections (so 2 to 2+3=5)
+    const MAX_CONNECTIONS_PER_NODE = 3;
 
-    const ORBIT_RADIUS_SCALE = 0.4; // Scale of overall circular pattern relative to canvas size
-    const ORBIT_RANDOMNESS = 0.3;  // How much nodes deviate from perfect circle
+    const ORBIT_RADIUS_SCALE = 0.4;
+    const ORBIT_RANDOMNESS = 0.3;
 
-    const NODE_DRIFT_SPEED_FACTOR = 0.04; // Time factor for circular motion
-    const NODE_DRIFT_AMPLITUDE = 0.2;    // Amplitude of the gentle drift
+    // Reduced speed and amplitude for more ambient movement
+    const NODE_DRIFT_SPEED_FACTOR = 0.02;  // Reduced from 0.04
+    const NODE_DRIFT_AMPLITUDE = 0.1;     // Reduced from 0.2
 
-    const MOUSE_INTERACTION_RADIUS = 300; // Pixels for mouse influence
-    const MOUSE_REPULSION_FORCE = 0.3; // Strength of mouse push effect (max force at 0 distance)
+    // Reduced interaction for subtle cursor effect
+    const MOUSE_INTERACTION_RADIUS = 200;   // Reduced from 300
+    const MOUSE_REPULSION_FORCE = 0.1;     // Reduced from 0.3
 
-    const CONNECTION_MAX_DIST_OPACITY_CALC = 350; // Max distance used for calculating connection opacity
-    const CONNECTION_OPACITY_MULTIPLIER = 0.6; // Multiplier for connection line opacity
+    const CONNECTION_MAX_DIST_OPACITY_CALC = 350;
+    const CONNECTION_OPACITY_MULTIPLIER = 0.6;
     const CONNECTION_LINE_WIDTH = 1;
 
     const JAVA_SYMBOL_OPACITY = 0.15;
-    const JAVA_SYMBOL_SIZE_SCALE = 0.3; // Relative to canvas height
+    const JAVA_SYMBOL_SIZE_SCALE = 0.3;
     // --- END OF ADJUSTABLE PARAMETERS ---
 
     const initNodes = () => {
@@ -69,21 +72,19 @@ const JavaBackground: React.FC = () => {
         nodesRef.current.push({
           id: i,
           x, y,
-          originalX: x, originalY: y, // Store original for drift reference
-          connections: [], // Will be populated next
+          originalX: x, originalY: y,
+          connections: [],
           size, color,
-          angleOffset: Math.random() * Math.PI * 2 // For varied drift
+          angleOffset: Math.random() * Math.PI * 2
         });
       }
       
-      // Create connections
       nodesRef.current.forEach((node, i) => {
         const connections: number[] = [];
         const connectionCount = MIN_CONNECTIONS_PER_NODE + Math.floor(Math.random() * (MAX_CONNECTIONS_PER_NODE));
         for (let j = 0; j < connectionCount; j++) {
-            // Connect to relatively nearby nodes in the circular arrangement
             let targetIndex = (i + 1 + Math.floor(Math.random() * (NODE_COUNT / 4)) ) % NODE_COUNT;
-            if (targetIndex === i) targetIndex = (i + 1) % NODE_COUNT; // Avoid self-connection
+            if (targetIndex === i) targetIndex = (i + 1) % NODE_COUNT;
             if (!connections.includes(targetIndex) && !nodesRef.current[targetIndex].connections.includes(i)) {
                  connections.push(targetIndex);
             }
@@ -129,7 +130,11 @@ const JavaBackground: React.FC = () => {
 
     const animate = () => {
       if (!ctx || !canvas) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Added trail effect instead of full clear for smoother animation
+      ctx.fillStyle = 'rgba(26, 31, 44, 0.08)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
       drawJavaSymbol(ctx, canvas.width / 2, canvas.height / 2, canvas.height * JAVA_SYMBOL_SIZE_SCALE);
 
       const time = Date.now() * NODE_DRIFT_SPEED_FACTOR;
@@ -137,9 +142,8 @@ const JavaBackground: React.FC = () => {
       nodesRef.current.forEach(node => {
         // Gentle drift around original position
         const driftAngle = time + node.angleOffset;
-        node.x = node.originalX + Math.cos(driftAngle) * NODE_DRIFT_AMPLITUDE * node.size * 5; // Scale drift by size
+        node.x = node.originalX + Math.cos(driftAngle) * NODE_DRIFT_AMPLITUDE * node.size * 5;
         node.y = node.originalY + Math.sin(driftAngle) * NODE_DRIFT_AMPLITUDE * node.size * 5;
-
 
         if (firstMoveMadeRef.current) {
           const dxMouse = node.x - mousePositionRef.current.x;
@@ -156,10 +160,8 @@ const JavaBackground: React.FC = () => {
           }
         }
         
-        // Keep within bounds (optional, could be removed if drift + original pos keeps them roughly in view)
         node.x = Math.max(node.size, Math.min(canvas.width - node.size, node.x));
         node.y = Math.max(node.size, Math.min(canvas.height - node.size, node.y));
-
 
         ctx.fillStyle = node.color;
         ctx.beginPath();
@@ -168,30 +170,30 @@ const JavaBackground: React.FC = () => {
       });
       
       // Draw connections
-        nodesRef.current.forEach(node => {
-            node.connections.forEach(targetIndex => {
-                if (targetIndex >= nodesRef.current.length) return; // Safety check
-                const target = nodesRef.current[targetIndex];
-                
-                const dx = node.x - target.x;
-                const dy = node.y - target.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                const opacity = Math.max(0, 1 - (distance / CONNECTION_MAX_DIST_OPACITY_CALC)) * CONNECTION_OPACITY_MULTIPLIER;
+      nodesRef.current.forEach(node => {
+          node.connections.forEach(targetIndex => {
+              if (targetIndex >= nodesRef.current.length) return;
+              const target = nodesRef.current[targetIndex];
+              
+              const dx = node.x - target.x;
+              const dy = node.y - target.y;
+              const distance = Math.sqrt(dx * dx + dy * dy);
+              const opacity = Math.max(0, 1 - (distance / CONNECTION_MAX_DIST_OPACITY_CALC)) * CONNECTION_OPACITY_MULTIPLIER;
 
-                if (opacity > 0) {
-                    const gradient = ctx.createLinearGradient(node.x, node.y, target.x, target.y);
-                    gradient.addColorStop(0, node.color.replace('rgb', 'rgba').replace(')', `, ${opacity})`));
-                    gradient.addColorStop(1, target.color.replace('rgb', 'rgba').replace(')', `, ${opacity})`));
-                    
-                    ctx.strokeStyle = gradient;
-                    ctx.lineWidth = CONNECTION_LINE_WIDTH;
-                    ctx.beginPath();
-                    ctx.moveTo(node.x, node.y);
-                    ctx.lineTo(target.x, target.y);
-                    ctx.stroke();
-                }
-            });
-        });
+              if (opacity > 0) {
+                  const gradient = ctx.createLinearGradient(node.x, node.y, target.x, target.y);
+                  gradient.addColorStop(0, node.color.replace('rgb', 'rgba').replace(')', `, ${opacity})`));
+                  gradient.addColorStop(1, target.color.replace('rgb', 'rgba').replace(')', `, ${opacity})`));
+                  
+                  ctx.strokeStyle = gradient;
+                  ctx.lineWidth = CONNECTION_LINE_WIDTH;
+                  ctx.beginPath();
+                  ctx.moveTo(node.x, node.y);
+                  ctx.lineTo(target.x, target.y);
+                  ctx.stroke();
+              }
+          });
+      });
 
       animationFrameIdRef.current = requestAnimationFrame(animate);
     };

@@ -1,10 +1,11 @@
+
 import React, { useEffect, useRef } from 'react';
 
 interface Dot {
   x: number;
   y: number;
   size: number;
-  originalSpeed: number; // Store original speed for reference
+  originalSpeed: number;
   dirX: number;
   dirY: number;
   color: string;
@@ -28,22 +29,22 @@ const ContactBackground: React.FC = () => {
     const DOT_COUNT = 80;
     const DOT_MIN_SIZE = 1;
     const DOT_MAX_SIZE = 3;
-    const DOT_MIN_BASE_SPEED = 0.1; // Min speed for a dot's individual dirX/dirY components initially
-    const DOT_MAX_BASE_SPEED = 0.3; // Max speed
-    const DOT_MOVEMENT_MULTIPLIER = 0.5; // General slowdown/speedup for dot movement
+    const DOT_MIN_BASE_SPEED = 0.05; // Reduced from 0.1
+    const DOT_MAX_BASE_SPEED = 0.15; // Reduced from 0.3
+    const DOT_MOVEMENT_MULTIPLIER = 0.3; // Reduced from 0.5
 
-    const MOUSE_INTERACTION_RADIUS = 100; // Pixels, how far mouse interaction reaches
-    const MOUSE_BASE_FORCE = 0.02; // Base strength of mouse effect before proximity scaling
-    const MOUSE_CIRCULAR_FORCE_SCALAR = 0.6; // How strongly dots circle the mouse
-    const MOUSE_REPULSION_FORCE_SCALAR = 0.1; // How strongly dots are pushed from mouse
-    const MAX_INTERACTION_SPEED_FACTOR = 2.5; // Max factor by which dot speed can increase due to mouse
+    const MOUSE_INTERACTION_RADIUS = 80; // Reduced from 100
+    const MOUSE_BASE_FORCE = 0.01; // Reduced from 0.02
+    const MOUSE_CIRCULAR_FORCE_SCALAR = 0.4; // Reduced from 0.6
+    const MOUSE_REPULSION_FORCE_SCALAR = 0.05; // Reduced from 0.1
+    const MAX_INTERACTION_SPEED_FACTOR = 2.0; // Reduced from 2.5
 
-    const CONNECTION_MAX_DISTANCE = 70; // Max distance for drawing lines between dots
-    const CONNECTION_BASE_OPACITY = 0.3; // Base opacity for connections
+    const CONNECTION_MAX_DISTANCE = 70;
+    const CONNECTION_BASE_OPACITY = 0.3;
     const CONNECTION_LINE_WIDTH = 0.5;
-    const CONNECTION_COLOR = 'rgba(150, 170, 255, ${opacity})'; // Use ${opacity} placeholder
+    const CONNECTION_COLOR = 'rgba(150, 170, 255, ${opacity})';
 
-    const TRAIL_EFFECT_ALPHA = 0.05; // Alpha for clearing canvas, creates trails. 0 (no trail) to 1 (instant clear)
+    const TRAIL_EFFECT_ALPHA = 0.08; // Increased from 0.05 for smoother trails
     const BACKGROUND_COLOR_FOR_TRAIL = `rgba(26, 31, 44, ${TRAIL_EFFECT_ALPHA})`;
     // --- END OF ADJUSTABLE PARAMETERS ---
 
@@ -73,7 +74,6 @@ const ContactBackground: React.FC = () => {
       canvas.height = window.innerHeight;
       initDots();
     };
-
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
