@@ -27,7 +27,7 @@ const JavaBackground: React.FC = () => {
     if (!ctx) return;
 
     // --- START OF ADJUSTABLE PARAMETERS ---
-    const NODE_COUNT = 25; // Number of nodes
+    const NODE_COUNT = 35; // Number of nodes
     const NODE_MIN_SIZE = 2.5;
     const NODE_MAX_SIZE = 5.5;
     const MIN_CONNECTIONS_PER_NODE = 2;
@@ -36,8 +36,8 @@ const JavaBackground: React.FC = () => {
     const ORBIT_RADIUS_SCALE = 0.4; // Scale of overall circular pattern relative to canvas size
     const ORBIT_RANDOMNESS = 0.3;  // How much nodes deviate from perfect circle
 
-    const NODE_DRIFT_SPEED_FACTOR = 0.003; // Time factor for circular motion
-    const NODE_DRIFT_AMPLITUDE = 0.1;    // Amplitude of the gentle drift
+    const NODE_DRIFT_SPEED_FACTOR = 0.04; // Time factor for circular motion
+    const NODE_DRIFT_AMPLITUDE = 0.2;    // Amplitude of the gentle drift
 
     const MOUSE_INTERACTION_RADIUS = 300; // Pixels for mouse influence
     const MOUSE_REPULSION_FORCE = 0.3; // Strength of mouse push effect (max force at 0 distance)
