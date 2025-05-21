@@ -195,7 +195,7 @@ const Java = () => {
                     <li>
                       Sounds
                       {/* Nested dropdown for Sounds */}
-                      <CollapsibleSection title="Sound Files">
+                      <CollapsibleSection title="Sound Files" isNested={true}>
                         <ul className="list-disc pl-6 space-y-1">
                           <li><a href="/sounds/Ring10.wav" target="_blank" rel="noopener noreferrer">Ring10.wav</a></li>
                           <li><a href="/sounds/chimes.wav" target="_blank" rel="noopener noreferrer">chimes.wav</a></li>
