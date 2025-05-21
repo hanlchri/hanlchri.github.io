@@ -6,18 +6,133 @@ import { Button } from '@/components/ui/button';
 import { Search as SearchIcon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// Mock search results data
+// Enhanced search results data with specific section links
 const mockResources = [
-  { id: 1, title: "Computer Components Assignment", category: "Assignments", path: "/ap-cs" },
-  { id: 2, title: "Java Arrays Tutorial", category: "Java", path: "/java" },
-  { id: 3, title: "Printing from Netbeans", category: "Resources", path: "/ap-cs" },
-  { id: 4, title: "Unit 1 Review", category: "Lessons", path: "/ap-cs" },
-  { id: 5, title: "W3Schools Reference", category: "References", path: "/references" },
-  { id: 6, title: "String Methods", category: "Assignments", path: "/ap-cs" },
-  { id: 7, title: "Inheritance Hierarchy", category: "Homework", path: "/ap-cs" },
-  { id: 8, title: "OOP Concepts", category: "Lessons", path: "/ap-cs" },
-  { id: 9, title: "HackerRank Practice", category: "Practice", path: "/references" },
-  { id: 10, title: "Repl.it IDE Guide", category: "IDEs", path: "/references" },
+  // AP-CS Resources
+  { 
+    id: 1, 
+    title: "Computer Components Assignment", 
+    category: "Assignments", 
+    path: "/ap-cs", 
+    section: "assignments", 
+    description: "Summer assignment covering computer hardware components"
+  },
+  { 
+    id: 4, 
+    title: "Unit 1 Review", 
+    category: "Lessons", 
+    path: "/ap-cs", 
+    section: "lessons", 
+    description: "Review materials for Unit 1 concepts"
+  },
+  { 
+    id: 6, 
+    title: "String Methods", 
+    category: "Assignments", 
+    path: "/ap-cs", 
+    section: "assignments", 
+    description: "Assignment covering Java string manipulation methods"
+  },
+  { 
+    id: 7, 
+    title: "Inheritance Hierarchy", 
+    category: "Homework", 
+    path: "/ap-cs", 
+    section: "homework", 
+    description: "Homework on object-oriented inheritance concepts"
+  },
+  { 
+    id: 8, 
+    title: "OOP Concepts", 
+    category: "Lessons", 
+    path: "/ap-cs", 
+    section: "lessons", 
+    description: "Lesson covering object-oriented programming principles"
+  },
+  { 
+    id: 3, 
+    title: "Printing from Netbeans", 
+    category: "Resources", 
+    path: "/ap-cs", 
+    section: "resources", 
+    description: "Guide on using print functionality in NetBeans IDE"
+  },
+  
+  // Java Resources
+  { 
+    id: 2, 
+    title: "Java Arrays Tutorial", 
+    category: "Java", 
+    path: "/java", 
+    section: "arrays", 
+    description: "Comprehensive guide to working with arrays in Java"
+  },
+  { 
+    id: 11, 
+    title: "Java Variables", 
+    category: "Java", 
+    path: "/java", 
+    section: "variables", 
+    description: "Tutorial on variable types and declaration in Java"
+  },
+  { 
+    id: 12, 
+    title: "Control Flow in Java", 
+    category: "Java", 
+    path: "/java", 
+    section: "control-flow", 
+    description: "Guide to if statements, loops, and switches in Java"
+  },
+  { 
+    id: 13, 
+    title: "Java Methods", 
+    category: "Java", 
+    path: "/java", 
+    section: "methods", 
+    description: "Tutorial on creating and using methods in Java"
+  },
+  
+  // References Resources
+  { 
+    id: 5, 
+    title: "W3Schools Reference", 
+    category: "References", 
+    path: "/references", 
+    section: "websites", 
+    description: "Link to W3Schools Java tutorials and reference"
+  },
+  { 
+    id: 9, 
+    title: "HackerRank Practice", 
+    category: "Practice", 
+    path: "/references", 
+    section: "practice", 
+    description: "Coding challenges on HackerRank for Java practice"
+  },
+  { 
+    id: 10, 
+    title: "Repl.it IDE Guide", 
+    category: "IDEs", 
+    path: "/references", 
+    section: "ides", 
+    description: "Guide to using Repl.it for Java development"
+  },
+  {
+    id: 14,
+    title: "Alex Lee Java Videos",
+    category: "Videos",
+    path: "/references",
+    section: "videos",
+    description: "Educational Java programming videos by Alex Lee"
+  },
+  {
+    id: 15,
+    title: "CodeChef Practice Problems",
+    category: "Practice",
+    path: "/references",
+    section: "practice",
+    description: "Coding challenges for algorithm practice on CodeChef"
+  },
 ];
 
 const Search = () => {
@@ -47,7 +162,8 @@ const Search = () => {
     
     const filteredResults = mockResources.filter(resource => 
       resource.title.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) || 
-      resource.category.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
+      resource.category.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) ||
+      resource.description.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
     );
     
     setResults(filteredResults);
@@ -58,6 +174,11 @@ const Search = () => {
     // We're already searching as the user types, but this will trigger a search on submit
     setDebouncedSearchTerm(searchTerm);
     setShowResults(true);
+  };
+
+  // Generate a direct link to the section on the page
+  const generateSectionLink = (resource: any) => {
+    return `${resource.path}?section=${resource.section}`;
   };
   
   return (
@@ -92,10 +213,11 @@ const Search = () => {
                         {results.slice(0, 5).map((result) => (
                           <a 
                             key={result.id}
-                            href={result.path}
+                            href={generateSectionLink(result)}
                             className="block py-2 px-3 hover:bg-secondary rounded-md text-sm"
                           >
-                            {result.title}
+                            <div className="font-medium">{result.title}</div>
+                            <div className="text-xs text-muted-foreground">{result.category} • {result.description}</div>
                           </a>
                         ))}
                         {results.length > 5 && (
@@ -144,12 +266,13 @@ const Search = () => {
                         <div className="flex justify-between items-start">
                           <div>
                             <h3 className="text-xl font-bold text-tech-cyan">{result.title}</h3>
-                            <p className="text-sm text-muted-foreground">
+                            <p className="text-sm text-muted-foreground mb-1">
                               Category: {result.category}
                             </p>
+                            <p className="text-sm">{result.description}</p>
                           </div>
                           <Button asChild variant="outline" size="sm">
-                            <a href={result.path}>View</a>
+                            <a href={generateSectionLink(result)}>View</a>
                           </Button>
                         </div>
                       </motion.div>

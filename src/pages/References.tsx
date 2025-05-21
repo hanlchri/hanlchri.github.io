@@ -1,8 +1,57 @@
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Layout from '@/components/Layout';
+import { useLocation } from 'react-router-dom';
 
 const References = () => {
+  const location = useLocation();
+  const websitesRef = useRef<HTMLDivElement>(null);
+  const videosRef = useRef<HTMLDivElement>(null);
+  const practiceRef = useRef<HTMLDivElement>(null);
+  const idesRef = useRef<HTMLDivElement>(null);
+
+  // Handle scrolling to specific section based on URL parameter
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const section = params.get('section');
+    
+    if (section) {
+      let targetRef = null;
+      
+      switch (section) {
+        case 'websites':
+          targetRef = websitesRef;
+          break;
+        case 'videos':
+          targetRef = videosRef;
+          break;
+        case 'practice':
+          targetRef = practiceRef;
+          break;
+        case 'ides':
+          targetRef = idesRef;
+          break;
+        default:
+          break;
+      }
+      
+      if (targetRef && targetRef.current) {
+        // Add a small delay to ensure the DOM is fully rendered
+        setTimeout(() => {
+          targetRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          
+          // Add highlight effect
+          targetRef.current?.classList.add('highlight-section');
+          
+          // Remove highlight after animation completes
+          setTimeout(() => {
+            targetRef.current?.classList.remove('highlight-section');
+          }, 2000);
+        }, 300);
+      }
+    }
+  }, [location.search]);
+  
   return (
     <Layout>
       <div className="max-w-4xl mx-auto mt-10">
@@ -10,7 +59,7 @@ const References = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center tech-text">References</h1>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-card p-6 rounded-lg">
+            <div id="websites" ref={websitesRef} className="bg-card p-6 rounded-lg transition-all duration-500">
               <h2 className="text-3xl font-bold mb-4 text-tech-cyan">Websites</h2>
               <ul className="space-y-3">
                 <li className="border-b border-border pb-2">
@@ -36,7 +85,7 @@ const References = () => {
               </ul>
             </div>
             
-            <div className="bg-card p-6 rounded-lg">
+            <div id="videos" ref={videosRef} className="bg-card p-6 rounded-lg transition-all duration-500">
               <h2 className="text-3xl font-bold mb-4 text-tech-purple">Videos</h2>
               <ul className="space-y-3">
                 <li className="border-b border-border pb-2">
@@ -80,7 +129,7 @@ const References = () => {
               </ul>
             </div>
             
-            <div className="bg-card p-6 rounded-lg">
+            <div id="practice" ref={practiceRef} className="bg-card p-6 rounded-lg transition-all duration-500">
               <h2 className="text-3xl font-bold mb-4 text-tech-cyan">Practice</h2>
               <ul className="space-y-3">
                 <li className="border-b border-border pb-2">
@@ -106,7 +155,7 @@ const References = () => {
               </ul>
             </div>
             
-            <div className="bg-card p-6 rounded-lg">
+            <div id="ides" ref={idesRef} className="bg-card p-6 rounded-lg transition-all duration-500">
               <h2 className="text-3xl font-bold mb-4 text-tech-purple">IDEs</h2>
               <ul className="space-y-3">
                 <li className="border-b border-border pb-2">
@@ -144,6 +193,14 @@ const References = () => {
               </ul>
             </div>
           </div>
+
+          {/* Add some CSS for the highlight effect */}
+          <style jsx>{`
+            .highlight-section {
+              box-shadow: 0 0 15px 3px rgba(124, 58, 237, 0.7);
+              transform: scale(1.02);
+            }
+          `}</style>
         </div>
       </div>
     </Layout>

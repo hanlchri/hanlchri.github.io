@@ -10,15 +10,41 @@ import {
 } from '@/components/ui/popover';
 import { Input } from '@/components/ui/input';
 
-// Mock search results data
+// Enhanced search results data
 const mockResources = [
-  { id: 1, title: "Computer Components Assignment", category: "Assignments", path: "/ap-cs" },
-  { id: 2, title: "Java Arrays Tutorial", category: "Java", path: "/java" },
-  { id: 3, title: "Printing from Netbeans", category: "Resources", path: "/ap-cs" },
-  { id: 4, title: "Unit 1 Review", category: "Lessons", path: "/ap-cs" },
-  { id: 5, title: "W3Schools Reference", category: "References", path: "/references" },
-  { id: 6, title: "String Methods", category: "Assignments", path: "/ap-cs" },
-  { id: 7, title: "Inheritance Hierarchy", category: "Homework", path: "/ap-cs" },
+  // AP-CS Resources
+  { 
+    id: 1, 
+    title: "Computer Components Assignment", 
+    category: "Assignments", 
+    path: "/ap-cs", 
+    section: "assignments", 
+    description: "Summer assignment covering computer hardware components"
+  },
+  { 
+    id: 4, 
+    title: "Unit 1 Review", 
+    category: "Lessons", 
+    path: "/ap-cs", 
+    section: "lessons", 
+    description: "Review materials for Unit 1 concepts"
+  },
+  { 
+    id: 6, 
+    title: "String Methods", 
+    category: "Assignments", 
+    path: "/ap-cs", 
+    section: "assignments", 
+    description: "Assignment covering Java string manipulation methods"
+  },
+  { 
+    id: 7, 
+    title: "Inheritance Hierarchy", 
+    category: "Homework", 
+    path: "/ap-cs", 
+    section: "homework", 
+    description: "Homework on object-oriented inheritance concepts"
+  },
 ];
 
 const NavBar: React.FC = () => {
@@ -48,6 +74,11 @@ const NavBar: React.FC = () => {
     return location.pathname === path ? 'active' : '';
   };
 
+  // Generate a direct link to the section on the page
+  const generateSectionLink = (resource: any) => {
+    return `${resource.path}?section=${resource.section}`;
+  };
+
   // Handle search input changes
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const term = e.target.value;
@@ -61,7 +92,8 @@ const NavBar: React.FC = () => {
     // Filter resources based on search term
     const results = mockResources.filter(resource => 
       resource.title.toLowerCase().includes(term.toLowerCase()) || 
-      resource.category.toLowerCase().includes(term.toLowerCase())
+      resource.category.toLowerCase().includes(term.toLowerCase()) ||
+      (resource.description && resource.description.toLowerCase().includes(term.toLowerCase()))
     ).slice(0, 5); // Limit to top 5 results
     
     setSearchResults(results);
@@ -136,12 +168,15 @@ const NavBar: React.FC = () => {
                     {searchResults.map((result) => (
                       <Link 
                         key={result.id}
-                        to={result.path} 
+                        to={generateSectionLink(result)} 
                         className="block p-2 hover:bg-secondary rounded-md transition-colors"
                         onClick={() => setIsSearchOpen(false)}
                       >
                         <div className="font-medium">{result.title}</div>
                         <div className="text-sm text-muted-foreground">{result.category}</div>
+                        {result.description && (
+                          <div className="text-xs text-muted-foreground mt-1">{result.description}</div>
+                        )}
                       </Link>
                     ))}
                   </div>
@@ -197,11 +232,14 @@ const NavBar: React.FC = () => {
                     {searchResults.map((result) => (
                       <Link 
                         key={result.id}
-                        to={result.path} 
+                        to={generateSectionLink(result)} 
                         className="block p-2 hover:bg-secondary rounded-md transition-colors"
                       >
                         <div className="font-medium">{result.title}</div>
                         <div className="text-sm text-muted-foreground">{result.category}</div>
+                        {result.description && (
+                          <div className="text-xs text-muted-foreground">{result.description}</div>
+                        )}
                       </Link>
                     ))}
                   </div>
