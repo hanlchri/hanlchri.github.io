@@ -1,8 +1,6 @@
 import React from 'react';
 import Layout from '@/components/Layout';
 import CollapsibleSection from '@/components/CollapsibleSection';
-// Assuming you have Tabs and TabsList components from a UI library like shadcn/ui
-// If not, you'll need to import them or replace them with your actual tab components.
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const Java = () => {
@@ -25,63 +23,63 @@ const Java = () => {
                 <h2 className="text-2xl font-bold mb-4 text-tech-cyan">Assignments</h2>
 
                 <CollapsibleSection title="Assignments">
-                  <ul className="list-disc pl-6 space-y-1">
-                    <li><a href="/documents/Java_Assignment1_BasicConsoleApplications.pdf" target="_blank" rel="noopener noreferrer">1: Basic Console Applications</a></li>
-                    <li><a href="/documents/Java_Assignment2_CurrencyConverter.pdf" target="_blank" rel="noopener noreferrer">2: Currency Converter</a></li>
-                    <li>
-                      2.5: Change Calculator
+                  <ul className="list-disc pl-6 space-y-3">
+                    <li><a href="/documents/Java_Assignment1_BasicConsoleApplications.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">1: Basic Console Applications</a></li>
+                    <li><a href="/documents/Java_Assignment2_CurrencyConverter.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">2: Currency Converter</a></li>
+                    <li className="space-y-2">
+                      <span className="font-medium">2.5: Change Calculator</span>
                       {/* Nested dropdown for Change Calculator */}
-                      <CollapsibleSection title="Details">
-                        <ul className="list-disc pl-6 space-y-1">
-                          <li><a href="/documents/Java_Assignment2.5_ChangeTwenty.pdf" target="_blank" rel="noopener noreferrer">Details</a></li>
-                          <li><a href="/documents/Assign2In.txt" target="_blank" rel="noopener noreferrer">Sample Input</a></li>
-                          <li><a href="/documents/Assign2Out.txt" target="_blank" rel="noopener noreferrer">Sample Output</a></li>
-                          <li><a href="/documents/Assign2Test1.txt" target="_blank" rel="noopener noreferrer">Test 1</a></li>
-                          <li><a href="/documents/Assign2Test2.txt" target="_blank" rel="noopener noreferrer">Test 2</a></li>
+                      <CollapsibleSection title="Details" isNested={true}>
+                        <ul className="list-disc pl-4 space-y-2 py-1">
+                          <li><a href="/documents/Java_Assignment2.5_ChangeTwenty.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Details</a></li>
+                          <li><a href="/documents/Assign2In.txt" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Sample Input</a></li>
+                          <li><a href="/documents/Assign2Out.txt" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Sample Output</a></li>
+                          <li><a href="/documents/Assign2Test1.txt" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Test 1</a></li>
+                          <li><a href="/documents/Assign2Test2.txt" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Test 2</a></li>
                         </ul>
                       </CollapsibleSection>
                     </li>
-                    <li>
-                      3: Loops
+                    <li className="space-y-2">
+                      <span className="font-medium">3: Loops</span>
                       {/* Nested dropdown for Loops */}
-                      <CollapsibleSection title="Details">
-                        <ul className="list-disc pl-6 space-y-1">
-                          <li><a href="/documents/Java_Assignment3_LoopPractice.pdf" target="_blank" rel="noopener noreferrer">Details</a></li>
-                          <li><a href="/documents/Assign3FreqFrameSolution.java" target="_blank" rel="noopener noreferrer">Frequency Frame</a></li>
+                      <CollapsibleSection title="Details" isNested={true}>
+                        <ul className="list-disc pl-4 space-y-2 py-1">
+                          <li><a href="/documents/Java_Assignment3_LoopPractice.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Details</a></li>
+                          <li><a href="/documents/Assign3FreqFrameSolution.java" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Frequency Frame</a></li>
                         </ul>
                       </CollapsibleSection>
                     </li>
-                    <li>
-                      4: Arrays
+                    <li className="space-y-2">
+                      <span className="font-medium">4: Arrays</span>
                       {/* Nested dropdown for Arrays */}
-                      <CollapsibleSection title="Details">
-                        <ul className="list-disc pl-6 space-y-1">
-                          <li><a href="/documents/Java_Assignment4_Budget.pdf" target="_blank" rel="noopener noreferrer">Budget</a></li>
-                          <li><a href="/documents/Java_Assignment4_RackO.pdf" target="_blank" rel="noopener noreferrer">RackO</a></li>
-                          <li><a href="/documents/Assign4BudgetExample.jar" target="_blank" rel="noopener noreferrer">Budget Example</a></li>
-                          <li><a href="/documents/Assign4RackOSkeleton.java" target="_blank" rel="noopener noreferrer">RackO Skeleton</a></li>
-                          <li><a href="/documents/Assign4ArrayPowerpoint.pdf" target="_blank" rel="noopener noreferrer">Arrays PDF</a></li>
+                      <CollapsibleSection title="Details" isNested={true}>
+                        <ul className="list-disc pl-4 space-y-2 py-1">
+                          <li><a href="/documents/Java_Assignment4_Budget.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Budget</a></li>
+                          <li><a href="/documents/Java_Assignment4_RackO.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">RackO</a></li>
+                          <li><a href="/documents/Assign4BudgetExample.jar" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Budget Example</a></li>
+                          <li><a href="/documents/Assign4RackOSkeleton.java" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">RackO Skeleton</a></li>
+                          <li><a href="/documents/Assign4ArrayPowerpoint.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Arrays PDF</a></li>
                         </ul>
                       </CollapsibleSection>
                     </li>
-                    <li>
-                      4.5: Object Oriented Basics
+                    <li className="space-y-2">
+                      <span className="font-medium">4.5: Object Oriented Basics</span>
                       {/* Nested dropdown for Object Oriented Basics */}
-                      <CollapsibleSection title="Details">
-                        <ul className="list-disc pl-6 space-y-1">
-                          <li><a href="/documents/Java_Assignment4.5_Object_Oriented_Basics.pdf" target="_blank" rel="noopener noreferrer">Assignment</a></li>
-                          <li><a href="/documents/Assign4.5Student.java" target="_blank" rel="noopener noreferrer">Student.java</a></li>
+                      <CollapsibleSection title="Details" isNested={true}>
+                        <ul className="list-disc pl-4 space-y-2 py-1">
+                          <li><a href="/documents/Java_Assignment4.5_Object_Oriented_Basics.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Assignment</a></li>
+                          <li><a href="/documents/Assign4.5Student.java" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Student.java</a></li>
                         </ul>
                       </CollapsibleSection>
                     </li>
-                    <li><a href="/documents/Java_Assignment5_SwingBasics.pdf" target="_blank" rel="noopener noreferrer">5: Swing Basics</a></li>
-                    <li>
-                      6: Final Project
+                    <li><a href="/documents/Java_Assignment5_SwingBasics.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">5: Swing Basics</a></li>
+                    <li className="space-y-2">
+                      <span className="font-medium">6: Final Project</span>
                       {/* Nested dropdown for Final Project */}
-                      <CollapsibleSection title="Details">
-                        <ul className="list-disc pl-6 space-y-1">
-                          <li><a href="/documents/Java_Assignment6_FinalProject.pdf" target="_blank" rel="noopener noreferrer">Assignment</a></li>
-                          <li><a href="/documents/Assign6BlackJackSkeleton.zip" target="_blank" rel="noopener noreferrer">Blackjack Skeleton</a></li>
+                      <CollapsibleSection title="Details" isNested={true}>
+                        <ul className="list-disc pl-4 space-y-2 py-1">
+                          <li><a href="/documents/Java_Assignment6_FinalProject.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Assignment</a></li>
+                          <li><a href="/documents/Assign6BlackJackSkeleton.zip" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Blackjack Skeleton</a></li>
                         </ul>
                       </CollapsibleSection>
                     </li>
@@ -89,11 +87,11 @@ const Java = () => {
                 </CollapsibleSection>
 
                 <CollapsibleSection title="Homework">
-                  <ul className="list-disc pl-6 space-y-1">
-                    <li><a href="/documents/GlossaryTerms.pdf" target="_blank" rel="noopener noreferrer">Glossary Terms</a></li>
-                    <li><a href="/documents/LogicalOperatorsHW.pdf" target="_blank" rel="noopener noreferrer">Logical Operators HW</a></li>
-                    <li><a href="/documents/Java_Loops_HW.pdf" target="_blank" rel="noopener noreferrer">Loops HW</a></li>
-                    <li><a href="/documents/JavaHWArrays.pdf" target="_blank" rel="noopener noreferrer">Arrays HW</a></li>
+                  <ul className="list-disc pl-6 space-y-2">
+                    <li><a href="/documents/GlossaryTerms.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Glossary Terms</a></li>
+                    <li><a href="/documents/LogicalOperatorsHW.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Logical Operators HW</a></li>
+                    <li><a href="/documents/Java_Loops_HW.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Loops HW</a></li>
+                    <li><a href="/documents/JavaHWArrays.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Arrays HW</a></li>
                   </ul>
                 </CollapsibleSection>
               </div>
