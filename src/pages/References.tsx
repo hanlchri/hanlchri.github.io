@@ -40,7 +40,11 @@ const References = () => {
               <h2 className="text-3xl font-bold mb-4 text-tech-purple">Videos</h2>
               <ul className="space-y-3">
                 <li className="border-b border-border pb-2">
-                  <span className="text-lg">Mr. Hanley</span>
+                  <span className="text-lg">
+                  <a href="https://www.youtube.com/channel/UCQ-KjZ-dBpmaEoXp-1JyF3Q?pbjreload=102" target="_blank" rel="noopener noreferrer" className="text-lg hover:text-tech-purple transition-colors">
+                    Mr. Hanley
+                  </a>
+                  </span>
                 </li>
                 <li className="border-b border-border pb-2">
                   <a href="https://www.youtube.com/watch?v=eIrMbAQSU34" target="_blank" rel="noopener noreferrer" className="text-lg hover:text-tech-purple transition-colors">
@@ -48,18 +52,30 @@ const References = () => {
                   </a>
                 </li>
                 <li className="border-b border-border pb-2">
-                  <span className="text-lg">AP Review 2020</span>
+                  <span className="text-lg">
+                    <a href="https://www.youtube.com/watch?v=FHdU8zpnIY4&list=PLoGgviqq4845xKOY11PnkE7aqJC7-bYrd" target="_blank" rel="noopener noreferrer" className="text-lg hover:text-tech-purple transition-colors">
+                    AP Review 2020
+                  </a>
+                  </span>
                 </li>
                 <li className="border-b border-border pb-2">
-                  <span className="text-lg">Caleb Curry</span>
+                  <span className="text-lg">
+                    <a href="https://www.youtube.com/user/CalebTheVideoMaker2" target="_blank" rel="noopener noreferrer" className="text-lg hover:text-tech-purple transition-colors">
+                    Caleb Curry
+                  </a>
+                  </span>
                 </li>
                 <li className="border-b border-border pb-2">
-                  <a href="https://www.youtube.com/user/AlexLorenLee" target="_blank" rel="noopener noreferrer" className="text-lg hover:text-tech-purple transition-colors">
+                  <a href="https://www.youtube.com/channel/UC_fFL5jgoCOrwAVoM_fBYwA" target="_blank" rel="noopener noreferrer" className="text-lg hover:text-tech-purple transition-colors">
                     Alex Lee Java
                   </a>
                 </li>
                 <li className="border-b border-border pb-2">
-                  <span className="text-lg">TheNewBoston</span>
+                  <span className="text-lg">
+                    <a href="https://www.youtube.com/channel/UCJbPGzawDH1njbqV-D5HqKw?pbjreload=102" target="_blank" rel="noopener noreferrer" className="text-lg hover:text-tech-purple transition-colors">
+                    TheNewBoston
+                  </a>
+                  </span>
                 </li>
               </ul>
             </div>
@@ -119,7 +135,11 @@ const References = () => {
                   </a>
                 </li>
                 <li className="border-b border-border pb-2">
-                  <span className="text-lg">RexTester</span>
+                  <span className="text-lg">
+                    <a href="https://rextester.com/l/java_online_compiler" target="_blank" rel="noopener noreferrer" className="text-lg hover:text-tech-purple transition-colors">
+                    RexTester
+                  </a>
+                  </span>
                 </li>
               </ul>
             </div>
