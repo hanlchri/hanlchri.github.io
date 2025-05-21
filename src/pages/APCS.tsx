@@ -1,30 +1,17 @@
-import React, { useEffect, useRef } from 'react';
+
+import React from 'react';
 import Layout from '@/components/Layout';
 import CollapsibleSection from '@/components/CollapsibleSection';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useLocation } from 'react-router-dom';
 
 const APCS = () => {
-  const location = useLocation();
-  const defaultTab = useRef('assignments');
-
-  // Set default tab based on URL parameter
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const section = params.get('section');
-    
-    if (section && ['assignments', 'lessons', 'resources', 'homework'].includes(section)) {
-      defaultTab.current = section;
-    }
-  }, [location.search]);
-
   return (
     <Layout>
       <div className="max-w-6xl mx-auto mt-10">
         <div className="content-section">
           <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center tech-text">AP Computer Science</h1>
           
-          <Tabs defaultValue={defaultTab.current} className="w-full">
+          <Tabs defaultValue="assignments" className="w-full">
             <TabsList className="w-full grid grid-cols-2 md:grid-cols-4 mb-6 bg-secondary">
               <TabsTrigger value="assignments">Assignments</TabsTrigger>
               <TabsTrigger value="lessons">Lessons</TabsTrigger>
@@ -32,7 +19,7 @@ const APCS = () => {
               <TabsTrigger value="homework">Homework</TabsTrigger>
             </TabsList>
             
-            <TabsContent value="assignments" className="animate-fade-in">
+            <TabsContent value="assignments">
               <div className="space-y-4">
                 <h2 className="text-2xl font-bold mb-4 text-tech-cyan">Assignments</h2>
                 
@@ -66,7 +53,7 @@ const APCS = () => {
               </div>
             </TabsContent>
             
-            <TabsContent value="lessons" className="animate-fade-in">
+            <TabsContent value="lessons">
               <div className="space-y-4">
                 <h2 className="text-2xl font-bold mb-4 text-tech-cyan">Lessons</h2>
                 
@@ -125,7 +112,7 @@ const APCS = () => {
               </div>
             </TabsContent>
             
-            <TabsContent value="resources" className="animate-fade-in">
+            <TabsContent value="resources">
               <div className="space-y-4">
                 <h2 className="text-2xl font-bold mb-4 text-tech-cyan">Resources</h2>
                 
@@ -159,7 +146,7 @@ const APCS = () => {
               </div>
             </TabsContent>
             
-            <TabsContent value="homework" className="animate-fade-in">
+            <TabsContent value="homework">
               <div className="space-y-4">
                 <h2 className="text-2xl font-bold mb-4 text-tech-cyan">Homework</h2>
                 
