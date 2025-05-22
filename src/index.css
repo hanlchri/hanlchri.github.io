@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -61,6 +62,25 @@
   code, pre {
     @apply font-mono;
   }
+  
+  /* Mobile-specific adjustments */
+  @media (max-width: 640px) {
+    h1 {
+      @apply text-3xl;
+    }
+    
+    h2 {
+      @apply text-2xl;
+    }
+    
+    h3 {
+      @apply text-xl;
+    }
+    
+    .content-section {
+      @apply p-4;
+    }
+  }
 }
 
 @layer components {
@@ -123,7 +143,7 @@
   
   /* Navigation Styles */
   .nav-link {
-    @apply px-4 py-2 text-foreground/80 hover:text-tech-purple transition-colors relative text-lg font-medium;
+    @apply px-2 sm:px-4 py-2 text-foreground/80 hover:text-tech-purple transition-colors relative text-base sm:text-lg font-medium;
   }
   
   .nav-link::after {
@@ -145,7 +165,7 @@
   
   /* Content Styles */
   .content-section {
-    @apply bg-black/30 backdrop-blur-md border border-border/50 rounded-lg p-6 animate-fade-in;
+    @apply bg-black/30 backdrop-blur-md border border-border/50 rounded-lg p-4 sm:p-6 animate-fade-in;
   }
   
   .collapsible-section {
@@ -153,11 +173,11 @@
   }
   
   .collapsible-header {
-    @apply flex justify-between items-center p-4 cursor-pointer bg-secondary hover:bg-secondary/80 transition-colors;
+    @apply flex justify-between items-center p-3 sm:p-4 cursor-pointer bg-secondary hover:bg-secondary/80 transition-colors;
   }
   
   .floating-card {
-    @apply bg-card border border-border/50 rounded-lg p-6 hover:border-tech-purple/50 transition-all duration-300 hover:shadow-[0_0_15px_rgba(139,92,246,0.3)] animate-scale-in;
+    @apply bg-card border border-border/50 rounded-lg p-4 sm:p-6 hover:border-tech-purple/50 transition-all duration-300 hover:shadow-[0_0_15px_rgba(139,92,246,0.3)] animate-scale-in;
   }
   
   /* Dropdown Animation */
@@ -214,6 +234,21 @@
     color: #00ffff;
     z-index: -2;
     animation: glitch-anim2 3s infinite linear alternate-reverse;
+  }
+  
+  /* Mobile optimizations */
+  @media (max-width: 640px) {
+    .collapsible-section {
+      @apply border-0 border-b border-border/50;
+    }
+    
+    .floating-card {
+      @apply p-3;
+    }
+    
+    .nav-link::after {
+      @apply h-[2px];
+    }
   }
 }
 

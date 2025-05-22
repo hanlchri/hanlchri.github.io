@@ -19,7 +19,7 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
-    <div className={`collapsible-section mb-2 ${isNested ? 'ml-2 border-l-2 border-tech-purple/30 pl-2' : ''}`}>
+    <div className={`collapsible-section mb-2 ${isNested ? 'ml-0 sm:ml-2 border-l-2 border-tech-purple/30 pl-2' : ''}`}>
       <div 
         className={`collapsible-header flex justify-between items-center p-2 cursor-pointer transition-colors rounded-md 
           ${isNested 
@@ -28,11 +28,11 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
           }`}
         onClick={() => setIsOpen(!isOpen)}
       >
-        <h3 className={`font-bold ${isNested ? 'text-base text-tech-cyan' : 'text-xl'}`}>{title}</h3>
+        <h3 className={`font-bold break-words pr-2 ${isNested ? 'text-sm sm:text-base text-tech-cyan' : 'text-lg sm:text-xl'}`}>{title}</h3>
         {isOpen ? (
-          <ChevronUp className={`transition-transform duration-300 ${isNested ? 'h-4 w-4 text-tech-cyan/80' : 'h-5 w-5 text-tech-cyan'}`} />
+          <ChevronUp className={`flex-shrink-0 transition-transform duration-300 ${isNested ? 'h-4 w-4 text-tech-cyan/80' : 'h-5 w-5 text-tech-cyan'}`} />
         ) : (
-          <ChevronDown className={`transition-transform duration-300 ${isNested ? 'h-4 w-4 text-tech-purple/80' : 'h-5 w-5 text-tech-purple'}`} />
+          <ChevronDown className={`flex-shrink-0 transition-transform duration-300 ${isNested ? 'h-4 w-4 text-tech-purple/80' : 'h-5 w-5 text-tech-purple'}`} />
         )}
       </div>
       
@@ -47,7 +47,7 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
           >
             <div className={`${isNested 
               ? 'p-2 bg-black/10 backdrop-blur-sm rounded-b-md' 
-              : 'p-4 bg-black/30 backdrop-blur-sm rounded-b-lg border-t border-border/50'
+              : 'p-2 sm:p-4 bg-black/30 backdrop-blur-sm rounded-b-lg border-t border-border/50'
             }`}>
               {children}
             </div>

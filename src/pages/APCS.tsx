@@ -7,16 +7,16 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 const APCS = () => {
   return (
     <Layout>
-      <div className="max-w-6xl mx-auto mt-10">
+      <div className="max-w-6xl mx-auto mt-10 px-4">
         <div className="content-section">
           <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center tech-text">AP Computer Science</h1>
           
           <Tabs defaultValue="assignments" className="w-full">
             <TabsList className="w-full grid grid-cols-2 md:grid-cols-4 mb-6 bg-secondary">
-              <TabsTrigger value="assignments">Assignments</TabsTrigger>
-              <TabsTrigger value="lessons">Lessons</TabsTrigger>
-              <TabsTrigger value="resources">Resources</TabsTrigger>
-              <TabsTrigger value="homework">Homework</TabsTrigger>
+              <TabsTrigger value="assignments" className="text-sm md:text-base py-2 whitespace-normal h-auto">Assignments</TabsTrigger>
+              <TabsTrigger value="lessons" className="text-sm md:text-base py-2 whitespace-normal h-auto">Lessons</TabsTrigger>
+              <TabsTrigger value="resources" className="text-sm md:text-base py-2 whitespace-normal h-auto">Resources</TabsTrigger>
+              <TabsTrigger value="homework" className="text-sm md:text-base py-2 whitespace-normal h-auto">Homework</TabsTrigger>
             </TabsList>
             
             <TabsContent value="assignments">

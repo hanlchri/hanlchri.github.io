@@ -13,7 +13,10 @@ export default {
 	theme: {
 		container: {
 			center: true,
-			padding: '2rem',
+			padding: {
+				DEFAULT: '1rem',
+				sm: '2rem',
+			},
 			screens: {
 				'2xl': '1400px'
 			}
@@ -147,7 +150,14 @@ export default {
 				'slide-in-right': 'slide-in-right 0.3s ease-out',
 				'slide-in-left': 'slide-in-left 0.3s ease-out',
 				'scale-in': 'scale-in 0.3s ease-out'
-			}
+			},
+			screens: {
+				'xs': '480px',
+			},
+			spacing: {
+				'18': '4.5rem',
+				'22': '5.5rem',
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
