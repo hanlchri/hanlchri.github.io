@@ -19,16 +19,16 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
-    <div className={`collapsible-section mb-2 ${isNested ? 'ml-0 sm:ml-2 border-l-2 border-tech-purple/30 pl-2' : ''}`}>
+    <div className={`collapsible-section mb-2 ${isNested ? 'ml-0 sm:ml-4' : ''}`}>
       <div 
         className={`collapsible-header flex justify-between items-center p-2 cursor-pointer transition-colors rounded-md 
           ${isNested 
-            ? 'bg-black/20 hover:bg-black/30' 
+            ? 'bg-secondary/60 hover:bg-secondary/80 text-left' 
             : 'bg-secondary hover:bg-secondary/80 rounded-t-lg'
           }`}
         onClick={() => setIsOpen(!isOpen)}
       >
-        <h3 className={`font-bold break-words pr-2 ${isNested ? 'text-sm sm:text-base text-tech-cyan' : 'text-lg sm:text-xl'}`}>{title}</h3>
+        <h3 className={`font-bold break-words pr-2 ${isNested ? 'text-sm text-tech-cyan' : 'text-lg sm:text-xl'}`}>{title}</h3>
         {isOpen ? (
           <ChevronUp className={`flex-shrink-0 transition-transform duration-300 ${isNested ? 'h-4 w-4 text-tech-cyan/80' : 'h-5 w-5 text-tech-cyan'}`} />
         ) : (
@@ -46,7 +46,7 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
             className="overflow-hidden"
           >
             <div className={`${isNested 
-              ? 'p-2 bg-black/10 backdrop-blur-sm rounded-b-md' 
+              ? 'p-2 bg-black/20 backdrop-blur-sm rounded-b-md border-l-2 border-tech-purple/30' 
               : 'p-2 sm:p-4 bg-black/30 backdrop-blur-sm rounded-b-lg border-t border-border/50'
             }`}>
               {children}
