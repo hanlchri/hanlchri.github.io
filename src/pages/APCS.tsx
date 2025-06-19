@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Layout from '@/components/Layout';
 import CollapsibleSection from '@/components/CollapsibleSection';
@@ -178,6 +177,11 @@ const APCS = () => {
               </div>
             </TabsContent>
           </Tabs>
+
+          {/* Discrete watermark */}
+          <div className="mt-8 text-center">
+            <p className="text-xs text-muted-foreground/50">Created by Hanley</p>
+          </div>
         </div>
       </div>
     </Layout>

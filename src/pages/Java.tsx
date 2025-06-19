@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Layout from '@/components/Layout';
 import CollapsibleSection from '@/components/CollapsibleSection';
@@ -12,11 +11,11 @@ const Java = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center tech-text">Java</h1>
 
           <Tabs defaultValue="assignments" className="w-full">
-            <TabsList className="w-full grid grid-cols-2 md:grid-cols-4 mb-6 bg-secondary">
-              <TabsTrigger value="assignments" className="text-sm md:text-base py-2 whitespace-normal h-auto">Assignments</TabsTrigger>
-              <TabsTrigger value="lessons" className="text-sm md:text-base py-2 whitespace-normal h-auto">Lessons</TabsTrigger>
-              <TabsTrigger value="resources" className="text-sm md:text-base py-2 whitespace-normal h-auto">Resources</TabsTrigger>
-              <TabsTrigger value="Bonus" className="text-sm md:text-base py-2 whitespace-normal h-auto">Bonus</TabsTrigger>
+            <TabsList className="w-full grid grid-cols-2 md:grid-cols-4 mb-6 bg-secondary gap-1 p-1">
+              <TabsTrigger value="assignments" className="text-xs sm:text-sm py-2 px-1 sm:px-2 h-auto min-h-[2.5rem]">Assignments</TabsTrigger>
+              <TabsTrigger value="lessons" className="text-xs sm:text-sm py-2 px-1 sm:px-2 h-auto min-h-[2.5rem]">Lessons</TabsTrigger>
+              <TabsTrigger value="resources" className="text-xs sm:text-sm py-2 px-1 sm:px-2 h-auto min-h-[2.5rem]">Resources</TabsTrigger>
+              <TabsTrigger value="Bonus" className="text-xs sm:text-sm py-2 px-1 sm:px-2 h-auto min-h-[2.5rem]">Bonus</TabsTrigger>
             </TabsList>
 
             <TabsContent value="assignments">
@@ -27,11 +26,10 @@ const Java = () => {
                   <ul className="list-disc pl-6 space-y-3">
                     <li><a href="/documents/Java_Assignment1_BasicConsoleApplications.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">1: Basic Console Applications</a></li>
                     <li><a href="/documents/Java_Assignment2_CurrencyConverter.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">2: Currency Converter</a></li>
-                    <li className="space-y-2">
+                    <li className="space-y-1">
                       <span className="font-medium">2.5: Change Calculator</span>
-                      {/* Nested dropdown for Change Calculator */}
                       <CollapsibleSection title="Details" isNested={true}>
-                        <ul className="list-disc pl-4 space-y-2 py-1">
+                        <ul className="list-disc pl-4 space-y-1 text-sm">
                           <li><a href="/documents/Java_Assignment2.5_ChangeTwenty.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Details</a></li>
                           <li><a href="/documents/Assign2In.txt" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Sample Input</a></li>
                           <li><a href="/documents/Assign2Out.txt" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Sample Output</a></li>
@@ -40,21 +38,19 @@ const Java = () => {
                         </ul>
                       </CollapsibleSection>
                     </li>
-                    <li className="space-y-2">
+                    <li className="space-y-1">
                       <span className="font-medium">3: Loops</span>
-                      {/* Nested dropdown for Loops */}
                       <CollapsibleSection title="Details" isNested={true}>
-                        <ul className="list-disc pl-4 space-y-2 py-1">
+                        <ul className="list-disc pl-4 space-y-1 text-sm">
                           <li><a href="/documents/Java_Assignment3_LoopPractice.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Details</a></li>
                           <li><a href="/documents/Assign3FreqFrameSolution.java" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Frequency Frame</a></li>
                         </ul>
                       </CollapsibleSection>
                     </li>
-                    <li className="space-y-2">
+                    <li className="space-y-1">
                       <span className="font-medium">4: Arrays</span>
-                      {/* Nested dropdown for Arrays */}
                       <CollapsibleSection title="Details" isNested={true}>
-                        <ul className="list-disc pl-4 space-y-2 py-1">
+                        <ul className="list-disc pl-4 space-y-1 text-sm">
                           <li><a href="/documents/Java_Assignment4_Budget.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Budget</a></li>
                           <li><a href="/documents/Java_Assignment4_RackO.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">RackO</a></li>
                           <li><a href="/documents/Assign4BudgetExample.jar" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Budget Example</a></li>
@@ -63,22 +59,20 @@ const Java = () => {
                         </ul>
                       </CollapsibleSection>
                     </li>
-                    <li className="space-y-2">
+                    <li className="space-y-1">
                       <span className="font-medium">4.5: Object Oriented Basics</span>
-                      {/* Nested dropdown for Object Oriented Basics */}
                       <CollapsibleSection title="Details" isNested={true}>
-                        <ul className="list-disc pl-4 space-y-2 py-1">
+                        <ul className="list-disc pl-4 space-y-1 text-sm">
                           <li><a href="/documents/Java_Assignment4.5_Object_Oriented_Basics.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Assignment</a></li>
                           <li><a href="/documents/Assign4.5Student.java" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Student.java</a></li>
                         </ul>
                       </CollapsibleSection>
                     </li>
                     <li><a href="/documents/Java_Assignment5_SwingBasics.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">5: Swing Basics</a></li>
-                    <li className="space-y-2">
+                    <li className="space-y-1">
                       <span className="font-medium">6: Final Project</span>
-                      {/* Nested dropdown for Final Project */}
                       <CollapsibleSection title="Details" isNested={true}>
-                        <ul className="list-disc pl-4 space-y-2 py-1">
+                        <ul className="list-disc pl-4 space-y-1 text-sm">
                           <li><a href="/documents/Java_Assignment6_FinalProject.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Assignment</a></li>
                           <li><a href="/documents/Assign6BlackJackSkeleton.zip" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Blackjack Skeleton</a></li>
                         </ul>
@@ -195,7 +189,6 @@ const Java = () => {
                     <li><a href="/documents/GuideForRoundButtons.pdf" target="_blank" rel="noopener noreferrer">Guide for Round Buttons</a></li>
                     <li>
                       Sounds
-                      {/* Nested dropdown for Sounds */}
                       <CollapsibleSection title="Sound Files" isNested={true}>
                         <ul className="list-disc pl-6 space-y-1">
                           <li><a href="/sounds/Ring10.wav" target="_blank" rel="noopener noreferrer">Ring10.wav</a></li>
@@ -226,6 +219,11 @@ const Java = () => {
               </div>
             </TabsContent>
           </Tabs>
+
+          {/* Discrete watermark */}
+          <div className="mt-8 text-center">
+            <p className="text-xs text-muted-foreground/50">Created by Hanley</p>
+          </div>
         </div>
       </div>
     </Layout>

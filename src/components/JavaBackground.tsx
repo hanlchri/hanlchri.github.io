@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 
 interface Node {
@@ -11,6 +10,8 @@ interface Node {
   size: number;
   color: string;
   angleOffset: number;
+  isDragging: boolean;
+  dragOffset: { x: number; y: number };
 }
 
 const JavaBackground: React.FC = () => {
@@ -19,6 +20,7 @@ const JavaBackground: React.FC = () => {
   const firstMoveMadeRef = useRef(false);
   const nodesRef = useRef<Node[]>([]);
   const animationFrameIdRef = useRef<number | null>(null);
+  const draggedNodeRef = useRef<Node | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -75,7 +77,9 @@ const JavaBackground: React.FC = () => {
           originalX: x, originalY: y,
           connections: [],
           size, color,
-          angleOffset: Math.random() * Math.PI * 2
+          angleOffset: Math.random() * Math.PI * 2,
+          isDragging: false,
+          dragOffset: { x: 0, y: 0 }
         });
       }
       
@@ -101,11 +105,66 @@ const JavaBackground: React.FC = () => {
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
+    const getNodeAtPosition = (x: number, y: number): Node | null => {
+      for (const node of nodesRef.current) {
+        const dx = x - node.x;
+        const dy = y - node.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        if (distance <= node.size + 10) { // Add some padding for easier clicking
+          return node;
+        }
+      }
+      return null;
+    };
+
+    const handleMouseDown = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const clickedNode = getNodeAtPosition(x, y);
+      if (clickedNode) {
+        draggedNodeRef.current = clickedNode;
+        clickedNode.isDragging = true;
+        clickedNode.dragOffset = {
+          x: x - clickedNode.x,
+          y: y - clickedNode.y
+        };
+        canvas.style.cursor = 'grabbing';
+      }
+    };
+
     const handleMouseMove = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
       mousePositionRef.current = { x: e.clientX, y: e.clientY };
       if(!firstMoveMadeRef.current) firstMoveMadeRef.current = true;
+
+      if (draggedNodeRef.current) {
+        draggedNodeRef.current.x = x - draggedNodeRef.current.dragOffset.x;
+        draggedNodeRef.current.y = y - draggedNodeRef.current.dragOffset.y;
+        draggedNodeRef.current.originalX = draggedNodeRef.current.x;
+        draggedNodeRef.current.originalY = draggedNodeRef.current.y;
+      } else {
+        // Check if hovering over a node
+        const hoveredNode = getNodeAtPosition(x, y);
+        canvas.style.cursor = hoveredNode ? 'grab' : 'default';
+      }
     };
+
+    const handleMouseUp = () => {
+      if (draggedNodeRef.current) {
+        draggedNodeRef.current.isDragging = false;
+        draggedNodeRef.current = null;
+        canvas.style.cursor = 'default';
+      }
+    };
+
+    canvas.addEventListener('mousedown', handleMouseDown);
     window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseup', handleMouseUp);
 
     const drawJavaSymbol = (symbolCtx: CanvasRenderingContext2D, x: number, y: number, size: number) => {
         symbolCtx.save();
@@ -140,23 +199,25 @@ const JavaBackground: React.FC = () => {
       const time = Date.now() * NODE_DRIFT_SPEED_FACTOR;
 
       nodesRef.current.forEach(node => {
-        // Gentle drift around original position
-        const driftAngle = time + node.angleOffset;
-        node.x = node.originalX + Math.cos(driftAngle) * NODE_DRIFT_AMPLITUDE * node.size * 5;
-        node.y = node.originalY + Math.sin(driftAngle) * NODE_DRIFT_AMPLITUDE * node.size * 5;
+        if (!node.isDragging) {
+          // Gentle drift around original position
+          const driftAngle = time + node.angleOffset;
+          node.x = node.originalX + Math.cos(driftAngle) * NODE_DRIFT_AMPLITUDE * node.size * 5;
+          node.y = node.originalY + Math.sin(driftAngle) * NODE_DRIFT_AMPLITUDE * node.size * 5;
 
-        if (firstMoveMadeRef.current) {
-          const dxMouse = node.x - mousePositionRef.current.x;
-          const dyMouse = node.y - mousePositionRef.current.y;
-          const distanceMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
+          if (firstMoveMadeRef.current && !draggedNodeRef.current) {
+            const dxMouse = node.x - mousePositionRef.current.x;
+            const dyMouse = node.y - mousePositionRef.current.y;
+            const distanceMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
 
-          if (distanceMouse < MOUSE_INTERACTION_RADIUS && distanceMouse > 0) {
-            const forceDirectionX = dxMouse / distanceMouse;
-            const forceDirectionY = dyMouse / distanceMouse;
-            const forceMagnitude = (1 - distanceMouse / MOUSE_INTERACTION_RADIUS) * MOUSE_REPULSION_FORCE;
-            
-            node.x += forceDirectionX * forceMagnitude;
-            node.y += forceDirectionY * forceMagnitude;
+            if (distanceMouse < MOUSE_INTERACTION_RADIUS && distanceMouse > 0) {
+              const forceDirectionX = dxMouse / distanceMouse;
+              const forceDirectionY = dyMouse / distanceMouse;
+              const forceMagnitude = (1 - distanceMouse / MOUSE_INTERACTION_RADIUS) * MOUSE_REPULSION_FORCE;
+              
+              node.x += forceDirectionX * forceMagnitude;
+              node.y += forceDirectionY * forceMagnitude;
+            }
           }
         }
         
@@ -201,7 +262,9 @@ const JavaBackground: React.FC = () => {
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);
+      canvas.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
       if (animationFrameIdRef.current) {
         cancelAnimationFrame(animationFrameIdRef.current);
       }
@@ -212,7 +275,6 @@ const JavaBackground: React.FC = () => {
     <canvas
       ref={canvasRef}
       className="fixed top-0 left-0 w-full h-full -z-10 opacity-80"
-      style={{ pointerEvents: 'none' }}
     />
   );
 };

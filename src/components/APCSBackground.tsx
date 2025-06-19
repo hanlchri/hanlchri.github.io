@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 
 interface Hexagon {
@@ -9,6 +8,8 @@ interface Hexagon {
   angle: number;
   rotationSpeed: number;
   originalRotationSpeed: number;
+  isDragging: boolean;
+  dragOffset: { x: number; y: number };
 }
 
 const APCSBackground: React.FC = () => {
@@ -17,6 +18,7 @@ const APCSBackground: React.FC = () => {
   const firstMoveMadeRef = useRef(false);
   const hexagonsRef = useRef<Hexagon[]>([]);
   const animationFrameIdRef = useRef<number | null>(null);
+  const draggedHexagonRef = useRef<Hexagon | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -70,6 +72,8 @@ const APCSBackground: React.FC = () => {
           angle: angleValue,
           rotationSpeed: baseRotationSpeed,
           originalRotationSpeed: baseRotationSpeed,
+          isDragging: false,
+          dragOffset: { x: 0, y: 0 }
         });
       }
     };
@@ -84,13 +88,65 @@ const APCSBackground: React.FC = () => {
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
+    const getHexagonAtPosition = (x: number, y: number): Hexagon | null => {
+      for (const hexagon of hexagonsRef.current) {
+        const dx = x - hexagon.x;
+        const dy = y - hexagon.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        if (distance <= hexagon.size + 10) {
+          return hexagon;
+        }
+      }
+      return null;
+    };
+
+    const handleMouseDown = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const clickedHexagon = getHexagonAtPosition(x, y);
+      if (clickedHexagon) {
+        draggedHexagonRef.current = clickedHexagon;
+        clickedHexagon.isDragging = true;
+        clickedHexagon.dragOffset = {
+          x: x - clickedHexagon.x,
+          y: y - clickedHexagon.y
+        };
+        canvas.style.cursor = 'grabbing';
+      }
+    };
+
     const handleMouseMove = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
       mousePositionRef.current = { x: e.clientX, y: e.clientY };
       if (!firstMoveMadeRef.current) {
         firstMoveMadeRef.current = true;
       }
+
+      if (draggedHexagonRef.current) {
+        draggedHexagonRef.current.x = x - draggedHexagonRef.current.dragOffset.x;
+        draggedHexagonRef.current.y = y - draggedHexagonRef.current.dragOffset.y;
+      } else {
+        const hoveredHexagon = getHexagonAtPosition(x, y);
+        canvas.style.cursor = hoveredHexagon ? 'grab' : 'default';
+      }
     };
+
+    const handleMouseUp = () => {
+      if (draggedHexagonRef.current) {
+        draggedHexagonRef.current.isDragging = false;
+        draggedHexagonRef.current = null;
+        canvas.style.cursor = 'default';
+      }
+    };
+
+    canvas.addEventListener('mousedown', handleMouseDown);
     window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseup', handleMouseUp);
 
     const drawHexagon = (x: number, y: number, size: number, color: string, currentAngle: number) => {
       if (!ctx) return;
@@ -133,25 +189,31 @@ const APCSBackground: React.FC = () => {
       hexagonsRef.current.forEach((hexagon) => {
         hexagon.angle += hexagon.rotationSpeed;
 
-        if (firstMoveMadeRef.current) {
-          const dx = hexagon.x - mousePositionRef.current.x;
-          const dy = hexagon.y - mousePositionRef.current.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
+        if (!hexagon.isDragging) {
+          if (firstMoveMadeRef.current) {
+            const dx = hexagon.x - mousePositionRef.current.x;
+            const dy = hexagon.y - mousePositionRef.current.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
 
-          if (distance < MOUSE_INTERACTION_RADIUS) {
-            const proximityFactor = (1 - distance / MOUSE_INTERACTION_RADIUS);
-            const interactionForce = MOVEMENT_FORCE_MULTIPLIER * proximityFactor;
-            const angleToMouse = Math.atan2(dy, dx);
+            if (distance < MOUSE_INTERACTION_RADIUS) {
+              const proximityFactor = (1 - distance / MOUSE_INTERACTION_RADIUS);
+              const interactionForce = MOVEMENT_FORCE_MULTIPLIER * proximityFactor;
+              const angleToMouse = Math.atan2(dy, dx);
 
-            hexagon.x += Math.cos(angleToMouse) * interactionForce;
-            hexagon.y += Math.sin(angleToMouse) * interactionForce;
-            
-            hexagon.rotationSpeed *= ROTATION_EFFECT_MULTIPLIER;
-          } else {
-            if (ENABLE_ROTATION_REVERSION) {
-              hexagon.rotationSpeed += (hexagon.originalRotationSpeed - hexagon.rotationSpeed) * ROTATION_REVERSION_LERP_FACTOR;
+              hexagon.x += Math.cos(angleToMouse) * interactionForce;
+              hexagon.y += Math.sin(angleToMouse) * interactionForce;
+              
+              hexagon.rotationSpeed *= ROTATION_EFFECT_MULTIPLIER;
+            } else {
+              if (ENABLE_ROTATION_REVERSION) {
+                hexagon.rotationSpeed += (hexagon.originalRotationSpeed - hexagon.rotationSpeed) * ROTATION_REVERSION_LERP_FACTOR;
+              }
             }
           }
+
+          const timeFactor = Date.now() * TIME_FACTOR;
+          hexagon.x += Math.sin(timeFactor + hexagon.size) * DRIFT_STRENGTH;
+          hexagon.y += Math.cos(timeFactor + hexagon.size) * DRIFT_STRENGTH;
         }
 
         drawHexagon(hexagon.x, hexagon.y, hexagon.size, hexagon.color, hexagon.angle);
@@ -160,10 +222,6 @@ const APCSBackground: React.FC = () => {
         if (hexagon.x > canvas.width + hexagon.size) hexagon.x = -hexagon.size;
         if (hexagon.y < -hexagon.size) hexagon.y = canvas.height + hexagon.size;
         if (hexagon.y > canvas.height + hexagon.size) hexagon.y = -hexagon.size;
-
-        const timeFactor = Date.now() * TIME_FACTOR;
-        hexagon.x += Math.sin(timeFactor + hexagon.size) * DRIFT_STRENGTH;
-        hexagon.y += Math.cos(timeFactor + hexagon.size) * DRIFT_STRENGTH;
       });
 
       animationFrameIdRef.current = requestAnimationFrame(animate);
@@ -173,7 +231,9 @@ const APCSBackground: React.FC = () => {
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);
+      canvas.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
       if (animationFrameIdRef.current) {
         cancelAnimationFrame(animationFrameIdRef.current);
       }
@@ -184,7 +244,6 @@ const APCSBackground: React.FC = () => {
     <canvas
       ref={canvasRef}
       className="fixed top-0 left-0 w-full h-full -z-10 opacity-80"
-      style={{ pointerEvents: 'none' }}
     />
   );
 };
