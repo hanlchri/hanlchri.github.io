@@ -6,181 +6,209 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 const APCS = () => {
   return (
     <Layout>
-      <div className="max-w-6xl mx-auto mt-10 px-4">
+<div className="max-w-6xl mx-auto mt-10 px-4">
         <div className="content-section">
-          <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center tech-text">AP Computer Science</h1>
-          
+          <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center tech-text">Java</h1>
+
           <Tabs defaultValue="assignments" className="w-full">
-            <TabsList className="w-full grid grid-cols-2 md:grid-cols-4 mb-6 bg-secondary">
-              <TabsTrigger value="assignments" className="text-sm md:text-base py-2 whitespace-normal h-auto">Assignments</TabsTrigger>
-              <TabsTrigger value="lessons" className="text-sm md:text-base py-2 whitespace-normal h-auto">Lessons</TabsTrigger>
-              <TabsTrigger value="resources" className="text-sm md:text-base py-2 whitespace-normal h-auto">Resources</TabsTrigger>
-              <TabsTrigger value="homework" className="text-sm md:text-base py-2 whitespace-normal h-auto">Homework</TabsTrigger>
+            <TabsList className="w-full grid grid-cols-2 md:grid-cols-4 mb-6 bg-secondary gap-1 p-1">
+              <TabsTrigger value="assignments" className="text-xs sm:text-sm py-2 px-1 sm:px-2 h-auto min-h-[2.5rem]">Assignments</TabsTrigger>
+              <TabsTrigger value="lessons" className="text-xs sm:text-sm py-2 px-1 sm:px-2 h-auto min-h-[2.5rem]">Lessons</TabsTrigger>
+              <TabsTrigger value="resources" className="text-xs sm:text-sm py-2 px-1 sm:px-2 h-auto min-h-[2.5rem]">Resources</TabsTrigger>
+              <TabsTrigger value="Bonus" className="text-xs sm:text-sm py-2 px-1 sm:px-2 h-auto min-h-[2.5rem]">Bonus</TabsTrigger>
             </TabsList>
-            
+
             <TabsContent value="assignments">
               <div className="space-y-4">
                 <h2 className="text-2xl font-bold mb-4 text-tech-cyan">Assignments</h2>
-                
-                <CollapsibleSection title="Summer Assignment">
-                  <ul className="list-disc pl-6 space-y-1">
-                    <li>1: Computer Components</li>
-                    <li>2: Operations Calculator</li>
-                    <li>3: Castle Stairs</li>
-                    <li>4: Matrix Computer Store</li>
-                    <li>5: Reusable Components</li>
+
+                <CollapsibleSection title="Assignments">
+                  <ul className="list-disc pl-6 space-y-3">
+                    <li><a href="/documents/Java_Assignment1_BasicConsoleApplications.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Summer Assignment</a></li>
+                    <li><a href="/documents/Java_Assignment2_CurrencyConverter.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">1: Computer Components</a></li>
+                    <li className="space-y-1">
+                      <span className="font-medium">2: Operations Calculator</span>
+                      <CollapsibleSection title="Details" isNested={true}>
+                        <ul className="list-disc pl-4 space-y-1 text-sm">
+                          <li><a href="/documents/Java_Assignment2.5_ChangeTwenty.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Details</a></li>
+                          <li><a href="/documents/Assign2In.txt" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Run-through</a></li>
+                        </ul>
+                      </CollapsibleSection>
+                    </li>
+                    <li className="space-y-1">
+                      <span className="font-medium">3: Castle Stairs</span>
+                      <CollapsibleSection title="Details" isNested={true}>
+                        <ul className="list-disc pl-4 space-y-1 text-sm">
+                          <li><a href="/documents/Java_Assignment3_LoopPractice.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Details</a></li>
+                          <li><a href="/documents/Assign3FreqFrameSolution.java" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Run-Through</a></li>
+                        </ul>
+                      </CollapsibleSection>
+                    </li>
+                      <li><a href="/documents/Java_Assignment2_CurrencyConverter.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">4: Matrix Computer Store</a></li>
+                    <li className="space-y-1">
+                      <span className="font-medium">4.5: Object Oriented Basics</span>
+                      <CollapsibleSection title="Details" isNested={true}>
+                        <ul className="list-disc pl-4 space-y-1 text-sm">
+                          <li><a href="/documents/Java_Assignment4.5_Object_Oriented_Basics.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Assignment</a></li>
+                          <li><a href="/documents/Assign4.5Student.java" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Student.java</a></li>
+                        </ul>
+                      </CollapsibleSection>
+                    </li>
+                    <li><a href="/documents/Java_Assignment5_SwingBasics.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">5: Swing Basics</a></li>
+                    <li className="space-y-1">
+                      <span className="font-medium">6: Final Project</span>
+                      <CollapsibleSection title="Details" isNested={true}>
+                        <ul className="list-disc pl-4 space-y-1 text-sm">
+                          <li><a href="/documents/Java_Assignment6_FinalProject.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Assignment</a></li>
+                          <li><a href="/documents/Assign6BlackJackSkeleton.zip" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Blackjack Skeleton</a></li>
+                        </ul>
+                      </CollapsibleSection>
+                    </li>
                   </ul>
                 </CollapsibleSection>
-                
-                <CollapsibleSection title="Advanced Topics">
-                  <ul className="list-disc pl-6 space-y-1">
-                    <li>6: Group Presentations</li>
-                    <li>7: Object Oriented Programming</li>
-                    <li>8: Additional Class Features</li>
-                    <li>9: String Methods</li>
-                    <li>10: 2-Dimensional Arrays</li>
-                    <li>11: List Management</li>
-                    <li>12: Polymorphism</li>
-                    <li>13: Why Software is So Bad</li>
-                    <li>14: Stacks</li>
-                    <li>15: Recursion</li>
-                    <li>16: Intel Pentium Bug</li>
-                    <li>17: Searching and Sorting</li>
-                    <li>18: Hangman</li>
+
+                <CollapsibleSection title="Homework">
+                  <ul className="list-disc pl-6 space-y-2">
+                    <li><a href="/documents/GlossaryTerms.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Glossary Terms</a></li>
+                    <li><a href="/documents/LogicalOperatorsHW.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Logical Operators HW</a></li>
+                    <li><a href="/documents/Java_Loops_HW.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Loops HW</a></li>
+                    <li><a href="/documents/JavaHWArrays.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Arrays HW</a></li>
                   </ul>
                 </CollapsibleSection>
               </div>
             </TabsContent>
-            
+
             <TabsContent value="lessons">
               <div className="space-y-4">
                 <h2 className="text-2xl font-bold mb-4 text-tech-cyan">Lessons</h2>
-                
+
                 <CollapsibleSection title="Unit 1 Review">
                   <ul className="list-disc pl-6 space-y-1">
-                    <li>Review: Blank | Filled</li>
-                    <li>Imports: Blank | Filled</li>
-                    <li>Bases: Blank | Filled</li>
-                    <li>Round Off Error: Blank | Filled</li>
+                    <li><a href="/documents/FlowchartTaxCalculator.pdf" target="_blank" rel="noopener noreferrer">Flowchart for Tax Calculator</a></li>
+                    <li><a href="/documents/TaxCalc.java" target="_blank" rel="noopener noreferrer">TaxCalc</a></li>
+                    <li>
+                      Flowcharting Lesson:
+                      <a href="/documents/FlowchartingLesson_Blank.pdf" target="_blank" rel="noopener noreferrer" className="ml-2">Blank</a> |
+                      <a href="/documents/FlowchartingLesson_Filled.pdf" target="_blank" rel="noopener noreferrer" className="ml-1">Filled</a>
+                    </li>
+                    <li><a href="/documents/TeachJava.java" target="_blank" rel="noopener noreferrer">TeachJava</a></li>
                   </ul>
                 </CollapsibleSection>
-                
-                <CollapsibleSection title="Unit 2 Math Operations">
-                  <p>Math Operations: Blank | Filled</p>
-                </CollapsibleSection>
-                
-                <CollapsibleSection title="Unit 3 Primitives/References/Short Circuits">
+
+                <CollapsibleSection title="Unit 2 Data and Variables">
                   <ul className="list-disc pl-6 space-y-1">
-                    <li>Objects: Blank | Filled</li>
-                    <li>Parameter Passing: Blank | Filled</li>
-                    <li>Short Circuit Evals: Blank | Filled</li>
+                    <li>
+                      Math Operations:
+                      <a href="/documents/MathOperations_Blank.pdf" target="_blank" rel="noopener noreferrer" className="ml-2">Blank</a> |
+                      <a href="/documents/MathOperations_Filled.pdf" target="_blank" rel="noopener noreferrer" className="ml-1">Filled</a>
+                    </li>
+                    <li>
+                      Data Modeling:
+                      <a href="/documents/DataModeling_Blank.pdf" target="_blank" rel="noopener noreferrer" className="ml-2">Blank</a> |
+                      <a href="/documents/DataModeling_Filled.pdf" target="_blank" rel="noopener noreferrer" className="ml-1">Filled</a>
+                    </li>
                   </ul>
                 </CollapsibleSection>
-                
-                <CollapsibleSection title="Unit 4 Object Oriented">
+
+                <CollapsibleSection title="Unit 3 Selection Statements">
                   <ul className="list-disc pl-6 space-y-1">
-                    <li>OOP: Blank | Filled</li>
-                    <li>OOP Part 2: Blank | Filled</li>
-                    <li>Interfaces: Blank | Filled</li>
+                    <li>
+                      Selection Statements:
+                      <a href="/documents/SelectionStatements_Blank.pdf" target="_blank" rel="noopener noreferrer" className="ml-2">Blank</a> |
+                      <a href="/documents/SelectionStatements_Filled.pdf" target="_blank" rel="noopener noreferrer" className="ml-1">Filled</a>
+                    </li>
                   </ul>
                 </CollapsibleSection>
-                
-                <CollapsibleSection title="Unit 5 Strings">
-                  <p>Strings: Blank | Filled</p>
-                </CollapsibleSection>
-                
-                <CollapsibleSection title="Unit 6 Arrays & ArrayLists">
+
+                <CollapsibleSection title="Unit 4 Looping & Random">
                   <ul className="list-disc pl-6 space-y-1">
-                    <li>Arrays: Blank | Filled</li>
-                    <li>ArrayLists: Blank | Filled</li>
-                    <li>ForEachLoop Blank | Filled</li>
+                    <li>
+                      Looping:
+                      <a href="/documents/Looping_Blank.pdf" target="_blank" rel="noopener noreferrer" className="ml-2">Blank</a> |
+                      <a href="/documents/Looping_Filled.pdf" target="_blank" rel="noopener noreferrer" className="ml-1">Filled</a>
+                    </li>
+                    <li>
+                      Random:
+                      <a href="/documents/Random_Blank.pdf" target="_blank" rel="noopener noreferrer" className="ml-2">Blank</a> |
+                      <a href="/documents/Random_Filled.pdf" target="_blank" rel="noopener noreferrer" className="ml-1">Filled</a> |
+                      <a href="/documents/RandExamples.java" target="_blank" rel="noopener noreferrer" className="ml-1">RandExamples.java</a>
+                    </li>
                   </ul>
                 </CollapsibleSection>
-                
-                <CollapsibleSection title="Midterm Review">
-                  <p>Review: Blank | Filled</p>
+
+                <CollapsibleSection title="Unit 5 Scope">
+                  <p>
+                    Scope:
+                    <a href="/documents/Scope_Blank.pdf" target="_blank" rel="noopener noreferrer" className="ml-2">Blank</a> |
+                    <a href="/documents/Scope_Filled.pdf" target="_blank" rel="noopener noreferrer" className="ml-1">Filled</a>
+                  </p>
                 </CollapsibleSection>
-                
-                <CollapsibleSection title="Unit 7 File IO">
-                  <p>File I/O: Blank | Filled</p>
+
+                <CollapsibleSection title="Unit 6 Arrays">
+                  <p>
+                    Arrays:
+                    <a href="/documents/Arrays_Blank.pdf" target="_blank" rel="noopener noreferrer" className="ml-2">Blank</a> |
+                    <a href="/documents/Arrays_Filled.pdf" target="_blank" rel="noopener noreferrer" className="ml-1">Filled</a>
+                  </p>
                 </CollapsibleSection>
-                
-                <CollapsibleSection title="Unit 8 Inheritance & Polymorphism">
-                  <p>Content coming soon</p>
+
+                <CollapsibleSection title="Final Review">
+                  <p>
+                    Final Exam:
+                    <a href="/documents/FinalExam_Review.pdf" target="_blank" rel="noopener noreferrer" className="ml-2">Review</a> |
+                    <a href="/documents/FinalExam_Powerpoint.pptx" target="_blank" rel="noopener noreferrer" className="ml-1">Powerpoint</a>
+                  </p>
                 </CollapsibleSection>
               </div>
             </TabsContent>
-            
+
             <TabsContent value="resources">
               <div className="space-y-4">
                 <h2 className="text-2xl font-bold mb-4 text-tech-cyan">Resources</h2>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="bg-secondary/50 p-4 rounded-lg">
-                    <h3 className="text-xl font-bold mb-3">Helpful Resources</h3>
-                    <ul className="list-disc pl-6 space-y-2">
-                      <li>The Cookbook</li>
-                      <li>Printing from Netbeans</li>
-                      <li>GUI Survival Guide</li>
-                      <li>Sound Files</li>
-                      <li>Making round buttons</li>
-                      <li>References</li>
-                    </ul>
-                  </div>
-                  
-                  <div className="bg-secondary/50 p-4 rounded-lg">
-                    <h3 className="text-xl font-bold mb-3">Bonuses</h3>
-                    <ul className="list-disc pl-6 space-y-2">
-                      <li>1st Quarter: Base Converter</li>
-                      <li>1st Quarter: PNZ</li>
-                      <li>3rd Quarter: Black Jack Description</li>
-                      <li>Skeleton</li>
-                      <li>Yahtzee Details</li>
-                      <li>Allison Leonard Console Yahtzee</li>
-                      <li>Hotel System</li>
-                      <li>Risk</li>
-                    </ul>
-                  </div>
-                </div>
+
+                <CollapsibleSection title="Resources">
+                  <ul className="list-disc pl-6 space-y-1">
+                    <li><a href="/documents/TextbookChapters1_2.pdf" target="_blank" rel="noopener noreferrer">Textbook Chapters 1 and 2</a></li>
+                    <li><a href="/documents/TheCookbook.pdf" target="_blank" rel="noopener noreferrer">The Cookbook</a></li>
+                    <li><a href="/documents/PrintingFromNetbeans.pdf" target="_blank" rel="noopener noreferrer">Printing from Netbeans</a></li>
+                    <li><a href="/documents/GUISurvivalGuide.pdf" target="_blank" rel="noopener noreferrer">GUI Survival Guide</a></li>
+                    <li><a href="/documents/GuideForRoundButtons.pdf" target="_blank" rel="noopener noreferrer">Guide for Round Buttons</a></li>
+                    <li>
+                      Sounds
+                      <CollapsibleSection title="Sound Files" isNested={true}>
+                        <ul className="list-disc pl-6 space-y-1">
+                          <li><a href="/sounds/Ring10.wav" target="_blank" rel="noopener noreferrer">Ring10.wav</a></li>
+                          <li><a href="/sounds/chimes.wav" target="_blank" rel="noopener noreferrer">chimes.wav</a></li>
+                          <li><a href="/sounds/drumroll.wav" target="_blank" rel="noopener noreferrer">drumroll.wav</a></li>
+                          <li><a href="/sounds/fanfare.wav" target="_blank" rel="noopener noreferrer">fanfare.wav</a></li>
+                          <li><a href="/sounds/vibe.wav" target="_blank" rel="noopener noreferrer">vibe.wav</a></li>
+                          <li><a href="/sounds/Wind.wav" target="_blank" rel="noopener noreferrer">Wind.wav</a></li>
+                          <li><a href="/sounds/Explosion.wav" target="_blank" rel="noopener noreferrer">Explosion.wav</a></li>
+                        </ul>
+                      </CollapsibleSection>
+                    </li>
+                  </ul>
+                </CollapsibleSection>
               </div>
             </TabsContent>
-            
-            <TabsContent value="homework">
+
+            <TabsContent value="Bonus">
               <div className="space-y-4">
-                <h2 className="text-2xl font-bold mb-4 text-tech-cyan">Homework</h2>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <CollapsibleSection title="Assignments">
-                    <ul className="list-disc pl-6 space-y-2">
-                      <li>Pythagorean Triples</li>
-                      <li>Spread out the Stars</li>
-                      <li>Array Copying</li>
-                      <li>Roach Population</li>
-                      <li>Paint BullsEye and Sealable House</li>
-                      <li>Inheritance Hierarchy</li>
-                      <li>Coffee Seller</li>
-                      <li>ENIAC Essay</li>
-                      <li>Graphics Patterns</li>
-                    </ul>
-                  </CollapsibleSection>
-                  
-                  <CollapsibleSection title="Useful Links">
-                    <ul className="list-disc pl-6 space-y-2">
-                      <li>AP College Board</li>
-                      <li>Practice Exams</li>
-                      <li>Java Documentation</li>
-                      <li>Stack Overflow</li>
-                      <li>GitHub Student Developer Pack</li>
-                    </ul>
-                  </CollapsibleSection>
-                </div>
+                <h2 className="text-2xl font-bold mb-4 text-tech-cyan">Bonus</h2>
+
+                <CollapsibleSection title="Resources">
+                  <ul className="list-disc pl-6 space-y-1">
+                    <li><a href="/documents/CoinflipProblem.pdf" target="_blank" rel="noopener noreferrer">Coinflip Problem</a></li>
+                    <li><a href="/documents/FoxGooseGrainProblem.pdf" target="_blank" rel="noopener noreferrer">Fox Goose Grain Problem</a></li>
+                  </ul>
+                </CollapsibleSection>
               </div>
             </TabsContent>
           </Tabs>
 
           {/* Discrete watermark */}
           <div className="mt-8 text-center">
-            <p className="text-xs text-muted-foreground/50">Created by Hanley</p>
+            <p className="text-xs text-muted-foreground/50">Created by Hassaan Vani Class of 2027</p>
           </div>
         </div>
       </div>
