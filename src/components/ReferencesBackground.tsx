@@ -40,15 +40,16 @@ const ReferencesBackground: React.FC = () => {
     const LINE_MIN_LENGTH = 50;
     const LINE_MAX_LENGTH = 200;
 
-    const MOUSE_INTERACTION_RADIUS = 150; // Reduced
-    const MOUSE_BEND_BASE_FORCE = 0.06;  // Further reduced
-    const MOUSE_BEND_SCALAR = 0.05;      // Reduced
+    const MOUSE_INTERACTION_RADIUS = 150;
+    const MOUSE_BEND_BASE_FORCE = 0.06;
+    const MOUSE_BEND_SCALAR = 0.05;
     const ENABLE_BEND_REVERSION = true;
-    const BEND_REVERSION_LERP_FACTOR = 0.02; // Slower reversion
+    const BEND_REVERSION_LERP_FACTOR = 0.02;
 
     const ADD_LINE_ON_MOUSE_PROBABILITY = 0.008;
     
-    const TRAIL_EFFECT_ALPHA = 0.08; // Slightly higher for better trail
+    // Improved trail effect
+    const TRAIL_EFFECT_ALPHA = 0.18;
     const BACKGROUND_COLOR_FOR_TRAIL = `rgba(26, 31, 44, ${TRAIL_EFFECT_ALPHA})`;
     const GLOW_OPACITY = 0.4;
     // --- END OF ADJUSTABLE PARAMETERS ---
@@ -104,7 +105,6 @@ const ReferencesBackground: React.FC = () => {
         const currentEndX = line.startX + (line.endX - line.startX) * line.progress;
         const currentEndY = line.startY + (line.endY - line.startY) * line.progress;
         
-        // Check if mouse is near the line
         const distToStart = Math.sqrt((x - line.startX) ** 2 + (y - line.startY) ** 2);
         const distToEnd = Math.sqrt((x - currentEndX) ** 2 + (y - currentEndY) ** 2);
         
@@ -164,8 +164,16 @@ const ReferencesBackground: React.FC = () => {
 
     const animate = () => {
       if (!ctx || !canvas) return;
-      ctx.fillStyle = BACKGROUND_COLOR_FOR_TRAIL;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      // Clear canvas completely every few frames to prevent shadow buildup
+      const frameCount = Date.now() % 4000;
+      if (frameCount < 50) {
+        ctx.fillStyle = 'rgba(26, 31, 44, 1)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      } else {
+        ctx.fillStyle = BACKGROUND_COLOR_FOR_TRAIL;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
 
       for (let i = linesRef.current.length - 1; i >= 0; i--) {
         const line = linesRef.current[i];
@@ -182,7 +190,6 @@ const ReferencesBackground: React.FC = () => {
         const currentProgressEndX = line.startX + (line.endX - line.startX) * line.progress;
         const currentProgressEndY = line.startY + (line.endY - line.startY) * line.progress;
         
-        // Mouse interaction: bend line endpoint (only if not dragging)
         let interactedThisFrame = false;
         if (firstMoveMadeRef.current && !line.isDragging) {
           const midX = (line.startX + currentProgressEndX) / 2;
@@ -244,7 +251,7 @@ const ReferencesBackground: React.FC = () => {
     <canvas
       ref={canvasRef}
       className="fixed top-0 left-0 w-full h-full -z-10 opacity-80"
-      style={{ pointerEvents: 'none' }}
+      style={{ pointerEvents: 'auto', cursor: 'default' }}
     />
   );
 };

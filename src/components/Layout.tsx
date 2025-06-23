@@ -19,7 +19,6 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const location = useLocation();
   
-  // Determine background type based on current route
   const renderBackground = () => {
     if (location.pathname === '/') {
       return (
@@ -75,27 +74,41 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const pageVariants = {
     initial: {
       opacity: 0,
-      y: 20,
+      scale: 0.95,
+      filter: 'blur(10px)',
     },
     in: {
       opacity: 1,
-      y: 0,
+      scale: 1,
+      filter: 'blur(0px)',
     },
     out: {
       opacity: 0,
-      y: -20,
+      scale: 1.05,
+      filter: 'blur(10px)',
     }
   };
 
   const pageTransition = {
     type: 'tween',
-    ease: 'anticipate',
-    duration: 0.4
+    ease: [0.25, 0.46, 0.45, 0.94],
+    duration: 0.6
   };
 
   return (
-    <div className="min-h-screen relative">
-      {renderBackground()}
+    <div className="min-h-screen relative overflow-hidden">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={location.pathname + '-bg'}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          {renderBackground()}
+        </motion.div>
+      </AnimatePresence>
+      
       <NavBar />
       <main className="relative pt-16 pb-12 container mx-auto px-4">
         <AnimatePresence mode="wait">

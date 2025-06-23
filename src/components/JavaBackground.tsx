@@ -40,13 +40,11 @@ const JavaBackground: React.FC = () => {
     const ORBIT_RADIUS_SCALE = 0.4;
     const ORBIT_RANDOMNESS = 0.3;
 
-    // Reduced speed and amplitude for more ambient movement
     const NODE_DRIFT_SPEED_FACTOR = 0.002;
     const NODE_DRIFT_AMPLITUDE = 0.1;
 
-    // Reduced interaction for subtle cursor effect
     const MOUSE_INTERACTION_RADIUS = 200;
-    const MOUSE_REPULSION_FORCE = 0.08; // Further reduced
+    const MOUSE_REPULSION_FORCE = 0.08;
 
     const CONNECTION_MAX_DIST_OPACITY_CALC = 350;
     const CONNECTION_OPACITY_MULTIPLIER = 0.6;
@@ -55,8 +53,8 @@ const JavaBackground: React.FC = () => {
     const JAVA_SYMBOL_OPACITY = 0.15;
     const JAVA_SYMBOL_SIZE_SCALE = 0.3;
 
-    // Trail effect for smoother shadows
-    const TRAIL_EFFECT_ALPHA = 0.05; // Reduced for better trail effect
+    // Improved trail effect parameters
+    const TRAIL_EFFECT_ALPHA = 0.12;
     const BACKGROUND_COLOR_FOR_TRAIL = `rgba(26, 31, 44, ${TRAIL_EFFECT_ALPHA})`;
     // --- END OF ADJUSTABLE PARAMETERS ---
 
@@ -73,8 +71,9 @@ const JavaBackground: React.FC = () => {
         const y = centerY + Math.sin(angle) * r;
         const size = NODE_MIN_SIZE + Math.random() * (NODE_MAX_SIZE - NODE_MIN_SIZE);
 
+        // Purple-ish Java colors
         const colorValue = 20 + Math.floor(Math.random() * 40);
-        const color = `rgb(255, ${150 + colorValue}, ${50 + colorValue})`;
+        const color = `rgb(${150 + colorValue}, ${100 + colorValue}, ${200 + colorValue})`;
 
         nodesRef.current.push({
           id: i,
@@ -169,7 +168,7 @@ const JavaBackground: React.FC = () => {
         symbolCtx.save();
         symbolCtx.translate(x, y);
         symbolCtx.globalAlpha = JAVA_SYMBOL_OPACITY;
-        symbolCtx.fillStyle = '#F89820';
+        symbolCtx.fillStyle = '#9F7AEA';
         symbolCtx.beginPath();
         symbolCtx.moveTo(-size * 0.3, -size * 0.4);
         symbolCtx.bezierCurveTo(-size * 0.35, size * 0.2, size * 0.35, size * 0.2, size * 0.3, -size * 0.4);
@@ -180,7 +179,7 @@ const JavaBackground: React.FC = () => {
         symbolCtx.beginPath();
         symbolCtx.moveTo(0, -size * 0.5);
         symbolCtx.bezierCurveTo(size * 0.2, -size * 0.7, -size * 0.2, -size * 0.9, 0, -size * 0.7);
-        symbolCtx.strokeStyle = '#F89820';
+        symbolCtx.strokeStyle = '#9F7AEA';
         symbolCtx.lineWidth = size * 0.05;
         symbolCtx.stroke();
         symbolCtx.restore();
@@ -189,9 +188,15 @@ const JavaBackground: React.FC = () => {
     const animate = () => {
       if (!ctx || !canvas) return;
       
-      // Use trail effect for smooth shadows
-      ctx.fillStyle = BACKGROUND_COLOR_FOR_TRAIL;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      // Clear canvas completely every few frames to prevent shadow buildup
+      const frameCount = Date.now() % 3000;
+      if (frameCount < 50) {
+        ctx.fillStyle = 'rgba(26, 31, 44, 1)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      } else {
+        ctx.fillStyle = BACKGROUND_COLOR_FOR_TRAIL;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
       
       drawJavaSymbol(ctx, canvas.width / 2, canvas.height / 2, canvas.height * JAVA_SYMBOL_SIZE_SCALE);
 
@@ -199,10 +204,8 @@ const JavaBackground: React.FC = () => {
 
       nodesRef.current.forEach(node => {
         if (!node.isDragging) {
-          // Gentle drift around original position
-          const driftAngle = time + node.angleOffset;
-          node.x = node.originalX + Math.cos(driftAngle) * NODE_DRIFT_AMPLITUDE * node.size * 5;
-          node.y = node.originalY + Math.sin(driftAngle) * NODE_DRIFT_AMPLITUDE * node.size * 5;
+          node.x = node.originalX + Math.cos(time + node.angleOffset) * NODE_DRIFT_AMPLITUDE * node.size * 5;
+          node.y = node.originalY + Math.sin(time + node.angleOffset) * NODE_DRIFT_AMPLITUDE * node.size * 5;
 
           if (firstMoveMadeRef.current && !draggedNodeRef.current) {
             const dxMouse = node.x - mousePositionRef.current.x;
@@ -274,7 +277,7 @@ const JavaBackground: React.FC = () => {
     <canvas
       ref={canvasRef}
       className="fixed top-0 left-0 w-full h-full -z-10 opacity-80"
-      style={{ pointerEvents: 'none' }}
+      style={{ pointerEvents: 'auto', cursor: 'default' }}
     />
   );
 };
