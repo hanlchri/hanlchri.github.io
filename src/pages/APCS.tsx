@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Layout from '@/components/Layout';
 import CollapsibleSection from '@/components/CollapsibleSection';
@@ -11,11 +12,11 @@ const APCS = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center tech-text">AP Computer Science</h1>
 
           <Tabs defaultValue="assignments" className="w-full">
-            <TabsList className="w-full grid grid-cols-2 md:grid-cols-4 mb-6 bg-secondary gap-1 p-1">
-              <TabsTrigger value="assignments" className="text-xs sm:text-sm py-2 px-1 sm:px-2 h-auto min-h-[2.5rem]">Assignments</TabsTrigger>
-              <TabsTrigger value="lessons" className="text-xs sm:text-sm py-2 px-1 sm:px-2 h-auto min-h-[2.5rem]">Lessons</TabsTrigger>
-              <TabsTrigger value="resources" className="text-xs sm:text-sm py-2 px-1 sm:px-2 h-auto min-h-[2.5rem]">Resources</TabsTrigger>
-              <TabsTrigger value="bonuses" className="text-xs sm:text-sm py-2 px-1 sm:px-2 h-auto min-h-[2.5rem]">Bonuses</TabsTrigger>
+            <TabsList className="w-full grid grid-cols-2 md:grid-cols-4 mb-6">
+              <TabsTrigger value="assignments">Assignments</TabsTrigger>
+              <TabsTrigger value="lessons">Lessons</TabsTrigger>
+              <TabsTrigger value="resources">Resources</TabsTrigger>
+              <TabsTrigger value="bonuses">Bonuses</TabsTrigger>
             </TabsList>
 
             <TabsContent value="assignments">
@@ -28,8 +29,7 @@ const APCS = () => {
                     <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">1: Computer Components</a></li>
                     
                     <li className="space-y-1">
-                      <span className="font-medium">2: Operations Calculator</span>
-                      <CollapsibleSection title="Details" isNested={true}>
+                      <CollapsibleSection title="2: Operations Calculator" isNested={true}>
                         <ul className="list-disc pl-4 space-y-1 text-sm">
                           <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Assignment Details</a></li>
                           <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Assignment Run-through</a></li>
@@ -38,8 +38,7 @@ const APCS = () => {
                     </li>
                     
                     <li className="space-y-1">
-                      <span className="font-medium">3: Castle Stairs</span>
-                      <CollapsibleSection title="Details" isNested={true}>
+                      <CollapsibleSection title="3: Castle Stairs" isNested={true}>
                         <ul className="list-disc pl-4 space-y-1 text-sm">
                           <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Assignment Details</a></li>
                           <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Assignment Run-through</a></li>
@@ -50,8 +49,7 @@ const APCS = () => {
                     <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">4: Matrix Computer Store</a></li>
                     
                     <li className="space-y-1">
-                      <span className="font-medium">5: Reusable Components</span>
-                      <CollapsibleSection title="Details" isNested={true}>
+                      <CollapsibleSection title="5: Reusable Components" isNested={true}>
                         <ul className="list-disc pl-4 space-y-1 text-sm">
                           <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Assignment Details</a></li>
                           <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Tester</a></li>
@@ -63,8 +61,7 @@ const APCS = () => {
                     <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">6: Group Presentations</a></li>
                     
                     <li className="space-y-1">
-                      <span className="font-medium">7: Object Oriented Programming</span>
-                      <CollapsibleSection title="Details" isNested={true}>
+                      <CollapsibleSection title="7: Object Oriented Programming" isNested={true}>
                         <ul className="list-disc pl-4 space-y-1 text-sm">
                           <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Assignment Details</a></li>
                           <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Skeleton</a></li>
@@ -81,8 +78,7 @@ const APCS = () => {
                     </li>
                     
                     <li className="space-y-1">
-                      <span className="font-medium">8: Additional Class Features</span>
-                      <CollapsibleSection title="Details" isNested={true}>
+                      <CollapsibleSection title="8: Additional Class Features" isNested={true}>
                         <ul className="list-disc pl-4 space-y-1 text-sm">
                           <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Assignment Details</a></li>
                           <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Submission Instructions</a></li>
@@ -94,8 +90,7 @@ const APCS = () => {
                     </li>
                     
                     <li className="space-y-1">
-                      <span className="font-medium">9: String Methods</span>
-                      <CollapsibleSection title="Details" isNested={true}>
+                      <CollapsibleSection title="9: String Methods" isNested={true}>
                         <ul className="list-disc pl-4 space-y-1 text-sm">
                           <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Assignment Details</a></li>
                           <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Skeleton</a></li>
@@ -104,8 +99,7 @@ const APCS = () => {
                     </li>
                     
                     <li className="space-y-1">
-                      <span className="font-medium">10: 2-Dimensional Arrays</span>
-                      <CollapsibleSection title="Details" isNested={true}>
+                      <CollapsibleSection title="10: 2-Dimensional Arrays" isNested={true}>
                         <ul className="list-disc pl-4 space-y-1 text-sm">
                           <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Assignment Details</a></li>
                           <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">JButton Array Tutorial Part 1</a></li>
@@ -121,8 +115,7 @@ const APCS = () => {
                     <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">11: List Management</a></li>
                     
                     <li className="space-y-1">
-                      <span className="font-medium">12: Polymorphism</span>
-                      <CollapsibleSection title="Details" isNested={true}>
+                      <CollapsibleSection title="12: Polymorphism" isNested={true}>
                         <ul className="list-disc pl-4 space-y-1 text-sm">
                           <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Assignment Details</a></li>
                           <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Rectangle Example</a></li>
@@ -138,8 +131,7 @@ const APCS = () => {
                     <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">14: Stacks</a></li>
                     
                     <li className="space-y-1">
-                      <span className="font-medium">15: Recursion</span>
-                      <CollapsibleSection title="Details" isNested={true}>
+                      <CollapsibleSection title="15: Recursion" isNested={true}>
                         <ul className="list-disc pl-4 space-y-1 text-sm">
                           <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Assignment Details</a></li>
                           <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Skeleton</a></li>
@@ -151,8 +143,7 @@ const APCS = () => {
                     <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">16: Intel Pentium Bug</a></li>
                     
                     <li className="space-y-1">
-                      <span className="font-medium">17: Searching and Sorting</span>
-                      <CollapsibleSection title="Details" isNested={true}>
+                      <CollapsibleSection title="17: Searching and Sorting" isNested={true}>
                         <ul className="list-disc pl-4 space-y-1 text-sm">
                           <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Assignment Details</a></li>
                           <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Skeleton</a></li>
@@ -161,8 +152,7 @@ const APCS = () => {
                     </li>
                     
                     <li className="space-y-1">
-                      <span className="font-medium">18: Hangman</span>
-                      <CollapsibleSection title="Details" isNested={true}>
+                      <CollapsibleSection title="18: Hangman" isNested={true}>
                         <ul className="list-disc pl-4 space-y-1 text-sm">
                           <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Assignment Details</a></li>
                           <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Skeleton</a></li>
@@ -180,8 +170,7 @@ const APCS = () => {
                     <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Spread out the Stars</a></li>
                     
                     <li className="space-y-1">
-                      <span className="font-medium">Array Copying</span>
-                      <CollapsibleSection title="Details" isNested={true}>
+                      <CollapsibleSection title="Array Copying" isNested={true}>
                         <ul className="list-disc pl-4 space-y-1 text-sm">
                           <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Assignment Details</a></li>
                           <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Skeleton</a></li>
@@ -207,29 +196,24 @@ const APCS = () => {
                 <CollapsibleSection title="Unit 1 Review">
                   <ul className="list-disc pl-6 space-y-2">
                     <li>
-                      <span className="text-yellow-400 font-medium">Unit 1 Review:</span>
-                      <ul className="list-disc pl-6 mt-1 space-y-1">
-                        <li>
-                          Review: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                        <li>
-                          Imports: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                        <li>
-                          Bases: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                        <li>
-                          Round Off Error: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                      </ul>
+                      Review: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                    </li>
+                    <li>
+                      Imports: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                    </li>
+                    <li>
+                      Bases: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                    </li>
+                    <li>
+                      Round Off Error: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
@@ -237,14 +221,9 @@ const APCS = () => {
                 <CollapsibleSection title="Unit 2 Math Operations">
                   <ul className="list-disc pl-6 space-y-2">
                     <li>
-                      <span className="text-yellow-400 font-medium">Unit 2 Math Operations:</span>
-                      <ul className="list-disc pl-6 mt-1 space-y-1">
-                        <li>
-                          Random: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                      </ul>
+                      Random: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
@@ -252,24 +231,19 @@ const APCS = () => {
                 <CollapsibleSection title="Unit 3 Primitives/References/Short Circuit">
                   <ul className="list-disc pl-6 space-y-2">
                     <li>
-                      <span className="text-yellow-400 font-medium">Unit 3 Primitives/References/Short Circuit:</span>
-                      <ul className="list-disc pl-6 mt-1 space-y-1">
-                        <li>
-                          Objects: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                        <li>
-                          Parameter Passing: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                        <li>
-                          Short Circuit Evals: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                      </ul>
+                      Objects: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                    </li>
+                    <li>
+                      Parameter Passing: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                    </li>
+                    <li>
+                      Short Circuit Evals: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
@@ -277,24 +251,19 @@ const APCS = () => {
                 <CollapsibleSection title="Unit 4 Object Oriented">
                   <ul className="list-disc pl-6 space-y-2">
                     <li>
-                      <span className="text-yellow-400 font-medium">Unit 4 Object Oriented:</span>
-                      <ul className="list-disc pl-6 mt-1 space-y-1">
-                        <li>
-                          OOP: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                        <li>
-                          OOP Part 2: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                        <li>
-                          Interfaces: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                      </ul>
+                      OOP: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                    </li>
+                    <li>
+                      OOP Part 2: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                    </li>
+                    <li>
+                      Interfaces: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
@@ -302,14 +271,9 @@ const APCS = () => {
                 <CollapsibleSection title="Unit 5 Strings">
                   <ul className="list-disc pl-6 space-y-2">
                     <li>
-                      <span className="text-yellow-400 font-medium">Unit 5 Strings:</span>
-                      <ul className="list-disc pl-6 mt-1 space-y-1">
-                        <li>
-                          Strings: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                      </ul>
+                      Strings: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
@@ -317,24 +281,19 @@ const APCS = () => {
                 <CollapsibleSection title="Unit 6 Arrays & ArrayLists">
                   <ul className="list-disc pl-6 space-y-2">
                     <li>
-                      <span className="text-yellow-400 font-medium">Unit 6 Arrays & ArrayLists:</span>
-                      <ul className="list-disc pl-6 mt-1 space-y-1">
-                        <li>
-                          Arrays: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                        <li>
-                          ArrayLists: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                        <li>
-                          ForEachLoop: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                      </ul>
+                      Arrays: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                    </li>
+                    <li>
+                      ArrayLists: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                    </li>
+                    <li>
+                      ForEachLoop: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
@@ -342,14 +301,9 @@ const APCS = () => {
                 <CollapsibleSection title="Midterm Review">
                   <ul className="list-disc pl-6 space-y-2">
                     <li>
-                      <span className="text-yellow-400 font-medium">Midterm Review</span>
-                      <ul className="list-disc pl-6 mt-1 space-y-1">
-                        <li>
-                          Review: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                      </ul>
+                      Review: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
@@ -357,14 +311,9 @@ const APCS = () => {
                 <CollapsibleSection title="Unit 7 File IO">
                   <ul className="list-disc pl-6 space-y-2">
                     <li>
-                      <span className="text-yellow-400 font-medium">Unit 7 File IO:</span>
-                      <ul className="list-disc pl-6 mt-1 space-y-1">
-                        <li>
-                          File I/O: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                      </ul>
+                      File I/O: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
@@ -372,19 +321,14 @@ const APCS = () => {
                 <CollapsibleSection title="Unit 8 Inheritance & Polymorphism">
                   <ul className="list-disc pl-6 space-y-2">
                     <li>
-                      <span className="text-yellow-400 font-medium">Unit 8 Inheritance & Polymorphism:</span>
-                      <ul className="list-disc pl-6 mt-1 space-y-1">
-                        <li>
-                          Inheritance: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                        <li>
-                          Polymorphism: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                      </ul>
+                      Inheritance: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                    </li>
+                    <li>
+                      Polymorphism: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
@@ -392,14 +336,9 @@ const APCS = () => {
                 <CollapsibleSection title="Unit 9 Recursion">
                   <ul className="list-disc pl-6 space-y-2">
                     <li>
-                      <span className="text-yellow-400 font-medium">Unit 9 Recursion:</span>
-                      <ul className="list-disc pl-6 mt-1 space-y-1">
-                        <li>
-                          Recursion: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                      </ul>
+                      Recursion: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
@@ -407,14 +346,9 @@ const APCS = () => {
                 <CollapsibleSection title="Unit 10 Stacks">
                   <ul className="list-disc pl-6 space-y-2">
                     <li>
-                      <span className="text-yellow-400 font-medium">Unit 10 Stacks:</span>
-                      <ul className="list-disc pl-6 mt-1 space-y-1">
-                        <li>
-                          Stacks: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                      </ul>
+                      Stacks: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
@@ -422,14 +356,9 @@ const APCS = () => {
                 <CollapsibleSection title="Unit 12 Searching and Sorting">
                   <ul className="list-disc pl-6 space-y-2">
                     <li>
-                      <span className="text-yellow-400 font-medium">Unit 12 Searching and Sorting:</span>
-                      <ul className="list-disc pl-6 mt-1 space-y-1">
-                        <li>
-                          Searching and Sorting: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                      </ul>
+                      Searching and Sorting: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
@@ -463,8 +392,7 @@ const APCS = () => {
                     <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">1st Quarter: PNZ</a></li>
                     
                     <li className="space-y-1">
-                      <span className="font-medium">3rd Quarter: Black Jack</span>
-                      <CollapsibleSection title="Details" isNested={true}>
+                      <CollapsibleSection title="3rd Quarter: Black Jack" isNested={true}>
                         <ul className="list-disc pl-4 space-y-1 text-sm">
                           <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Black Jack Description</a></li>
                           <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Skeleton</a></li>
@@ -473,8 +401,7 @@ const APCS = () => {
                     </li>
                     
                     <li className="space-y-1">
-                      <span className="font-medium">Yahtzee</span>
-                      <CollapsibleSection title="Details" isNested={true}>
+                      <CollapsibleSection title="Yahtzee" isNested={true}>
                         <ul className="list-disc pl-4 space-y-1 text-sm">
                           <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Yahtzee Details</a></li>
                           <li><a href="" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Allison Leonard Console Yahtzee</a></li>

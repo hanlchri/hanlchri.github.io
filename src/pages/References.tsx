@@ -144,6 +144,11 @@ const References = () => {
               </ul>
             </div>
           </div>
+
+          {/* Watermark */}
+          <div className="mt-12 text-center">
+            <p className="text-xs text-muted-foreground/50">Created by Hassaan Vani, Class of 2027</p>
+          </div>
         </div>
       </div>
     </Layout>

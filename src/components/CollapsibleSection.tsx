@@ -23,16 +23,16 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
       <div 
         className={`collapsible-header flex justify-between items-center cursor-pointer transition-colors
           ${isNested 
-            ? 'py-1 px-2 hover:bg-tech-purple/10 rounded-sm' 
+            ? 'py-1 px-2 hover:bg-tech-purple/5 rounded-sm text-base font-medium text-foreground' 
             : 'p-2 bg-secondary hover:bg-secondary/80 rounded-t-lg'
           }`}
         onClick={() => setIsOpen(!isOpen)}
       >
-        <h3 className={`font-bold break-words pr-2 ${isNested ? 'text-sm text-tech-cyan/90 font-medium' : 'text-lg sm:text-xl'}`}>{title}</h3>
+        <h3 className={`font-bold break-words pr-2 ${isNested ? 'text-base font-medium' : 'text-lg sm:text-xl'}`}>{title}</h3>
         {isOpen ? (
-          <ChevronUp className={`flex-shrink-0 transition-transform duration-300 ${isNested ? 'h-3 w-3 text-tech-cyan/70' : 'h-5 w-5 text-tech-cyan'}`} />
+          <ChevronUp className={`flex-shrink-0 transition-transform duration-300 ${isNested ? 'h-4 w-4 text-tech-cyan/70' : 'h-5 w-5 text-tech-cyan'}`} />
         ) : (
-          <ChevronDown className={`flex-shrink-0 transition-transform duration-300 ${isNested ? 'h-3 w-3 text-tech-purple/70' : 'h-5 w-5 text-tech-purple'}`} />
+          <ChevronDown className={`flex-shrink-0 transition-transform duration-300 ${isNested ? 'h-4 w-4 text-tech-purple/70' : 'h-5 w-5 text-tech-purple'}`} />
         )}
       </div>
       

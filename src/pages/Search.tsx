@@ -1,172 +1,169 @@
 
 import React, { useState, useEffect } from 'react';
+import { Search as SearchIcon, ExternalLink } from 'lucide-react';
 import Layout from '@/components/Layout';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Search as SearchIcon } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-
-// Mock search results data
-const mockResources = [
-  { id: 1, title: "Computer Components Assignment", category: "Assignments", path: "/ap-cs" },
-  { id: 2, title: "Java Arrays Tutorial", category: "Java", path: "/java" },
-  { id: 3, title: "Printing from Netbeans", category: "Resources", path: "/ap-cs" },
-  { id: 4, title: "Unit 1 Review", category: "Lessons", path: "/ap-cs" },
-  { id: 5, title: "W3Schools Reference", category: "References", path: "/references" },
-  { id: 6, title: "String Methods", category: "Assignments", path: "/ap-cs" },
-  { id: 7, title: "Inheritance Hierarchy", category: "Homework", path: "/ap-cs" },
-  { id: 8, title: "OOP Concepts", category: "Lessons", path: "/ap-cs" },
-  { id: 9, title: "HackerRank Practice", category: "Practice", path: "/references" },
-  { id: 10, title: "Repl.it IDE Guide", category: "IDEs", path: "/references" },
-];
+import { searchAssignments, SearchItem } from '@/utils/searchData';
 
 const Search = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [results, setResults] = useState<typeof mockResources>([]);
-  const [showResults, setShowResults] = useState(false);
-  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
-  
-  // Debounce the search term to avoid excessive filtering
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState<SearchItem[]>([]);
+  const [isSearching, setIsSearching] = useState(false);
+
   useEffect(() => {
-    const timerId = setTimeout(() => {
-      setDebouncedSearchTerm(searchTerm);
-      if (searchTerm.length > 0) {
-        setShowResults(true);
+    const delayedSearch = setTimeout(() => {
+      if (query.trim()) {
+        setIsSearching(true);
+        const searchResults = searchAssignments(query);
+        setResults(searchResults);
+        setIsSearching(false);
+      } else {
+        setResults([]);
       }
     }, 300);
-    
-    return () => clearTimeout(timerId);
-  }, [searchTerm]);
-  
-  // Filter results when debounced search term changes
-  useEffect(() => {
-    if (debouncedSearchTerm.trim() === '') {
-      setResults([]);
-      return;
+
+    return () => clearTimeout(delayedSearch);
+  }, [query]);
+
+  const getCategoryColor = (category: string) => {
+    switch (category) {
+      case 'assignment': return 'text-blue-400';
+      case 'lesson': return 'text-green-400';
+      case 'resource': return 'text-yellow-400';
+      case 'bonus': return 'text-purple-400';
+      case 'homework': return 'text-orange-400';
+      default: return 'text-gray-400';
     }
-    
-    const filteredResults = mockResources.filter(resource => 
-      resource.title.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) || 
-      resource.category.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
-    );
-    
-    setResults(filteredResults);
-  }, [debouncedSearchTerm]);
-  
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    // We're already searching as the user types, but this will trigger a search on submit
-    setDebouncedSearchTerm(searchTerm);
-    setShowResults(true);
   };
-  
+
+  const getCategoryBadge = (category: string) => {
+    switch (category) {
+      case 'assignment': return 'bg-blue-500/20 text-blue-300';
+      case 'lesson': return 'bg-green-500/20 text-green-300';
+      case 'resource': return 'bg-yellow-500/20 text-yellow-300';
+      case 'bonus': return 'bg-purple-500/20 text-purple-300';
+      case 'homework': return 'bg-orange-500/20 text-orange-300';
+      default: return 'bg-gray-500/20 text-gray-300';
+    }
+  };
+
+  const getPageLink = (item: SearchItem) => {
+    return item.page === 'java' ? '/java' : '/ap-cs';
+  };
+
   return (
     <Layout>
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto mt-10 px-4">
         <div className="content-section">
-          <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center tech-text">Search</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center tech-text">
+            Advanced Search
+          </h1>
           
-          <div className="mb-8">
-            <form onSubmit={handleSearch} className="flex gap-2 relative">
-              <div className="relative flex-1">
-                <Input
-                  type="text"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  placeholder="Search for resources, assignments, lessons..."
-                  className="bg-secondary/50 border-tech-purple/30 focus:border-tech-purple pl-10"
-                />
-                <SearchIcon className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground" />
-                
-                {/* Display dropdown suggestions as user types */}
-                <AnimatePresence>
-                  {searchTerm.length > 1 && results.length > 0 && !showResults && (
-                    <motion.div 
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="absolute left-0 right-0 top-full mt-1 p-2 bg-popover border border-border rounded-lg shadow-lg z-50"
-                    >
-                      <p className="text-sm text-muted-foreground mb-2">Suggestions:</p>
-                      <div className="max-h-60 overflow-y-auto">
-                        {results.slice(0, 5).map((result) => (
-                          <a 
-                            key={result.id}
-                            href={result.path}
-                            className="block py-2 px-3 hover:bg-secondary rounded-md text-sm"
+          <div className="relative mb-8">
+            <div className="relative">
+              <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
+              <input
+                type="text"
+                placeholder="Search assignments, lessons, and resources..."
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                className="w-full pl-10 pr-4 py-3 bg-card border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-tech-cyan focus:border-transparent text-foreground placeholder-muted-foreground"
+              />
+            </div>
+          </div>
+
+          {isSearching && (
+            <div className="text-center py-8">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-tech-cyan mx-auto"></div>
+              <p className="mt-2 text-muted-foreground">Searching...</p>
+            </div>
+          )}
+
+          {results.length > 0 && (
+            <div className="space-y-4">
+              <h2 className="text-xl font-semibold text-tech-cyan mb-4">
+                Search Results ({results.length})
+              </h2>
+              
+              {results.map((item) => (
+                <div
+                  key={item.id}
+                  className="bg-card border border-border rounded-lg p-4 hover:border-tech-cyan/50 transition-colors"
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-2">
+                        <h3 className="text-lg font-semibold text-foreground">
+                          {item.title}
+                        </h3>
+                        <span className={`px-2 py-1 text-xs rounded-full ${getCategoryBadge(item.category)}`}>
+                          {item.category}
+                        </span>
+                        <span className="px-2 py-1 text-xs rounded-full bg-secondary text-muted-foreground">
+                          {item.page.toUpperCase()}
+                        </span>
+                      </div>
+                      
+                      <p className="text-muted-foreground mb-3">
+                        {item.description}
+                      </p>
+                      
+                      <div className="flex flex-wrap gap-1">
+                        {item.keywords.slice(0, 5).map((keyword, index) => (
+                          <span
+                            key={index}
+                            className="px-2 py-1 text-xs bg-muted text-muted-foreground rounded"
                           >
-                            {result.title}
-                          </a>
+                            {keyword}
+                          </span>
                         ))}
-                        {results.length > 5 && (
-                          <p className="text-xs text-center text-muted-foreground mt-2">
-                            {results.length - 5} more results...
-                          </p>
+                        {item.keywords.length > 5 && (
+                          <span className="px-2 py-1 text-xs bg-muted text-muted-foreground rounded">
+                            +{item.keywords.length - 5} more
+                          </span>
                         )}
                       </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-              <Button type="submit" className="bg-tech-purple hover:bg-tech-purple/80">
-                Search
-              </Button>
-            </form>
-          </div>
-          
-          <AnimatePresence>
-            {showResults && (
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                className="search-results"
-              >
-                <h2 className="text-2xl font-bold mb-4">
-                  {results.length > 0 
-                    ? `Found ${results.length} results for "${searchTerm}"` 
-                    : `No results found for "${searchTerm}"`}
-                </h2>
-                
-                {results.length > 0 && (
-                  <div className="space-y-4">
-                    {results.map((result, index) => (
-                      <motion.div 
-                        key={result.id} 
-                        className="p-4 bg-card rounded-lg hover:border-tech-purple/50 border border-border/50 transition-all" 
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ 
-                          opacity: 1, 
-                          y: 0,
-                          transition: { delay: index * 0.05 }
-                        }}
-                      >
-                        <div className="flex justify-between items-start">
-                          <div>
-                            <h3 className="text-xl font-bold text-tech-cyan">{result.title}</h3>
-                            <p className="text-sm text-muted-foreground">
-                              Category: {result.category}
-                            </p>
-                          </div>
-                          <Button asChild variant="outline" size="sm">
-                            <a href={result.path}>View</a>
-                          </Button>
-                        </div>
-                      </motion.div>
-                    ))}
+                    </div>
+                    
+                    <a
+                      href={getPageLink(item)}
+                      className="ml-4 p-2 bg-tech-cyan/10 hover:bg-tech-cyan/20 rounded-lg transition-colors group"
+                      title={`Go to ${item.page.toUpperCase()} page`}
+                    >
+                      <ExternalLink className="h-4 w-4 text-tech-cyan group-hover:text-tech-cyan/80" />
+                    </a>
                   </div>
-                )}
-              </motion.div>
-            )}
-          </AnimatePresence>
-          
-          {!showResults && !searchTerm && (
-            <div className="text-center py-10">
-              <p className="text-lg text-muted-foreground">
-                Enter a search term to find resources, assignments, lessons, and more.
+                </div>
+              ))}
+            </div>
+          )}
+
+          {query.trim() && results.length === 0 && !isSearching && (
+            <div className="text-center py-12">
+              <SearchIcon className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+              <h3 className="text-lg font-semibold text-foreground mb-2">No results found</h3>
+              <p className="text-muted-foreground">
+                Try searching for assignments, lessons, or specific topics like "recursion", "loops", or "calculator"
               </p>
             </div>
           )}
+
+          {!query.trim() && (
+            <div className="text-center py-12">
+              <SearchIcon className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-foreground mb-2">
+                Search for Assignments & Resources
+              </h3>
+              <p className="text-muted-foreground max-w-md mx-auto">
+                Find any assignment, lesson, or resource from the Java and AP Computer Science courses.
+                Try searching for topics like "OOP", "arrays", "GUI", or specific assignment names.
+              </p>
+            </div>
+          )}
+
+          {/* Watermark */}
+          <div className="mt-12 text-center">
+            <p className="text-xs text-muted-foreground/50">Created by Hassaan Vani, Class of 2027</p>
+          </div>
         </div>
       </div>
     </Layout>

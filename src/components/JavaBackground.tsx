@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 
 interface Node {
@@ -40,12 +41,12 @@ const JavaBackground: React.FC = () => {
     const ORBIT_RANDOMNESS = 0.3;
 
     // Reduced speed and amplitude for more ambient movement
-    const NODE_DRIFT_SPEED_FACTOR = 0.002;  // Reduced from 0.04
-    const NODE_DRIFT_AMPLITUDE = 0.1;     // Reduced from 0.2
+    const NODE_DRIFT_SPEED_FACTOR = 0.002;
+    const NODE_DRIFT_AMPLITUDE = 0.1;
 
     // Reduced interaction for subtle cursor effect
-    const MOUSE_INTERACTION_RADIUS = 200;   // Reduced from 300
-    const MOUSE_REPULSION_FORCE = 0.1;     // Reduced from 0.3
+    const MOUSE_INTERACTION_RADIUS = 200;
+    const MOUSE_REPULSION_FORCE = 0.08; // Further reduced
 
     const CONNECTION_MAX_DIST_OPACITY_CALC = 350;
     const CONNECTION_OPACITY_MULTIPLIER = 0.6;
@@ -53,6 +54,10 @@ const JavaBackground: React.FC = () => {
 
     const JAVA_SYMBOL_OPACITY = 0.15;
     const JAVA_SYMBOL_SIZE_SCALE = 0.3;
+
+    // Trail effect for smoother shadows
+    const TRAIL_EFFECT_ALPHA = 0.05; // Reduced for better trail effect
+    const BACKGROUND_COLOR_FOR_TRAIL = `rgba(26, 31, 44, ${TRAIL_EFFECT_ALPHA})`;
     // --- END OF ADJUSTABLE PARAMETERS ---
 
     const initNodes = () => {
@@ -110,7 +115,7 @@ const JavaBackground: React.FC = () => {
         const dx = x - node.x;
         const dy = y - node.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
-        if (distance <= node.size + 10) { // Add some padding for easier clicking
+        if (distance <= node.size + 10) {
           return node;
         }
       }
@@ -130,7 +135,6 @@ const JavaBackground: React.FC = () => {
           x: x - clickedNode.x,
           y: y - clickedNode.y
         };
-        canvas.style.cursor = 'grabbing';
       }
     };
 
@@ -147,10 +151,6 @@ const JavaBackground: React.FC = () => {
         draggedNodeRef.current.y = y - draggedNodeRef.current.dragOffset.y;
         draggedNodeRef.current.originalX = draggedNodeRef.current.x;
         draggedNodeRef.current.originalY = draggedNodeRef.current.y;
-      } else {
-        // Check if hovering over a node
-        const hoveredNode = getNodeAtPosition(x, y);
-        canvas.style.cursor = hoveredNode ? 'grab' : 'default';
       }
     };
 
@@ -158,7 +158,6 @@ const JavaBackground: React.FC = () => {
       if (draggedNodeRef.current) {
         draggedNodeRef.current.isDragging = false;
         draggedNodeRef.current = null;
-        canvas.style.cursor = 'default';
       }
     };
 
@@ -190,8 +189,8 @@ const JavaBackground: React.FC = () => {
     const animate = () => {
       if (!ctx || !canvas) return;
       
-      // Added trail effect instead of full clear for smoother animation
-      ctx.fillStyle = 'rgba(26, 31, 44, 0.08)';
+      // Use trail effect for smooth shadows
+      ctx.fillStyle = BACKGROUND_COLOR_FOR_TRAIL;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
       drawJavaSymbol(ctx, canvas.width / 2, canvas.height / 2, canvas.height * JAVA_SYMBOL_SIZE_SCALE);
@@ -275,6 +274,7 @@ const JavaBackground: React.FC = () => {
     <canvas
       ref={canvasRef}
       className="fixed top-0 left-0 w-full h-full -z-10 opacity-80"
+      style={{ pointerEvents: 'none' }}
     />
   );
 };

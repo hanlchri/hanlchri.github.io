@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 
 interface Hexagon {
@@ -10,6 +11,8 @@ interface Hexagon {
   originalRotationSpeed: number;
   isDragging: boolean;
   dragOffset: { x: number; y: number };
+  velocity: { x: number; y: number };
+  lastMousePosition: { x: number; y: number };
 }
 
 const APCSBackground: React.FC = () => {
@@ -34,17 +37,21 @@ const APCSBackground: React.FC = () => {
     
     // Mouse interaction parameters
     const MOUSE_INTERACTION_RADIUS = 200;
-    const MOVEMENT_FORCE_MULTIPLIER = 0.2;
+    const MOVEMENT_FORCE_MULTIPLIER = 0.15; // Reduced
     const ROTATION_EFFECT_MULTIPLIER = 1.003;
     const ENABLE_ROTATION_REVERSION = true;
     const ROTATION_REVERSION_LERP_FACTOR = 0.01;
     
     // Base drift parameters
-    const DRIFT_STRENGTH = 0.02; // Reduced for more ambient movement
-    const TIME_FACTOR = 0.00001;  // Slower time progression
+    const DRIFT_STRENGTH = 0.02;
+    const TIME_FACTOR = 0.00001;
+    
+    // Velocity parameters
+    const VELOCITY_DAMPING = 0.95;
+    const MAX_VELOCITY = 5;
     
     // Visual style
-    const TRAIL_EFFECT_ALPHA = 0.08; // Added trail effect similar to other backgrounds
+    const TRAIL_EFFECT_ALPHA = 0.06; // Reduced for better trail
     const BACKGROUND_COLOR_FOR_TRAIL = `rgba(26, 31, 44, ${TRAIL_EFFECT_ALPHA})`;
     // --- END OF ADJUSTABLE PARAMETERS ---
 
@@ -73,7 +80,9 @@ const APCSBackground: React.FC = () => {
           rotationSpeed: baseRotationSpeed,
           originalRotationSpeed: baseRotationSpeed,
           isDragging: false,
-          dragOffset: { x: 0, y: 0 }
+          dragOffset: { x: 0, y: 0 },
+          velocity: { x: 0, y: 0 },
+          lastMousePosition: { x: 0, y: 0 }
         });
       }
     };
@@ -113,7 +122,8 @@ const APCSBackground: React.FC = () => {
           x: x - clickedHexagon.x,
           y: y - clickedHexagon.y
         };
-        canvas.style.cursor = 'grabbing';
+        clickedHexagon.lastMousePosition = { x, y };
+        clickedHexagon.velocity = { x: 0, y: 0 }; // Reset velocity on grab
       }
     };
 
@@ -128,11 +138,19 @@ const APCSBackground: React.FC = () => {
       }
 
       if (draggedHexagonRef.current) {
-        draggedHexagonRef.current.x = x - draggedHexagonRef.current.dragOffset.x;
-        draggedHexagonRef.current.y = y - draggedHexagonRef.current.dragOffset.y;
-      } else {
-        const hoveredHexagon = getHexagonAtPosition(x, y);
-        canvas.style.cursor = hoveredHexagon ? 'grab' : 'default';
+        const newX = x - draggedHexagonRef.current.dragOffset.x;
+        const newY = y - draggedHexagonRef.current.dragOffset.y;
+        
+        // Calculate velocity based on movement
+        const deltaX = newX - draggedHexagonRef.current.x;
+        const deltaY = newY - draggedHexagonRef.current.y;
+        
+        draggedHexagonRef.current.velocity.x = deltaX * 0.3;
+        draggedHexagonRef.current.velocity.y = deltaY * 0.3;
+        
+        draggedHexagonRef.current.x = newX;
+        draggedHexagonRef.current.y = newY;
+        draggedHexagonRef.current.lastMousePosition = { x, y };
       }
     };
 
@@ -140,7 +158,6 @@ const APCSBackground: React.FC = () => {
       if (draggedHexagonRef.current) {
         draggedHexagonRef.current.isDragging = false;
         draggedHexagonRef.current = null;
-        canvas.style.cursor = 'default';
       }
     };
 
@@ -182,7 +199,7 @@ const APCSBackground: React.FC = () => {
     const animate = () => {
       if (!ctx || !canvas) return;
       
-      // Use trail effect instead of clear for smoother animation
+      // Use trail effect for smoother animation
       ctx.fillStyle = BACKGROUND_COLOR_FOR_TRAIL;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -190,6 +207,19 @@ const APCSBackground: React.FC = () => {
         hexagon.angle += hexagon.rotationSpeed;
 
         if (!hexagon.isDragging) {
+          // Apply velocity with damping
+          hexagon.x += hexagon.velocity.x;
+          hexagon.y += hexagon.velocity.y;
+          hexagon.velocity.x *= VELOCITY_DAMPING;
+          hexagon.velocity.y *= VELOCITY_DAMPING;
+          
+          // Limit velocity
+          const velMag = Math.sqrt(hexagon.velocity.x ** 2 + hexagon.velocity.y ** 2);
+          if (velMag > MAX_VELOCITY) {
+            hexagon.velocity.x = (hexagon.velocity.x / velMag) * MAX_VELOCITY;
+            hexagon.velocity.y = (hexagon.velocity.y / velMag) * MAX_VELOCITY;
+          }
+          
           if (firstMoveMadeRef.current) {
             const dx = hexagon.x - mousePositionRef.current.x;
             const dy = hexagon.y - mousePositionRef.current.y;
@@ -244,6 +274,7 @@ const APCSBackground: React.FC = () => {
     <canvas
       ref={canvasRef}
       className="fixed top-0 left-0 w-full h-full -z-10 opacity-80"
+      style={{ pointerEvents: 'none' }}
     />
   );
 };

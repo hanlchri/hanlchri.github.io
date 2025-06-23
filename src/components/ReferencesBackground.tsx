@@ -12,6 +12,8 @@ interface Line {
   speed: number;
   progress: number;
   color: string;
+  isDragging: boolean;
+  dragOffset: { x: number; y: number };
 }
 
 const ReferencesBackground: React.FC = () => {
@@ -20,6 +22,7 @@ const ReferencesBackground: React.FC = () => {
   const firstMoveMadeRef = useRef(false);
   const linesRef = useRef<Line[]>([]);
   const animationFrameIdRef = useRef<number | null>(null);
+  const draggedLineRef = useRef<Line | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -32,21 +35,20 @@ const ReferencesBackground: React.FC = () => {
     const INITIAL_LINE_COUNT = 22;
     const LINE_MIN_WIDTH = 1;
     const LINE_MAX_WIDTH = 3;
-    const LINE_MIN_DRAW_SPEED = 0.001; // Reduced from 0.002
-    const LINE_MAX_DRAW_SPEED = 0.003; // Reduced from 0.006
+    const LINE_MIN_DRAW_SPEED = 0.001;
+    const LINE_MAX_DRAW_SPEED = 0.003;
     const LINE_MIN_LENGTH = 50;
     const LINE_MAX_LENGTH = 200;
 
-    const MOUSE_INTERACTION_RADIUS = 200; // Reduced from 300
-    const MOUSE_BEND_BASE_FORCE = 0.095;  // Reduced from 0.12
-    const MOUSE_BEND_SCALAR = 0.075;      // Reduced from 0.1
+    const MOUSE_INTERACTION_RADIUS = 150; // Reduced
+    const MOUSE_BEND_BASE_FORCE = 0.06;  // Further reduced
+    const MOUSE_BEND_SCALAR = 0.05;      // Reduced
     const ENABLE_BEND_REVERSION = true;
-    const BEND_REVERSION_LERP_FACTOR = 0.03; // Reduced from 0.05
+    const BEND_REVERSION_LERP_FACTOR = 0.02; // Slower reversion
 
-    // Reduced for less frequent line additions
-    const ADD_LINE_ON_MOUSE_PROBABILITY = 0.008; // Reduced from 0.015
+    const ADD_LINE_ON_MOUSE_PROBABILITY = 0.008;
     
-    const TRAIL_EFFECT_ALPHA = 0.1; // Increased for smoother trails
+    const TRAIL_EFFECT_ALPHA = 0.08; // Slightly higher for better trail
     const BACKGROUND_COLOR_FOR_TRAIL = `rgba(26, 31, 44, ${TRAIL_EFFECT_ALPHA})`;
     const GLOW_OPACITY = 0.4;
     // --- END OF ADJUSTABLE PARAMETERS ---
@@ -76,7 +78,9 @@ const ReferencesBackground: React.FC = () => {
         endX: eX, endY: eY,
         originalEndX: eX, originalEndY: eY,
         width, speed,
-        progress: 0, color
+        progress: 0, color,
+        isDragging: false,
+        dragOffset: { x: 0, y: 0 }
       });
     };
 
@@ -95,15 +99,68 @@ const ReferencesBackground: React.FC = () => {
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
+    const getLineAtPosition = (x: number, y: number): Line | null => {
+      for (const line of linesRef.current) {
+        const currentEndX = line.startX + (line.endX - line.startX) * line.progress;
+        const currentEndY = line.startY + (line.endY - line.startY) * line.progress;
+        
+        // Check if mouse is near the line
+        const distToStart = Math.sqrt((x - line.startX) ** 2 + (y - line.startY) ** 2);
+        const distToEnd = Math.sqrt((x - currentEndX) ** 2 + (y - currentEndY) ** 2);
+        
+        if (distToStart <= 15 || distToEnd <= 15) {
+          return line;
+        }
+      }
+      return null;
+    };
+
+    const handleMouseDown = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const clickedLine = getLineAtPosition(x, y);
+      if (clickedLine) {
+        draggedLineRef.current = clickedLine;
+        clickedLine.isDragging = true;
+        clickedLine.dragOffset = {
+          x: x - clickedLine.endX,
+          y: y - clickedLine.endY
+        };
+      }
+    };
+
     const handleMouseMove = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
       mousePositionRef.current = { x: e.clientX, y: e.clientY };
       if(!firstMoveMadeRef.current) firstMoveMadeRef.current = true;
 
+      if (draggedLineRef.current) {
+        draggedLineRef.current.endX = x - draggedLineRef.current.dragOffset.x;
+        draggedLineRef.current.endY = y - draggedLineRef.current.dragOffset.y;
+        draggedLineRef.current.originalEndX = draggedLineRef.current.endX;
+        draggedLineRef.current.originalEndY = draggedLineRef.current.endY;
+      }
+
       if (Math.random() < ADD_LINE_ON_MOUSE_PROBABILITY) {
-        addLine(e.clientX, e.clientY, true);
+        addLine(x, y, true);
       }
     };
+
+    const handleMouseUp = () => {
+      if (draggedLineRef.current) {
+        draggedLineRef.current.isDragging = false;
+        draggedLineRef.current = null;
+      }
+    };
+
+    canvas.addEventListener('mousedown', handleMouseDown);
     window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseup', handleMouseUp);
 
     const animate = () => {
       if (!ctx || !canvas) return;
@@ -125,9 +182,9 @@ const ReferencesBackground: React.FC = () => {
         const currentProgressEndX = line.startX + (line.endX - line.startX) * line.progress;
         const currentProgressEndY = line.startY + (line.endY - line.startY) * line.progress;
         
-        // Mouse interaction: bend line endpoint
+        // Mouse interaction: bend line endpoint (only if not dragging)
         let interactedThisFrame = false;
-        if (firstMoveMadeRef.current) {
+        if (firstMoveMadeRef.current && !line.isDragging) {
           const midX = (line.startX + currentProgressEndX) / 2;
           const midY = (line.startY + currentProgressEndY) / 2;
           const dxMouse = midX - mousePositionRef.current.x;
@@ -139,17 +196,15 @@ const ReferencesBackground: React.FC = () => {
             const proximityFactor = (1 - distanceMouse / MOUSE_INTERACTION_RADIUS);
             const force = MOUSE_BEND_BASE_FORCE * proximityFactor;
             
-            // Bend away from mouse: influence original endX/endY so progress calc is correct
             line.endX += (dxMouse / distanceMouse) * force * MOUSE_BEND_SCALAR * (line.endX - line.startX);
             line.endY += (dyMouse / distanceMouse) * force * MOUSE_BEND_SCALAR * (line.endY - line.startY);
           }
         }
         
-        if (!interactedThisFrame && ENABLE_BEND_REVERSION) {
+        if (!interactedThisFrame && ENABLE_BEND_REVERSION && !line.isDragging) {
             line.endX += (line.originalEndX - line.endX) * BEND_REVERSION_LERP_FACTOR;
             line.endY += (line.originalEndY - line.endY) * BEND_REVERSION_LERP_FACTOR;
         }
-
 
         ctx.beginPath();
         ctx.moveTo(line.startX, line.startY);
@@ -176,7 +231,9 @@ const ReferencesBackground: React.FC = () => {
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);
+      canvas.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
       if (animationFrameIdRef.current) {
         cancelAnimationFrame(animationFrameIdRef.current);
       }
