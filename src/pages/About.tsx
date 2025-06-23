@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from 'react'; // Import useState and useEffect
+
+import React, { useState, useEffect } from 'react';
 import Layout from '@/components/Layout';
 
 const About = () => {
-  // State to hold the randomly selected image source
   const [randomHanleyImageSrc, setRandomHanleyImageSrc] = useState('');
 
   useEffect(() => {
-    // Array of possible Hanley image filenames
-    // Ensure these files are located in base/public/pictures/
     const hanleyImageNames = [
       'Hanley2.jpeg',
       'Hanley3.jpeg',
@@ -16,15 +14,10 @@ const About = () => {
       'Hanley6.jpeg',
     ];
 
-    // Generate a random index
     const randomIndex = Math.floor(Math.random() * hanleyImageNames.length);
-
-    // Get the random image filename
     const selectedImageName = hanleyImageNames[randomIndex];
-
-    // Construct the full public path to the image
     setRandomHanleyImageSrc(`/pictures/${selectedImageName}`);
-  }, []); // The empty dependency array ensures this effect runs only once on mount
+  }, []);
 
   return (
     <Layout>
@@ -35,14 +28,15 @@ const About = () => {
           </h1>
 
           <div className="flex flex-col md:flex-row gap-8 items-center">
-            <div className="md:w-1/2">
-              {/* Conditionally render the image once the source is set */}
+            <div className="md:w-1/2 flex justify-center">
               {randomHanleyImageSrc && (
-                <img
-                  src={randomHanleyImageSrc}
-                  alt="Chris Hanley - Random Portrait" // Updated alt text for clarity
-                  className="rounded-lg border-2 border-tech-purple/30 shadow-lg shadow-tech-purple/20 w-full max-w-md mx-auto"
-                />
+                <div className="w-80 h-80 overflow-hidden rounded-lg border-2 border-tech-purple/30 shadow-lg shadow-tech-purple/20">
+                  <img
+                    src={randomHanleyImageSrc}
+                    alt="Chris Hanley - Random Portrait"
+                    className="w-full h-full object-cover object-center"
+                  />
+                </div>
               )}
             </div>
 

@@ -111,15 +111,9 @@ const SearchBackground: React.FC = () => {
     const animate = () => {
       if (!ctx || !canvas) return;
 
-      // Clear canvas completely every few frames to prevent shadow buildup
-      const frameCount = Date.now() % 2000;
-      if (frameCount < 50) {
-        ctx.fillStyle = 'rgba(26, 31, 44, 1)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-      } else {
-        ctx.fillStyle = 'rgba(26, 31, 44, 0.1)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-      }
+      // Consistent trail effect without periodic clearing
+      ctx.fillStyle = 'rgba(26, 31, 44, 0.08)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Update particles
       particlesRef.current.forEach((particle, i) => {

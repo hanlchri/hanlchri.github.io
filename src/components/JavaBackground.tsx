@@ -53,8 +53,8 @@ const JavaBackground: React.FC = () => {
     const JAVA_SYMBOL_OPACITY = 0.15;
     const JAVA_SYMBOL_SIZE_SCALE = 0.3;
 
-    // Improved trail effect parameters
-    const TRAIL_EFFECT_ALPHA = 0.12;
+    // Improved trail effect parameters - removed periodic clearing
+    const TRAIL_EFFECT_ALPHA = 0.08;
     const BACKGROUND_COLOR_FOR_TRAIL = `rgba(26, 31, 44, ${TRAIL_EFFECT_ALPHA})`;
     // --- END OF ADJUSTABLE PARAMETERS ---
 
@@ -71,9 +71,9 @@ const JavaBackground: React.FC = () => {
         const y = centerY + Math.sin(angle) * r;
         const size = NODE_MIN_SIZE + Math.random() * (NODE_MAX_SIZE - NODE_MIN_SIZE);
 
-        // Purple-ish Java colors
+        // Java orange/amber colors
         const colorValue = 20 + Math.floor(Math.random() * 40);
-        const color = `rgb(${150 + colorValue}, ${100 + colorValue}, ${200 + colorValue})`;
+        const color = `rgb(${240 + colorValue}, ${140 + colorValue}, ${60 + colorValue})`;
 
         nodesRef.current.push({
           id: i,
@@ -168,7 +168,7 @@ const JavaBackground: React.FC = () => {
         symbolCtx.save();
         symbolCtx.translate(x, y);
         symbolCtx.globalAlpha = JAVA_SYMBOL_OPACITY;
-        symbolCtx.fillStyle = '#9F7AEA';
+        symbolCtx.fillStyle = '#FF8C42';
         symbolCtx.beginPath();
         symbolCtx.moveTo(-size * 0.3, -size * 0.4);
         symbolCtx.bezierCurveTo(-size * 0.35, size * 0.2, size * 0.35, size * 0.2, size * 0.3, -size * 0.4);
@@ -179,7 +179,7 @@ const JavaBackground: React.FC = () => {
         symbolCtx.beginPath();
         symbolCtx.moveTo(0, -size * 0.5);
         symbolCtx.bezierCurveTo(size * 0.2, -size * 0.7, -size * 0.2, -size * 0.9, 0, -size * 0.7);
-        symbolCtx.strokeStyle = '#9F7AEA';
+        symbolCtx.strokeStyle = '#FF8C42';
         symbolCtx.lineWidth = size * 0.05;
         symbolCtx.stroke();
         symbolCtx.restore();
@@ -188,15 +188,9 @@ const JavaBackground: React.FC = () => {
     const animate = () => {
       if (!ctx || !canvas) return;
       
-      // Clear canvas completely every few frames to prevent shadow buildup
-      const frameCount = Date.now() % 3000;
-      if (frameCount < 50) {
-        ctx.fillStyle = 'rgba(26, 31, 44, 1)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-      } else {
-        ctx.fillStyle = BACKGROUND_COLOR_FOR_TRAIL;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-      }
+      // Consistent trail effect without periodic clearing
+      ctx.fillStyle = BACKGROUND_COLOR_FOR_TRAIL;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
       
       drawJavaSymbol(ctx, canvas.width / 2, canvas.height / 2, canvas.height * JAVA_SYMBOL_SIZE_SCALE);
 

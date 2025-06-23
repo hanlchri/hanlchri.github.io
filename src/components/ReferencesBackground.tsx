@@ -48,8 +48,8 @@ const ReferencesBackground: React.FC = () => {
 
     const ADD_LINE_ON_MOUSE_PROBABILITY = 0.008;
     
-    // Improved trail effect
-    const TRAIL_EFFECT_ALPHA = 0.18;
+    // Improved trail effect - removed periodic clearing
+    const TRAIL_EFFECT_ALPHA = 0.12;
     const BACKGROUND_COLOR_FOR_TRAIL = `rgba(26, 31, 44, ${TRAIL_EFFECT_ALPHA})`;
     const GLOW_OPACITY = 0.4;
     // --- END OF ADJUSTABLE PARAMETERS ---
@@ -69,9 +69,10 @@ const ReferencesBackground: React.FC = () => {
       const width = LINE_MIN_WIDTH + Math.random() * (LINE_MAX_WIDTH - LINE_MIN_WIDTH);
       const speed = LINE_MIN_DRAW_SPEED + Math.random() * (LINE_MAX_DRAW_SPEED - LINE_MIN_DRAW_SPEED);
 
-      const hue = 170 + Math.random() * 30;
-      const saturation = 70 + Math.random() * 20;
-      const lightness = 50 + Math.random() * 30;
+      // Green/teal color scheme for References
+      const hue = 140 + Math.random() * 40;
+      const saturation = 60 + Math.random() * 30;
+      const lightness = 45 + Math.random() * 35;
       const color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 
       linesRef.current.push({
@@ -165,15 +166,9 @@ const ReferencesBackground: React.FC = () => {
     const animate = () => {
       if (!ctx || !canvas) return;
       
-      // Clear canvas completely every few frames to prevent shadow buildup
-      const frameCount = Date.now() % 4000;
-      if (frameCount < 50) {
-        ctx.fillStyle = 'rgba(26, 31, 44, 1)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-      } else {
-        ctx.fillStyle = BACKGROUND_COLOR_FOR_TRAIL;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-      }
+      // Consistent trail effect without periodic clearing
+      ctx.fillStyle = BACKGROUND_COLOR_FOR_TRAIL;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       for (let i = linesRef.current.length - 1; i >= 0; i--) {
         const line = linesRef.current[i];
