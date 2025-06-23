@@ -8,13 +8,15 @@ interface CollapsibleSectionProps {
   children: React.ReactNode;
   defaultOpen?: boolean;
   isNested?: boolean;
+  titleColor?: string;
 }
 
 const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({ 
   title, 
   children, 
   defaultOpen = false,
-  isNested = false
+  isNested = false,
+  titleColor
 }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
@@ -28,7 +30,12 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
           }`}
         onClick={() => setIsOpen(!isOpen)}
       >
-        <h3 className={`font-bold break-words pr-2 ${isNested ? 'text-base font-medium' : 'text-lg sm:text-xl'}`}>{title}</h3>
+        <h3 
+          className={`font-bold break-words pr-2 ${isNested ? 'text-base font-medium' : 'text-lg sm:text-xl'}`}
+          style={titleColor ? { color: titleColor } : {}}
+        >
+          {title}
+        </h3>
         {isOpen ? (
           <ChevronUp className={`flex-shrink-0 transition-transform duration-300 ${isNested ? 'h-4 w-4 text-tech-cyan/70' : 'h-5 w-5 text-tech-cyan'}`} />
         ) : (
