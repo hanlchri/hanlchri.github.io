@@ -144,11 +144,6 @@ const References = () => {
               </ul>
             </div>
           </div>
-
-          {/* Discrete watermark */}
-          <div className="mt-8 text-center">
-            <p className="text-xs text-muted-foreground/50">Created by Hassaan Vani, Class of 2027</p>
-          </div>
         </div>
       </div>
     </Layout>

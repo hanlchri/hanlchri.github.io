@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 
 interface Hexagon {
@@ -9,12 +8,8 @@ interface Hexagon {
   angle: number;
   rotationSpeed: number;
   originalRotationSpeed: number;
-  vx: number;
-  vy: number;
   isDragging: boolean;
   dragOffset: { x: number; y: number };
-  lastX: number;
-  lastY: number;
 }
 
 const APCSBackground: React.FC = () => {
@@ -32,19 +27,26 @@ const APCSBackground: React.FC = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    // --- START OF ADJUSTABLE PARAMETERS ---
     const HEXAGON_COUNT = 45;
     const HEXAGON_MIN_SIZE = 20;
     const HEXAGON_MAX_SIZE = 50;
+    
+    // Mouse interaction parameters
     const MOUSE_INTERACTION_RADIUS = 200;
     const MOVEMENT_FORCE_MULTIPLIER = 0.2;
     const ROTATION_EFFECT_MULTIPLIER = 1.003;
     const ENABLE_ROTATION_REVERSION = true;
     const ROTATION_REVERSION_LERP_FACTOR = 0.01;
-    const DRIFT_STRENGTH = 0.02;
-    const TIME_FACTOR = 0.00001;
-    const DAMPING = 0.95;
-    const TRAIL_EFFECT_ALPHA = 0.05;
+    
+    // Base drift parameters
+    const DRIFT_STRENGTH = 0.02; // Reduced for more ambient movement
+    const TIME_FACTOR = 0.00001;  // Slower time progression
+    
+    // Visual style
+    const TRAIL_EFFECT_ALPHA = 0.08; // Added trail effect similar to other backgrounds
     const BACKGROUND_COLOR_FOR_TRAIL = `rgba(26, 31, 44, ${TRAIL_EFFECT_ALPHA})`;
+    // --- END OF ADJUSTABLE PARAMETERS ---
 
     const initHexagons = () => {
       hexagonsRef.current = [];
@@ -63,14 +65,15 @@ const APCSBackground: React.FC = () => {
         const baseRotationSpeed = (Math.random() - 0.5) * 0.003;
 
         hexagonsRef.current.push({
-          x, y, size, color,
+          x,
+          y,
+          size,
+          color,
           angle: angleValue,
           rotationSpeed: baseRotationSpeed,
           originalRotationSpeed: baseRotationSpeed,
-          vx: 0, vy: 0,
           isDragging: false,
-          dragOffset: { x: 0, y: 0 },
-          lastX: x, lastY: y
+          dragOffset: { x: 0, y: 0 }
         });
       }
     };
@@ -106,12 +109,11 @@ const APCSBackground: React.FC = () => {
       if (clickedHexagon) {
         draggedHexagonRef.current = clickedHexagon;
         clickedHexagon.isDragging = true;
-        clickedHexagon.lastX = clickedHexagon.x;
-        clickedHexagon.lastY = clickedHexagon.y;
         clickedHexagon.dragOffset = {
           x: x - clickedHexagon.x,
           y: y - clickedHexagon.y
         };
+        canvas.style.cursor = 'grabbing';
       }
     };
 
@@ -126,14 +128,11 @@ const APCSBackground: React.FC = () => {
       }
 
       if (draggedHexagonRef.current) {
-        const newX = x - draggedHexagonRef.current.dragOffset.x;
-        const newY = y - draggedHexagonRef.current.dragOffset.y;
-        
-        draggedHexagonRef.current.vx = (newX - draggedHexagonRef.current.x) * 0.3;
-        draggedHexagonRef.current.vy = (newY - draggedHexagonRef.current.y) * 0.3;
-        
-        draggedHexagonRef.current.x = newX;
-        draggedHexagonRef.current.y = newY;
+        draggedHexagonRef.current.x = x - draggedHexagonRef.current.dragOffset.x;
+        draggedHexagonRef.current.y = y - draggedHexagonRef.current.dragOffset.y;
+      } else {
+        const hoveredHexagon = getHexagonAtPosition(x, y);
+        canvas.style.cursor = hoveredHexagon ? 'grab' : 'default';
       }
     };
 
@@ -141,6 +140,7 @@ const APCSBackground: React.FC = () => {
       if (draggedHexagonRef.current) {
         draggedHexagonRef.current.isDragging = false;
         draggedHexagonRef.current = null;
+        canvas.style.cursor = 'default';
       }
     };
 
@@ -182,6 +182,7 @@ const APCSBackground: React.FC = () => {
     const animate = () => {
       if (!ctx || !canvas) return;
       
+      // Use trail effect instead of clear for smoother animation
       ctx.fillStyle = BACKGROUND_COLOR_FOR_TRAIL;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -199,8 +200,8 @@ const APCSBackground: React.FC = () => {
               const interactionForce = MOVEMENT_FORCE_MULTIPLIER * proximityFactor;
               const angleToMouse = Math.atan2(dy, dx);
 
-              hexagon.vx += Math.cos(angleToMouse) * interactionForce;
-              hexagon.vy += Math.sin(angleToMouse) * interactionForce;
+              hexagon.x += Math.cos(angleToMouse) * interactionForce;
+              hexagon.y += Math.sin(angleToMouse) * interactionForce;
               
               hexagon.rotationSpeed *= ROTATION_EFFECT_MULTIPLIER;
             } else {
@@ -211,14 +212,8 @@ const APCSBackground: React.FC = () => {
           }
 
           const timeFactor = Date.now() * TIME_FACTOR;
-          hexagon.vx += Math.sin(timeFactor + hexagon.size) * DRIFT_STRENGTH;
-          hexagon.vy += Math.cos(timeFactor + hexagon.size) * DRIFT_STRENGTH;
-
-          hexagon.x += hexagon.vx;
-          hexagon.y += hexagon.vy;
-          
-          hexagon.vx *= DAMPING;
-          hexagon.vy *= DAMPING;
+          hexagon.x += Math.sin(timeFactor + hexagon.size) * DRIFT_STRENGTH;
+          hexagon.y += Math.cos(timeFactor + hexagon.size) * DRIFT_STRENGTH;
         }
 
         drawHexagon(hexagon.x, hexagon.y, hexagon.size, hexagon.color, hexagon.angle);
@@ -249,7 +244,6 @@ const APCSBackground: React.FC = () => {
     <canvas
       ref={canvasRef}
       className="fixed top-0 left-0 w-full h-full -z-10 opacity-80"
-      style={{ cursor: 'default' }}
     />
   );
 };
