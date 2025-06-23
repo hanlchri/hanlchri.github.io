@@ -492,7 +492,7 @@ const APCS = () => {
 
           {/* Watermark */}
           <div className="mt-8 text-center">
-            <p className="text-xs text-muted-foreground/50">Created by Ishan Swali, Class of 2023</p>
+            <p className="text-xs text-muted-foreground/50">Created by Hassaan Vani, Class of 2027</p>
           </div>
         </div>
       </div>
