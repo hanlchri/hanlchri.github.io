@@ -84,9 +84,9 @@ const Java = () => {
                 <CollapsibleSection title="Homework">
                   <ul className="list-disc pl-6 space-y-2">
                     <li><a href="/documents/GlossaryTerms.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Glossary Terms</a></li>
-                    <li><a href="/documents/LogicalOperatorsHW.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Logical Operators HW</a></li>
-                    <li><a href="/documents/Java_Loops_HW.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Loops HW</a></li>
-                    <li><a href="/documents/JavaHWArrays.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Arrays HW</a></li>
+                    <li><a href="/documents/LogicalOperatorsHW.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Logical Operators</a></li>
+                    <li><a href="/documents/Java_Loops_HW.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Loops</a></li>
+                    <li><a href="/documents/JavaHWArrays.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Arrays</a></li>
                   </ul>
                 </CollapsibleSection>
               </div>
