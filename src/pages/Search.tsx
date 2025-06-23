@@ -5,28 +5,15 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Search as SearchIcon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-
-// Mock search results data
-const mockResources = [
-  { id: 1, title: "Computer Components Assignment", category: "Assignments", path: "/ap-cs" },
-  { id: 2, title: "Java Arrays Tutorial", category: "Java", path: "/java" },
-  { id: 3, title: "Printing from Netbeans", category: "Resources", path: "/ap-cs" },
-  { id: 4, title: "Unit 1 Review", category: "Lessons", path: "/ap-cs" },
-  { id: 5, title: "W3Schools Reference", category: "References", path: "/references" },
-  { id: 6, title: "String Methods", category: "Assignments", path: "/ap-cs" },
-  { id: 7, title: "Inheritance Hierarchy", category: "Homework", path: "/ap-cs" },
-  { id: 8, title: "OOP Concepts", category: "Lessons", path: "/ap-cs" },
-  { id: 9, title: "HackerRank Practice", category: "Practice", path: "/references" },
-  { id: 10, title: "Repl.it IDE Guide", category: "IDEs", path: "/references" },
-];
+import { semanticSearch, SearchItem } from '@/utils/searchData';
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [results, setResults] = useState<typeof mockResources>([]);
+  const [results, setResults] = useState<SearchItem[]>([]);
   const [showResults, setShowResults] = useState(false);
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
   
-  // Debounce the search term to avoid excessive filtering
+  // Debounce the search term
   useEffect(() => {
     const timerId = setTimeout(() => {
       setDebouncedSearchTerm(searchTerm);
@@ -38,24 +25,19 @@ const Search = () => {
     return () => clearTimeout(timerId);
   }, [searchTerm]);
   
-  // Filter results when debounced search term changes
+  // Perform semantic search when debounced search term changes
   useEffect(() => {
     if (debouncedSearchTerm.trim() === '') {
       setResults([]);
       return;
     }
     
-    const filteredResults = mockResources.filter(resource => 
-      resource.title.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) || 
-      resource.category.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
-    );
-    
-    setResults(filteredResults);
+    const searchResults = semanticSearch(debouncedSearchTerm, 15);
+    setResults(searchResults);
   }, [debouncedSearchTerm]);
   
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    // We're already searching as the user types, but this will trigger a search on submit
     setDebouncedSearchTerm(searchTerm);
     setShowResults(true);
   };
@@ -73,7 +55,7 @@ const Search = () => {
                   type="text"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  placeholder="Search for resources, assignments, lessons..."
+                  placeholder="Search for assignments, lessons, resources..."
                   className="bg-secondary/50 border-tech-purple/30 focus:border-tech-purple pl-10"
                 />
                 <SearchIcon className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground" />
@@ -95,7 +77,8 @@ const Search = () => {
                             href={result.path}
                             className="block py-2 px-3 hover:bg-secondary rounded-md text-sm"
                           >
-                            {result.title}
+                            <span className="font-medium">{result.title}</span>
+                            <span className="text-xs text-muted-foreground ml-2">({result.category})</span>
                           </a>
                         ))}
                         {results.length > 5 && (
@@ -147,6 +130,15 @@ const Search = () => {
                             <p className="text-sm text-muted-foreground">
                               Category: {result.category}
                             </p>
+                            {result.keywords.length > 0 && (
+                              <div className="flex flex-wrap gap-1 mt-2">
+                                {result.keywords.slice(0, 4).map((keyword, i) => (
+                                  <span key={i} className="text-xs bg-secondary px-2 py-1 rounded">
+                                    {keyword}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
                           </div>
                           <Button asChild variant="outline" size="sm">
                             <a href={result.path}>View</a>
@@ -163,10 +155,18 @@ const Search = () => {
           {!showResults && !searchTerm && (
             <div className="text-center py-10">
               <p className="text-lg text-muted-foreground">
-                Enter a search term to find resources, assignments, lessons, and more.
+                Enter a search term to find assignments, lessons, resources, and more.
+              </p>
+              <p className="text-sm text-muted-foreground mt-2">
+                Try searching for "loops", "arrays", "oop", "calculator", or any topic you're looking for.
               </p>
             </div>
           )}
+
+          {/* Discrete watermark */}
+          <div className="mt-8 text-center">
+            <p className="text-xs text-muted-foreground/50">Created by Hassaan Vani, Class of 2027</p>
+          </div>
         </div>
       </div>
     </Layout>

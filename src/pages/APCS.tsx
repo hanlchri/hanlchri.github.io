@@ -205,231 +205,171 @@ const APCS = () => {
                 <h2 className="text-2xl font-bold mb-4 text-tech-cyan">Lessons</h2>
                 
                 <CollapsibleSection title="Unit 1 Review">
-                  <ul className="list-disc pl-6 space-y-2">
+                  <ul className="list-disc pl-6 space-y-1">
                     <li>
-                      <span className="text-yellow-400 font-medium">Unit 1 Review:</span>
-                      <ul className="list-disc pl-6 mt-1 space-y-1">
-                        <li>
-                          Review: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                        <li>
-                          Imports: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                        <li>
-                          Bases: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                        <li>
-                          Round Off Error: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                      </ul>
+                      Review: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                    </li>
+                    <li>
+                      Imports: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                    </li>
+                    <li>
+                      Bases: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                    </li>
+                    <li>
+                      Round Off Error: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
 
                 <CollapsibleSection title="Unit 2 Math Operations">
-                  <ul className="list-disc pl-6 space-y-2">
+                  <ul className="list-disc pl-6 space-y-1">
                     <li>
-                      <span className="text-yellow-400 font-medium">Unit 2 Math Operations:</span>
-                      <ul className="list-disc pl-6 mt-1 space-y-1">
-                        <li>
-                          Random: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                      </ul>
+                      Random: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
 
                 <CollapsibleSection title="Unit 3 Primitives/References/Short Circuit">
-                  <ul className="list-disc pl-6 space-y-2">
+                  <ul className="list-disc pl-6 space-y-1">
                     <li>
-                      <span className="text-yellow-400 font-medium">Unit 3 Primitives/References/Short Circuit:</span>
-                      <ul className="list-disc pl-6 mt-1 space-y-1">
-                        <li>
-                          Objects: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                        <li>
-                          Parameter Passing: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                        <li>
-                          Short Circuit Evals: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                      </ul>
+                      Objects: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                    </li>
+                    <li>
+                      Parameter Passing: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                    </li>
+                    <li>
+                      Short Circuit Evals: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
 
                 <CollapsibleSection title="Unit 4 Object Oriented">
-                  <ul className="list-disc pl-6 space-y-2">
+                  <ul className="list-disc pl-6 space-y-1">
                     <li>
-                      <span className="text-yellow-400 font-medium">Unit 4 Object Oriented:</span>
-                      <ul className="list-disc pl-6 mt-1 space-y-1">
-                        <li>
-                          OOP: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                        <li>
-                          OOP Part 2: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                        <li>
-                          Interfaces: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                      </ul>
+                      OOP: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                    </li>
+                    <li>
+                      OOP Part 2: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                    </li>
+                    <li>
+                      Interfaces: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
 
                 <CollapsibleSection title="Unit 5 Strings">
-                  <ul className="list-disc pl-6 space-y-2">
+                  <ul className="list-disc pl-6 space-y-1">
                     <li>
-                      <span className="text-yellow-400 font-medium">Unit 5 Strings:</span>
-                      <ul className="list-disc pl-6 mt-1 space-y-1">
-                        <li>
-                          Strings: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                      </ul>
+                      Strings: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
 
                 <CollapsibleSection title="Unit 6 Arrays & ArrayLists">
-                  <ul className="list-disc pl-6 space-y-2">
+                  <ul className="list-disc pl-6 space-y-1">
                     <li>
-                      <span className="text-yellow-400 font-medium">Unit 6 Arrays & ArrayLists:</span>
-                      <ul className="list-disc pl-6 mt-1 space-y-1">
-                        <li>
-                          Arrays: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                        <li>
-                          ArrayLists: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                        <li>
-                          ForEachLoop: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                      </ul>
+                      Arrays: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                    </li>
+                    <li>
+                      ArrayLists: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                    </li>
+                    <li>
+                      ForEachLoop: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
 
                 <CollapsibleSection title="Midterm Review">
-                  <ul className="list-disc pl-6 space-y-2">
+                  <ul className="list-disc pl-6 space-y-1">
                     <li>
-                      <span className="text-yellow-400 font-medium">Midterm Review</span>
-                      <ul className="list-disc pl-6 mt-1 space-y-1">
-                        <li>
-                          Review: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                      </ul>
+                      Review: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
 
                 <CollapsibleSection title="Unit 7 File IO">
-                  <ul className="list-disc pl-6 space-y-2">
+                  <ul className="list-disc pl-6 space-y-1">
                     <li>
-                      <span className="text-yellow-400 font-medium">Unit 7 File IO:</span>
-                      <ul className="list-disc pl-6 mt-1 space-y-1">
-                        <li>
-                          File I/O: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                      </ul>
+                      File I/O: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
 
                 <CollapsibleSection title="Unit 8 Inheritance & Polymorphism">
-                  <ul className="list-disc pl-6 space-y-2">
+                  <ul className="list-disc pl-6 space-y-1">
                     <li>
-                      <span className="text-yellow-400 font-medium">Unit 8 Inheritance & Polymorphism:</span>
-                      <ul className="list-disc pl-6 mt-1 space-y-1">
-                        <li>
-                          Inheritance: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                        <li>
-                          Polymorphism: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                      </ul>
+                      Inheritance: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                    </li>
+                    <li>
+                      Polymorphism: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
 
                 <CollapsibleSection title="Unit 9 Recursion">
-                  <ul className="list-disc pl-6 space-y-2">
+                  <ul className="list-disc pl-6 space-y-1">
                     <li>
-                      <span className="text-yellow-400 font-medium">Unit 9 Recursion:</span>
-                      <ul className="list-disc pl-6 mt-1 space-y-1">
-                        <li>
-                          Recursion: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                      </ul>
+                      Recursion: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
 
                 <CollapsibleSection title="Unit 10 Stacks">
-                  <ul className="list-disc pl-6 space-y-2">
+                  <ul className="list-disc pl-6 space-y-1">
                     <li>
-                      <span className="text-yellow-400 font-medium">Unit 10 Stacks:</span>
-                      <ul className="list-disc pl-6 mt-1 space-y-1">
-                        <li>
-                          Stacks: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                      </ul>
+                      Stacks: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
 
                 <CollapsibleSection title="Unit 12 Searching and Sorting">
-                  <ul className="list-disc pl-6 space-y-2">
+                  <ul className="list-disc pl-6 space-y-1">
                     <li>
-                      <span className="text-yellow-400 font-medium">Unit 12 Searching and Sorting:</span>
-                      <ul className="list-disc pl-6 mt-1 space-y-1">
-                        <li>
-                          Searching and Sorting: 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                          <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
-                        </li>
-                      </ul>
+                      Searching and Sorting: 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
