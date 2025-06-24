@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Search as SearchIcon, ExternalLink } from 'lucide-react';
 import Layout from '@/components/Layout';
@@ -46,8 +45,15 @@ const Search = () => {
     }
   };
 
-  const getPageLink = (item: SearchItem) => {
-    return item.page === 'java' ? '/java' : '/ap-cs';
+  const handleResultClick = (item: SearchItem) => {
+    // If it has a file path, open the PDF
+    if (item.filePath) {
+      window.open(item.filePath, '_blank');
+    } else {
+      // Otherwise navigate to the page
+      const pageLink = item.page === 'java' ? '/java' : '/ap-cs';
+      window.location.href = pageLink;
+    }
   };
 
   return (
@@ -87,12 +93,13 @@ const Search = () => {
               {results.map((item) => (
                 <div
                   key={item.id}
-                  className="bg-card border border-border rounded-lg p-4 hover:border-tech-cyan/50 transition-colors"
+                  onClick={() => handleResultClick(item)}
+                  className="bg-card border border-border rounded-lg p-4 hover:border-tech-cyan/50 transition-colors cursor-pointer group"
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
-                        <h3 className="text-lg font-semibold text-foreground">
+                        <h3 className="text-lg font-semibold text-foreground group-hover:text-tech-cyan transition-colors">
                           {item.title}
                         </h3>
                         <span className={`px-2 py-1 text-xs rounded-full ${getCategoryBadge(item.category)}`}>
@@ -124,13 +131,9 @@ const Search = () => {
                       </div>
                     </div>
                     
-                    <a
-                      href={getPageLink(item)}
-                      className="ml-4 p-2 bg-tech-cyan/10 hover:bg-tech-cyan/20 rounded-lg transition-colors group"
-                      title={`Go to ${item.page.toUpperCase()} page`}
-                    >
+                    <div className="ml-4 p-2 bg-tech-cyan/10 group-hover:bg-tech-cyan/20 rounded-lg transition-colors">
                       <ExternalLink className="h-4 w-4 text-tech-cyan group-hover:text-tech-cyan/80" />
-                    </a>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -142,7 +145,7 @@ const Search = () => {
               <SearchIcon className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
               <h3 className="text-lg font-semibold text-foreground mb-2">No results found</h3>
               <p className="text-muted-foreground">
-                Try searching for assignments, lessons, or specific topics like "recursion", "loops", or "calculator"
+                Try searching for assignments, lessons, or specific topics like "recursion", "loops", or "oop"
               </p>
             </div>
           )}
