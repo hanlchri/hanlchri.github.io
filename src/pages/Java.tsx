@@ -25,52 +25,52 @@ const Java = () => {
 
                 <CollapsibleSection title="Assignments" titleColor="#FF8C42">
                   <ul className="list-disc pl-6 space-y-3">
-                    <li><a href="/documents/Java/Assingments/Java_Assignment1_BasicConsoleApplications.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>1: Basic Console Applications</a></li>
-                    <li><a href="/documents/Java/Assingments/Java_Assignment2_CurrencyConverter.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>2: Currency Converter</a></li>
+                    <li><a href="/documents/Java/Assignments/Java_Assignment1_BasicConsoleApplications.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>1: Basic Console Applications</a></li>
+                    <li><a href="/documents/Java/Assignments/Java_Assignment2_CurrencyConverter.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>2: Currency Converter</a></li>
                     <li>
                       <CollapsibleSection title="2.5: Change Calculator" isNested={true} titleColor="#FF8C42">
                         <ul className="list-disc pl-4 space-y-1 text-sm">
-                          <li><a href="/documents/Java/Assingments/Java_Assignment2.5_ChangeTwenty.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Details</a></li>
-                          <li><a href="/documents/Java/Assingments/Assign2In.txt" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Sample Input</a></li>
-                          <li><a href="/documents/Java/Assingments/Assign2Out.txt" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Sample Output</a></li>
-                          <li><a href="/documents/Java/Assingments/Assign2Test1.txt" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Test 1</a></li>
-                          <li><a href="/documents/Java/Assingments/Assign2Test2.txt" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Test 2</a></li>
+                          <li><a href="/documents/Java/Assignments/Java_Assignment2.5_ChangeTwenty.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Details</a></li>
+                          <li><a href="/documents/Java/Assignments/Assign2In.txt" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Sample Input</a></li>
+                          <li><a href="/documents/Java/Assignments/Assign2Out.txt" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Sample Output</a></li>
+                          <li><a href="/documents/Java/Assignments/Assign2Test1.txt" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Test 1</a></li>
+                          <li><a href="/documents/Java/Assignments/Assign2Test2.txt" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Test 2</a></li>
                         </ul>
                       </CollapsibleSection>
                     </li>
                     <li>
                       <CollapsibleSection title="3: Loops" isNested={true} titleColor="#FF8C42">
                         <ul className="list-disc pl-4 space-y-1 text-sm">
-                          <li><a href="/documents/Java/Assingments/Java_Assignment3_LoopPractice.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Details</a></li>
-                          <li><a href="/documents/Java/Assingments/Assign3FreqFrameSolution.java" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Frequency Frame</a></li>
+                          <li><a href="/documents/Java/Assignments/Java_Assignment3_LoopPractice.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Details</a></li>
+                          <li><a href="/documents/Java/Assignments/Assign3FreqFrameSolution.java" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Frequency Frame</a></li>
                         </ul>
                       </CollapsibleSection>
                     </li>
                     <li>
                       <CollapsibleSection title="4: Arrays" isNested={true} titleColor="#FF8C42">
                         <ul className="list-disc pl-4 space-y-1 text-sm">
-                          <li><a href="/documents/Java/Assingments/Java_Assignment4_Budget.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Budget</a></li>
-                          <li><a href="/documents/Java/Assingments/Java_Assignment4_RackO.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>RackO</a></li>
-                          <li><a href="/documents/Java/Assingments/Assign4BudgetExample (1).jar" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Budget Example</a></li>
-                          <li><a href="/documents/Java/Assingments/Assign4RackOSkeleton.java" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>RackO Skeleton</a></li>
-                          <li><a href="/documents/Java/Assingments/Assign4ArrayPowerpoint.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Arrays PDF</a></li>
+                          <li><a href="/documents/Java/Assignments/Java_Assignment4_Budget.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Budget</a></li>
+                          <li><a href="/documents/Java/Assignments/Java_Assignment4_RackO.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>RackO</a></li>
+                          <li><a href="/documents/Java/Assignments/Assign4BudgetExample (1).jar" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Budget Example</a></li>
+                          <li><a href="/documents/Java/Assignments/Assign4RackOSkeleton.java" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>RackO Skeleton</a></li>
+                          <li><a href="/documents/Java/Assignments/Assign4ArrayPowerpoint.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Arrays PDF</a></li>
                         </ul>
                       </CollapsibleSection>
                     </li>
                     <li>
                       <CollapsibleSection title="4.5: Object Oriented Basics" isNested={true} titleColor="#FF8C42">
                         <ul className="list-disc pl-4 space-y-1 text-sm">
-                          <li><a href="/documents/Java/Assingments/Java_Assignment4.5_Object_Oriented_Basics.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Assignment</a></li>
-                          <li><a href="/documents/Java/Assingments/Assign4.5Student.java" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Student.java</a></li>
+                          <li><a href="/documents/Java/Assignments/Java_Assignment4.5_Object_Oriented_Basics.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Assignment</a></li>
+                          <li><a href="/documents/Java/Assignments/Assign4.5Student.java" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Student.java</a></li>
                         </ul>
                       </CollapsibleSection>
                     </li>
-                    <li><a href="/documents/Java/Assingments/Java_Assignment5_SwingBasics.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>5: Swing Basics</a></li>
+                    <li><a href="/documents/Java/Assignments/Java_Assignment5_SwingBasics.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>5: Swing Basics</a></li>
                     <li>
                       <CollapsibleSection title="6: Final Project" isNested={true} titleColor="#FF8C42">
                         <ul className="list-disc pl-4 space-y-1 text-sm">
-                          <li><a href="/documents/Java/Assingments/Java_Assignment6_FinalProject.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Assignment</a></li>
-                          <li><a href="/documents/Java/Assingments/Assign6BlackJackSkeleton.zip" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Blackjack Skeleton</a></li>
+                          <li><a href="/documents/Java/Assignments/Java_Assignment6_FinalProject.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Assignment</a></li>
+                          <li><a href="/documents/Java/Assignments/Assign6BlackJackSkeleton.zip" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Blackjack Skeleton</a></li>
                         </ul>
                       </CollapsibleSection>
                     </li>
