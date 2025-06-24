@@ -34,7 +34,7 @@ const About = () => {
                   <img
                     src={randomHanleyImageSrc}
                     alt="Chris Hanley - Random Portrait"
-                    className="w-full h-full object-cover object-center"
+                    className="w-full h-full object-contain object-center bg-black/20"
                   />
                 </div>
               )}

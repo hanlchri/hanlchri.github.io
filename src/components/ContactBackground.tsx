@@ -29,22 +29,23 @@ const ContactBackground: React.FC = () => {
     const DOT_COUNT = 80;
     const DOT_MIN_SIZE = 1;
     const DOT_MAX_SIZE = 3;
-    const DOT_MIN_BASE_SPEED = 0.05; // Reduced from 0.1
-    const DOT_MAX_BASE_SPEED = 0.15; // Reduced from 0.3
-    const DOT_MOVEMENT_MULTIPLIER = 0.3; // Reduced from 0.5
+    const DOT_MIN_BASE_SPEED = 0.05;
+    const DOT_MAX_BASE_SPEED = 0.15;
+    const DOT_MOVEMENT_MULTIPLIER = 0.3;
 
-    const MOUSE_INTERACTION_RADIUS = 120; // Reduced from 100
-    const MOUSE_BASE_FORCE = 0.03; // Reduced from 0.02
-    const MOUSE_CIRCULAR_FORCE_SCALAR = 0.4; // Reduced from 0.6
-    const MOUSE_REPULSION_FORCE_SCALAR = 0.075; // Reduced from 0.1
-    const MAX_INTERACTION_SPEED_FACTOR = 2.0; // Reduced from 2.5
+    const MOUSE_INTERACTION_RADIUS = 120;
+    const MOUSE_BASE_FORCE = 0.03;
+    const MOUSE_CIRCULAR_FORCE_SCALAR = 0.4;
+    const MOUSE_REPULSION_FORCE_SCALAR = 0.075;
+    const MAX_INTERACTION_SPEED_FACTOR = 2.0;
 
     const CONNECTION_MAX_DISTANCE = 70;
     const CONNECTION_BASE_OPACITY = 0.3;
     const CONNECTION_LINE_WIDTH = 0.5;
     const CONNECTION_COLOR = 'rgba(150, 170, 255, ${opacity})';
 
-    const TRAIL_EFFECT_ALPHA = 0.08; // Increased from 0.05 for smoother trails
+    // Smoother trail effect - less aggressive clearing
+    const TRAIL_EFFECT_ALPHA = 0.03; // Reduced from 0.08 for smoother fade
     const BACKGROUND_COLOR_FOR_TRAIL = `rgba(26, 31, 44, ${TRAIL_EFFECT_ALPHA})`;
     // --- END OF ADJUSTABLE PARAMETERS ---
 
@@ -87,6 +88,9 @@ const ContactBackground: React.FC = () => {
 
     const animate = () => {
       if (!ctx || !canvas) return;
+      
+      // Use smoother trail clearing instead of abrupt erasure
+      ctx.globalCompositeOperation = 'source-over';
       ctx.fillStyle = BACKGROUND_COLOR_FOR_TRAIL;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -127,17 +131,22 @@ const ContactBackground: React.FC = () => {
           }
         }
 
+        // Draw dot with glow
+        ctx.globalCompositeOperation = 'screen';
         ctx.beginPath();
         ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
         ctx.fillStyle = dot.color;
         ctx.fill();
 
+        // Softer glow effect
         ctx.beginPath();
-        ctx.arc(dot.x, dot.y, dot.size * 3, 0, Math.PI * 2);
-        ctx.fillStyle = dot.color.replace('0.7', '0.1'); // Glow
+        ctx.arc(dot.x, dot.y, dot.size * 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = dot.color.replace('0.7', '0.05');
         ctx.fill();
       });
 
+      // Draw connections with smooth blending
+      ctx.globalCompositeOperation = 'screen';
       for (let i = 0; i < dotsRef.current.length; i++) {
         for (let j = i + 1; j < dotsRef.current.length; j++) {
           const dotA = dotsRef.current[i];
@@ -157,6 +166,7 @@ const ContactBackground: React.FC = () => {
           }
         }
       }
+      
       animationFrameIdRef.current = requestAnimationFrame(animate);
     };
     animate();
