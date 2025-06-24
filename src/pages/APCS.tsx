@@ -197,23 +197,23 @@ const APCS = () => {
                   <ul className="list-disc pl-6 space-y-2">
                     <li>
                       Review: 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_JavaReview_Blank.docx" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_JavaReview_FilledOut.docx" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                     <li>
                       Imports: 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_ClassImports_Blank.docx" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_ClassImports_FilledOut.docx" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                     <li>
                       Bases: 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_AssigningBases_Blank.docx" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_AssigningBases_FilledOut.docx" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                     <li>
                       Round Off Error: 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_RoundOffError_Blank.docx" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_RoundOffError_FilledOut.docx" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
@@ -222,8 +222,8 @@ const APCS = () => {
                   <ul className="list-disc pl-6 space-y-2">
                     <li>
                       Random: 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_Random_Blank.docx" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_Random_FilledOut.docx" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
@@ -232,18 +232,18 @@ const APCS = () => {
                   <ul className="list-disc pl-6 space-y-2">
                     <li>
                       Objects: 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_Objects_Blank.pptx" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_Objects_FilledOut.pptx" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                     <li>
                       Parameter Passing: 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_ParamPassing_Blank.docx" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_ParamPassing_FilledOut.docx" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                     <li>
                       Short Circuit Evals: 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_ShortEval_Blank.docx" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_ShortEval_FilledOut.docx" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
@@ -252,18 +252,18 @@ const APCS = () => {
                   <ul className="list-disc pl-6 space-y-2">
                     <li>
                       OOP: 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_OOP_Blank.docx" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_OOP_FilledOut.docx" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                     <li>
                       OOP Part 2: 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_AdvancedOOP_Blank.docx" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_AdvancedOOP_FilledOut.docx" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                     <li>
                       Interfaces: 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_Interfaces_Blank.docx" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_Interfaces_FilledOut.docx" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
@@ -272,8 +272,8 @@ const APCS = () => {
                   <ul className="list-disc pl-6 space-y-2">
                     <li>
                       Strings: 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_Strings_Blank.docx" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_Strings_FilledOut.docx" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
@@ -282,18 +282,18 @@ const APCS = () => {
                   <ul className="list-disc pl-6 space-y-2">
                     <li>
                       Arrays: 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_Arrays_Blank.docx" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_Arrays_FilledOut.docx" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                     <li>
                       ArrayLists: 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_ArrayLists_Blank.docx" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_ArrayLists_FilledOut.docx" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                     <li>
                       ForEachLoop: 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_ForEachLoop_Blank.docx" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_ForEachLoop_FilledOut.docx" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
@@ -302,8 +302,8 @@ const APCS = () => {
                   <ul className="list-disc pl-6 space-y-2">
                     <li>
                       Review: 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_MidtermReview_Blank.docx" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_MidtermReview_FilledOut.docx" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
@@ -312,8 +312,8 @@ const APCS = () => {
                   <ul className="list-disc pl-6 space-y-2">
                     <li>
                       File I/O: 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_FilesIO_Blank.docx" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_FilesIO_FilledOut.docx" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
@@ -322,13 +322,13 @@ const APCS = () => {
                   <ul className="list-disc pl-6 space-y-2">
                     <li>
                       Inheritance: 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_Inheritance_Blank.docx" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_Inheritance_FilledOut.docx" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                     <li>
                       Polymorphism: 
                       <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_Polymorphism_FilledOut.docx" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
@@ -337,8 +337,8 @@ const APCS = () => {
                   <ul className="list-disc pl-6 space-y-2">
                     <li>
                       Recursion: 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
-                      <a href="" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_Recursion_Blank.docx" target="_blank" rel="noopener noreferrer" className="ml-2 text-tech-cyan hover:text-tech-purple transition-colors">Blank</a> | 
+                      <a href="/documents/APCS/Lessons/APCS_Lesson_Recursion_FilledOut.docx" target="_blank" rel="noopener noreferrer" className="ml-1 text-tech-cyan hover:text-tech-purple transition-colors">Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
