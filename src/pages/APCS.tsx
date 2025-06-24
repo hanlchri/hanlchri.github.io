@@ -367,7 +367,7 @@ const APCS = () => {
 
             <TabsContent value="resources">
               <div className="space-y-4">
-                <h2 className="text-2xl font-bold mb-4 text-tech-cyan">Resources</h2>
+                <h2 className="text-2xl font-bold mb-4 text-tech-cyan" defaultOpen={true}>Resources</h2>
 
                 <CollapsibleSection title="Resources">
                   <ul className="list-disc pl-6 space-y-2">
@@ -383,7 +383,7 @@ const APCS = () => {
 
             <TabsContent value="bonuses">
               <div className="space-y-4">
-                <h2 className="text-2xl font-bold mb-4 text-tech-cyan">Bonuses</h2>
+                <h2 className="text-2xl font-bold mb-4 text-tech-cyan" defaultOpen={true}>Bonuses</h2>
 
                 <CollapsibleSection title="Bonus Projects">
                   <ul className="list-disc pl-6 space-y-3">
