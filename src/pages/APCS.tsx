@@ -367,9 +367,9 @@ const APCS = () => {
 
             <TabsContent value="resources">
               <div className="space-y-4">
-                <h2 className="text-2xl font-bold mb-4 text-tech-cyan" defaultOpen={true}>Resources</h2>
+                <h2 className="text-2xl font-bold mb-4 text-tech-cyan" >Resources</h2>
 
-                <CollapsibleSection title="Resources">
+                <CollapsibleSection title="Resources" defaultOpen={true}>
                   <ul className="list-disc pl-6 space-y-2">
                     <li><a href="/documents/APCS/Resources/Cookbook.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">The Cookbook</a></li>
                     <li><a href="/documents/APCS/Resources/NetbeansPrintingGuide.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Printing from Netbeans</a></li>
@@ -383,9 +383,9 @@ const APCS = () => {
 
             <TabsContent value="bonuses">
               <div className="space-y-4">
-                <h2 className="text-2xl font-bold mb-4 text-tech-cyan" defaultOpen={true}>Bonuses</h2>
+                <h2 className="text-2xl font-bold mb-4 text-tech-cyan">Bonuses</h2>
 
-                <CollapsibleSection title="Bonus Projects">
+                <CollapsibleSection title="Bonus Projects" defaultOpen={true}>
                   <ul className="list-disc pl-6 space-y-3">
                     <li><a href="/documents/APCS/Bonus/APCS_Bonus_BaseConverter.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">1st Quarter: Base Converter</a></li>
                     <li><a href="/documents/APCS/Bonus/APCS_Bonus_PNZ.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">1st Quarter: PNZ</a></li>
