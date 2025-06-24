@@ -46,13 +46,9 @@ const Search = () => {
   };
 
   const handleResultClick = (item: SearchItem) => {
-    // If it has a file path, open the PDF with proper path handling
+    // If it has a file path, open the PDF
     if (item.filePath) {
-      // Remove leading slash if present and ensure proper path
-      const cleanPath = item.filePath.startsWith('/') ? item.filePath.slice(1) : item.filePath;
-      // Use window.location.origin to get the proper base URL
-      const fullPath = `${window.location.origin}/${cleanPath}`;
-      window.open(fullPath, '_blank');
+      window.open(item.filePath, '_blank');
     } else {
       // Otherwise navigate to the page
       const pageLink = item.page === 'java' ? '/java' : '/ap-cs';

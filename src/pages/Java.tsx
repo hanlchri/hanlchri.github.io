@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Layout from '@/components/Layout';
 import CollapsibleSection from '@/components/CollapsibleSection';
@@ -175,7 +176,7 @@ const Java = () => {
               <div className="space-y-4">
                 <h2 className="text-2xl font-bold mb-4" style={{ color: '#FF8C42' }}>Resources</h2>
 
-                <CollapsibleSection title="Resources" titleColor="#FF8C42" defaultOpen={true}>
+                <CollapsibleSection title="Resources" titleColor="#FF8C42">
                   <ul className="list-disc pl-6 space-y-1">
                     <li><a href="/documents/Java/Resources/TextbookChapters1_2.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Textbook Chapters 1 and 2</a></li>
                     <li><a href="/documents/Java/Resources/TheCookbook.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>The Cookbook</a></li>
@@ -204,7 +205,7 @@ const Java = () => {
               <div className="space-y-4">
                 <h2 className="text-2xl font-bold mb-4" style={{ color: '#FF8C42' }}>Bonus</h2>
 
-                <CollapsibleSection title="Resources" titleColor="#FF8C42" defaultOpen={true}>
+                <CollapsibleSection title="Resources" titleColor="#FF8C42">
                   <ul className="list-disc pl-6 space-y-1">
                     <li><a href="/documents/Java/Bonus/Java_Bonus_CoinFlip.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Coinflip Problem</a></li>
                     <li><a href="/documents/Java/Bonus/Java_Bonus_FoxGooseGrain.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Fox Goose Grain Problem</a></li>

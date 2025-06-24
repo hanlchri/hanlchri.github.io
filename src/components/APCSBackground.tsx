@@ -9,11 +9,12 @@ interface Hexagon {
   angle: number;
   rotationSpeed: number;
   originalRotationSpeed: number;
+  angularMomentum: number;
   isDragging: boolean;
   dragOffset: { x: number; y: number };
   velocity: { x: number; y: number };
-  angularVelocity: number;
   lastMousePosition: { x: number; y: number };
+  lastDragTime: number;
 }
 
 const APCSBackground: React.FC = () => {
@@ -37,21 +38,21 @@ const APCSBackground: React.FC = () => {
     const HEXAGON_MAX_SIZE = 50;
     
     const MOUSE_INTERACTION_RADIUS = 200;
-    const MOVEMENT_FORCE_MULTIPLIER = 0.08; // Reduced from 0.15
-    const ROTATION_EFFECT_MULTIPLIER = 1.001; // Reduced from 1.003
+    const MOVEMENT_FORCE_MULTIPLIER = 0.15;
+    const ROTATION_EFFECT_MULTIPLIER = 1.003;
     const ENABLE_ROTATION_REVERSION = true;
-    const ROTATION_REVERSION_LERP_FACTOR = 0.005; // Reduced
+    const ROTATION_REVERSION_LERP_FACTOR = 0.01;
     
-    const DRIFT_STRENGTH = 0.01; // Reduced from 0.02
-    const TIME_FACTOR = 0.000005; // Reduced from 0.00001
+    const DRIFT_STRENGTH = 0.02;
+    const TIME_FACTOR = 0.00001;
     
-    const VELOCITY_DAMPING = 0.98; // Increased damping
-    const ANGULAR_DAMPING = 0.99; // New parameter for angular velocity
-    const MAX_VELOCITY = 3; // Reduced from 5
-    const MAX_ANGULAR_VELOCITY = 0.05; // New parameter
+    const VELOCITY_DAMPING = 0.95;
+    const ANGULAR_DAMPING = 0.98;
+    const MAX_VELOCITY = 5;
+    const MAX_ANGULAR_VELOCITY = 0.1;
     
-    // Faster trail fade
-    const TRAIL_EFFECT_ALPHA = 0.08; // Increased from 0.02
+    // Enhanced trail effect - faster fade
+    const TRAIL_EFFECT_ALPHA = 0.08;
     const BACKGROUND_COLOR_FOR_TRAIL = `rgba(26, 31, 44, ${TRAIL_EFFECT_ALPHA})`;
     // --- END OF ADJUSTABLE PARAMETERS ---
 
@@ -65,13 +66,13 @@ const APCSBackground: React.FC = () => {
         const y = Math.random() * currentHeight;
         const size = HEXAGON_MIN_SIZE + Math.random() * (HEXAGON_MAX_SIZE - HEXAGON_MIN_SIZE);
         
-        // Blue-ish APCS colors
+        // Blue-ish APCS colors with better opacity
         const hue = 200 + Math.random() * 60;
         const saturation = 70 + Math.random() * 20;
         const lightness = 40 + Math.random() * 20;
-        const color = `hsla(${hue}, ${saturation}%, ${lightness}%, 0.15)`;
+        const color = `hsla(${hue}, ${saturation}%, ${lightness}%, 0.25)`;
         const angleValue = Math.random() * Math.PI * 2;
-        const baseRotationSpeed = (Math.random() - 0.5) * 0.002; // Reduced from 0.003
+        const baseRotationSpeed = (Math.random() - 0.5) * 0.003;
 
         hexagonsRef.current.push({
           x,
@@ -81,11 +82,12 @@ const APCSBackground: React.FC = () => {
           angle: angleValue,
           rotationSpeed: baseRotationSpeed,
           originalRotationSpeed: baseRotationSpeed,
+          angularMomentum: 0,
           isDragging: false,
           dragOffset: { x: 0, y: 0 },
           velocity: { x: 0, y: 0 },
-          angularVelocity: 0, // New property
-          lastMousePosition: { x: 0, y: 0 }
+          lastMousePosition: { x: 0, y: 0 },
+          lastDragTime: 0
         });
       }
     };
@@ -127,7 +129,8 @@ const APCSBackground: React.FC = () => {
         };
         clickedHexagon.lastMousePosition = { x, y };
         clickedHexagon.velocity = { x: 0, y: 0 };
-        clickedHexagon.angularVelocity = 0;
+        clickedHexagon.angularMomentum = 0;
+        clickedHexagon.lastDragTime = Date.now();
       }
     };
 
@@ -142,6 +145,9 @@ const APCSBackground: React.FC = () => {
       }
 
       if (draggedHexagonRef.current) {
+        const currentTime = Date.now();
+        const deltaTime = currentTime - draggedHexagonRef.current.lastDragTime;
+        
         const newX = x - draggedHexagonRef.current.dragOffset.x;
         const newY = y - draggedHexagonRef.current.dragOffset.y;
         
@@ -149,20 +155,24 @@ const APCSBackground: React.FC = () => {
         const deltaY = newY - draggedHexagonRef.current.y;
         
         // Linear momentum
-        draggedHexagonRef.current.velocity.x = deltaX * 0.2;
-        draggedHexagonRef.current.velocity.y = deltaY * 0.2;
+        draggedHexagonRef.current.velocity.x = deltaX * 0.3;
+        draggedHexagonRef.current.velocity.y = deltaY * 0.3;
         
-        // Angular momentum based on drag direction relative to center
+        // Angular momentum based on drag direction and distance from center
         const centerX = draggedHexagonRef.current.x;
         const centerY = draggedHexagonRef.current.y;
-        const dragAngle = Math.atan2(deltaY, deltaX);
-        const centerAngle = Math.atan2(y - centerY, x - centerX);
-        const angleDiff = dragAngle - centerAngle;
-        draggedHexagonRef.current.angularVelocity += Math.sin(angleDiff) * 0.01;
+        const dragRadius = Math.sqrt(draggedHexagonRef.current.dragOffset.x ** 2 + draggedHexagonRef.current.dragOffset.y ** 2);
+        
+        if (dragRadius > 5 && deltaTime > 0) {
+          const crossProduct = (x - centerX) * (draggedHexagonRef.current.lastMousePosition.y - centerY) - 
+                              (y - centerY) * (draggedHexagonRef.current.lastMousePosition.x - centerX);
+          draggedHexagonRef.current.angularMomentum = (crossProduct / (dragRadius * deltaTime)) * 0.001;
+        }
         
         draggedHexagonRef.current.x = newX;
         draggedHexagonRef.current.y = newY;
         draggedHexagonRef.current.lastMousePosition = { x, y };
+        draggedHexagonRef.current.lastDragTime = currentTime;
       }
     };
 
@@ -183,10 +193,7 @@ const APCSBackground: React.FC = () => {
       ctx.translate(x, y);
       ctx.rotate(currentAngle);
 
-      // Outer glow
-      ctx.shadowColor = color.replace('0.15', '0.4');
-      ctx.shadowBlur = 20;
-
+      // Outer hexagon with glow effect
       ctx.beginPath();
       for (let i = 0; i < 6; i++) {
         const pointX = size * Math.cos(i * (Math.PI / 3));
@@ -195,47 +202,55 @@ const APCSBackground: React.FC = () => {
         else ctx.lineTo(pointX, pointY);
       }
       ctx.closePath();
+      
+      // Add glow
+      ctx.shadowColor = color;
+      ctx.shadowBlur = 15;
       ctx.fillStyle = color;
       ctx.fill();
-
+      
       // Inner hexagon
-      ctx.shadowBlur = 10;
+      ctx.shadowBlur = 0;
       ctx.beginPath();
       for (let i = 0; i < 6; i++) {
-        const pointX = size * 0.7 * Math.cos(i * (Math.PI / 3));
-        const pointY = size * 0.7 * Math.sin(i * (Math.PI / 3));
+        const pointX = size * 0.6 * Math.cos(i * (Math.PI / 3));
+        const pointY = size * 0.6 * Math.sin(i * (Math.PI / 3));
         if (i === 0) ctx.moveTo(pointX, pointY);
         else ctx.lineTo(pointX, pointY);
       }
       ctx.closePath();
-      const innerColor = color.replace('0.15', '0.3');
+      const innerColor = color.replace(/0\.\d+\)$/, '0.4)');
       ctx.fillStyle = innerColor;
       ctx.fill();
+      
+      // Edge lines for futuristic look
+      ctx.strokeStyle = color.replace(/0\.\d+\)$/, '0.6)');
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      
       ctx.restore();
     };
 
     const animate = () => {
       if (!ctx || !canvas) return;
       
-      // Faster fade for smooth trails
+      // Quick fade for smooth trails
       ctx.globalCompositeOperation = 'source-over';
       ctx.fillStyle = BACKGROUND_COLOR_FOR_TRAIL;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       hexagonsRef.current.forEach((hexagon) => {
-        // Apply angular velocity to rotation
-        hexagon.angle += hexagon.rotationSpeed + hexagon.angularVelocity;
+        // Apply angular momentum to rotation
+        hexagon.rotationSpeed += hexagon.angularMomentum;
+        hexagon.angle += hexagon.rotationSpeed;
         
-        // Dampen angular velocity
-        hexagon.angularVelocity *= ANGULAR_DAMPING;
-        
-        // Limit angular velocity
-        if (Math.abs(hexagon.angularVelocity) > MAX_ANGULAR_VELOCITY) {
-          hexagon.angularVelocity = Math.sign(hexagon.angularVelocity) * MAX_ANGULAR_VELOCITY;
+        // Damping for angular momentum
+        hexagon.angularMomentum *= ANGULAR_DAMPING;
+        if (Math.abs(hexagon.angularMomentum) > MAX_ANGULAR_VELOCITY) {
+          hexagon.angularMomentum = Math.sign(hexagon.angularMomentum) * MAX_ANGULAR_VELOCITY;
         }
 
         if (!hexagon.isDragging) {
-          // Apply linear momentum
           hexagon.x += hexagon.velocity.x;
           hexagon.y += hexagon.velocity.y;
           hexagon.velocity.x *= VELOCITY_DAMPING;
@@ -268,7 +283,6 @@ const APCSBackground: React.FC = () => {
             }
           }
 
-          // Gentle drift
           const timeFactor = Date.now() * TIME_FACTOR;
           hexagon.x += Math.sin(timeFactor + hexagon.size) * DRIFT_STRENGTH;
           hexagon.y += Math.cos(timeFactor + hexagon.size) * DRIFT_STRENGTH;
@@ -276,7 +290,6 @@ const APCSBackground: React.FC = () => {
 
         drawHexagon(hexagon.x, hexagon.y, hexagon.size, hexagon.color, hexagon.angle);
 
-        // Wrap around edges
         if (hexagon.x < -hexagon.size) hexagon.x = canvas.width + hexagon.size;
         if (hexagon.x > canvas.width + hexagon.size) hexagon.x = -hexagon.size;
         if (hexagon.y < -hexagon.size) hexagon.y = canvas.height + hexagon.size;

@@ -1,23 +1,32 @@
 
 import React, { useEffect, useRef } from 'react';
 
-interface CircuitNode {
+interface Particle {
   x: number;
   y: number;
-  type: 'processor' | 'resistor' | 'capacitor' | 'junction';
+  vx: number;
+  vy: number;
   size: number;
-  pulsePhase: number;
-  connections: number[];
+  color: string;
+  alpha: number;
+  life: number;
+  maxLife: number;
+  type: 'node' | 'connection' | 'data';
 }
 
-interface Circuit {
-  nodes: CircuitNode[];
-  connections: { from: number; to: number; active: boolean; pulsePosition: number }[];
+interface Connection {
+  start: Particle;
+  end: Particle;
+  strength: number;
+  pulsing: boolean;
+  pulseTime: number;
 }
 
 const ReferencesBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const circuitRef = useRef<Circuit>({ nodes: [], connections: [] });
+  const mousePositionRef = useRef({ x: 0, y: 0 });
+  const particlesRef = useRef<Particle[]>([]);
+  const connectionsRef = useRef<Connection[]>([]);
   const animationFrameIdRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -26,233 +35,214 @@ const ReferencesBackground: React.FC = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const initializeCircuit = () => {
-      const nodes: CircuitNode[] = [];
-      const gridSize = 80;
-      const cols = Math.ceil(canvas.width / gridSize);
-      const rows = Math.ceil(canvas.height / gridSize);
+    // --- ADJUSTABLE PARAMETERS ---
+    const MAX_PARTICLES = 80;
+    const CONNECTION_DISTANCE = 120;
+    const MOUSE_INFLUENCE_RADIUS = 150;
+    const MOUSE_REPEL_FORCE = 2;
+    const PARTICLE_SPEED = 0.3;
+    const TRAIL_FADE = 0.03;
+    // ---
 
-      // Create grid of circuit nodes
-      for (let row = 0; row < rows; row++) {
-        for (let col = 0; col < cols; col++) {
-          if (Math.random() > 0.3) { // 70% chance to place a node
-            const x = col * gridSize + (Math.random() - 0.5) * 20;
-            const y = row * gridSize + (Math.random() - 0.5) * 20;
-            
-            let type: CircuitNode['type'] = 'junction';
-            if (Math.random() < 0.2) type = 'processor';
-            else if (Math.random() < 0.4) type = 'resistor';
-            else if (Math.random() < 0.6) type = 'capacitor';
-            
-            nodes.push({
-              x,
-              y,
-              type,
-              size: type === 'processor' ? 12 : type === 'junction' ? 4 : 8,
-              pulsePhase: Math.random() * Math.PI * 2,
-              connections: []
-            });
-          }
+    const initializeNetwork = () => {
+      particlesRef.current = [];
+      connectionsRef.current = [];
+
+      for (let i = 0; i < MAX_PARTICLES; i++) {
+        const type = Math.random() < 0.7 ? 'node' : (Math.random() < 0.5 ? 'connection' : 'data');
+        const size = type === 'node' ? 3 + Math.random() * 4 : 
+                    type === 'connection' ? 1 + Math.random() * 2 : 
+                    2 + Math.random() * 3;
+
+        let color;
+        if (type === 'node') {
+          // Main network nodes - teal/cyan
+          const hue = 170 + Math.random() * 20;
+          color = `hsl(${hue}, 70%, 60%)`;
+        } else if (type === 'connection') {
+          // Connection points - green
+          const hue = 120 + Math.random() * 30;
+          color = `hsl(${hue}, 60%, 50%)`;
+        } else {
+          // Data points - blue
+          const hue = 200 + Math.random() * 40;
+          color = `hsl(${hue}, 80%, 65%)`;
         }
-      }
 
-      // Create connections between nearby nodes
-      const connections: Circuit['connections'] = [];
-      nodes.forEach((node, i) => {
-        nodes.forEach((otherNode, j) => {
-          if (i !== j) {
-            const distance = Math.sqrt(
-              Math.pow(node.x - otherNode.x, 2) + 
-              Math.pow(node.y - otherNode.y, 2)
-            );
-            
-            if (distance < 120 && Math.random() > 0.7) {
-              connections.push({
-                from: i,
-                to: j,
-                active: Math.random() > 0.5,
-                pulsePosition: Math.random()
-              });
-            }
-          }
+        particlesRef.current.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          vx: (Math.random() - 0.5) * PARTICLE_SPEED,
+          vy: (Math.random() - 0.5) * PARTICLE_SPEED,
+          size,
+          color,
+          alpha: 0.8 + Math.random() * 0.2,
+          life: 1,
+          maxLife: 1,
+          type
         });
-      });
-
-      circuitRef.current = { nodes, connections };
+      }
     };
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      initializeCircuit();
+      initializeNetwork();
     };
 
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    const drawProcessor = (x: number, y: number, size: number, glow: number) => {
-      ctx.save();
-      
-      // Outer casing
-      ctx.fillStyle = `rgba(120, 150, 180, ${0.8 + glow * 0.3})`;
-      ctx.fillRect(x - size, y - size, size * 2, size * 2);
-      
-      // Inner circuits
-      ctx.fillStyle = `rgba(80, 200, 120, ${0.6 + glow * 0.4})`;
-      ctx.fillRect(x - size * 0.7, y - size * 0.7, size * 1.4, size * 0.3);
-      ctx.fillRect(x - size * 0.3, y - size * 0.7, size * 0.3, size * 1.4);
-      
-      // Glow effect
-      if (glow > 0.5) {
-        ctx.shadowColor = 'rgba(80, 200, 120, 0.8)';
-        ctx.shadowBlur = 15;
-        ctx.fillStyle = `rgba(80, 200, 120, ${(glow - 0.5) * 0.5})`;
-        ctx.fillRect(x - size * 1.2, y - size * 1.2, size * 2.4, size * 2.4);
-      }
-      
-      ctx.restore();
+    const handleMouseMove = (e: MouseEvent) => {
+      mousePositionRef.current = { x: e.clientX, y: e.clientY };
     };
 
-    const drawResistor = (x: number, y: number, size: number, glow: number) => {
-      ctx.save();
-      
-      ctx.strokeStyle = `rgba(200, 150, 100, ${0.7 + glow * 0.3})`;
-      ctx.lineWidth = 3;
-      ctx.beginPath();
-      
-      // Zigzag pattern
-      const steps = 6;
-      const stepSize = size / steps;
-      ctx.moveTo(x - size, y);
-      for (let i = 0; i < steps; i++) {
-        const zigX = x - size + i * stepSize * 2;
-        const zigY = y + (i % 2 === 0 ? -stepSize : stepSize);
-        ctx.lineTo(zigX, zigY);
-      }
-      ctx.lineTo(x + size, y);
-      ctx.stroke();
-      
-      ctx.restore();
-    };
+    window.addEventListener('mousemove', handleMouseMove);
 
-    const drawCapacitor = (x: number, y: number, size: number, glow: number) => {
-      ctx.save();
+    const updateConnections = () => {
+      connectionsRef.current = [];
       
-      ctx.strokeStyle = `rgba(180, 120, 200, ${0.7 + glow * 0.3})`;
-      ctx.lineWidth = 4;
-      
-      // Two parallel lines
-      ctx.beginPath();
-      ctx.moveTo(x - 2, y - size);
-      ctx.lineTo(x - 2, y + size);
-      ctx.moveTo(x + 2, y - size);
-      ctx.lineTo(x + 2, y + size);
-      ctx.stroke();
-      
-      ctx.restore();
-    };
-
-    const drawJunction = (x: number, y: number, size: number, glow: number) => {
-      ctx.save();
-      
-      ctx.fillStyle = `rgba(150, 150, 150, ${0.8 + glow * 0.2})`;
-      ctx.beginPath();
-      ctx.arc(x, y, size, 0, Math.PI * 2);
-      ctx.fill();
-      
-      if (glow > 0.7) {
-        ctx.shadowColor = 'rgba(150, 150, 150, 0.6)';
-        ctx.shadowBlur = 8;
-        ctx.fill();
+      for (let i = 0; i < particlesRef.current.length; i++) {
+        for (let j = i + 1; j < particlesRef.current.length; j++) {
+          const p1 = particlesRef.current[i];
+          const p2 = particlesRef.current[j];
+          
+          const dx = p1.x - p2.x;
+          const dy = p1.y - p2.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          
+          if (distance < CONNECTION_DISTANCE) {
+            const strength = 1 - (distance / CONNECTION_DISTANCE);
+            const shouldPulse = Math.random() < 0.1; // 10% chance for data flow animation
+            
+            connectionsRef.current.push({
+              start: p1,
+              end: p2,
+              strength,
+              pulsing: shouldPulse,
+              pulseTime: Math.random() * Math.PI * 2
+            });
+          }
+        }
       }
-      
-      ctx.restore();
     };
 
     const animate = () => {
       if (!ctx || !canvas) return;
 
-      // Clear with dark industrial background
-      ctx.fillStyle = 'rgba(15, 20, 25, 0.95)';
+      // Smooth trail effect
+      ctx.fillStyle = `rgba(26, 31, 44, ${TRAIL_FADE})`;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      const time = Date.now() * 0.001;
-
-      // Draw connections first
-      circuitRef.current.connections.forEach(connection => {
-        const fromNode = circuitRef.current.nodes[connection.from];
-        const toNode = circuitRef.current.nodes[connection.to];
+      // Update particles
+      particlesRef.current.forEach(particle => {
+        // Mouse repulsion
+        const dx = particle.x - mousePositionRef.current.x;
+        const dy = particle.y - mousePositionRef.current.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
         
-        if (!fromNode || !toNode) return;
+        if (distance < MOUSE_INFLUENCE_RADIUS && distance > 0) {
+          const force = (MOUSE_INFLUENCE_RADIUS - distance) / MOUSE_INFLUENCE_RADIUS;
+          const angle = Math.atan2(dy, dx);
+          particle.vx += Math.cos(angle) * force * MOUSE_REPEL_FORCE * 0.01;
+          particle.vy += Math.sin(angle) * force * MOUSE_REPEL_FORCE * 0.01;
+        }
 
+        // Update position
+        particle.x += particle.vx;
+        particle.y += particle.vy;
+
+        // Boundary wrapping
+        if (particle.x < 0) particle.x = canvas.width;
+        if (particle.x > canvas.width) particle.x = 0;
+        if (particle.y < 0) particle.y = canvas.height;
+        if (particle.y > canvas.height) particle.y = 0;
+
+        // Velocity damping
+        particle.vx *= 0.999;
+        particle.vy *= 0.999;
+
+        // Draw particle
         ctx.save();
+        ctx.globalAlpha = particle.alpha;
+        ctx.fillStyle = particle.color;
+        ctx.shadowColor = particle.color;
+        ctx.shadowBlur = particle.size * 2;
         
-        if (connection.active) {
-          // Animated connection
-          connection.pulsePosition += 0.02;
-          if (connection.pulsePosition > 1) connection.pulsePosition = 0;
-          
-          // Draw the circuit trace
-          ctx.strokeStyle = 'rgba(100, 140, 160, 0.6)';
-          ctx.lineWidth = 2;
+        ctx.beginPath();
+        if (particle.type === 'node') {
+          // Hexagonal nodes for main network points
+          ctx.translate(particle.x, particle.y);
           ctx.beginPath();
-          ctx.moveTo(fromNode.x, fromNode.y);
-          ctx.lineTo(toNode.x, toNode.y);
-          ctx.stroke();
-          
-          // Draw moving pulse
-          const pulseX = fromNode.x + (toNode.x - fromNode.x) * connection.pulsePosition;
-          const pulseY = fromNode.y + (toNode.y - fromNode.y) * connection.pulsePosition;
-          
-          ctx.fillStyle = 'rgba(80, 200, 120, 0.9)';
-          ctx.shadowColor = 'rgba(80, 200, 120, 0.8)';
-          ctx.shadowBlur = 10;
-          ctx.beginPath();
-          ctx.arc(pulseX, pulseY, 3, 0, Math.PI * 2);
+          for (let i = 0; i < 6; i++) {
+            const angle = (i * Math.PI) / 3;
+            const x = particle.size * Math.cos(angle);
+            const y = particle.size * Math.sin(angle);
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.closePath();
           ctx.fill();
+        } else if (particle.type === 'data') {
+          // Square data packets
+          ctx.fillRect(
+            particle.x - particle.size/2, 
+            particle.y - particle.size/2, 
+            particle.size, 
+            particle.size
+          );
         } else {
-          // Inactive connection
-          ctx.strokeStyle = 'rgba(60, 80, 90, 0.4)';
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(fromNode.x, fromNode.y);
-          ctx.lineTo(toNode.x, toNode.y);
-          ctx.stroke();
+          // Circular connection points
+          ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+          ctx.fill();
         }
         
         ctx.restore();
       });
 
-      // Draw nodes
-      circuitRef.current.nodes.forEach(node => {
-        node.pulsePhase += 0.02;
-        const glow = (Math.sin(node.pulsePhase) + 1) / 2;
+      // Update and draw connections
+      updateConnections();
+      
+      connectionsRef.current.forEach(connection => {
+        ctx.save();
         
-        switch (node.type) {
-          case 'processor':
-            drawProcessor(node.x, node.y, node.size, glow);
-            break;
-          case 'resistor':
-            drawResistor(node.x, node.y, node.size, glow);
-            break;
-          case 'capacitor':
-            drawCapacitor(node.x, node.y, node.size, glow);
-            break;
-          case 'junction':
-            drawJunction(node.x, node.y, node.size, glow);
-            break;
+        let alpha = connection.strength * 0.3;
+        let width = connection.strength * 2;
+        
+        // Pulsing animation for data flow
+        if (connection.pulsing) {
+          connection.pulseTime += 0.1;
+          const pulse = Math.sin(connection.pulseTime) * 0.5 + 0.5;
+          alpha += pulse * 0.4;
+          width += pulse * 1;
+          
+          // Draw data flow particles
+          const flowProgress = (connection.pulseTime * 0.1) % 1;
+          const flowX = connection.start.x + (connection.end.x - connection.start.x) * flowProgress;
+          const flowY = connection.start.y + (connection.end.y - connection.start.y) * flowProgress;
+          
+          ctx.fillStyle = `rgba(100, 255, 200, ${pulse})`;
+          ctx.shadowColor = 'rgba(100, 255, 200, 1)';
+          ctx.shadowBlur = 8;
+          ctx.beginPath();
+          ctx.arc(flowX, flowY, 2, 0, Math.PI * 2);
+          ctx.fill();
         }
+        
+        ctx.globalAlpha = alpha;
+        ctx.strokeStyle = connection.start.color;
+        ctx.lineWidth = width;
+        ctx.shadowColor = connection.start.color;
+        ctx.shadowBlur = 5;
+        
+        // Draw connection line
+        ctx.beginPath();
+        ctx.moveTo(connection.start.x, connection.start.y);
+        ctx.lineTo(connection.end.x, connection.end.y);
+        ctx.stroke();
+        
+        ctx.restore();
       });
-
-      // Randomly activate/deactivate connections
-      if (Math.random() < 0.02) {
-        const randomConnection = circuitRef.current.connections[
-          Math.floor(Math.random() * circuitRef.current.connections.length)
-        ];
-        if (randomConnection) {
-          randomConnection.active = !randomConnection.active;
-        }
-      }
 
       animationFrameIdRef.current = requestAnimationFrame(animate);
     };
@@ -261,6 +251,7 @@ const ReferencesBackground: React.FC = () => {
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('mousemove', handleMouseMove);
       if (animationFrameIdRef.current) {
         cancelAnimationFrame(animationFrameIdRef.current);
       }
