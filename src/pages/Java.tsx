@@ -207,8 +207,8 @@ const Java = () => {
 
                 <CollapsibleSection title="Resources" titleColor="#FF8C42">
                   <ul className="list-disc pl-6 space-y-1">
-                    <li><a href="/documents/Java/Bonus/CoinflipProblem.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Coinflip Problem</a></li>
-                    <li><a href="/documents/Java/Bonus/FoxGooseGrainProblem.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Fox Goose Grain Problem</a></li>
+                    <li><a href="/documents/Java/Bonus/Java_Bonus_CoinFlip.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Coinflip Problem</a></li>
+                    <li><a href="/documents/Java/Bonus/Java_Bonus_FoxGooseGrain.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Fox Goose Grain Problem</a></li>
                   </ul>
                 </CollapsibleSection>
               </div>
