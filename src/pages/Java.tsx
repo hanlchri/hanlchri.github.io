@@ -174,7 +174,7 @@ const Java = () => {
 
             <TabsContent value="resources">
               <div className="space-y-4">
-                <h2 className="text-2xl font-bold mb-4" style={{ color: '#FF8C42' }}>Resources</h2>
+                <h2 className="text-2xl font-bold mb-4" style={{ color: '#FF8C42' } defaultOpen={true}}>Resources</h2>
 
                 <CollapsibleSection title="Resources" titleColor="#FF8C42">
                   <ul className="list-disc pl-6 space-y-1">
@@ -203,7 +203,7 @@ const Java = () => {
 
             <TabsContent value="Bonus">
               <div className="space-y-4">
-                <h2 className="text-2xl font-bold mb-4" style={{ color: '#FF8C42' }}>Bonus</h2>
+                <h2 className="text-2xl font-bold mb-4" style={{ color: '#FF8C42' } defaultOpen={true}}>Bonus</h2>
 
                 <CollapsibleSection title="Resources" titleColor="#FF8C42">
                   <ul className="list-disc pl-6 space-y-1">
