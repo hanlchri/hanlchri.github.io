@@ -10,16 +10,59 @@ import {
 } from '@/components/ui/popover';
 import { Input } from '@/components/ui/input';
 
-// Mock search results data
 const mockResources = [
-  { id: 1, title: "Computer Components Assignment", category: "Assignments", path: "/ap-cs" },
-  { id: 2, title: "Java Arrays Tutorial", category: "Java", path: "/java" },
-  { id: 3, title: "Printing from Netbeans", category: "Resources", path: "/ap-cs" },
-  { id: 4, title: "Unit 1 Review", category: "Lessons", path: "/ap-cs" },
-  { id: 5, title: "W3Schools Reference", category: "References", path: "/references" },
-  { id: 6, title: "String Methods", category: "Assignments", path: "/ap-cs" },
-  { id: 7, title: "Inheritance Hierarchy", category: "Homework", path: "/ap-cs" },
+  // APCS Assignments
+  { id: 1, title: "1: Computer Components", category: "Assignments", path: "/ap-cs" },
+  { id: 2, title: "2: Operations Calculator", category: "Assignments", path: "/ap-cs" },
+  { id: 3, title: "3: Castle Stairs", category: "Assignments", path: "/ap-cs" },
+  { id: 4, title: "4: Matrix Computer Store", category: "Assignments", path: "/ap-cs" },
+  { id: 5, title: "5: Reusable Components", category: "Assignments", path: "/ap-cs" },
+  { id: 6, title: "9: String Methods", category: "Assignments", path: "/ap-cs" },
+  { id: 7, title: "18: Hangman", category: "Assignments", path: "/ap-cs" },
+  { id: 8, title: "Turn Based Strategy Game", category: "Assignments", path: "/ap-cs" },
+
+  // APCS Homework
+  { id: 9, title: "Inheritance Hierarchy", category: "Homework", path: "/ap-cs" },
+  { id: 10, title: "Array Copying", category: "Homework", path: "/ap-cs" },
+  { id: 11, title: "Paint BullsEye and Scalable House", category: "Homework", path: "/ap-cs" },
+
+  // APCS Lessons
+  { id: 12, title: "Unit 1 Review", category: "Lessons", path: "/ap-cs" },
+  { id: 13, title: "Unit 4 Object Oriented", category: "Lessons", path: "/ap-cs" },
+  { id: 14, title: "Unit 6 Arrays & ArrayLists", category: "Lessons", path: "/ap-cs" },
+
+  // APCS Resources
+  { id: 15, title: "Printing from Netbeans", category: "Resources", path: "/ap-cs" },
+  { id: 16, title: "The Cookbook", category: "Resources", path: "/ap-cs" },
+  { id: 17, title: "GUI Survival Guide", category: "Resources", path: "/ap-cs" },
+
+  // Java Assignments
+  { id: 18, title: "1: Basic Console Applications", category: "Assignments", path: "/java" },
+  { id: 19, title: "2: Currency Converter", category: "Assignments", path: "/java" },
+  { id: 20, title: "2.5: Change Calculator", category: "Assignments", path: "/java" },
+  { id: 21, title: "3: Loops", category: "Assignments", path: "/java" },
+  { id: 22, title: "4: Arrays", category: "Assignments", path: "/java" },
+  { id: 23, title: "4.5: Object Oriented Basics", category: "Assignments", path: "/java" },
+  { id: 24, title: "6: Final Project", category: "Assignments", path: "/java" },
+
+  // Java Homework
+  { id: 25, title: "Glossary Terms", category: "Homework", path: "/java" },
+  { id: 26, title: "Java Loops HW", category: "Homework", path: "/java" },
+
+  // Java Lessons
+  { id: 27, title: "Flowcharting Lesson", category: "Lessons", path: "/java" },
+  { id: 28, title: "Math Operations", category: "Lessons", path: "/java" },
+  { id: 29, title: "Looping & Random", category: "Lessons", path: "/java" },
+
+  // Java Resources
+  { id: 30, title: "Textbook Chapters 1 and 2", category: "Resources", path: "/java" },
+  { id: 31, title: "The Cookbook (Java)", category: "Resources", path: "/java" },
+  { id: 32, title: "Guide for Round Buttons", category: "Resources", path: "/java" },
+
+  // Shared References
+  { id: 33, title: "W3Schools Reference", category: "References", path: "/references" },
 ];
+
 
 const NavBar: React.FC = () => {
   const location = useLocation();
