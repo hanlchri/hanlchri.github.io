@@ -30,9 +30,9 @@ const Java = () => {
                     <li>
                       <CollapsibleSection title="2.5: Change Calculator" isNested={true} titleColor="#FF8C42">
                         <ul className="list-disc pl-4 space-y-1 text-sm">
-                          <li><a href="public/documents/Java/Assignments/Java_Assignment2.5_ChangeTwenty.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Details</a></li>
-                          <li><a href="documents/Java/Assignments/Assign2In.txt" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Sample Input</a></li>
-                          <li><a href="/public/documents/Java/Assignments/Assign2Out.txt" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Sample Output</a></li>
+                          <li><a href="/documents/Java/Assignments/Java_Assignment2.5_ChangeTwenty.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Details</a></li>
+                          <li><a href="/documents/Java/Assignments/Assign2In.txt" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Sample Input</a></li>
+                          <li><a href="/documents/Java/Assignments/Assign2Out.txt" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Sample Output</a></li>
                           <li><a href="/documents/Java/Assignments/Assign2Test1.txt" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Test 1</a></li>
                           <li><a href="/documents/Java/Assignments/Assign2Test2.txt" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Test 2</a></li>
                         </ul>
