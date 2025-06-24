@@ -159,18 +159,6 @@ const APCSBackground: React.FC = () => {
       }
     };
 
-    const getHexagonAtPosition = (x: number, y: number): Hexagon | null => {
-      for (const hexagon of hexagonsRef.current) {
-        const dx = x - hexagon.x;
-        const dy = y - hexagon.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        if (distance <= hexagon.size + 10) {
-          return hexagon;
-        }
-      }
-      return null;
-    };
-
     canvas.addEventListener('mousedown', handleMouseDown);
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseup', handleMouseUp);
