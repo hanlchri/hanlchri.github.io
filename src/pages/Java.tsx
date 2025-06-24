@@ -25,8 +25,8 @@ const Java = () => {
 
                 <CollapsibleSection title="Assignments" titleColor="#FF8C42">
                   <ul className="list-disc pl-6 space-y-3">
-                    <li><a href="/documents/Java/Assignments/Java_Assignment1_BasicConsoleApplications.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>1: Basic Console Applications</a></li>
-                    <li><a href="/documents/Java/Assignments/Java_Assignment2_CurrencyConverter.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>2: Currency Converter</a></li>
+                    <li><a href="./documents/Java/Assignments/Java_Assignment1_BasicConsoleApplications.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>1: Basic Console Applications</a></li>
+                    <li><a href="./documents/Java/Assignments/Java_Assignment2_CurrencyConverter.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>2: Currency Converter</a></li>
                     <li>
                       <CollapsibleSection title="2.5: Change Calculator" isNested={true} titleColor="#FF8C42">
                         <ul className="list-disc pl-4 space-y-1 text-sm">
