@@ -48,7 +48,11 @@ const Search = () => {
   const handleResultClick = (item: SearchItem) => {
     // If it has a file path, open the PDF
     if (item.filePath) {
-      window.open(item.filePath, '_blank');
+      // Create proper absolute URL for the file
+      const baseUrl = window.location.origin;
+      const filePath = item.filePath.startsWith('./') ? item.filePath.substring(2) : item.filePath;
+      const fullUrl = `${baseUrl}/${filePath}`;
+      window.open(fullUrl, '_blank');
     } else {
       // Otherwise navigate to the page
       const pageLink = item.page === 'java' ? '/java' : '/ap-cs';
