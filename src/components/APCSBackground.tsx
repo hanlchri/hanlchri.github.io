@@ -4,99 +4,228 @@ import React, { useEffect, useRef } from 'react';
 interface Hexagon {
   x: number;
   y: number;
-  vx: number;
-  vy: number;
   size: number;
-  rotation: number;
-  rotationSpeed: number;
-  opacity: number;
   color: string;
-  life: number;
-  maxLife: number;
+  angle: number;
+  rotationSpeed: number;
+  originalRotationSpeed: number;
+  angularMomentum: number;
+  isDragging: boolean;
+  dragOffset: { x: number; y: number };
+  velocity: { x: number; y: number };
+  lastMousePosition: { x: number; y: number };
+  lastDragTime: number;
 }
 
 const APCSBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const mousePositionRef = useRef({ x: 0, y: 0 });
+  const firstMoveMadeRef = useRef(false);
   const hexagonsRef = useRef<Hexagon[]>([]);
   const animationFrameIdRef = useRef<number | null>(null);
-  const mousePositionRef = useRef({ x: 0, y: 0 });
+  const draggedHexagonRef = useRef<Hexagon | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Reduced speed constants
-    const MAX_HEXAGONS = 40;
-    const HEXAGON_SPEED = 0.2; // Reduced from higher values
-    const ROTATION_SPEED = 0.001; // Much slower rotation
-    const SPAWN_RATE = 0.008; // Reduced spawn rate
+    // --- START OF ADJUSTABLE PARAMETERS ---
+    const HEXAGON_COUNT = 45;
+    const HEXAGON_MIN_SIZE = 20;
+    const HEXAGON_MAX_SIZE = 50;
+    
+    const MOUSE_INTERACTION_RADIUS = 200;
+    const MOVEMENT_FORCE_MULTIPLIER = 0.15;
+    const ROTATION_EFFECT_MULTIPLIER = 1.003;
+    const ENABLE_ROTATION_REVERSION = true;
+    const ROTATION_REVERSION_LERP_FACTOR = 0.01;
+    
+    const DRIFT_STRENGTH = 0.02;
+    const TIME_FACTOR = 0.00001;
+    
+    const VELOCITY_DAMPING = 0.95;
+    const ANGULAR_DAMPING = 0.98;
+    const MAX_VELOCITY = 5;
+    const MAX_ANGULAR_VELOCITY = 0.1;
+    
+    // Enhanced trail effect - faster fade
+    const TRAIL_EFFECT_ALPHA = 0.08;
+    const BACKGROUND_COLOR_FOR_TRAIL = `rgba(26, 31, 44, ${TRAIL_EFFECT_ALPHA})`;
+    // --- END OF ADJUSTABLE PARAMETERS ---
 
-    const createHexagon = (): Hexagon => {
-      const side = Math.random() < 0.5 ? 'left' : 'right';
-      const x = side === 'left' ? -50 : canvas.width + 50;
-      const y = Math.random() * canvas.height;
-      
-      // Linear momentum - consistent direction with slight variation
-      const baseVx = side === 'left' ? HEXAGON_SPEED : -HEXAGON_SPEED;
-      const vx = baseVx + (Math.random() - 0.5) * 0.1; // Small variation
-      const vy = (Math.random() - 0.5) * 0.1; // Minimal vertical drift
-      
-      const colors = ['#00ff88', '#88ff00', '#00ffff', '#ff8800', '#ff0088'];
-      
-      return {
-        x,
-        y,
-        vx,
-        vy,
-        size: Math.random() * 30 + 15,
-        rotation: Math.random() * Math.PI * 2,
-        rotationSpeed: (Math.random() - 0.5) * ROTATION_SPEED,
-        opacity: Math.random() * 0.3 + 0.1,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        life: 1,
-        maxLife: 1
-      };
+    const initHexagons = () => {
+      hexagonsRef.current = [];
+      const currentWidth = canvas.width;
+      const currentHeight = canvas.height;
+
+      for (let i = 0; i < HEXAGON_COUNT; i++) {
+        const x = Math.random() * currentWidth;
+        const y = Math.random() * currentHeight;
+        const size = HEXAGON_MIN_SIZE + Math.random() * (HEXAGON_MAX_SIZE - HEXAGON_MIN_SIZE);
+        
+        // Blue-ish APCS colors with better opacity
+        const hue = 200 + Math.random() * 60;
+        const saturation = 70 + Math.random() * 20;
+        const lightness = 40 + Math.random() * 20;
+        const color = `hsla(${hue}, ${saturation}%, ${lightness}%, 0.25)`;
+        const angleValue = Math.random() * Math.PI * 2;
+        const baseRotationSpeed = (Math.random() - 0.5) * 0.003;
+
+        hexagonsRef.current.push({
+          x,
+          y,
+          size,
+          color,
+          angle: angleValue,
+          rotationSpeed: baseRotationSpeed,
+          originalRotationSpeed: baseRotationSpeed,
+          angularMomentum: 0,
+          isDragging: false,
+          dragOffset: { x: 0, y: 0 },
+          velocity: { x: 0, y: 0 },
+          lastMousePosition: { x: 0, y: 0 },
+          lastDragTime: 0
+        });
+      }
     };
 
     const resizeCanvas = () => {
+      if (!canvas) return;
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      initHexagons();
     };
 
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    const handleMouseMove = (e: MouseEvent) => {
-      mousePositionRef.current = { x: e.clientX, y: e.clientY };
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-
-    const drawHexagon = (hex: Hexagon) => {
-      ctx.save();
-      ctx.translate(hex.x, hex.y);
-      ctx.rotate(hex.rotation);
-      
-      ctx.globalAlpha = hex.opacity * hex.life;
-      ctx.strokeStyle = hex.color;
-      ctx.lineWidth = 2;
-      ctx.shadowColor = hex.color;
-      ctx.shadowBlur = 8; // Reduced shadow blur for better performance
-      
-      ctx.beginPath();
-      for (let i = 0; i < 6; i++) {
-        const angle = (i * Math.PI) / 3;
-        const x = hex.size * Math.cos(angle);
-        const y = hex.size * Math.sin(angle);
-        if (i === 0) {
-          ctx.moveTo(x, y);
-        } else {
-          ctx.lineTo(x, y);
+    const getHexagonAtPosition = (x: number, y: number): Hexagon | null => {
+      for (const hexagon of hexagonsRef.current) {
+        const dx = x - hexagon.x;
+        const dy = y - hexagon.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        if (distance <= hexagon.size + 10) {
+          return hexagon;
         }
       }
+      return null;
+    };
+
+    const handleMouseDown = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const clickedHexagon = getHexagonAtPosition(x, y);
+      if (clickedHexagon) {
+        draggedHexagonRef.current = clickedHexagon;
+        clickedHexagon.isDragging = true;
+        clickedHexagon.dragOffset = {
+          x: x - clickedHexagon.x,
+          y: y - clickedHexagon.y
+        };
+        clickedHexagon.lastMousePosition = { x, y };
+        clickedHexagon.velocity = { x: 0, y: 0 };
+        clickedHexagon.angularMomentum = 0;
+        clickedHexagon.lastDragTime = Date.now();
+      }
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      mousePositionRef.current = { x: e.clientX, y: e.clientY };
+      if (!firstMoveMadeRef.current) {
+        firstMoveMadeRef.current = true;
+      }
+
+      if (draggedHexagonRef.current) {
+        const currentTime = Date.now();
+        const deltaTime = currentTime - draggedHexagonRef.current.lastDragTime;
+        
+        const newX = x - draggedHexagonRef.current.dragOffset.x;
+        const newY = y - draggedHexagonRef.current.dragOffset.y;
+        
+        const deltaX = newX - draggedHexagonRef.current.x;
+        const deltaY = newY - draggedHexagonRef.current.y;
+        
+        // Linear momentum
+        draggedHexagonRef.current.velocity.x = deltaX * 0.3;
+        draggedHexagonRef.current.velocity.y = deltaY * 0.3;
+        
+        // Angular momentum based on drag direction and distance from center
+        const centerX = draggedHexagonRef.current.x;
+        const centerY = draggedHexagonRef.current.y;
+        const dragRadius = Math.sqrt(draggedHexagonRef.current.dragOffset.x ** 2 + draggedHexagonRef.current.dragOffset.y ** 2);
+        
+        if (dragRadius > 5 && deltaTime > 0) {
+          const crossProduct = (x - centerX) * (draggedHexagonRef.current.lastMousePosition.y - centerY) - 
+                              (y - centerY) * (draggedHexagonRef.current.lastMousePosition.x - centerX);
+          draggedHexagonRef.current.angularMomentum = (crossProduct / (dragRadius * deltaTime)) * 0.001;
+        }
+        
+        draggedHexagonRef.current.x = newX;
+        draggedHexagonRef.current.y = newY;
+        draggedHexagonRef.current.lastMousePosition = { x, y };
+        draggedHexagonRef.current.lastDragTime = currentTime;
+      }
+    };
+
+    const handleMouseUp = () => {
+      if (draggedHexagonRef.current) {
+        draggedHexagonRef.current.isDragging = false;
+        draggedHexagonRef.current = null;
+      }
+    };
+
+    canvas.addEventListener('mousedown', handleMouseDown);
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseup', handleMouseUp);
+
+    const drawHexagon = (x: number, y: number, size: number, color: string, currentAngle: number) => {
+      if (!ctx) return;
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(currentAngle);
+
+      // Outer hexagon with glow effect
+      ctx.beginPath();
+      for (let i = 0; i < 6; i++) {
+        const pointX = size * Math.cos(i * (Math.PI / 3));
+        const pointY = size * Math.sin(i * (Math.PI / 3));
+        if (i === 0) ctx.moveTo(pointX, pointY);
+        else ctx.lineTo(pointX, pointY);
+      }
       ctx.closePath();
+      
+      // Add glow
+      ctx.shadowColor = color;
+      ctx.shadowBlur = 15;
+      ctx.fillStyle = color;
+      ctx.fill();
+      
+      // Inner hexagon
+      ctx.shadowBlur = 0;
+      ctx.beginPath();
+      for (let i = 0; i < 6; i++) {
+        const pointX = size * 0.6 * Math.cos(i * (Math.PI / 3));
+        const pointY = size * 0.6 * Math.sin(i * (Math.PI / 3));
+        if (i === 0) ctx.moveTo(pointX, pointY);
+        else ctx.lineTo(pointX, pointY);
+      }
+      ctx.closePath();
+      const innerColor = color.replace(/0\.\d+\)$/, '0.4)');
+      ctx.fillStyle = innerColor;
+      ctx.fill();
+      
+      // Edge lines for futuristic look
+      ctx.strokeStyle = color.replace(/0\.\d+\)$/, '0.6)');
+      ctx.lineWidth = 1;
       ctx.stroke();
       
       ctx.restore();
@@ -104,52 +233,67 @@ const APCSBackground: React.FC = () => {
 
     const animate = () => {
       if (!ctx || !canvas) return;
-
-      // Faster fade for better performance
-      ctx.fillStyle = 'rgba(26, 31, 44, 0.05)'; // Increased fade rate
+      
+      // Quick fade for smooth trails
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.fillStyle = BACKGROUND_COLOR_FOR_TRAIL;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Spawn new hexagons at reduced rate
-      if (Math.random() < SPAWN_RATE && hexagonsRef.current.length < MAX_HEXAGONS) {
-        hexagonsRef.current.push(createHexagon());
-      }
-
-      // Update and draw hexagons
-      hexagonsRef.current = hexagonsRef.current.filter(hex => {
-        // Mouse interaction with reduced influence
-        const dx = hex.x - mousePositionRef.current.x;
-        const dy = hex.y - mousePositionRef.current.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
+      hexagonsRef.current.forEach((hexagon) => {
+        // Apply angular momentum to rotation
+        hexagon.rotationSpeed += hexagon.angularMomentum;
+        hexagon.angle += hexagon.rotationSpeed;
         
-        if (distance < 100) {
-          const force = (100 - distance) / 100;
-          const angle = Math.atan2(dy, dx);
-          hex.vx += Math.cos(angle) * force * 0.005; // Reduced mouse influence
-          hex.vy += Math.sin(angle) * force * 0.005;
+        // Damping for angular momentum
+        hexagon.angularMomentum *= ANGULAR_DAMPING;
+        if (Math.abs(hexagon.angularMomentum) > MAX_ANGULAR_VELOCITY) {
+          hexagon.angularMomentum = Math.sign(hexagon.angularMomentum) * MAX_ANGULAR_VELOCITY;
         }
 
-        // Update position with linear momentum
-        hex.x += hex.vx;
-        hex.y += hex.vy;
-        hex.rotation += hex.rotationSpeed;
+        if (!hexagon.isDragging) {
+          hexagon.x += hexagon.velocity.x;
+          hexagon.y += hexagon.velocity.y;
+          hexagon.velocity.x *= VELOCITY_DAMPING;
+          hexagon.velocity.y *= VELOCITY_DAMPING;
+          
+          const velMag = Math.sqrt(hexagon.velocity.x ** 2 + hexagon.velocity.y ** 2);
+          if (velMag > MAX_VELOCITY) {
+            hexagon.velocity.x = (hexagon.velocity.x / velMag) * MAX_VELOCITY;
+            hexagon.velocity.y = (hexagon.velocity.y / velMag) * MAX_VELOCITY;
+          }
+          
+          if (firstMoveMadeRef.current) {
+            const dx = hexagon.x - mousePositionRef.current.x;
+            const dy = hexagon.y - mousePositionRef.current.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
 
-        // Gradual velocity damping to maintain linear momentum
-        hex.vx *= 0.998; // Very gentle damping
-        hex.vy *= 0.998;
+            if (distance < MOUSE_INTERACTION_RADIUS) {
+              const proximityFactor = (1 - distance / MOUSE_INTERACTION_RADIUS);
+              const interactionForce = MOVEMENT_FORCE_MULTIPLIER * proximityFactor;
+              const angleToMouse = Math.atan2(dy, dx);
 
-        // Update life for fading effect
-        hex.life *= 0.998; // Slower fade
+              hexagon.x += Math.cos(angleToMouse) * interactionForce;
+              hexagon.y += Math.sin(angleToMouse) * interactionForce;
+              
+              hexagon.rotationSpeed *= ROTATION_EFFECT_MULTIPLIER;
+            } else {
+              if (ENABLE_ROTATION_REVERSION) {
+                hexagon.rotationSpeed += (hexagon.originalRotationSpeed - hexagon.rotationSpeed) * ROTATION_REVERSION_LERP_FACTOR;
+              }
+            }
+          }
 
-        // Remove hexagons that are off-screen or too faded
-        const isOffScreen = hex.x < -100 || hex.x > canvas.width + 100 || 
-                           hex.y < -100 || hex.y > canvas.height + 100;
-        const isTooFaded = hex.life < 0.1;
-        
-        if (!isOffScreen && !isTooFaded) {
-          drawHexagon(hex);
-          return true;
+          const timeFactor = Date.now() * TIME_FACTOR;
+          hexagon.x += Math.sin(timeFactor + hexagon.size) * DRIFT_STRENGTH;
+          hexagon.y += Math.cos(timeFactor + hexagon.size) * DRIFT_STRENGTH;
         }
-        return false;
+
+        drawHexagon(hexagon.x, hexagon.y, hexagon.size, hexagon.color, hexagon.angle);
+
+        if (hexagon.x < -hexagon.size) hexagon.x = canvas.width + hexagon.size;
+        if (hexagon.x > canvas.width + hexagon.size) hexagon.x = -hexagon.size;
+        if (hexagon.y < -hexagon.size) hexagon.y = canvas.height + hexagon.size;
+        if (hexagon.y > canvas.height + hexagon.size) hexagon.y = -hexagon.size;
       });
 
       animationFrameIdRef.current = requestAnimationFrame(animate);
@@ -159,7 +303,9 @@ const APCSBackground: React.FC = () => {
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);
+      canvas.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
       if (animationFrameIdRef.current) {
         cancelAnimationFrame(animationFrameIdRef.current);
       }
@@ -169,8 +315,8 @@ const APCSBackground: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full -z-10 opacity-60"
-      style={{ pointerEvents: 'none' }}
+      className="fixed top-0 left-0 w-full h-full -z-10 opacity-80"
+      style={{ pointerEvents: 'auto', cursor: 'default' }}
     />
   );
 };
