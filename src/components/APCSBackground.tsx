@@ -47,8 +47,8 @@ const APCSBackground: React.FC = () => {
     const VELOCITY_DAMPING = 0.95;
     const MAX_VELOCITY = 5;
     
-    // Improved trail effect
-    const TRAIL_EFFECT_ALPHA = 0.15;
+    // Smooth trail effect - no harsh clearing
+    const TRAIL_EFFECT_ALPHA = 0.02; // Very gentle fade
     const BACKGROUND_COLOR_FOR_TRAIL = `rgba(26, 31, 44, ${TRAIL_EFFECT_ALPHA})`;
     // --- END OF ADJUSTABLE PARAMETERS ---
 
@@ -159,6 +159,18 @@ const APCSBackground: React.FC = () => {
       }
     };
 
+    const getHexagonAtPosition = (x: number, y: number): Hexagon | null => {
+      for (const hexagon of hexagonsRef.current) {
+        const dx = x - hexagon.x;
+        const dy = y - hexagon.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        if (distance <= hexagon.size + 10) {
+          return hexagon;
+        }
+      }
+      return null;
+    };
+
     canvas.addEventListener('mousedown', handleMouseDown);
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseup', handleMouseUp);
@@ -197,15 +209,10 @@ const APCSBackground: React.FC = () => {
     const animate = () => {
       if (!ctx || !canvas) return;
       
-      // Clear canvas completely every few frames to prevent shadow buildup
-      const frameCount = Date.now() % 3000;
-      if (frameCount < 50) {
-        ctx.fillStyle = 'rgba(26, 31, 44, 1)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-      } else {
-        ctx.fillStyle = BACKGROUND_COLOR_FOR_TRAIL;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-      }
+      // Gentle continuous fade - no harsh clearing or periodic resets
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.fillStyle = BACKGROUND_COLOR_FOR_TRAIL;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       hexagonsRef.current.forEach((hexagon) => {
         hexagon.angle += hexagon.rotationSpeed;

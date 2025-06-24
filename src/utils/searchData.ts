@@ -18,7 +18,7 @@ const searchItems: SearchItem[] = [
     category: 'assignment',
     page: 'java',
     keywords: ['console', 'basic', 'applications', 'introduction', 'java', 'programming', 'fundamentals'],
-    url: '/documents/Java_Assignment1_BasicConsoleApplications.pdf'
+    url: '/documents/Java/Assignments/Java_Assignment1_BasicConsoleApplications.pdf'
   },
   {
     id: 'java-assignment-2',
@@ -27,7 +27,7 @@ const searchItems: SearchItem[] = [
     category: 'assignment',
     page: 'java',
     keywords: ['currency', 'converter', 'conversion', 'money', 'exchange', 'calculator'],
-    url: '/documents/Java_Assignment2_CurrencyConverter.pdf'
+    url: '/documents/Java/Assignments/Java_Assignment2_CurrencyConverter.pdf'
   },
   {
     id: 'java-assignment-2-5',
@@ -36,7 +36,7 @@ const searchItems: SearchItem[] = [
     category: 'assignment',
     page: 'java',
     keywords: ['change', 'calculator', 'money', 'transactions', 'coins', 'bills'],
-    url: '/documents/Java_Assignment2.5_ChangeTwenty.pdf'
+    url: '/documents/Java/Assignments/Java_Assignment2.5_ChangeTwenty.pdf'
   },
   {
     id: 'java-assignment-3',
@@ -45,7 +45,7 @@ const searchItems: SearchItem[] = [
     category: 'assignment',
     page: 'java',
     keywords: ['loops', 'for', 'while', 'iteration', 'repetition', 'control structures'],
-    url: '/documents/Java_Assignment3_LoopPractice.pdf'
+    url: '/documents/Java/Assignments/Java_Assignment3_LoopPractice.pdf'
   },
   {
     id: 'java-assignment-4-budget',
@@ -54,7 +54,7 @@ const searchItems: SearchItem[] = [
     category: 'assignment',
     page: 'java',
     keywords: ['budget', 'arrays', 'financial', 'management', 'money', 'expenses'],
-    url: '/documents/Java_Assignment4_Budget.pdf'
+    url: '/documents/Java/Assignments/Java_Assignment4_Budget.pdf'
   },
   {
     id: 'java-assignment-4-racko',
@@ -63,7 +63,7 @@ const searchItems: SearchItem[] = [
     category: 'assignment',
     page: 'java',
     keywords: ['racko', 'game', 'arrays', 'cards', 'sorting', 'logic'],
-    url: '/documents/Java_Assignment4_RackO.pdf'
+    url: '/documents/Java/Assignments/Java_Assignment4_RackO.pdf'
   },
   {
     id: 'java-assignment-4-5',
@@ -72,7 +72,7 @@ const searchItems: SearchItem[] = [
     category: 'assignment',
     page: 'java',
     keywords: ['object', 'oriented', 'oop', 'classes', 'objects', 'methods', 'encapsulation'],
-    url: '/documents/Java_Assignment4.5_Object_Oriented_Basics.pdf'
+    url: '/documents/Java/Assignments/Java_Assignment4.5_Object_Oriented_Basics.pdf'
   },
   {
     id: 'java-assignment-5',
@@ -81,7 +81,7 @@ const searchItems: SearchItem[] = [
     category: 'assignment',
     page: 'java',
     keywords: ['swing', 'gui', 'graphical', 'interface', 'buttons', 'windows', 'ui'],
-    url: '/documents/Java_Assignment5_SwingBasics.pdf'
+    url: '/documents/Java/Assignments/Java_Assignment5_SwingBasics.pdf'
   },
   {
     id: 'java-assignment-6',
@@ -90,7 +90,7 @@ const searchItems: SearchItem[] = [
     category: 'assignment',
     page: 'java',
     keywords: ['final', 'project', 'comprehensive', 'blackjack', 'game', 'advanced'],
-    url: '/documents/Java_Assignment6_FinalProject.pdf'
+    url: '/documents/Java/Assignments/Java_Assignment6_FinalProject.pdf'
   },
 
   // Java Homework
@@ -101,7 +101,7 @@ const searchItems: SearchItem[] = [
     category: 'homework',
     page: 'java',
     keywords: ['glossary', 'terms', 'definitions', 'vocabulary', 'java', 'programming'],
-    url: '/documents/GlossaryTerms.pdf'
+    url: '/documents/Java/Homework/GlossaryTerms.pdf'
   },
   {
     id: 'java-hw-logical',
@@ -110,7 +110,7 @@ const searchItems: SearchItem[] = [
     category: 'homework',
     page: 'java',
     keywords: ['logical', 'operators', 'boolean', 'and', 'or', 'not', 'conditions'],
-    url: '/documents/LogicalOperatorsHW.pdf'
+    url: '/documents/Java/Homework/LogicalOperatorsHW.pdf'
   },
   {
     id: 'java-hw-loops',
@@ -119,7 +119,7 @@ const searchItems: SearchItem[] = [
     category: 'homework',
     page: 'java',
     keywords: ['loops', 'for', 'while', 'iteration', 'practice', 'exercises'],
-    url: '/documents/Java_Loops_HW.pdf'
+    url: '/documents/Java/Homework/Java_Loops_HW.pdf'
   },
   {
     id: 'java-hw-arrays',
@@ -128,7 +128,7 @@ const searchItems: SearchItem[] = [
     category: 'homework',
     page: 'java',
     keywords: ['arrays', 'data structures', 'indexing', 'manipulation', 'processing'],
-    url: '/documents/JavaHWArrays.pdf'
+    url: '/documents/Java/Homework/JavaHWArrays.pdf'
   },
 
   // Java Lessons
@@ -189,7 +189,7 @@ const searchItems: SearchItem[] = [
     category: 'resource',
     page: 'java',
     keywords: ['textbook', 'chapters', 'reading', 'fundamentals', 'reference'],
-    url: '/documents/TextbookChapters1_2.pdf'
+    url: '/documents/Java/Resources/TextbookChapters1_2.pdf'
   },
   {
     id: 'java-resource-cookbook',
@@ -198,7 +198,7 @@ const searchItems: SearchItem[] = [
     category: 'resource',
     page: 'java',
     keywords: ['cookbook', 'reference', 'guide', 'quick', 'help', 'syntax'],
-    url: '/documents/TheCookbook.pdf'
+    url: '/documents/Java/Resources/Cookbook.pdf'
   },
   {
     id: 'java-resource-gui',
@@ -207,7 +207,7 @@ const searchItems: SearchItem[] = [
     category: 'resource',
     page: 'java',
     keywords: ['gui', 'survival', 'guide', 'interface', 'swing', 'graphics'],
-    url: '/documents/GUISurvivalGuide.pdf'
+    url: '/documents/Java/Resources/GUISurvivalGuide.pdf'
   },
 
   // Java Bonus
@@ -218,7 +218,7 @@ const searchItems: SearchItem[] = [
     category: 'bonus',
     page: 'java',
     keywords: ['coinflip', 'probability', 'simulation', 'random', 'statistics'],
-    url: '/documents/CoinflipProblem.pdf'
+    url: '/documents/Java/Bonus/Java_Bonus_CoinFlip.pdf'
   },
   {
     id: 'java-bonus-fox-goose',
@@ -227,17 +227,27 @@ const searchItems: SearchItem[] = [
     category: 'bonus',
     page: 'java',
     keywords: ['fox', 'goose', 'grain', 'puzzle', 'logic', 'algorithm'],
-    url: '/documents/FoxGooseGrainProblem.pdf'
+    url: '/documents/Java/Bonus/Java_Bonus_FoxGooseGrain.pdf'
   },
 
   // AP Computer Science Assignments
   {
-    id: 'apcs-assignment-1',
-    title: '1: Basic Console Applications',
-    description: 'Introduction to programming with console applications',
+    id: 'apcs-assignment-0',
+    title: '0: Summer Assignment',
+    description: 'Summer preparation assignment for AP Computer Science',
     category: 'assignment',
     page: 'ap-cs',
-    keywords: ['console', 'basic', 'applications', 'introduction', 'programming'],
+    keywords: ['summer', 'assignment', 'preparation', 'introduction'],
+    url: '/documents/APCS/Assignments/APCS_Assignment0_SummerAssignment.pdf'
+  },
+  {
+    id: 'apcs-assignment-1',
+    title: '1: Computer Components',
+    description: 'Introduction to computer components and hardware',
+    category: 'assignment',
+    page: 'ap-cs',
+    keywords: ['computer', 'components', 'hardware', 'introduction'],
+    url: '/documents/APCS/Assignments/APCS_Assignment1_ComputerComponents.pdf'
   },
   {
     id: 'apcs-assignment-2',
@@ -246,184 +256,328 @@ const searchItems: SearchItem[] = [
     category: 'assignment',
     page: 'ap-cs',
     keywords: ['operations', 'calculator', 'math', 'arithmetic', 'computation'],
+    url: '/documents/APCS/Assignments/APCS_Assignment2_Operations Calculator.pdf'
   },
   {
     id: 'apcs-assignment-3',
-    title: '3: Quadratic Solver',
-    description: 'Solve quadratic equations using the quadratic formula',
+    title: '3: Castle Stairs',
+    description: 'Programming challenge involving castle stairs pattern',
     category: 'assignment',
     page: 'ap-cs',
-    keywords: ['quadratic', 'solver', 'equations', 'formula', 'mathematics'],
+    keywords: ['castle', 'stairs', 'pattern', 'loops', 'challenge'],
+    url: '/documents/APCS/Assignments/APCS_Assignment3_CastleStairs.pdf'
   },
   {
     id: 'apcs-assignment-4',
-    title: '4: For Loops',
-    description: 'Practice with for loop structures and iteration',
+    title: '4: Matrix Computer Store',
+    description: 'Computer store management system using matrices',
     category: 'assignment',
     page: 'ap-cs',
-    keywords: ['for', 'loops', 'iteration', 'repetition', 'control'],
+    keywords: ['matrix', 'computer', 'store', 'management', 'system'],
+    url: '/documents/APCS/Assignments/APCS_Assignment4_ComputerStore.pdf'
   },
   {
     id: 'apcs-assignment-5',
-    title: '5: While Loops',
-    description: 'Implementation of while loop constructs',
+    title: '5: Reusable Components',
+    description: 'Creating reusable programming components',
     category: 'assignment',
     page: 'ap-cs',
-    keywords: ['while', 'loops', 'iteration', 'conditions', 'control'],
+    keywords: ['reusable', 'components', 'methods', 'functions', 'modular'],
+    url: '/documents/APCS/Assignments/APCS_Assignment5_DoubleIntVerifier.pdf'
   },
   {
     id: 'apcs-assignment-6',
-    title: '6: Strings',
-    description: 'String manipulation and processing techniques',
+    title: '6: Group Presentations',
+    description: 'Group presentation assignment on programming topics',
     category: 'assignment',
     page: 'ap-cs',
-    keywords: ['strings', 'text', 'manipulation', 'processing', 'characters'],
+    keywords: ['group', 'presentations', 'collaboration', 'topics'],
+    url: '/documents/APCS/Assignments/APCS_Assignment6_GroupPresentations.pdf'
   },
   {
     id: 'apcs-assignment-7',
-    title: '7: Boolean and Logical Operators',
-    description: 'Working with boolean logic and logical operators',
+    title: '7: Object Oriented Programming',
+    description: 'Introduction to object-oriented programming concepts',
     category: 'assignment',
     page: 'ap-cs',
-    keywords: ['boolean', 'logical', 'operators', 'true', 'false', 'logic'],
+    keywords: ['object', 'oriented', 'programming', 'oop', 'classes'],
+    url: '/documents/APCS/Assignments/APCS_Assignment7_DevelopingClasses.pdf'
   },
   {
     id: 'apcs-assignment-8',
-    title: '8: Conditionals',
-    description: 'Conditional statements and decision making',
+    title: '8: Additional Class Features',
+    description: 'Advanced object-oriented programming features',
     category: 'assignment',
     page: 'ap-cs',
-    keywords: ['conditionals', 'if', 'else', 'decisions', 'branching'],
+    keywords: ['advanced', 'oop', 'class', 'features', 'methods'],
+    url: '/documents/APCS/Assignments/APCS_Assignment8_OOPRound2.pdf'
   },
   {
     id: 'apcs-assignment-9',
-    title: '9: Arrays',
-    description: 'Array creation, manipulation, and algorithms',
+    title: '9: String Methods',
+    description: 'String manipulation and processing techniques',
     category: 'assignment',
     page: 'ap-cs',
-    keywords: ['arrays', 'data structures', 'algorithms', 'collections'],
+    keywords: ['strings', 'methods', 'manipulation', 'processing', 'characters'],
+    url: '/documents/APCS/Assignments/APCS_Assignment9_Strings.pdf'
   },
   {
     id: 'apcs-assignment-10',
-    title: '10: 2D Arrays',
+    title: '10: 2-Dimensional Arrays',
     description: 'Two-dimensional array processing and manipulation',
     category: 'assignment',
     page: 'ap-cs',
-    keywords: ['2d arrays', 'matrix', 'grid', 'dimensional', 'processing'],
+    keywords: ['2d', 'arrays', 'matrix', 'grid', 'dimensional', 'processing'],
+    url: '/documents/APCS/Assignments/APCS_Assignment10_2DArrays.pdf'
   },
   {
     id: 'apcs-assignment-11',
-    title: '11: Classes and Objects',
-    description: 'Object-oriented programming with classes and objects',
+    title: '11: List Management',
+    description: 'Working with lists and list management',
     category: 'assignment',
     page: 'ap-cs',
-    keywords: ['classes', 'objects', 'oop', 'methods', 'constructors'],
+    keywords: ['lists', 'management', 'arraylist', 'collections'],
+    url: '/documents/APCS/Assignments/APCS_Assignment11_ListManager.pdf'
   },
   {
     id: 'apcs-assignment-12',
-    title: '12: Static vs. Instance',
-    description: 'Understanding static and instance members',
+    title: '12: Polymorphism',
+    description: 'Understanding polymorphism and inheritance',
     category: 'assignment',
     page: 'ap-cs',
-    keywords: ['static', 'instance', 'members', 'methods', 'variables'],
+    keywords: ['polymorphism', 'inheritance', 'extends', 'override'],
+    url: '/documents/APCS/Assignments/APCS_Assignment12_Polymorphism.pdf'
   },
   {
     id: 'apcs-assignment-13',
-    title: '13: Inheritance',
-    description: 'Class inheritance and polymorphism concepts',
+    title: '13: Why Software is So Bad',
+    description: 'Essay on software quality and development challenges',
     category: 'assignment',
     page: 'ap-cs',
-    keywords: ['inheritance', 'extends', 'polymorphism', 'parent', 'child'],
+    keywords: ['software', 'essay', 'quality', 'development', 'challenges'],
+    url: '/documents/APCS/Assignments/APCS_Assignment13_SoftwareEssay.pdf'
   },
   {
     id: 'apcs-assignment-14',
-    title: '14: Recursion',
+    title: '14: Stacks',
+    description: 'Understanding and implementing stack data structures',
+    category: 'assignment',
+    page: 'ap-cs',
+    keywords: ['stacks', 'data', 'structures', 'push', 'pop'],
+    url: '/documents/APCS/Assignments/APCS_Assignment14_Stacks.pdf'
+  },
+  {
+    id: 'apcs-assignment-15',
+    title: '15: Recursion',
     description: 'Recursive algorithms and problem solving',
     category: 'assignment',
     page: 'ap-cs',
     keywords: ['recursion', 'recursive', 'algorithms', 'base case', 'self-calling'],
+    url: '/documents/APCS/Assignments/APCS_Assignment15_Recursion.pdf'
+  },
+  {
+    id: 'apcs-assignment-16',
+    title: '16: Intel Pentium Bug',
+    description: 'Essay on the Intel Pentium floating-point bug',
+    category: 'assignment',
+    page: 'ap-cs',
+    keywords: ['intel', 'pentium', 'bug', 'floating', 'point', 'essay'],
+    url: '/documents/APCS/Assignments/APCS_Assignment16_IntelPentiumBugEssay.pdf'
+  },
+  {
+    id: 'apcs-assignment-17',
+    title: '17: Searching and Sorting',
+    description: 'Implementing search and sort algorithms',
+    category: 'assignment',
+    page: 'ap-cs',
+    keywords: ['searching', 'sorting', 'algorithms', 'binary', 'linear'],
+    url: '/documents/APCS/Assignments/APCS_Assign17_Sorting_and_Searching.pdf'
+  },
+  {
+    id: 'apcs-assignment-18',
+    title: '18: Hangman',
+    description: 'Create a hangman word guessing game',
+    category: 'assignment',
+    page: 'ap-cs',
+    keywords: ['hangman', 'game', 'word', 'guessing', 'strings'],
+    url: '/documents/APCS/Assignments/APCS_Assignment18_Hangman.pdf'
+  },
+  {
+    id: 'apcs-assignment-strategy',
+    title: 'Turn Based Strategy Game',
+    description: 'Design and implement a turn-based strategy game',
+    category: 'assignment',
+    page: 'ap-cs',
+    keywords: ['strategy', 'game', 'turn', 'based', 'design'],
+    url: '/documents/APCS/Assignments/APCS_Assignment_TurnBasedStrategyGame.pdf'
   },
 
-  // AP Computer Science Lessons
+  // APCS Homework
   {
-    id: 'apcs-lesson-unit1',
-    title: 'Unit 1: Primitive Types',
-    description: 'Introduction to primitive data types in Java',
-    category: 'lesson',
+    id: 'apcs-hw-pythagorean',
+    title: 'Pythagorean Triples',
+    description: 'Working with Pythagorean theorem and triples',
+    category: 'homework',
     page: 'ap-cs',
-    keywords: ['primitive', 'types', 'int', 'double', 'boolean', 'char'],
+    keywords: ['pythagorean', 'triples', 'theorem', 'math', 'geometry'],
+    url: '/documents/APCS/Homework/APCS_Homework_PythagoreanTriples.pdf'
   },
   {
-    id: 'apcs-lesson-unit2',
-    title: 'Unit 2: Using Objects',
-    description: 'Working with objects and method calls',
-    category: 'lesson',
+    id: 'apcs-hw-spread-stars',
+    title: 'Spread out the Stars',
+    description: 'Pattern printing exercise with stars',
+    category: 'homework',
     page: 'ap-cs',
-    keywords: ['objects', 'methods', 'classes', 'instantiation', 'calling'],
+    keywords: ['stars', 'pattern', 'printing', 'loops', 'formatting'],
+    url: '/documents/APCS/Homework/APCS_Homework_SpreadStars.pdf'
   },
   {
-    id: 'apcs-lesson-unit3',
-    title: 'Unit 3: Boolean Expressions and if Statements',
-    description: 'Boolean logic and conditional statements',
-    category: 'lesson',
+    id: 'apcs-hw-array-copying',
+    title: 'Array Copying',
+    description: 'Practice with array manipulation and copying',
+    category: 'homework',
     page: 'ap-cs',
-    keywords: ['boolean', 'expressions', 'if', 'statements', 'conditions'],
+    keywords: ['array', 'copying', 'manipulation', 'practice'],
+    url: '/documents/APCS/Homework/APCS_Homework_ArrayCopying.pdf'
   },
   {
-    id: 'apcs-lesson-unit4',
-    title: 'Unit 4: Iteration',
-    description: 'Loop structures and iterative processes',
-    category: 'lesson',
+    id: 'apcs-hw-roach-population',
+    title: 'Roach Population',
+    description: 'Population growth simulation exercise',
+    category: 'homework',
     page: 'ap-cs',
-    keywords: ['iteration', 'loops', 'for', 'while', 'repetition'],
+    keywords: ['population', 'growth', 'simulation', 'modeling'],
+    url: '/documents/APCS/Homework/APCS_Homework_RoachPopulation.pdf'
   },
   {
-    id: 'apcs-lesson-unit5',
-    title: 'Unit 5: Writing Classes',
-    description: 'Creating and designing custom classes',
-    category: 'lesson',
+    id: 'apcs-hw-paint-bullseye',
+    title: 'Paint BullsEye and Scalable House',
+    description: 'Graphics programming with shapes and scaling',
+    category: 'homework',
     page: 'ap-cs',
-    keywords: ['writing', 'classes', 'design', 'constructors', 'methods'],
+    keywords: ['graphics', 'bullseye', 'house', 'scaling', 'drawing'],
+    url: '/documents/APCS/Homework/APCS_Homework_PaintBullsEyeHouse.pdf'
   },
   {
-    id: 'apcs-lesson-unit6',
-    title: 'Unit 6: Array',
-    description: 'Array fundamentals and processing',
-    category: 'lesson',
+    id: 'apcs-hw-inheritance',
+    title: 'Inheritance Hierarchy',
+    description: 'Understanding class inheritance hierarchies',
+    category: 'homework',
     page: 'ap-cs',
-    keywords: ['array', 'fundamentals', 'processing', 'indexing'],
+    keywords: ['inheritance', 'hierarchy', 'classes', 'extends', 'polymorphism'],
+    url: '/documents/APCS/Homework/APCS_Homework_InheritanceHierarchy.pdf'
   },
   {
-    id: 'apcs-lesson-unit7',
-    title: 'Unit 7: ArrayList',
-    description: 'Dynamic arrays using ArrayList class',
-    category: 'lesson',
+    id: 'apcs-hw-coffee-seller',
+    title: 'Coffee Seller',
+    description: 'Object-oriented coffee selling system',
+    category: 'homework',
     page: 'ap-cs',
-    keywords: ['arraylist', 'dynamic', 'arrays', 'collections', 'resizable'],
+    keywords: ['coffee', 'seller', 'object', 'oriented', 'system'],
+    url: '/documents/APCS/Homework/APCSHomework_Coffee_SellerV2.pdf'
   },
   {
-    id: 'apcs-lesson-unit8',
-    title: 'Unit 8: 2D Array',
-    description: 'Two-dimensional array concepts and applications',
-    category: 'lesson',
+    id: 'apcs-hw-eniac',
+    title: 'ENIAC Essay',
+    description: 'Historical essay on the ENIAC computer',
+    category: 'homework',
     page: 'ap-cs',
-    keywords: ['2d', 'array', 'matrix', 'grid', 'two-dimensional'],
+    keywords: ['eniac', 'essay', 'history', 'computer', 'early'],
+    url: '/documents/APCS/Homework/APCS_Homework_ENIAC.pdf'
   },
   {
-    id: 'apcs-lesson-unit9',
-    title: 'Unit 9: Inheritance',
-    description: 'Class inheritance and polymorphism',
-    category: 'lesson',
+    id: 'apcs-hw-graphics-patterns',
+    title: 'Graphics Patterns',
+    description: 'Creating visual patterns with graphics programming',
+    category: 'homework',
     page: 'ap-cs',
-    keywords: ['inheritance', 'polymorphism', 'extends', 'super', 'override'],
+    keywords: ['graphics', 'patterns', 'visual', 'programming', 'design'],
+    url: '/documents/APCS/Homework/APCS_Homework_Graphics_Patterns.pdf'
+  },
+
+  // APCS Resources
+  {
+    id: 'apcs-resource-cookbook',
+    title: 'The Cookbook',
+    description: 'Quick reference guide for AP Computer Science',
+    category: 'resource',
+    page: 'ap-cs',
+    keywords: ['cookbook', 'reference', 'guide', 'quick', 'help'],
+    url: '/documents/APCS/Resources/Cookbook.pdf'
   },
   {
-    id: 'apcs-lesson-unit10',
-    title: 'Unit 10: Recursion',
-    description: 'Recursive thinking and implementation',
-    category: 'lesson',
+    id: 'apcs-resource-printing',
+    title: 'Netbeans Printing Guide',
+    description: 'Guide for printing code from Netbeans IDE',
+    category: 'resource',
     page: 'ap-cs',
-    keywords: ['recursion', 'recursive', 'base case', 'recursive case'],
+    keywords: ['netbeans', 'printing', 'guide', 'ide', 'code'],
+    url: '/documents/APCS/Resources/NetbeansPrintingGuide.pdf'
+  },
+  {
+    id: 'apcs-resource-gui',
+    title: 'GUI Survival Guide',
+    description: 'Guide for creating graphical user interfaces',
+    category: 'resource',
+    page: 'ap-cs',
+    keywords: ['gui', 'survival', 'guide', 'interface', 'swing'],
+    url: '/documents/APCS/Resources/GUISurvivalGuide.pdf'
+  },
+
+  // APCS Bonus
+  {
+    id: 'apcs-bonus-base-converter',
+    title: '1st Quarter: Base Converter',
+    description: 'Number base conversion utility program',
+    category: 'bonus',
+    page: 'ap-cs',
+    keywords: ['base', 'converter', 'number', 'conversion', 'binary', 'hexadecimal'],
+    url: '/documents/APCS/Bonus/APCS_Bonus_BaseConverter.pdf'
+  },
+  {
+    id: 'apcs-bonus-pnz',
+    title: '1st Quarter: PNZ',
+    description: 'PNZ bonus programming challenge',
+    category: 'bonus',
+    page: 'ap-cs',
+    keywords: ['pnz', 'challenge', 'programming', 'logic'],
+    url: '/documents/APCS/Bonus/APCS_Bonus_PNZ.pdf'
+  },
+  {
+    id: 'apcs-bonus-hotel',
+    title: '2nd Quarter: Hotel System',
+    description: 'Hotel management system implementation',
+    category: 'bonus',
+    page: 'ap-cs',
+    keywords: ['hotel', 'system', 'management', 'reservation', 'booking'],
+    url: '/documents/APCS/Bonus/APCS_Bonus_HotelSystem.pdf'
+  },
+  {
+    id: 'apcs-bonus-blackjack',
+    title: '3rd Quarter: Black Jack',
+    description: 'Blackjack card game implementation',
+    category: 'bonus',
+    page: 'ap-cs',
+    keywords: ['blackjack', 'card', 'game', 'casino', 'implementation'],
+    url: '/documents/APCS/Bonus/APCS_Bonus_BlackJack.pdf'
+  },
+  {
+    id: 'apcs-bonus-yahtzee',
+    title: 'Yahtzee',
+    description: 'Yahtzee dice game implementation',
+    category: 'bonus',
+    page: 'ap-cs',
+    keywords: ['yahtzee', 'dice', 'game', 'scoring', 'probability'],
+    url: '/documents/APCS/Bonus/APCS_Bonus_Yahtzee.pdf'
+  },
+  {
+    id: 'apcs-bonus-risk',
+    title: 'Risk',
+    description: 'Risk strategy board game implementation',
+    category: 'bonus',
+    page: 'ap-cs',
+    keywords: ['risk', 'strategy', 'board', 'game', 'conquest'],
+    url: '/documents/APCS/Bonus/APCS_Bonus_Risk.pdf'
   },
 ];
 
