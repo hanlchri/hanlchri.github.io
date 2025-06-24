@@ -79,10 +79,10 @@ const Java = () => {
 
                 <CollapsibleSection title="Homework" titleColor="#FF8C42">
                   <ul className="list-disc pl-6 space-y-2">
-                    <li><a href="/documents/GlossaryTerms.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Glossary Terms</a></li>
-                    <li><a href="/documents/LogicalOperatorsHW.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Logical Operators</a></li>
-                    <li><a href="/documents/Java_Loops_HW.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Loops</a></li>
-                    <li><a href="/documents/JavaHWArrays.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Arrays</a></li>
+                    <li><a href="/documents/Java/Homework/GlossaryTerms.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Glossary Terms</a></li>
+                    <li><a href="/documents/Java/Homework/LogicalOperatorsHW.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Logical Operators</a></li>
+                    <li><a href="/documents/Java/Homework/Java_Loops_HW.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Loops</a></li>
+                    <li><a href="/documents/Java/Homework/JavaHWArrays.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Arrays</a></li>
                   </ul>
                 </CollapsibleSection>
               </div>
@@ -94,14 +94,14 @@ const Java = () => {
 
                 <CollapsibleSection title="Unit 1 Review" titleColor="#FF8C42">
                   <ul className="list-disc pl-6 space-y-1">
-                    <li><a href="/documents/FlowchartTaxCalculator.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Flowchart for Tax Calculator</a></li>
-                    <li><a href="/documents/TaxCalc.java" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>TaxCalc</a></li>
+                    <li><a href="/documents/Java/Lessons/FlowchartTaxCalculator.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Flowchart for Tax Calculator</a></li>
+                    <li><a href="/documents/Java/Lessons/TaxCalc.java" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>TaxCalc</a></li>
                     <li>
                       Flowcharting Lesson:
-                      <a href="/documents/FlowchartingLesson_Blank.pdf" target="_blank" rel="noopener noreferrer" className="ml-2 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Blank</a> |
-                      <a href="/documents/FlowchartingLesson_Filled.pdf" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Filled</a>
+                      <a href="/documents/Java/Lessons/FlowchartingLesson_Blank.pdf" target="_blank" rel="noopener noreferrer" className="ml-2 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Blank</a> |
+                      <a href="/documents/Java/Lessons/FlowchartingLesson_Filled.pdf" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Filled</a>
                     </li>
-                    <li><a href="/documents/TeachJava.java" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>TeachJava</a></li>
+                    <li><a href="/documents/Java/Lessons/TeachJava.java" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>TeachJava</a></li>
                   </ul>
                 </CollapsibleSection>
 
@@ -109,13 +109,13 @@ const Java = () => {
                   <ul className="list-disc pl-6 space-y-1">
                     <li>
                       Math Operations:
-                      <a href="/documents/MathOperations_Blank.pdf" target="_blank" rel="noopener noreferrer" className="ml-2 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Blank</a> |
-                      <a href="/documents/MathOperations_Filled.pdf" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Filled</a>
+                      <a href="/documents/Java/Lessons/MathOperations_Blank.pdf" target="_blank" rel="noopener noreferrer" className="ml-2 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Blank</a> |
+                      <a href="/documents/Java/Lessons/MathOperations_Filled.pdf" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Filled</a>
                     </li>
                     <li>
                       Data Modeling:
-                      <a href="/documents/DataModeling_Blank.pdf" target="_blank" rel="noopener noreferrer" className="ml-2 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Blank</a> |
-                      <a href="/documents/DataModeling_Filled.pdf" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Filled</a>
+                      <a href="/documents/Java/Lessons/DataModeling_Blank.pdf" target="_blank" rel="noopener noreferrer" className="ml-2 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Blank</a> |
+                      <a href="/documents/Java/Lessons/DataModeling_Filled.pdf" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
@@ -124,8 +124,8 @@ const Java = () => {
                   <ul className="list-disc pl-6 space-y-1">
                     <li>
                       Selection Statements:
-                      <a href="/documents/SelectionStatements_Blank.pdf" target="_blank" rel="noopener noreferrer" className="ml-2 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Blank</a> |
-                      <a href="/documents/SelectionStatements_Filled.pdf" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Filled</a>
+                      <a href="/documents/Java/Lessons/SelectionStatements_Blank.pdf" target="_blank" rel="noopener noreferrer" className="ml-2 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Blank</a> |
+                      <a href="/documents/Java/Lessons/SelectionStatements_Filled.pdf" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Filled</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
@@ -134,14 +134,14 @@ const Java = () => {
                   <ul className="list-disc pl-6 space-y-1">
                     <li>
                       Looping:
-                      <a href="/documents/Looping_Blank.pdf" target="_blank" rel="noopener noreferrer" className="ml-2 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Blank</a> |
-                      <a href="/documents/Looping_Filled.pdf" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Filled</a>
+                      <a href="/documents/Java/Lessons/Looping_Blank.pdf" target="_blank" rel="noopener noreferrer" className="ml-2 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Blank</a> |
+                      <a href="/documents/Java/Lessons/Looping_Filled.pdf" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Filled</a>
                     </li>
                     <li>
                       Random:
-                      <a href="/documents/Random_Blank.pdf" target="_blank" rel="noopener noreferrer" className="ml-2 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Blank</a> |
-                      <a href="/documents/Random_Filled.pdf" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Filled</a> |
-                      <a href="/documents/RandExamples.java" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>RandExamples.java</a>
+                      <a href="/documents/Java/Lessons/Random_Blank.pdf" target="_blank" rel="noopener noreferrer" className="ml-2 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Blank</a> |
+                      <a href="/documents/Java/Lessons/Random_Filled.pdf" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Filled</a> |
+                      <a href="/documents/Java/Lessons/RandExamples.java" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>RandExamples.java</a>
                     </li>
                   </ul>
                 </CollapsibleSection>
@@ -149,24 +149,24 @@ const Java = () => {
                 <CollapsibleSection title="Unit 5 Scope" titleColor="#FF8C42">
                   <p className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>
                     Scope:
-                    <a href="/documents/Scope_Blank.pdf" target="_blank" rel="noopener noreferrer" className="ml-2 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Blank</a> |
-                    <a href="/documents/Scope_Filled.pdf" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Filled</a>
+                    <a href="/documents/Java/Lessons/Scope_Blank.pdf" target="_blank" rel="noopener noreferrer" className="ml-2 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Blank</a> |
+                    <a href="/documents/Java/Lessons/Scope_Filled.pdf" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Filled</a>
                   </p>
                 </CollapsibleSection>
 
                 <CollapsibleSection title="Unit 6 Arrays" titleColor="#FF8C42">
                   <p className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>
                     Arrays:
-                    <a href="/documents/Arrays_Blank.pdf" target="_blank" rel="noopener noreferrer" className="ml-2 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Blank</a> |
-                    <a href="/documents/Arrays_Filled.pdf" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Filled</a>
+                    <a href="/documents/Java/Lessons/Arrays_Blank.pdf" target="_blank" rel="noopener noreferrer" className="ml-2 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Blank</a> |
+                    <a href="/documents/Java/Lessons/Arrays_Filled.pdf" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Filled</a>
                   </p>
                 </CollapsibleSection>
 
                 <CollapsibleSection title="Final Review" titleColor="#FF8C42">
                   <p className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>
                     Final Exam:
-                    <a href="/documents/FinalExam_Review.pdf" target="_blank" rel="noopener noreferrer" className="ml-2 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Review</a> |
-                    <a href="/documents/FinalExam_Powerpoint.pptx" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Powerpoint</a>
+                    <a href="/documents/Java/Lessons/FinalExam_Review.pdf" target="_blank" rel="noopener noreferrer" className="ml-2 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Review</a> |
+                    <a href="/documents/Java/Lessons/FinalExam_Powerpoint.pptx" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Powerpoint</a>
                   </p>
                 </CollapsibleSection>
               </div>
@@ -178,21 +178,21 @@ const Java = () => {
 
                 <CollapsibleSection title="Resources" titleColor="#FF8C42">
                   <ul className="list-disc pl-6 space-y-1">
-                    <li><a href="/documents/TextbookChapters1_2.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Textbook Chapters 1 and 2</a></li>
-                    <li><a href="/documents/TheCookbook.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>The Cookbook</a></li>
-                    <li><a href="/documents/PrintingFromNetbeans.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Printing from Netbeans</a></li>
-                    <li><a href="/documents/GUISurvivalGuide.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>GUI Survival Guide</a></li>
-                    <li><a href="/documents/GuideForRoundButtons.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Guide for Round Buttons</a></li>
+                    <li><a href="/documents/Java/Resources/TextbookChapters1_2.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Textbook Chapters 1 and 2</a></li>
+                    <li><a href="/documents/Java/Resources/TheCookbook.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>The Cookbook</a></li>
+                    <li><a href="/documents/Java/Resources/PrintingFromNetbeans.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Printing from Netbeans</a></li>
+                    <li><a href="/documents/Java/Resources/GUISurvivalGuide.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>GUI Survival Guide</a></li>
+                    <li><a href="/documents/Java/Resources/GuideForRoundButtons.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Guide for Round Buttons</a></li>
                     <li>
                       <CollapsibleSection title="Sounds" isNested={true} titleColor="#FF8C42">
                         <ul className="list-disc pl-6 space-y-1">
-                          <li><a href="/sounds/Ring10.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Ring10.wav</a></li>
-                          <li><a href="/sounds/chimes.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>chimes.wav</a></li>
-                          <li><a href="/sounds/drumroll.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>drumroll.wav</a></li>
-                          <li><a href="/sounds/fanfare.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>fanfare.wav</a></li>
-                          <li><a href="/sounds/vibe.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>vibe.wav</a></li>
-                          <li><a href="/sounds/Wind.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Wind.wav</a></li>
-                          <li><a href="/sounds/Explosion.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Explosion.wav</a></li>
+                          <li><a href="/documents/Java/Resources/Ring10.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Ring10.wav</a></li>
+                          <li><a href="/documents/Java/Resources/chimes.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>chimes.wav</a></li>
+                          <li><a href="/documents/Java/Resources/drumroll.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>drumroll.wav</a></li>
+                          <li><a href="/documents/Java/Resources/fanfare.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>fanfare.wav</a></li>
+                          <li><a href="/documents/Java/Resources/vibe.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>vibe.wav</a></li>
+                          <li><a href="/documents/Java/Resources/Wind.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Wind.wav</a></li>
+                          <li><a href="/documents/Java/Resources/Explosion.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Explosion.wav</a></li>
                         </ul>
                       </CollapsibleSection>
                     </li>
@@ -207,8 +207,8 @@ const Java = () => {
 
                 <CollapsibleSection title="Resources" titleColor="#FF8C42">
                   <ul className="list-disc pl-6 space-y-1">
-                    <li><a href="/documents/CoinflipProblem.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Coinflip Problem</a></li>
-                    <li><a href="/documents/FoxGooseGrainProblem.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Fox Goose Grain Problem</a></li>
+                    <li><a href="/documents/Java/Bonus/CoinflipProblem.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Coinflip Problem</a></li>
+                    <li><a href="/documents/Java/Bonus/FoxGooseGrainProblem.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Fox Goose Grain Problem</a></li>
                   </ul>
                 </CollapsibleSection>
               </div>
