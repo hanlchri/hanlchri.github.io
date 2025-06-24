@@ -10,7 +10,6 @@ const Java = () => {
       <div className="max-w-6xl mx-auto mt-10 px-4">
         <div className="content-section">
           <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center" style={{ color: '#FF8C42' }}>Java</h1>
-
           <Tabs defaultValue="assignments" className="w-full">
             <TabsList className="w-full grid grid-cols-2 md:grid-cols-4 mb-6 bg-secondary gap-1 p-1">
               <TabsTrigger value="assignments" className="text-xs sm:text-sm py-2 px-1 sm:px-2 h-auto min-h-[2.5rem]">Assignments</TabsTrigger>
