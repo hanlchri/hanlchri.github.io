@@ -1,3 +1,4 @@
+
 export interface SearchItem {
   id: string;
   title: string;
@@ -406,5 +407,3 @@ export const searchAssignments = (query: string): SearchItem[] => {
     .sort((a, b) => b.score - a.score)
     .slice(0, 20);
 };
-
-export type { SearchItem };
