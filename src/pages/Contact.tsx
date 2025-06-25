@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -8,43 +8,15 @@ import { useToast } from '@/hooks/use-toast';
 
 const Contact = () => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-  
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.id]: e.target.value
-    });
-  };
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Create mailto link with form data
-    const emailBody = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0A%0D%0AMessage:%0D%0A${encodeURIComponent(formData.message)}`;
-    const mailtoLink = `mailto:hanleyc@shenet.org?subject=${encodeURIComponent(formData.subject)}&body=${emailBody}`;
-    
-    // Open default email client
-    window.location.href = mailtoLink;
-    
-    // Show success toast
+    // Show success toast instead of actually submitting
     toast({
-      title: "Email client opened",
-      description: "Your default email application should now open with the message pre-filled. Please send the email to complete your message to Mr. Hanley.",
-      duration: 7000,
-    });
-    
-    // Clear form
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
+      title: "Contact form submitted",
+      description: "Thank you for your message! Mr. Hanley will get back to you soon.",
+      duration: 5000,
     });
   };
   
@@ -88,8 +60,6 @@ const Contact = () => {
                     type="text" 
                     placeholder="Your name" 
                     required 
-                    value={formData.name}
-                    onChange={handleInputChange}
                     className="bg-secondary/50 border-tech-purple/30 focus:border-tech-purple"
                   />
                 </div>
@@ -101,8 +71,6 @@ const Contact = () => {
                     type="email" 
                     placeholder="Your email" 
                     required 
-                    value={formData.email}
-                    onChange={handleInputChange}
                     className="bg-secondary/50 border-tech-purple/30 focus:border-tech-purple"
                   />
                 </div>
@@ -114,8 +82,6 @@ const Contact = () => {
                     type="text" 
                     placeholder="Subject" 
                     required 
-                    value={formData.subject}
-                    onChange={handleInputChange}
                     className="bg-secondary/50 border-tech-purple/30 focus:border-tech-purple"
                   />
                 </div>
@@ -127,8 +93,6 @@ const Contact = () => {
                     placeholder="Your message" 
                     required 
                     rows={5}
-                    value={formData.message}
-                    onChange={handleInputChange}
                     className="bg-secondary/50 border-tech-purple/30 focus:border-tech-purple"
                   />
                 </div>
