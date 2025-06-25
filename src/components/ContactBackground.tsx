@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 
 interface Dot {
@@ -17,6 +16,7 @@ const ContactBackground: React.FC = () => {
   const firstMoveMadeRef = useRef(false);
   const dotsRef = useRef<Dot[]>([]);
   const animationFrameIdRef = useRef<number | null>(null);
+  const trailRef = useRef<ImageData | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -89,10 +89,15 @@ const ContactBackground: React.FC = () => {
     const animate = () => {
       if (!ctx || !canvas) return;
       
-      // Use smoother trail clearing instead of abrupt erasure
-      ctx.globalCompositeOperation = 'source-over';
-      ctx.fillStyle = BACKGROUND_COLOR_FOR_TRAIL;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      // Apply dissolving trail effect
+      if (trailRef.current) {
+        ctx.putImageData(trailRef.current, 0, 0);
+        ctx.fillStyle = 'rgba(26, 31, 44, 0.08)'; // Increased dissolving rate
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      } else {
+        ctx.fillStyle = 'rgba(26, 31, 44, 1)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
 
       dotsRef.current.forEach(dot => {
         dot.x += dot.dirX * DOT_MOVEMENT_MULTIPLIER;
@@ -138,10 +143,10 @@ const ContactBackground: React.FC = () => {
         ctx.fillStyle = dot.color;
         ctx.fill();
 
-        // Softer glow effect
+        // Softer glow effect with dissolving trail
         ctx.beginPath();
         ctx.arc(dot.x, dot.y, dot.size * 2.5, 0, Math.PI * 2);
-        ctx.fillStyle = dot.color.replace('0.7', '0.05');
+        ctx.fillStyle = dot.color.replace('0.7', '0.03'); // Reduced for dissolving effect
         ctx.fill();
       });
 
@@ -167,6 +172,9 @@ const ContactBackground: React.FC = () => {
         }
       }
       
+      // Store current frame for dissolving trail effect
+      trailRef.current = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      
       animationFrameIdRef.current = requestAnimationFrame(animate);
     };
     animate();
@@ -188,4 +196,5 @@ const ContactBackground: React.FC = () => {
     />
   );
 };
+
 export default ContactBackground;

@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { 
@@ -12,60 +11,69 @@ import { Input } from '@/components/ui/input';
 
 const mockResources = [
   // APCS Assignments
-  { id: 1, title: "1: Computer Components", category: "Assignments", path: "/ap-cs" },
-  { id: 2, title: "2: Operations Calculator", category: "Assignments", path: "/ap-cs" },
-  { id: 3, title: "3: Castle Stairs", category: "Assignments", path: "/ap-cs" },
-  { id: 4, title: "4: Matrix Computer Store", category: "Assignments", path: "/ap-cs" },
-  { id: 5, title: "5: Reusable Components", category: "Assignments", path: "/ap-cs" },
-  { id: 6, title: "9: String Methods", category: "Assignments", path: "/ap-cs" },
-  { id: 7, title: "18: Hangman", category: "Assignments", path: "/ap-cs" },
-  { id: 8, title: "Turn Based Strategy Game", category: "Assignments", path: "/ap-cs" },
+  { id: 1, title: "1: Computer Components", category: "Assignments", path: "/ap-cs", section: "assignments" },
+  { id: 2, title: "2: Operations Calculator", category: "Assignments", path: "/ap-cs", section: "assignments" },
+  { id: 3, title: "3: Castle Stairs", category: "Assignments", path: "/ap-cs", section: "assignments" },
+  { id: 4, title: "4: Matrix Computer Store", category: "Assignments", path: "/ap-cs", section: "assignments" },
+  { id: 5, title: "5: Reusable Components", category: "Assignments", path: "/ap-cs", section: "assignments" },
+  { id: 6, title: "9: String Methods", category: "Assignments", path: "/ap-cs", section: "assignments" },
+  { id: 7, title: "18: Hangman", category: "Assignments", path: "/ap-cs", section: "assignments" },
+  { id: 8, title: "Turn Based Strategy Game", category: "Assignments", path: "/ap-cs", section: "assignments" },
 
   // APCS Homework
-  { id: 9, title: "Inheritance Hierarchy", category: "Homework", path: "/ap-cs" },
-  { id: 10, title: "Array Copying", category: "Homework", path: "/ap-cs" },
-  { id: 11, title: "Paint BullsEye and Scalable House", category: "Homework", path: "/ap-cs" },
+  { id: 9, title: "Inheritance Hierarchy", category: "Homework", path: "/ap-cs", section: "homework" },
+  { id: 10, title: "Array Copying", category: "Homework", path: "/ap-cs", section: "homework" },
+  { id: 11, title: "Paint BullsEye and Scalable House", category: "Homework", path: "/ap-cs", section: "homework" },
 
   // APCS Lessons
-  { id: 12, title: "Unit 1 Review", category: "Lessons", path: "/ap-cs" },
-  { id: 13, title: "Unit 4 Object Oriented", category: "Lessons", path: "/ap-cs" },
-  { id: 14, title: "Unit 6 Arrays & ArrayLists", category: "Lessons", path: "/ap-cs" },
+  { id: 12, title: "Unit 1 Review", category: "Lessons", path: "/ap-cs", section: "lessons" },
+  { id: 13, title: "Unit 4 Object Oriented", category: "Lessons", path: "/ap-cs", section: "lessons" },
+  { id: 14, title: "Unit 6 Arrays & ArrayLists", category: "Lessons", path: "/ap-cs", section: "lessons" },
 
   // APCS Resources
-  { id: 15, title: "Printing from Netbeans", category: "Resources", path: "/ap-cs" },
-  { id: 16, title: "The Cookbook", category: "Resources", path: "/ap-cs" },
-  { id: 17, title: "GUI Survival Guide", category: "Resources", path: "/ap-cs" },
+  { id: 15, title: "Printing from Netbeans", category: "Resources", path: "/ap-cs", section: "resources" },
+  { id: 16, title: "The Cookbook", category: "Resources", path: "/ap-cs", section: "resources" },
+  { id: 17, title: "GUI Survival Guide", category: "Resources", path: "/ap-cs", section: "resources" },
+
+  // APCS Bonus
+  { id: 30, title: "Base Converter", category: "Bonus", path: "/ap-cs", section: "bonus" },
+  { id: 31, title: "BlackJack", category: "Bonus", path: "/ap-cs", section: "bonus" },
+  { id: 32, title: "Hotel System", category: "Bonus", path: "/ap-cs", section: "bonus" },
 
   // Java Assignments
-  { id: 18, title: "1: Basic Console Applications", category: "Assignments", path: "/java" },
-  { id: 19, title: "2: Currency Converter", category: "Assignments", path: "/java" },
-  { id: 20, title: "2.5: Change Calculator", category: "Assignments", path: "/java" },
-  { id: 21, title: "3: Loops", category: "Assignments", path: "/java" },
-  { id: 22, title: "4: Arrays", category: "Assignments", path: "/java" },
-  { id: 23, title: "4.5: Object Oriented Basics", category: "Assignments", path: "/java" },
-  { id: 24, title: "6: Final Project", category: "Assignments", path: "/java" },
+  { id: 18, title: "1: Basic Console Applications", category: "Assignments", path: "/java", section: "assignments" },
+  { id: 19, title: "2: Currency Converter", category: "Assignments", path: "/java", section: "assignments" },
+  { id: 20, title: "2.5: Change Calculator", category: "Assignments", path: "/java", section: "assignments" },
+  { id: 21, title: "3: Loops", category: "Assignments", path: "/java", section: "assignments" },
+  { id: 22, title: "4: Arrays", category: "Assignments", path: "/java", section: "assignments" },
+  { id: 23, title: "4.5: Object Oriented Basics", category: "Assignments", path: "/java", section: "assignments" },
+  { id: 24, title: "6: Final Project", category: "Assignments", path: "/java", section: "assignments" },
 
   // Java Homework
-  { id: 25, title: "Glossary Terms", category: "Homework", path: "/java" },
-  { id: 26, title: "Java Loops HW", category: "Homework", path: "/java" },
+  { id: 25, title: "Glossary Terms", category: "Homework", path: "/java", section: "homework" },
+  { id: 26, title: "Java Loops HW", category: "Homework", path: "/java", section: "homework" },
 
   // Java Lessons
-  { id: 27, title: "Flowcharting Lesson", category: "Lessons", path: "/java" },
-  { id: 28, title: "Math Operations", category: "Lessons", path: "/java" },
-  { id: 29, title: "Looping & Random", category: "Lessons", path: "/java" },
+  { id: 27, title: "Flowcharting Lesson", category: "Lessons", path: "/java", section: "lessons" },
+  { id: 28, title: "Math Operations", category: "Lessons", path: "/java", section: "lessons" },
+  { id: 29, title: "Looping & Random", category: "Lessons", path: "/java", section: "lessons" },
 
   // Java Resources
-  { id: 30, title: "Textbook Chapters 1 and 2", category: "Resources", path: "/java" },
-  { id: 31, title: "The Cookbook (Java)", category: "Resources", path: "/java" },
-  { id: 32, title: "Guide for Round Buttons", category: "Resources", path: "/java" },
+  { id: 33, title: "Textbook Chapters 1 and 2", category: "Resources", path: "/java", section: "resources" },
+  { id: 34, title: "The Cookbook (Java)", category: "Resources", path: "/java", section: "resources" },
+  { id: 35, title: "Guide for Round Buttons", category: "Resources", path: "/java", section: "resources" },
+
+  // Java Bonus
+  { id: 36, title: "Coin Flip", category: "Bonus", path: "/java", section: "bonus" },
+  { id: 37, title: "Fox Goose Grain", category: "Bonus", path: "/java", section: "bonus" },
 
   // Shared References
-  { id: 33, title: "W3Schools Reference", category: "References", path: "/references" },
+  { id: 38, title: "W3Schools Reference", category: "References", path: "/references", section: "references" },
 ];
-
 
 const NavBar: React.FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
@@ -108,6 +116,16 @@ const NavBar: React.FC = () => {
     ).slice(0, 5); // Limit to top 5 results
     
     setSearchResults(results);
+  };
+
+  // Handle search result click with navigation and highlighting
+  const handleSearchResultClick = (result: typeof mockResources[0]) => {
+    setIsSearchOpen(false);
+    setSearchTerm('');
+    setSearchResults([]);
+    
+    // Navigate with search parameters for auto-opening and highlighting
+    navigate(`${result.path}?highlight=${encodeURIComponent(result.title)}&section=${result.section}`);
   };
 
   // Get background style based on current route
@@ -177,15 +195,14 @@ const NavBar: React.FC = () => {
                 {searchResults.length > 0 && (
                   <div className="search-results max-h-60 overflow-auto space-y-2">
                     {searchResults.map((result) => (
-                      <Link 
+                      <div 
                         key={result.id}
-                        to={result.path} 
-                        className="block p-2 hover:bg-secondary rounded-md transition-colors"
-                        onClick={() => setIsSearchOpen(false)}
+                        onClick={() => handleSearchResultClick(result)}
+                        className="block p-2 hover:bg-secondary rounded-md transition-colors cursor-pointer"
                       >
                         <div className="font-medium">{result.title}</div>
                         <div className="text-sm text-muted-foreground">{result.category}</div>
-                      </Link>
+                      </div>
                     ))}
                   </div>
                 )}
@@ -238,14 +255,14 @@ const NavBar: React.FC = () => {
                 {searchResults.length > 0 && (
                   <div className="search-results max-h-60 overflow-auto space-y-2">
                     {searchResults.map((result) => (
-                      <Link 
+                      <div 
                         key={result.id}
-                        to={result.path} 
-                        className="block p-2 hover:bg-secondary rounded-md transition-colors"
+                        onClick={() => handleSearchResultClick(result)}
+                        className="block p-2 hover:bg-secondary rounded-md transition-colors cursor-pointer"
                       >
                         <div className="font-medium">{result.title}</div>
                         <div className="text-sm text-muted-foreground">{result.category}</div>
-                      </Link>
+                      </div>
                     ))}
                   </div>
                 )}
