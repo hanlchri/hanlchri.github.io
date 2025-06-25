@@ -10,6 +10,7 @@ import Java from "./pages/Java";
 import APCS from "./pages/APCS";
 import References from "./pages/References";
 import Contact from "./pages/Contact";
+import Gallery from "./pages/Gallery";
 import Search from "./pages/Search";
 import NotFound from "./pages/NotFound";
 
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/ap-cs" element={<APCS />} />
           <Route path="/references" element={<References />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="/search" element={<Search />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

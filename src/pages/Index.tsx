@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import Layout from '@/components/Layout';
@@ -45,6 +44,11 @@ const Index = () => {
           <Link to="/ap-cs" className="floating-card group">
             <h3 className="text-xl font-bold mb-2 group-hover:text-tech-purple transition-colors">AP Computer Science</h3>
             <p className="text-muted-foreground">Materials for AP Computer Science A course</p>
+          </Link>
+          
+          <Link to="/gallery" className="floating-card group">
+            <h3 className="text-xl font-bold mb-2 group-hover:text-tech-purple transition-colors">Gallery</h3>
+            <p className="text-muted-foreground">Interactive examples, games, and student projects</p>
           </Link>
           
           <Link to="/references" className="floating-card group">

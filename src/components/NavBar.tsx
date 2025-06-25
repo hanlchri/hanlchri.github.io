@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Search } from 'lucide-react';
@@ -61,8 +60,15 @@ const mockResources = [
 
   // Shared References
   { id: 33, title: "W3Schools Reference", category: "References", path: "/references" },
-];
 
+  // Gallery Examples
+  { id: 34, title: "P5.js Interactive Game", category: "Gallery", path: "/gallery" },
+  { id: 35, title: "Java Swing Calculator", category: "Gallery", path: "/gallery" },
+  { id: 36, title: "Interactive Art Canvas", category: "Gallery", path: "/gallery" },
+  { id: 37, title: "Sorting Algorithm Visualizer", category: "Gallery", path: "/gallery" },
+  { id: 38, title: "Physics Simulation", category: "Gallery", path: "/gallery" },
+  { id: 39, title: "Data Structure Explorer", category: "Gallery", path: "/gallery" },
+];
 
 const NavBar: React.FC = () => {
   const location = useLocation();
@@ -145,6 +151,7 @@ const NavBar: React.FC = () => {
           <Link to="/" className={`nav-link ${isActive('/')}`}>Home</Link>
           <Link to="/java" className={`nav-link ${isActive('/java')}`}>Java</Link>
           <Link to="/ap-cs" className={`nav-link ${isActive('/ap-cs')}`}>AP Computer Science</Link>
+          <Link to="/gallery" className={`nav-link ${isActive('/gallery')}`}>Gallery</Link>
           <Link to="/references" className={`nav-link ${isActive('/references')}`}>References</Link>
           <Link to="/contact" className={`nav-link ${isActive('/contact')}`}>Contact</Link>
           <Link to="/about" className={`nav-link ${isActive('/about')}`}>About</Link>
@@ -274,6 +281,7 @@ const NavBar: React.FC = () => {
             <Link to="/" className={`nav-link py-4 ${isActive('/')}`}>Home</Link>
             <Link to="/java" className={`nav-link py-4 ${isActive('/java')}`}>Java</Link>
             <Link to="/ap-cs" className={`nav-link py-4 ${isActive('/ap-cs')}`}>AP Computer Science</Link>
+            <Link to="/gallery" className={`nav-link py-4 ${isActive('/gallery')}`}>Gallery</Link>
             <Link to="/references" className={`nav-link py-4 ${isActive('/references')}`}>References</Link>
             <Link to="/contact" className={`nav-link py-4 ${isActive('/contact')}`}>Contact</Link>
             <Link to="/about" className={`nav-link py-4 ${isActive('/about')}`}>About</Link>
