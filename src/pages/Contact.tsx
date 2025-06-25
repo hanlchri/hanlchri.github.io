@@ -33,12 +33,12 @@ const Contact = () => {
               <div className="space-y-4">
                 <div>
                   <h3 className="text-xl font-semibold">Email</h3>
-                  <p className="text-tech-purple">hanleyc@shenet.org</p>
+                  <p className="text-tech-purple">hanlchri@shenschools.org</p>
                 </div>
                 
                 <div>
                   <h3 className="text-xl font-semibold">Office</h3>
-                  <p>Room 205, Shenendehowa High School</p>
+                  <p>Room 129, Shenendehowa High School</p>
                 </div>
                 
                 <div>
