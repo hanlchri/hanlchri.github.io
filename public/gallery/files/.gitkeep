@@ -1,0 +1,10 @@
+
+# Gallery Files Directory
+
+Place your built gallery files here:
+- JavaScript files (after npm build)
+- Java JAR files  
+- Executable demos
+- Any other runnable files
+
+Files placed here will be accessible via the gallery download links.
