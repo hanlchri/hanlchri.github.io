@@ -60,15 +60,14 @@ const Gallery = () => {
                     {item.description}
                   </CardDescription>
                   <div className="flex space-x-2">
-                    <Button
-                      as="a"
+                    <a
                       href={GalleryManager.getDownloadUrl(item)}
                       download
-                      className="flex-1 bg-tech-purple hover:bg-tech-purple/80"
+                      className="flex-1 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-tech-purple text-white hover:bg-tech-purple/80 h-10 px-4 py-2"
                     >
-                      <Download className="h-4 w-4 mr-2" />
+                      <Download className="h-4 w-4" />
                       {GalleryManager.requiresBuild(item) ? 'Download Source' : 'Download Demo'}
-                    </Button>
+                    </a>
                   </div>
                   {GalleryManager.requiresBuild(item) && (
                     <p className="text-xs text-muted-foreground mt-2 flex items-center">
