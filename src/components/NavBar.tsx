@@ -132,8 +132,6 @@ const NavBar: React.FC = () => {
       return 'contact-text';
     } else if (location.pathname === '/search') {
       return 'search-text';
-    } else if (location.pathname === '/about') {
-      return 'bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent';
     }
     return 'tech-text';
   };
