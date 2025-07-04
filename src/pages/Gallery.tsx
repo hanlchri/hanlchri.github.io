@@ -71,23 +71,6 @@ const Gallery = () => {
             ))}
           </div>
 
-          <div className="mt-8 sm:mt-12 p-4 sm:p-6 bg-secondary/30 rounded-lg border border-gallery-accent/20">
-            <h2 className="text-xl sm:text-2xl font-bold mb-4 text-gallery-secondary">Adding New Gallery Items</h2>
-            <div className="space-y-3 sm:space-y-4 text-sm">
-              <div>
-                <h3 className="font-semibold text-gallery-accent text-sm sm:text-base">Step 1: Add your files</h3>
-                <p className="text-muted-foreground text-xs sm:text-sm">Place your files in <code className="bg-background px-2 py-1 rounded text-xs">/public/gallery/files/</code></p>
-              </div>
-              <div>
-                <h3 className="font-semibold text-gallery-accent text-sm sm:text-base">Step 2: Update configuration</h3>
-                <p className="text-muted-foreground text-xs sm:text-sm">Edit <code className="bg-background px-2 py-1 rounded text-xs">src/config/galleryItems.json</code> to add your new item</p>
-              </div>
-              <div>
-                <h3 className="font-semibold text-gallery-accent text-sm sm:text-base">Step 3: Deploy</h3>
-                <p className="text-muted-foreground text-xs sm:text-sm">Changes will automatically appear after deployment</p>
-              </div>
-            </div>
-          </div>
 
           {/* Watermark */}
           <div className="mt-8 text-center">
