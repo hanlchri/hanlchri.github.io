@@ -1,7 +1,6 @@
 
 import React from 'react';
 import Layout from '@/components/Layout';
-import GalleryBackground from '@/components/GalleryBackground';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Download, Code, Play } from 'lucide-react';
 import { GalleryManager } from '@/utils/galleryManager';
@@ -24,9 +23,8 @@ const Gallery = () => {
 
   return (
     <Layout>
-      <GalleryBackground />
       <div className="max-w-7xl mx-auto mt-6 sm:mt-10 relative z-10 px-4">
-        <div className="gallery-content-section">
+        <div className="gallery-content-section bg-background/95 backdrop-blur-sm border border-gallery-accent/20 rounded-lg">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-center gallery-text">
             Interactive Gallery
           </h1>
@@ -34,7 +32,7 @@ const Gallery = () => {
             Explore interactive examples, games, and applications created for learning and demonstration
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
             {galleryItems.map((item) => (
               <Card key={item.slug} className="group hover:shadow-xl transition-all duration-300 hover:scale-[1.02] bg-background/90 backdrop-blur-sm border-gallery-accent/20 flex flex-col h-full">
                 <CardHeader className="pb-3 sm:pb-4">
@@ -65,14 +63,8 @@ const Gallery = () => {
                       className="w-full inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-gallery-accent text-white hover:bg-gallery-accent/80 h-10 px-4 py-2"
                     >
                       <Download className="h-4 w-4" />
-                      {GalleryManager.requiresBuild(item) ? 'Download Source' : 'Download Demo'}
+                      Download Demo
                     </a>
-                    {GalleryManager.requiresBuild(item) && (
-                      <p className="text-xs text-muted-foreground mt-2 flex items-center justify-center">
-                        <Code className="h-3 w-3 mr-1" />
-                        Requires build process (npm/build tools needed)
-                      </p>
-                    )}
                   </div>
                 </CardContent>
               </Card>
