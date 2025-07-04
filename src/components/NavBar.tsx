@@ -131,27 +131,6 @@ const NavBar: React.FC = () => {
     }
   };
 
-  // Get logo style based on current route
-  const getLogoStyle = () => {
-    if (location.pathname === '/') {
-      return 'terminal-title text-tech-neon';
-    } else if (location.pathname === '/java') {
-      return 'text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600';
-    } else if (location.pathname === '/ap-cs') {
-      return 'text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600';
-    } else if (location.pathname === '/gallery') {
-      return 'text-transparent bg-clip-text bg-gradient-to-r from-gallery-accent to-gallery-secondary';
-    } else if (location.pathname === '/references') {
-      return 'text-transparent bg-clip-text bg-gradient-to-r from-references-accent to-references-secondary';
-    } else if (location.pathname === '/contact') {
-      return 'text-transparent bg-clip-text bg-gradient-to-r from-contact-accent to-contact-secondary';
-    } else if (location.pathname === '/search') {
-      return 'text-transparent bg-clip-text bg-gradient-to-r from-search-accent to-search-secondary';
-    } else {
-      return 'tech-text';
-    }
-  };
-
   return (
     <header 
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${getNavBackground()}`}
@@ -160,20 +139,22 @@ const NavBar: React.FC = () => {
         {/* Logo */}
         <Link 
           to="/" 
-          className={`text-xl sm:text-2xl font-bold transition-all duration-300 ${getLogoStyle()}`}
+          className={`text-2xl font-bold transition-all duration-300 ${
+            location.pathname === '/' ? 'terminal-title' : 'tech-text'
+          }`}
         >
           Hanley's Hood
         </Link>
         
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-1 xl:gap-2">
-          <Link to="/" className={`nav-link text-sm xl:text-base ${isActive('/')}`}>Home</Link>
-          <Link to="/java" className={`nav-link text-sm xl:text-base ${isActive('/java')}`}>Java</Link>
-          <Link to="/ap-cs" className={`nav-link text-sm xl:text-base whitespace-nowrap ${isActive('/ap-cs')}`}>AP CS</Link>
-          <Link to="/gallery" className={`nav-link text-sm xl:text-base ${isActive('/gallery')}`}>Gallery</Link>
-          <Link to="/references" className={`nav-link text-sm xl:text-base ${isActive('/references')}`}>References</Link>
-          <Link to="/contact" className={`nav-link text-sm xl:text-base ${isActive('/contact')}`}>Contact</Link>
-          <Link to="/about" className={`nav-link text-sm xl:text-base ${isActive('/about')}`}>About</Link>
+        <div className="hidden md:flex items-center gap-1">
+          <Link to="/" className={`nav-link ${isActive('/')}`}>Home</Link>
+          <Link to="/java" className={`nav-link ${isActive('/java')}`}>Java</Link>
+          <Link to="/ap-cs" className={`nav-link ${isActive('/ap-cs')}`}>AP Computer Science</Link>
+          <Link to="/gallery" className={`nav-link ${isActive('/gallery')}`}>Gallery</Link>
+          <Link to="/references" className={`nav-link ${isActive('/references')}`}>References</Link>
+          <Link to="/contact" className={`nav-link ${isActive('/contact')}`}>Contact</Link>
+          <Link to="/about" className={`nav-link ${isActive('/about')}`}>About</Link>
           
           {/* Search Popover */}
           <Popover open={isSearchOpen} onOpenChange={setIsSearchOpen}>
@@ -237,7 +218,7 @@ const NavBar: React.FC = () => {
         </div>
         
         {/* Mobile Menu Button */}
-        <div className="lg:hidden flex items-center space-x-1">
+        <div className="md:hidden flex items-center space-x-1">
           <Popover>
             <PopoverTrigger asChild>
               <Button
@@ -295,7 +276,7 @@ const NavBar: React.FC = () => {
       
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="lg:hidden bg-black/95 backdrop-blur-md dropdown-content">
+        <div className="md:hidden bg-black/95 backdrop-blur-md dropdown-content">
           <div className="container mx-auto px-4 py-4 flex flex-col">
             <Link to="/" className={`nav-link py-4 ${isActive('/')}`}>Home</Link>
             <Link to="/java" className={`nav-link py-4 ${isActive('/java')}`}>Java</Link>
