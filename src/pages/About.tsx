@@ -30,7 +30,7 @@ const About = () => {
           <div className="flex flex-col md:flex-row gap-8 items-center">
             <div className="md:w-1/2 flex justify-center">
               {randomHanleyImageSrc && (
-                <div className="w-80 h-80 overflow-hidden rounded-lg border-2 border-tech-purple/30 shadow-lg shadow-tech-purple/20">
+                <div className="w-80 h-80 overflow-hidden rounded-lg border-2 border-purple-500/30 shadow-lg shadow-purple-500/20">
                   <img
                     src={randomHanleyImageSrc}
                     alt="Chris Hanley - Random Portrait"
