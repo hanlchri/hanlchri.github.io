@@ -116,6 +116,26 @@ const NavBar: React.FC = () => {
     setSearchResults(results);
   };
 
+  // Get logo class based on current route
+  const getLogoClass = () => {
+    if (location.pathname === '/') {
+      return 'terminal-title';
+    } else if (location.pathname === '/java') {
+      return 'java-text';
+    } else if (location.pathname === '/ap-cs') {
+      return 'tech-text';
+    } else if (location.pathname === '/gallery') {
+      return 'gallery-text';
+    } else if (location.pathname === '/references') {
+      return 'references-text';
+    } else if (location.pathname === '/contact') {
+      return 'contact-text';
+    } else if (location.pathname === '/search') {
+      return 'search-text';
+    }
+    return 'tech-text';
+  };
+
   // Get background style based on current route
   const getNavBackground = () => {
     if (scrolled || isMenuOpen) {
@@ -139,18 +159,19 @@ const NavBar: React.FC = () => {
         {/* Logo */}
         <Link 
           to="/" 
-          className={`text-2xl font-bold transition-all duration-300 ${
-            location.pathname === '/' ? 'terminal-title' : 'tech-text'
-          }`}
+          className={`text-2xl font-bold transition-all duration-300 ${getLogoClass()}`}
         >
           Hanley's Hood
         </Link>
         
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-1">
+        <div className="hidden lg:flex items-center gap-1">
           <Link to="/" className={`nav-link ${isActive('/')}`}>Home</Link>
           <Link to="/java" className={`nav-link ${isActive('/java')}`}>Java</Link>
-          <Link to="/ap-cs" className={`nav-link ${isActive('/ap-cs')}`}>AP Computer Science</Link>
+          <Link to="/ap-cs" className={`nav-link text-sm xl:text-base ${isActive('/ap-cs')}`}>
+            <span className="hidden xl:inline">AP Computer Science</span>
+            <span className="xl:hidden">AP CS</span>
+          </Link>
           <Link to="/gallery" className={`nav-link ${isActive('/gallery')}`}>Gallery</Link>
           <Link to="/references" className={`nav-link ${isActive('/references')}`}>References</Link>
           <Link to="/contact" className={`nav-link ${isActive('/contact')}`}>Contact</Link>
@@ -212,6 +233,58 @@ const NavBar: React.FC = () => {
                     Advanced Search
                   </Link>
                 </div>
+              </div>
+            </PopoverContent>
+          </Popover>
+        </div>
+        
+        {/* Medium screens navigation */}
+        <div className="hidden md:flex lg:hidden items-center gap-1 text-sm">
+          <Link to="/" className={`nav-link ${isActive('/')}`}>Home</Link>
+          <Link to="/java" className={`nav-link ${isActive('/java')}`}>Java</Link>
+          <Link to="/ap-cs" className={`nav-link ${isActive('/ap-cs')}`}>AP CS</Link>
+          <Link to="/gallery" className={`nav-link ${isActive('/gallery')}`}>Gallery</Link>
+          <Link to="/references" className={`nav-link ${isActive('/references')}`}>Refs</Link>
+          <Link to="/contact" className={`nav-link ${isActive('/contact')}`}>Contact</Link>
+          <Link to="/about" className={`nav-link ${isActive('/about')}`}>About</Link>
+          
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                aria-label="Search"
+              >
+                <Search className="h-5 w-5" />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-72 p-0" align="end">
+              <div className="p-4 space-y-4">
+                <div className="flex items-center space-x-2">
+                  <Search className="h-4 w-4 text-muted-foreground" />
+                  <Input
+                    placeholder="Search resources..."
+                    value={searchTerm}
+                    onChange={handleSearchChange}
+                    className="border-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                    autoFocus
+                  />
+                </div>
+                
+                {searchResults.length > 0 && (
+                  <div className="search-results max-h-60 overflow-auto space-y-2">
+                    {searchResults.map((result) => (
+                      <Link 
+                        key={result.id}
+                        to={result.path} 
+                        className="block p-2 hover:bg-secondary rounded-md transition-colors"
+                      >
+                        <div className="font-medium">{result.title}</div>
+                        <div className="text-sm text-muted-foreground">{result.category}</div>
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
             </PopoverContent>
           </Popover>

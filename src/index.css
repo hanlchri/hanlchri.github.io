@@ -136,6 +136,26 @@
   .tech-text {
     @apply font-mono text-transparent bg-clip-text bg-gradient-to-r from-tech-cyan to-tech-purple;
   }
+
+  .java-text {
+    @apply font-mono text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600;
+  }
+
+  .gallery-text {
+    @apply font-mono text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-600;
+  }
+
+  .references-text {
+    @apply font-mono text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-500;
+  }
+
+  .contact-text {
+    @apply font-mono text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600;
+  }
+
+  .search-text {
+    @apply font-mono text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600;
+  }
   
   .terminal-title {
     @apply font-mono text-tech-neon;
@@ -143,7 +163,7 @@
   
   /* Navigation Styles */
   .nav-link {
-    @apply px-2 sm:px-4 py-2 text-foreground/80 hover:text-tech-purple transition-colors relative text-base sm:text-lg font-medium;
+    @apply px-2 sm:px-4 py-2 text-foreground/80 hover:text-tech-purple transition-colors relative text-base sm:text-lg font-medium whitespace-nowrap;
   }
   
   .nav-link::after {
@@ -166,6 +186,14 @@
   /* Content Styles */
   .content-section {
     @apply bg-black/30 backdrop-blur-md border border-border/50 rounded-lg p-4 sm:p-6 animate-fade-in;
+  }
+
+  .gallery-content-section {
+    @apply bg-black/10 backdrop-blur-sm border border-gallery-accent/20 rounded-lg p-4 sm:p-6 animate-fade-in;
+  }
+
+  .contact-content-section {
+    @apply bg-black/30 backdrop-blur-md border border-contact-accent/20 rounded-lg p-4 sm:p-6 animate-fade-in;
   }
   
   .collapsible-section {
@@ -249,6 +277,40 @@
     .nav-link::after {
       @apply h-[2px];
     }
+  }
+}
+
+@layer utilities {
+  .gallery-accent {
+    color: #ec4899;
+  }
+  
+  .gallery-secondary {
+    color: #d946ef;
+  }
+  
+  .contact-accent {
+    color: #8b5cf6;
+  }
+  
+  .contact-secondary {
+    color: #a855f7;
+  }
+  
+  .references-accent {
+    color: #06b6d4;
+  }
+  
+  .references-secondary {
+    color: #0891b2;
+  }
+  
+  .search-accent {
+    color: #10b981;
+  }
+  
+  .search-secondary {
+    color: #059669;
   }
 }
 

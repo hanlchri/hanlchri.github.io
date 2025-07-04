@@ -68,6 +68,22 @@ export default {
 					light: '#D6BCFA',
 					neon: '#39FF14',
 				},
+				gallery: {
+					accent: '#ec4899',
+					secondary: '#d946ef',
+				},
+				contact: {
+					accent: '#8b5cf6',
+					secondary: '#a855f7',
+				},
+				references: {
+					accent: '#06b6d4',
+					secondary: '#0891b2',
+				},
+				search: {
+					accent: '#10b981',
+					secondary: '#059669',
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
