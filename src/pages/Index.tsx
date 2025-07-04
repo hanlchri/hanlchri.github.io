@@ -62,11 +62,6 @@ const Index = () => {
             <p className="text-sm sm:text-base text-muted-foreground">Get in touch with Mr. Hanley</p>
           </Link>
         </div>
-
-        {/* Watermark */}
-        <div className="mt-12 text-center">
-          <p className="text-xs text-muted-foreground/50">Created by Hassaan Vani, Class of 2027</p>
-        </div>
       </div>
     </Layout>
   );
