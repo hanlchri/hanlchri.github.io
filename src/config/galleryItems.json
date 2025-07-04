@@ -17,5 +17,13 @@
       "fileName": "swing-demo.jar",
       "buildRequired": false
     }
+    {
+      "title": "Test",
+      "description": "test",
+      "type": "test",
+      "slug": "t-est",
+      "fileName": "test.txt",
+      "buildRequired": false
+    }
   ]
 }
