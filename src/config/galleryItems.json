@@ -6,24 +6,21 @@
       "description": "A creative JavaScript game built with p5.js created by Mr. Hanley",
       "type": "JavaScript/P5.js",
       "slug": "p5-interactive-game",
-      "fileName": "p5-game.js",
-      "buildRequired": true
+      "fileName": "p5-game.js"
     },
     {
       "title": "Java Swing Example",
       "description": "Java Swing example demonstrating GUI programming",
       "type": "Java Swing",
       "slug": "java-swing",
-      "fileName": "swing-demo.jar",
-      "buildRequired": false
+      "fileName": "swing-demo.jar"
     },
     {
       "title": "Test",
       "description": "test",
       "type": "test",
       "slug": "t-est",
-      "fileName": "test.txt",
-      "buildRequired": false
+      "fileName": "test.txt"
     }
   ]
 }

@@ -23,14 +23,14 @@ const About = () => {
     <Layout>
       <div className="max-w-4xl mx-auto mt-10">
         <div className="content-section backdrop-blur-sm bg-black/50 border border-purple-500/20">
-          <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
             About Chris Hanley
           </h1>
 
           <div className="flex flex-col md:flex-row gap-8 items-center">
             <div className="md:w-1/2 flex justify-center">
               {randomHanleyImageSrc && (
-                <div className="w-80 h-80 overflow-hidden rounded-lg border-2 border-tech-purple/30 shadow-lg shadow-tech-purple/20">
+                <div className="w-80 h-80 overflow-hidden rounded-lg border-2 border-purple-500/30 shadow-lg shadow-purple-500/20">
                   <img
                     src={randomHanleyImageSrc}
                     alt="Chris Hanley - Random Portrait"
@@ -54,6 +54,11 @@ const About = () => {
                 Mr. Hanley enjoys playing tennis, Smash Ultimate, and Minecraft.
               </p>
             </div>
+          </div>
+
+          {/* Watermark */}
+          <div className="mt-12 text-center">
+            <p className="text-xs text-muted-foreground/50">Created by Hassaan Vani, Class of 2027</p>
           </div>
         </div>
       </div>
