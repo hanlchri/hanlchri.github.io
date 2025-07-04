@@ -11,6 +11,7 @@ import APCSBackground from './APCSBackground';
 import ReferencesBackground from './ReferencesBackground';
 import ContactBackground from './ContactBackground';
 import SearchBackground from './SearchBackground';
+import GalleryBackground from './GalleryBackground';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -42,6 +43,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       return (
         <div className="network-bg fixed inset-0">
           <APCSBackground />
+        </div>
+      );
+    } else if (location.pathname === '/gallery') {
+      return (
+        <div className="fixed inset-0">
+          <GalleryBackground />
         </div>
       );
     } else if (location.pathname === '/references') {
