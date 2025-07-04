@@ -16,22 +16,6 @@
       "slug": "java-swing",
       "fileName": "swing-demo.jar",
       "buildRequired": false
-    },
-    {
-      "title": "Test",
-      "description": "test",
-      "type": "test",
-      "slug": "test",
-      "fileName": "test.txt",
-      "buildRequired": false
-    },
-    {
-      "title": "Test2",
-      "description": "test2",
-      "type": "test2",
-      "slug": "test2",
-      "fileName": "test2.txt",
-      "buildRequired": true
     }
   ]
 }
