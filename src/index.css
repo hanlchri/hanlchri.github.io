@@ -45,6 +45,9 @@
     --sidebar-ring: 260 80% 70%;
 
     /* Custom color palettes for different sections */
+    --tech-cyan: 6 182 212;
+    --tech-purple: 139 92 246;
+    --tech-neon: 16 185 129;
     --gallery-accent: 236 72% 79%;
     --gallery-secondary: 335 78% 83%;
     --references-accent: 142 76% 73%;
@@ -53,6 +56,8 @@
     --contact-secondary: 292 84% 61%;
     --search-accent: 43 74% 66%;
     --search-secondary: 38 92% 50%;
+    --java-accent: 251 91% 95%;
+    --java-secondary: 34 100% 50%;
   }
 }
 
@@ -94,33 +99,58 @@
 }
 
 @layer components {
-  /* ... keep existing code (background styles) */
+  /* Background Styles */
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(rgba(139, 92, 246, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(139, 92, 246, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
   
   /* Text Styles */
   .tech-text {
-    @apply font-mono text-transparent bg-clip-text bg-gradient-to-r from-tech-cyan to-tech-purple;
+    @apply font-mono text-transparent bg-clip-text;
+    background-image: linear-gradient(to right, hsl(var(--tech-cyan)), hsl(var(--tech-purple)));
   }
   
   .gallery-text {
-    @apply font-mono text-transparent bg-clip-text bg-gradient-to-r from-gallery-accent to-gallery-secondary;
+    @apply font-mono text-transparent bg-clip-text;
+    background-image: linear-gradient(to right, hsl(var(--gallery-accent)), hsl(var(--gallery-secondary)));
   }
   
   .contact-text {
-    @apply font-mono text-transparent bg-clip-text bg-gradient-to-r from-contact-accent to-contact-secondary;
+    @apply font-mono text-transparent bg-clip-text;
+    background-image: linear-gradient(to right, hsl(var(--contact-accent)), hsl(var(--contact-secondary)));
+  }
+  
+  .references-text {
+    @apply font-mono text-transparent bg-clip-text;
+    background-image: linear-gradient(to right, hsl(var(--references-accent)), hsl(var(--references-secondary)));
+  }
+  
+  .search-text {
+    @apply font-mono text-transparent bg-clip-text;
+    background-image: linear-gradient(to right, hsl(var(--search-accent)), hsl(var(--search-secondary)));
+  }
+  
+  .java-text {
+    @apply font-mono text-transparent bg-clip-text;
+    background-image: linear-gradient(to right, hsl(var(--java-accent)), hsl(var(--java-secondary)));
   }
   
   .terminal-title {
-    @apply font-mono text-tech-neon;
+    color: hsl(var(--tech-neon));
+    @apply font-mono;
   }
   
   /* Navigation Styles */
   .nav-link {
-    @apply px-2 sm:px-3 lg:px-4 py-2 text-foreground/80 hover:text-tech-purple transition-colors relative font-medium;
+    @apply px-2 sm:px-3 lg:px-4 py-2 text-foreground/80 hover:text-primary transition-colors relative font-medium;
   }
   
   .nav-link::after {
     content: '';
-    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-tech-purple transition-all duration-300;
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300;
   }
   
   .nav-link:hover::after {
@@ -128,7 +158,7 @@
   }
   
   .nav-link.active {
-    @apply text-tech-purple;
+    @apply text-primary;
   }
   
   .nav-link.active::after {
@@ -149,12 +179,73 @@
   }
   
   .floating-card {
-    @apply bg-card border border-border/50 rounded-lg p-4 sm:p-6 lg:p-8 hover:border-tech-purple/50 transition-all duration-300 hover:shadow-[0_0_15px_rgba(139,92,246,0.3)] animate-scale-in min-h-[200px] flex flex-col justify-between;
+    @apply bg-card border border-border/50 rounded-lg p-4 sm:p-6 lg:p-8 hover:border-primary/50 transition-all duration-300 hover:shadow-[0_0_15px_rgba(139,92,246,0.3)] animate-scale-in min-h-[200px] flex flex-col justify-between;
   }
   
-  /* ... keep existing code (dropdown, search, page transition animations) */
+  /* Dropdown Styles */
+  .dropdown-menu {
+    @apply bg-card border border-border/50 rounded-lg shadow-lg backdrop-blur-md;
+  }
+  
+  .dropdown-item {
+    @apply px-4 py-2 hover:bg-secondary transition-colors cursor-pointer;
+  }
+  
+  /* Search Styles */
+  .search-container {
+    @apply relative;
+  }
+  
+  .search-input {
+    @apply w-full bg-secondary/50 border border-border/30 rounded-lg px-4 py-2 focus:outline-none focus:border-primary/50 transition-all;
+  }
+  
+  .search-results {
+    @apply absolute top-full left-0 right-0 bg-card border border-border/50 rounded-lg mt-2 max-h-96 overflow-auto shadow-xl backdrop-blur-md;
+  }
+  
+  .search-result-item {
+    @apply px-4 py-3 hover:bg-secondary/50 transition-colors cursor-pointer border-b border-border/20 last:border-b-0;
+  }
+  
+  /* Page transition animations */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out;
+  }
+  
+  .animate-terminal-blink {
+    animation: terminalBlink 1s infinite;
+  }
   
   /* Color utilities */
+  .text-tech-cyan {
+    color: hsl(var(--tech-cyan));
+  }
+  
+  .text-tech-purple {
+    color: hsl(var(--tech-purple));
+  }
+  
+  .text-tech-neon {
+    color: hsl(var(--tech-neon));
+  }
+  
+  .bg-tech-cyan {
+    background-color: hsl(var(--tech-cyan));
+  }
+  
+  .bg-tech-purple {
+    background-color: hsl(var(--tech-purple));
+  }
+  
+  .bg-tech-neon {
+    background-color: hsl(var(--tech-neon));
+  }
+  
   .text-gallery-accent {
     color: hsl(var(--gallery-accent));
   }
@@ -203,6 +294,22 @@
     background-color: hsl(var(--search-accent));
   }
   
+  .text-java-accent {
+    color: hsl(var(--java-accent));
+  }
+  
+  .text-java-secondary {
+    color: hsl(var(--java-secondary));
+  }
+  
+  .bg-java-accent {
+    background-color: hsl(var(--java-accent));
+  }
+  
+  .bg-java-secondary {
+    background-color: hsl(var(--java-secondary));
+  }
+  
   /* Mobile optimizations */
   @media (max-width: 640px) {
     .collapsible-section {
@@ -226,4 +333,34 @@
   }
 }
 
-/* ... keep existing code (keyframes animations) */
+/* Keyframes for animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes terminalBlink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
