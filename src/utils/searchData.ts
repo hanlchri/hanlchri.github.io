@@ -315,28 +315,99 @@ const searchItems: SearchItem[] = [
   }
 ];
 
+// Enhanced keyword matching for better semantic search
+const getKeywordScore = (searchTerm: string, keywords: string[]): number => {
+  const lowerTerm = searchTerm.toLowerCase();
+  let score = 0;
+  
+  // Special mappings for common abbreviations and concepts
+  const semanticMappings: { [key: string]: string[] } = {
+    'oop': ['object', 'oriented', 'programming', 'class', 'inheritance', 'polymorphism', 'encapsulation'],
+    'gui': ['swing', 'graphics', 'interface', 'window', 'button', 'frame'],
+    'io': ['input', 'output', 'file', 'scanner', 'reader', 'writer'],
+    'ai': ['artificial', 'intelligence', 'machine', 'learning'],
+    'api': ['application', 'programming', 'interface'],
+    'sql': ['database', 'query', 'structured', 'language'],
+    'html': ['markup', 'web', 'browser', 'tag'],
+    'css': ['style', 'design', 'layout', 'formatting'],
+    'js': ['javascript', 'web', 'browser', 'script'],
+    'recursion': ['recursive', 'function', 'call', 'itself', 'base', 'case'],
+    'array': ['list', 'collection', 'data', 'structure', 'index'],
+    'loop': ['iteration', 'for', 'while', 'repeat', 'cycle'],
+    'string': ['text', 'character', 'word', 'manipulation'],
+    'inheritance': ['extends', 'super', 'parent', 'child', 'class', 'hierarchy'],
+    'polymorphism': ['override', 'overload', 'method', 'different', 'forms'],
+    'encapsulation': ['private', 'public', 'protected', 'access', 'modifier', 'data', 'hiding'],
+    'abstraction': ['abstract', 'interface', 'concept', 'implementation', 'hiding']
+  };
+  
+  // Check for semantic mappings first
+  if (semanticMappings[lowerTerm]) {
+    const relatedTerms = semanticMappings[lowerTerm];
+    for (const keyword of keywords) {
+      const lowerKeyword = keyword.toLowerCase();
+      for (const relatedTerm of relatedTerms) {
+        if (lowerKeyword.includes(relatedTerm) || relatedTerm.includes(lowerKeyword)) {
+          score += 10; // High score for semantic matches
+        }
+      }
+    }
+  }
+  
+  // Original keyword matching
+  for (const keyword of keywords) {
+    const lowerKeyword = keyword.toLowerCase();
+    if (lowerKeyword === lowerTerm) {
+      score += 15; // Exact match
+    } else if (lowerKeyword.includes(lowerTerm)) {
+      score += 8; // Partial match
+    } else if (lowerTerm.includes(lowerKeyword)) {
+      score += 5; // Reverse partial match
+    }
+  }
+  
+  return score;
+};
+
 export const searchAssignments = (query: string): SearchItem[] => {
-  const searchTerm = query.toLowerCase().trim();
+  if (!query.trim()) return [];
   
-  if (!searchTerm) return [];
+  const lowerQuery = query.toLowerCase();
+  const results: Array<SearchItem & { score: number }> = [];
   
-  return searchItems.filter(item => {
-    const titleMatch = item.title.toLowerCase().includes(searchTerm);
-    const descriptionMatch = item.description.toLowerCase().includes(searchTerm);
-    const keywordMatch = item.keywords.some(keyword => 
-      keyword.toLowerCase().includes(searchTerm)
-    );
-    const categoryMatch = item.category.toLowerCase().includes(searchTerm);
+  searchItems.forEach(item => {
+    let score = 0;
     
-    return titleMatch || descriptionMatch || keywordMatch || categoryMatch;
-  }).sort((a, b) => {
-    // Prioritize title matches
-    const aTitle = a.title.toLowerCase().includes(searchTerm);
-    const bTitle = b.title.toLowerCase().includes(searchTerm);
+    // Title matching (highest priority)
+    if (item.title.toLowerCase().includes(lowerQuery)) {
+      score += 20;
+    }
     
-    if (aTitle && !bTitle) return -1;
-    if (!aTitle && bTitle) return 1;
+    // Description matching
+    if (item.description.toLowerCase().includes(lowerQuery)) {
+      score += 10;
+    }
     
-    return 0;
+    // Category matching
+    if (item.category.toLowerCase().includes(lowerQuery)) {
+      score += 8;
+    }
+    
+    // Enhanced keyword matching
+    score += getKeywordScore(lowerQuery, item.keywords);
+    
+    // Page matching
+    if (item.page.toLowerCase().includes(lowerQuery)) {
+      score += 5;
+    }
+    
+    if (score > 0) {
+      results.push({ ...item, score });
+    }
   });
+  
+  // Sort by score (highest first)
+  return results
+    .sort((a, b) => b.score - a.score)
+    .map(({ score, ...item }) => item);
 };

@@ -78,11 +78,11 @@ const NavBar: React.FC = () => {
     } else if (location.pathname === '/references') {
       return 'references-text';
     } else if (location.pathname === '/contact') {
-      return 'contact-text';
+      return 'text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-teal-600';
     } else if (location.pathname === '/search') {
       return 'search-text';
     } else if (location.pathname === '/about') {
-      return 'about-text';
+      return 'text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600';
     }
     return 'tech-text';
   };

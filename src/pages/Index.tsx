@@ -6,8 +6,12 @@ import { Link } from 'react-router-dom';
 
 const Index = () => {
   const [displayedText, setDisplayedText] = useState('');
+  const [watermarkText, setWatermarkText] = useState('');
   const fullText = "Computer Science resources for Java and AP Computer Science students";
+  const watermarkFullText = "Created by Hassaan Vani, Class of 2027";
   const [characterIndex, setCharacterIndex] = useState(0);
+  const [watermarkIndex, setWatermarkIndex] = useState(0);
+  const [showWatermark, setShowWatermark] = useState(false);
   
   useEffect(() => {
     if (characterIndex < fullText.length) {
@@ -17,8 +21,25 @@ const Index = () => {
       }, 50); // Speed of typing effect
       
       return () => clearTimeout(timer);
+    } else if (!showWatermark) {
+      // Start watermark typing after a brief pause
+      const timer = setTimeout(() => {
+        setShowWatermark(true);
+      }, 800);
+      return () => clearTimeout(timer);
     }
-  }, [characterIndex, fullText]);
+  }, [characterIndex, fullText, showWatermark]);
+
+  useEffect(() => {
+    if (showWatermark && watermarkIndex < watermarkFullText.length) {
+      const timer = setTimeout(() => {
+        setWatermarkText(prev => prev + watermarkFullText[watermarkIndex]);
+        setWatermarkIndex(watermarkIndex + 1);
+      }, 30); // Slightly faster for watermark
+      
+      return () => clearTimeout(timer);
+    }
+  }, [watermarkIndex, watermarkFullText, showWatermark]);
   
   return (
     <Layout>
@@ -27,9 +48,13 @@ const Index = () => {
           Hanley's Hood
         </h1>
         <div className="max-w-3xl mx-auto px-4">
-          <p className="text-lg sm:text-xl md:text-2xl mb-10 font-mono h-12 sm:h-16">
+          <p className="text-lg sm:text-xl md:text-2xl mb-4 font-mono h-12 sm:h-16">
             {displayedText}
-            <span className="animate-terminal-blink">_</span>
+            {characterIndex < fullText.length && <span className="animate-terminal-blink">_</span>}
+          </p>
+          <p className="text-xs text-muted-foreground/70 mb-10 font-mono h-4">
+            {watermarkText}
+            {showWatermark && watermarkIndex < watermarkFullText.length && <span className="animate-terminal-blink">_</span>}
           </p>
           <Button asChild className="bg-tech-neon hover:bg-tech-neon/80 text-black font-mono text-base sm:text-lg py-4 sm:py-6 px-6 sm:px-8 font-bold">
             <Link to="/about">About</Link>
@@ -61,11 +86,6 @@ const Index = () => {
             <h3 className="text-lg sm:text-xl font-bold mb-2 group-hover:text-tech-purple transition-colors">Contact</h3>
             <p className="text-sm sm:text-base text-muted-foreground">Get in touch with Mr. Hanley</p>
           </Link>
-        </div>
-
-        {/* Watermark */}
-        <div className="mt-16 text-center">
-          <p className="text-xs text-muted-foreground/50">Created by Hassaan Vani, Class of 2027</p>
         </div>
       </div>
     </Layout>

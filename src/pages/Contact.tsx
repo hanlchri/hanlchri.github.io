@@ -42,17 +42,17 @@ const Contact = () => {
   return (
     <Layout>
       <div className="max-w-4xl mx-auto mt-10">
-        <div className="contact-content-section">
-          <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center contact-text">Contact</h1>
+        <div className="bg-black/30 backdrop-blur-md border border-teal-500/20 rounded-lg p-4 sm:p-6 animate-fade-in">
+          <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center text-teal-400">Contact</h1>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <h2 className="text-2xl font-bold mb-4 text-contact-secondary">Contact Information</h2>
+              <h2 className="text-2xl font-bold mb-4 text-teal-300">Contact Information</h2>
               
               <div className="space-y-4">
                 <div>
                   <h3 className="text-xl font-semibold">Email</h3>
-                  <p className="text-contact-accent">hanlchri@shenschools.org</p>
+                  <p className="text-teal-400">hanlchri@shenschools.org</p>
                 </div>
                 
                 <div>
@@ -69,7 +69,7 @@ const Contact = () => {
             </div>
             
             <div>
-              <h2 className="text-2xl font-bold mb-4 text-contact-accent">Send a Message</h2>
+              <h2 className="text-2xl font-bold mb-4 text-teal-400">Send a Message</h2>
               
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
@@ -81,7 +81,7 @@ const Contact = () => {
                     required 
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="bg-secondary/50 border-contact-accent/30 focus:border-contact-accent"
+                    className="bg-secondary/50 border-teal-400/30 focus:border-teal-400"
                   />
                 </div>
                 
@@ -94,7 +94,7 @@ const Contact = () => {
                     required 
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="bg-secondary/50 border-contact-accent/30 focus:border-contact-accent"
+                    className="bg-secondary/50 border-teal-400/30 focus:border-teal-400"
                   />
                 </div>
                 
@@ -107,7 +107,7 @@ const Contact = () => {
                     required 
                     value={formData.subject}
                     onChange={handleInputChange}
-                    className="bg-secondary/50 border-contact-accent/30 focus:border-contact-accent"
+                    className="bg-secondary/50 border-teal-400/30 focus:border-teal-400"
                   />
                 </div>
                 
@@ -120,13 +120,13 @@ const Contact = () => {
                     rows={5}
                     value={formData.message}
                     onChange={handleInputChange}
-                    className="bg-secondary/50 border-contact-accent/30 focus:border-contact-accent"
+                    className="bg-secondary/50 border-teal-400/30 focus:border-teal-400"
                   />
                 </div>
                 
                 <Button 
                   type="submit" 
-                  className="w-full bg-contact-accent hover:bg-contact-accent/80"
+                  className="w-full bg-teal-500 hover:bg-teal-500/80"
                 >
                   Send Message
                 </Button>
