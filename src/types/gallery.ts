@@ -5,7 +5,7 @@ export interface GalleryItem {
   type: string;
   slug: string;
   fileName: string;
-  buildRequired: boolean;
+  buildRequired?: boolean; // Made optional since it's no longer needed
   category?: 'game' | 'demo' | 'educational' | 'interactive';
   tags?: string[];
   createdDate?: string;
