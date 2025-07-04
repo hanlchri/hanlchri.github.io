@@ -28,7 +28,7 @@ export class GalleryManager {
 
   // Helper method to check if item needs build process
   static requiresBuild(item: GalleryItem): boolean {
-    return item.buildRequired;
+    return item.buildRequired ?? false;
   }
 
   // Search functionality
