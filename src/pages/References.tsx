@@ -8,7 +8,7 @@ const References = () => {
     <Layout>
       <div className="max-w-4xl mx-auto mt-10">
         <div className="content-section">
-          <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center tech-text">References</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center references-text">References</h1>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-card p-6 rounded-lg">

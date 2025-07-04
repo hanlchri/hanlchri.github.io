@@ -132,6 +132,8 @@ const NavBar: React.FC = () => {
       return 'contact-text';
     } else if (location.pathname === '/search') {
       return 'search-text';
+    } else if (location.pathname === '/about') {
+      return 'about-text';
     }
     return 'tech-text';
   };

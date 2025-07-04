@@ -26,11 +26,6 @@ export class GalleryManager {
     return `/gallery/files/${item.fileName}`;
   }
 
-  // Helper method to check if item needs build process
-  static requiresBuild(item: GalleryItem): boolean {
-    return item.buildRequired;
-  }
-
   // Search functionality
   static searchItems(query: string): GalleryItem[] {
     const searchTerm = query.toLowerCase();

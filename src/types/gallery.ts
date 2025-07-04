@@ -5,7 +5,6 @@ export interface GalleryItem {
   type: string;
   slug: string;
   fileName: string;
-  buildRequired: boolean;
   category?: 'game' | 'demo' | 'educational' | 'interactive';
   tags?: string[];
   createdDate?: string;

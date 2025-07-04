@@ -60,7 +60,7 @@ const Search = () => {
     <Layout>
       <div className="max-w-4xl mx-auto mt-10 px-4">
         <div className="content-section">
-          <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center tech-text">
+          <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center search-text">
             Advanced Search
           </h1>
           
@@ -72,21 +72,21 @@ const Search = () => {
                 placeholder="Search assignments, lessons, and resources..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-card border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-tech-cyan focus:border-transparent text-foreground placeholder-muted-foreground"
+                className="w-full pl-10 pr-4 py-3 bg-card border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-search-accent focus:border-transparent text-foreground placeholder-muted-foreground"
               />
             </div>
           </div>
 
           {isSearching && (
             <div className="text-center py-8">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-tech-cyan mx-auto"></div>
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-search-accent mx-auto"></div>
               <p className="mt-2 text-muted-foreground">Searching...</p>
             </div>
           )}
 
           {results.length > 0 && (
             <div className="space-y-4">
-              <h2 className="text-xl font-semibold text-tech-cyan mb-4">
+              <h2 className="text-xl font-semibold text-search-accent mb-4">
                 Search Results ({results.length})
               </h2>
               
@@ -94,12 +94,12 @@ const Search = () => {
                 <div
                   key={item.id}
                   onClick={() => handleResultClick(item)}
-                  className="bg-card border border-border rounded-lg p-4 hover:border-tech-cyan/50 transition-colors cursor-pointer group"
+                  className="bg-card border border-border rounded-lg p-4 hover:border-search-accent/50 transition-colors cursor-pointer group"
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
-                        <h3 className="text-lg font-semibold text-foreground group-hover:text-tech-cyan transition-colors">
+                        <h3 className="text-lg font-semibold text-foreground group-hover:text-search-accent transition-colors">
                           {item.title}
                         </h3>
                         <span className={`px-2 py-1 text-xs rounded-full ${getCategoryBadge(item.category)}`}>
@@ -131,8 +131,8 @@ const Search = () => {
                       </div>
                     </div>
                     
-                    <div className="ml-4 p-2 bg-tech-cyan/10 group-hover:bg-tech-cyan/20 rounded-lg transition-colors">
-                      <ExternalLink className="h-4 w-4 text-tech-cyan group-hover:text-tech-cyan/80" />
+                    <div className="ml-4 p-2 bg-search-accent/10 group-hover:bg-search-accent/20 rounded-lg transition-colors">
+                      <ExternalLink className="h-4 w-4 text-search-accent group-hover:text-search-accent/80" />
                     </div>
                   </div>
                 </div>
