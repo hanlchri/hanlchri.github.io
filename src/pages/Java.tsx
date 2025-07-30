@@ -28,7 +28,7 @@ const Java = () => {
                     <li><a href="./documents/Java/Assignments/Java_Assignment2_CurrencyConverter.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>2: Currency Converter</a></li>
                     <li>
                       <CollapsibleSection title="2.5: Change Calculator" isNested={true} titleColor="#FF8C42">
-                        <ul className="list-disc pl-4 space-y-1 text-sm">
+                         <ul className="list-disc pl-6 space-y-1 text-sm">
                           <li><a href="/documents/Java/Assignments/Java_Assignment2.5_ChangeTwenty.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Details</a></li>
                           <li><a href="/documents/Java/Assignments/Assign2In.txt" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Sample Input</a></li>
                           <li><a href="/documents/Java/Assignments/Assign2Out.txt" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Sample Output</a></li>
@@ -39,7 +39,7 @@ const Java = () => {
                     </li>
                     <li>
                       <CollapsibleSection title="3: Loops" isNested={true} titleColor="#FF8C42">
-                        <ul className="list-disc pl-4 space-y-1 text-sm">
+                         <ul className="list-disc pl-6 space-y-1 text-sm">
                           <li><a href="/documents/Java/Assignments/Java_Assignment3_LoopPractice.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Details</a></li>
                           <li><a href="/documents/Java/Assignments/Assign3FreqFrameSolution.java" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Frequency Frame</a></li>
                         </ul>
@@ -47,7 +47,7 @@ const Java = () => {
                     </li>
                     <li>
                       <CollapsibleSection title="4: Arrays" isNested={true} titleColor="#FF8C42">
-                        <ul className="list-disc pl-4 space-y-1 text-sm">
+                         <ul className="list-disc pl-6 space-y-1 text-sm">
                           <li><a href="/documents/Java/Assignments/Java_Assignment4_Budget.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Budget</a></li>
                           <li><a href="/documents/Java/Assignments/Java_Assignment4_RackO.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>RackO</a></li>
                           <li><a href="/documents/Java/Assignments/Assign4BudgetExample (1).jar" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Budget Example</a></li>
@@ -58,7 +58,7 @@ const Java = () => {
                     </li>
                     <li>
                       <CollapsibleSection title="4.5: Object Oriented Basics" isNested={true} titleColor="#FF8C42">
-                        <ul className="list-disc pl-4 space-y-1 text-sm">
+                         <ul className="list-disc pl-6 space-y-1 text-sm">
                           <li><a href="/documents/Java/Assignments/Java_Assignment4.5_Object_Oriented_Basics.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Assignment</a></li>
                           <li><a href="/documents/Java/Assignments/Assign4.5Student.java" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Student.java</a></li>
                         </ul>
@@ -67,7 +67,7 @@ const Java = () => {
                     <li><a href="/documents/Java/Assignments/Java_Assignment5_SwingBasics.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>5: Swing Basics</a></li>
                     <li>
                       <CollapsibleSection title="6: Final Project" isNested={true} titleColor="#FF8C42">
-                        <ul className="list-disc pl-4 space-y-1 text-sm">
+                        <ul className="list-disc pl-6 space-y-1 text-sm">
                           <li><a href="/documents/Java/Assignments/Java_Assignment6_FinalProject.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Assignment</a></li>
                           <li><a href="/documents/Java/Assignments/Assign6BlackJackSkeleton.zip" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Blackjack Skeleton</a></li>
                         </ul>
@@ -184,7 +184,7 @@ const Java = () => {
                     <li><a href="/documents/Java/Resources/GuideForRoundButtons.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Guide for Round Buttons</a></li>
                     <li>
                       <CollapsibleSection title="Sounds" isNested={true} titleColor="#FF8C42">
-                        <ul className="list-disc pl-6 space-y-1">
+                         <ul className="list-disc pl-6 space-y-1">
                           <li><a href="/documents/Java/Resources/Ring10.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Ring10.wav</a></li>
                           <li><a href="/documents/Java/Resources/chimes.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>chimes.wav</a></li>
                           <li><a href="/documents/Java/Resources/drumroll.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>drumroll.wav</a></li>

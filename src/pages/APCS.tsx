@@ -30,7 +30,7 @@ const APCS = () => {
                     
                     <li className="space-y-1">
                       <CollapsibleSection title="2: Operations Calculator" isNested={true}>
-                        <ul className="list-disc pl-4 space-y-1 text-sm">
+                         <ul className="list-disc pl-6 space-y-1 text-sm">
                           <li><a href="/documents/APCS/Assignments/APCS_Assignment2_Operations Calculator.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Details</a></li>
                           <li><a href="https://youtu.be/Hrn66uHLPSE" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Run-through</a></li>
                         </ul>
@@ -39,7 +39,7 @@ const APCS = () => {
                     
                     <li className="space-y-1">
                       <CollapsibleSection title="3: Castle Stairs" isNested={true}>
-                        <ul className="list-disc pl-4 space-y-1 text-sm">
+                         <ul className="list-disc pl-6 space-y-1 text-sm">
                           <li><a href="/documents/APCS/Assignments/APCS_Assignment3_CastleStairs.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Details</a></li>
                           <li><a href="https://www.youtube.com/watch?v=g-OvJcWdtD0" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Run-through</a></li>
                         </ul>
@@ -50,7 +50,7 @@ const APCS = () => {
                     
                     <li className="space-y-1">
                       <CollapsibleSection title="5: Reusable Components" isNested={true}>
-                        <ul className="list-disc pl-4 space-y-1 text-sm">
+                         <ul className="list-disc pl-6 space-y-1 text-sm">
                           <li><a href="/documents/APCS/Assignments/APCS_Assignment5_DoubleIntVerifier.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Details</a></li>
                           <li><a href="/documents/APCS/Assignments/Assign5Tester.java" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Tester</a></li>
                           <li><a href="/documents/APCS/Resources/SoundFile.wav" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Explosion.wav</a></li>
@@ -62,7 +62,7 @@ const APCS = () => {
                     
                     <li className="space-y-1">
                       <CollapsibleSection title="7: Object Oriented Programming" isNested={true}>
-                        <ul className="list-disc pl-4 space-y-1 text-sm">
+                         <ul className="list-disc pl-6 space-y-1 text-sm">
                           <li><a href="/documents/APCS/Assignments/APCS_Assignment7_DevelopingClasses.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Details</a></li>
                           <li><a href="/documents/APCS/Assignments/Assign7Skeleton.java" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Skeleton</a></li>
                           <li><a href="https://www.youtube.com/watch?v=DDjtNVQKhtU" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">JUnit Tutorial</a></li>
@@ -79,7 +79,7 @@ const APCS = () => {
                     
                     <li className="space-y-1">
                       <CollapsibleSection title="8: Additional Class Features" isNested={true}>
-                        <ul className="list-disc pl-4 space-y-1 text-sm">
+                         <ul className="list-disc pl-6 space-y-1 text-sm">
                           <li><a href="/documents/APCS/Assignments/APCS_Assignment8_OOPRound2.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Details</a></li>
                           <li><a href="/documents/APCS/Assignments/Assign8TurnInInstructions.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Submission Instructions</a></li>
                           <li><a href="https://www.youtube.com/watch?v=SFOemS0RQUE&feature=youtu.be" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Enhanced Car Example</a></li>
@@ -91,7 +91,7 @@ const APCS = () => {
                     
                     <li className="space-y-1">
                       <CollapsibleSection title="9: String Methods" isNested={true}>
-                        <ul className="list-disc pl-4 space-y-1 text-sm">
+                         <ul className="list-disc pl-6 space-y-1 text-sm">
                           <li><a href="/documents/APCS/Assignments/APCS_Assignment9_Strings.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Details</a></li>
                           <li><a href="/documents/APCS/Assignments/Assign9Skeleton.zip" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Skeleton</a></li>
                         </ul>
@@ -100,7 +100,7 @@ const APCS = () => {
                     
                     <li className="space-y-1">
                       <CollapsibleSection title="10: 2-Dimensional Arrays" isNested={true}>
-                        <ul className="list-disc pl-4 space-y-1 text-sm">
+                         <ul className="list-disc pl-6 space-y-1 text-sm">
                           <li><a href="/documents/APCS/Assignments/APCS_Assignment10_2DArrays.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Details</a></li>
                           <li><a href="https://www.youtube.com/watch?v=Os1lAvj8LBc" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">JButton Array Tutorial Part 1</a></li>
                           <li><a href="https://www.youtube.com/watch?v=VlmyTOvvuJc" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">JButton Array Tutorial Part 2</a></li>
@@ -116,7 +116,7 @@ const APCS = () => {
                     
                     <li className="space-y-1">
                       <CollapsibleSection title="12: Polymorphism" isNested={true}>
-                        <ul className="list-disc pl-4 space-y-1 text-sm">
+                         <ul className="list-disc pl-6 space-y-1 text-sm">
                           <li><a href="/documents/APCS/Assignments/APCS_Assignment12_Polymorphism.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Details</a></li>
                           <li><a href="/documents/APCS/Assignments/Assign12RectangleExample.zip" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Rectangle Example</a></li>
                           <li><a href="https://www.mathopenref.com/coordpolycalc.html" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Polygon Vertex Calculator</a></li>
@@ -132,7 +132,7 @@ const APCS = () => {
                     
                     <li className="space-y-1">
                       <CollapsibleSection title="15: Recursion" isNested={true}>
-                        <ul className="list-disc pl-4 space-y-1 text-sm">
+                         <ul className="list-disc pl-6 space-y-1 text-sm">
                           <li><a href="/documents/APCS/Assignments/APCS_Assignment15_Recursion.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Details</a></li>
                           <li><a href="/documents/APCS/Assignments/Assign15RecursionSkeleton.zip" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Skeleton</a></li>
                           <li><a href="https://www.youtube.com/watch?v=ahXIMUkSXX0" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Real World Recursion Example</a></li>
@@ -144,7 +144,7 @@ const APCS = () => {
                     
                     <li className="space-y-1">
                       <CollapsibleSection title="17: Searching and Sorting" isNested={true}>
-                        <ul className="list-disc pl-4 space-y-1 text-sm">
+                         <ul className="list-disc pl-6 space-y-1 text-sm">
                           <li><a href="/documents/APCS/Assignments/APCS_Assign17_Sorting_and_Searching.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Details</a></li>
                           <li><a href="/documents/APCS/Assignments/SearchAndSortStatesSkeleton.zip" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Skeleton</a></li>
                         </ul>
@@ -153,7 +153,7 @@ const APCS = () => {
                     
                     <li className="space-y-1">
                       <CollapsibleSection title="18: Hangman" isNested={true}>
-                        <ul className="list-disc pl-4 space-y-1 text-sm">
+                         <ul className="list-disc pl-6 space-y-1 text-sm">
                           <li><a href="/documents/APCS/Assignments/APCS_Assignment18_Hangman.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Details</a></li>
                           <li><a href="/documents/APCS/Assignments/Assign18HangmanSkeleton.java" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Skeleton</a></li>
                         </ul>
@@ -171,7 +171,7 @@ const APCS = () => {
                     
                     <li className="space-y-1">
                       <CollapsibleSection title="Array Copying" isNested={true}>
-                        <ul className="list-disc pl-4 space-y-1 text-sm">
+                         <ul className="list-disc pl-6 space-y-1 text-sm">
                           <li><a href="/documents/APCS/Homework/APCS_Homework_ArrayCopying.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Details</a></li>
                           <li><a href="/documents/APCS/Homework/ArrayPractice_Copying_Skeleton.java" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Skeleton</a></li>
                         </ul>
@@ -392,7 +392,7 @@ const APCS = () => {
                     <li><a href="/documents/APCS/Bonus/APCS_Bonus_HotelSystem.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">2nd Quarter: Hotel System</a></li>
                     <li className="space-y-1">
                       <CollapsibleSection title="3rd Quarter: Black Jack" isNested={true}>
-                        <ul className="list-disc pl-4 space-y-1 text-sm">
+                         <ul className="list-disc pl-6 space-y-1 text-sm">
                           <li><a href="/documents/APCS/Bonus/APCS_Bonus_BlackJack.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Black Jack Description</a></li>
                           <li><a href="/documents/APCS/Bonus/BlackJackSkeletonLISTPROJECT.zip" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Skeleton</a></li>
                         </ul>
@@ -401,7 +401,7 @@ const APCS = () => {
                     
                     <li className="space-y-1">
                       <CollapsibleSection title="Yahtzee" isNested={true}>
-                        <ul className="list-disc pl-4 space-y-1 text-sm">
+                        <ul className="list-disc pl-6 space-y-1 text-sm">
                           <li><a href="/documents/APCS/Bonus/APCS_Bonus_Yahtzee.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Yahtzee Details</a></li>
                           <li><a href="https://www.youtube.com/watch?v=wI1d5-HAERQ&t=8s" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Allison Leonard Console Yahtzee</a></li>
                         </ul>
