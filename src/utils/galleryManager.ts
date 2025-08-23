@@ -53,9 +53,23 @@ export class GalleryManager {
     return config.items.filter(item => item.category === category);
   }
 
-  // Helper method to generate download URL
+  // Helper method to generate appropriate URL based on link type
+  static getItemUrl(item: GalleryItem): string {
+    switch (item.linkType) {
+      case 'file':
+        return `/gallery/files/${item.fileName}`;
+      case 'external':
+        return item.externalUrl || '#';
+      case 'internal':
+        return item.internalPath || '#';
+      default:
+        return '#';
+    }
+  }
+
+  // Legacy method for backward compatibility
   static getDownloadUrl(item: GalleryItem): string {
-    return `/gallery/files/${item.fileName}`;
+    return this.getItemUrl(item);
   }
 
   // Search functionality

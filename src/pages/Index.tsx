@@ -52,7 +52,7 @@ const Index = () => {
             {displayedText}
             {characterIndex < fullText.length && <span className="animate-terminal-blink">_</span>}
           </p>
-          <p className="text-xs text-muted-foreground/70 mb-10 font-mono h-4">
+          <p className="text-xs text-muted-foreground/70 mb-6 sm:mb-10 font-mono h-4 px-2">
             {watermarkText}
             {showWatermark && watermarkIndex < watermarkFullText.length && <span className="animate-terminal-blink">_</span>}
           </p>

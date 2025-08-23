@@ -7,6 +7,7 @@
       "type": "JavaScript/P5.js",
       "slug": "p5-interactive-game",
       "fileName": "p5-game.js",
+      "linkType": "file",
       "buildRequired": false
     },
     {
@@ -15,7 +16,24 @@
       "type": "Java Swing",
       "slug": "java-swing",
       "fileName": "swing-demo.jar",
+      "linkType": "file",
       "buildRequired": false
+    },
+    {
+      "title": "External Learning Resource",
+      "description": "Visit Oracle's Java documentation for comprehensive learning",
+      "type": "External Link",
+      "slug": "oracle-java-docs",
+      "externalUrl": "https://docs.oracle.com/javase/tutorial/",
+      "linkType": "external"
+    },
+    {
+      "title": "About This Site",
+      "description": "Learn more about the creator and purpose of this educational platform",
+      "type": "Internal Page",
+      "slug": "about-page",
+      "internalPath": "/about",
+      "linkType": "internal"
     }
   ]
 }

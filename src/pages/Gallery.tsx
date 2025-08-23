@@ -93,14 +93,26 @@ const Gallery = () => {
                       {item.description}
                     </CardDescription>
                     <div className="mt-auto">
-                      <a
-                        href={GalleryManager.getDownloadUrl(item)}
-                        download
-                        className="w-full inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-gallery-accent text-white hover:bg-gallery-accent/80 h-10 px-4 py-2"
-                      >
-                        <Download className="h-4 w-4" />
-                        Download
-                      </a>
+                      {item.linkType === 'file' ? (
+                        <a
+                          href={GalleryManager.getItemUrl(item)}
+                          download
+                          className="w-full inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-gallery-accent text-white hover:bg-gallery-accent/80 h-10 px-4 py-2"
+                        >
+                          <Download className="h-4 w-4" />
+                          Download
+                        </a>
+                      ) : (
+                        <a
+                          href={GalleryManager.getItemUrl(item)}
+                          target={item.linkType === 'external' ? '_blank' : '_self'}
+                          rel={item.linkType === 'external' ? 'noopener noreferrer' : undefined}
+                          className="w-full inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-gallery-accent text-white hover:bg-gallery-accent/80 h-10 px-4 py-2"
+                        >
+                          <Play className="h-4 w-4" />
+                          {item.linkType === 'external' ? 'Open Link' : 'View Page'}
+                        </a>
+                      )}
                     </div>
                   </CardContent>
                 </Card>
