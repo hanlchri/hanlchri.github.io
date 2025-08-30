@@ -6,24 +6,28 @@
       "description": "A creative JavaScript game built with p5.js created by Mr. Hanley",
       "type": "JavaScript/P5.js",
       "slug": "p5-interactive-game",
-      "fileName": "p5-game.js",
-      "buildRequired": false
+      "link": "/GalleryPages/FallingBlocks/index.html"
     },
     {
-      "title": "Java Swing Example",
+      "title": "Java Swing Example", 
       "description": "Java Swing example demonstrating GUI programming",
       "type": "Java Swing",
       "slug": "java-swing",
-      "fileName": "swing-demo.jar",
-      "buildRequired": false
+      "link": "/gallery/files/swing-demo.jar"
     },
     {
-      "title": "Test",
-      "description": "test",
-      "type": "test",
-      "slug": "test",
-      "fileName": "test.txt",
-      "buildRequired": false
+      "title": "External Learning Resource",
+      "description": "Visit Oracle's Java documentation for comprehensive learning", 
+      "type": "External Link",
+      "slug": "oracle-java-docs",
+      "link": "https://docs.oracle.com/javase/tutorial/"
+    },
+    {
+      "title": "About This Site",
+      "description": "Learn more about the creator and purpose of this educational platform",
+      "type": "Internal Page", 
+      "slug": "about-page",
+      "link": "/about"
     }
   ]
 }
