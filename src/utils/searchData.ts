@@ -1,8 +1,8 @@
 export interface SearchItem {
-  id: number;
+  id: string;
   title: string;
   description: string;
-  category: 'assignment' | 'lesson' | 'resource' | 'bonus' | 'homework' | 'gallery';
+  category: 'assignment' | 'homework' | 'lesson' | 'resource' | 'bonus' | 'gallery' | 'reference';
   page: 'java' | 'apcs' | 'gallery' | 'references';
   keywords: string[];
   filePath?: string;
@@ -11,954 +11,982 @@ export interface SearchItem {
 const searchItems: SearchItem[] = [
   // APCS Assignments
   {
-    id: 1,
-    title: "0: Summer Assignment",
-    description: "Preparatory summer assignment covering programming fundamentals",
-    category: "assignment",
-    page: "apcs",
-    keywords: ["summer", "preparation", "fundamentals", "intro", "basics"],
-    filePath: "/documents/APCS/Assignments/APCS_Assignment0_SummerAssignment.pdf"
+    id: 'apcs-assignment-0',
+    title: 'Summer Assignment',
+    description: 'APCS Summer Assignment to prepare for the course',
+    category: 'assignment',
+    page: 'apcs',
+    keywords: ['summer', 'assignment', 'preparation', 'apcs'],
+    filePath: '/documents/APCS/Assignments/APCS_Assignment0_SummerAssignment.pdf'
   },
   {
-    id: 2,
-    title: "1: Computer Components",
-    description: "Learn about the basic components that make up a computer system",
-    category: "assignment",
-    page: "apcs",
-    keywords: ["computer", "components", "hardware", "cpu", "memory", "storage"],
-    filePath: "/documents/APCS/Assignments/APCS_Assignment1_ComputerComponents.pdf"
+    id: 'apcs-assignment-1',
+    title: '1: Computer Components',
+    description: 'Introduction to computer components and hardware',
+    category: 'assignment',
+    page: 'apcs',
+    keywords: ['computer', 'components', 'hardware', 'assignment'],
+    filePath: '/documents/APCS/Assignments/APCS_Assignment1_ComputerComponents.pdf'
   },
   {
-    id: 3,
-    title: "2: Operations Calculator",
-    description: "Build a calculator that performs basic mathematical operations",
-    category: "assignment",
-    page: "apcs",
-    keywords: ["calculator", "operations", "math", "addition", "subtraction", "multiplication", "division"],
-    filePath: "/documents/APCS/Assignments/APCS_Assignment2_Operations Calculator.pdf"
+    id: 'apcs-assignment-2',
+    title: '2: Operations Calculator',
+    description: 'Building a calculator application with basic operations',
+    category: 'assignment',
+    page: 'apcs',
+    keywords: ['calculator', 'operations', 'math', 'programming'],
+    filePath: '/documents/APCS/Assignments/APCS_Assignment2_Operations Calculator.pdf'
   },
   {
-    id: 4,
-    title: "3: Castle Stairs",
-    description: "Create a program that draws castle stairs using loops and patterns",
-    category: "assignment",
-    page: "apcs",
-    keywords: ["loops", "patterns", "drawing", "stairs", "castle", "graphics"],
-    filePath: "/documents/APCS/Assignments/APCS_Assignment3_CastleStairs.pdf"
+    id: 'apcs-assignment-3',
+    title: '3: Castle Stairs',
+    description: 'Programming project involving graphics and loops',
+    category: 'assignment',
+    page: 'apcs',
+    keywords: ['castle', 'stairs', 'graphics', 'loops'],
+    filePath: '/documents/APCS/Assignments/APCS_Assignment3_CastleStairs.pdf'
   },
   {
-    id: 5,
-    title: "4: Computer Store",
-    description: "Develop a computer store management system using object-oriented programming",
-    category: "assignment",
-    page: "apcs",
-    keywords: ["oop", "objects", "classes", "store", "management", "inventory"],
-    filePath: "/documents/APCS/Assignments/APCS_Assignment4_ComputerStore.pdf"
+    id: 'apcs-assignment-4',
+    title: '4: Matrix Computer Store',
+    description: 'Computer store management system project',
+    category: 'assignment',
+    page: 'apcs',
+    keywords: ['matrix', 'computer', 'store', 'management'],
+    filePath: '/documents/APCS/Assignments/APCS_Assignment4_ComputerStore.pdf'
   },
   {
-    id: 6,
-    title: "5: Double Int Verifier",
-    description: "Learn to create reusable software components and methods",
-    category: "assignment",
-    page: "apcs",
-    keywords: ["methods", "functions", "reusable", "components", "modular", "programming", "verifier"],
-    filePath: "/documents/APCS/Assignments/APCS_Assignment5_DoubleIntVerifier.pdf"
+    id: 'apcs-assignment-5',
+    title: '5: Reusable Components',
+    description: 'Creating reusable software components',
+    category: 'assignment',
+    page: 'apcs',
+    keywords: ['reusable', 'components', 'modular', 'programming'],
+    filePath: '/documents/APCS/Assignments/APCS_Assignment5_DoubleIntVerifier.pdf'
   },
   {
-    id: 7,
-    title: "6: Group Presentations",
-    description: "Collaborative presentations on computer science topics",
-    category: "assignment",
-    page: "apcs",
-    keywords: ["presentations", "group", "collaboration", "topics", "communication"],
-    filePath: "/documents/APCS/Assignments/APCS_Assignment6_GroupPresentations.pdf"
+    id: 'apcs-assignment-6',
+    title: '6: Group Presentations',
+    description: 'Group presentation assignment for APCS',
+    category: 'assignment',
+    page: 'apcs',
+    keywords: ['group', 'presentation', 'teamwork', 'communication'],
+    filePath: '/documents/APCS/Assignments/APCS_Assignment6_GroupPresentations.pdf'
   },
   {
-    id: 8,
-    title: "7: Developing Classes",
-    description: "Learn to design and implement custom classes in Java",
-    category: "assignment",
-    page: "apcs",
-    keywords: ["classes", "oop", "design", "implementation", "custom", "objects"],
-    filePath: "/documents/APCS/Assignments/APCS_Assignment7_DevelopingClasses.pdf"
+    id: 'apcs-assignment-7',
+    title: '7: Object Oriented Programming',
+    description: 'Introduction to OOP concepts and implementation',
+    category: 'assignment',
+    page: 'apcs',
+    keywords: ['oop', 'object', 'oriented', 'programming', 'classes'],
+    filePath: '/documents/APCS/Assignments/APCS_Assignment7_DevelopingClasses.pdf'
   },
   {
-    id: 9,
-    title: "8: OOP Round 2",
-    description: "Advanced object-oriented programming concepts and practices",
-    category: "assignment",
-    page: "apcs",
-    keywords: ["oop", "advanced", "objects", "classes", "inheritance", "polymorphism"],
-    filePath: "/documents/APCS/Assignments/APCS_Assignment8_OOPRound2.pdf"
+    id: 'apcs-assignment-8',
+    title: '8: Additional Class Features',
+    description: 'Advanced class features and OOP concepts',
+    category: 'assignment',
+    page: 'apcs',
+    keywords: ['class', 'features', 'advanced', 'oop'],
+    filePath: '/documents/APCS/Assignments/APCS_Assignment8_OOPRound2.pdf'
   },
   {
-    id: 10,
-    title: "9: Strings",
-    description: "Master string manipulation and processing techniques",
-    category: "assignment",
-    page: "apcs",
-    keywords: ["strings", "methods", "manipulation", "text", "processing", "charAt", "substring"],
-    filePath: "/documents/APCS/Assignments/APCS_Assignment9_Strings.pdf"
+    id: 'apcs-assignment-9',
+    title: '9: String Methods',
+    description: 'Working with string manipulation and methods',
+    category: 'assignment',
+    page: 'apcs',
+    keywords: ['string', 'methods', 'manipulation', 'text'],
+    filePath: '/documents/APCS/Assignments/APCS_Assignment9_Strings.pdf'
   },
   {
-    id: 11,
-    title: "10: 2D Arrays",
-    description: "Work with two-dimensional arrays and matrix operations",
-    category: "assignment",
-    page: "apcs",
-    keywords: ["arrays", "2d", "matrix", "two-dimensional", "data", "structures"],
-    filePath: "/documents/APCS/Assignments/APCS_Assignment10_2DArrays.pdf"
+    id: 'apcs-assignment-10',
+    title: '10: 2-Dimensional Arrays',
+    description: 'Working with 2D arrays and matrix operations',
+    category: 'assignment',
+    page: 'apcs',
+    keywords: ['2d', 'arrays', 'matrix', 'multidimensional'],
+    filePath: '/documents/APCS/Assignments/APCS_Assignment10_2DArrays.pdf'
   },
   {
-    id: 12,
-    title: "11: List Manager",
-    description: "Create a program to manage lists and collections",
-    category: "assignment",
-    page: "apcs",
-    keywords: ["lists", "arraylist", "collections", "management", "data", "structures"],
-    filePath: "/documents/APCS/Assignments/APCS_Assignment11_ListManager.pdf"
+    id: 'apcs-assignment-11',
+    title: '11: List Management',
+    description: 'Managing lists and collections in Java',
+    category: 'assignment',
+    page: 'apcs',
+    keywords: ['list', 'management', 'collections', 'arraylist'],
+    filePath: '/documents/APCS/Assignments/APCS_Assignment11_ListManager.pdf'
   },
   {
-    id: 13,
-    title: "12: Polymorphism",
-    description: "Understand and implement polymorphism in object-oriented programming",
-    category: "assignment",
-    page: "apcs",
-    keywords: ["polymorphism", "oop", "inheritance", "override", "overload", "methods", "multiple", "forms"],
-    filePath: "/documents/APCS/Assignments/APCS_Assignment12_Polymorphism.pdf"
+    id: 'apcs-assignment-12',
+    title: '12: Polymorphism',
+    description: 'Understanding and implementing polymorphism',
+    category: 'assignment',
+    page: 'apcs',
+    keywords: ['polymorphism', 'inheritance', 'abstract', 'interfaces'],
+    filePath: '/documents/APCS/Assignments/APCS_Assignment12_Polymorphism.pdf'
   },
   {
-    id: 14,
-    title: "13: Software Essay",
-    description: "Write an essay analyzing software engineering principles",
-    category: "assignment",
-    page: "apcs",
-    keywords: ["essay", "software", "engineering", "principles", "analysis", "writing"],
-    filePath: "/documents/APCS/Assignments/APCS_Assignment13_SoftwareEssay.pdf"
+    id: 'apcs-assignment-13',
+    title: '13: Why Software is So Bad',
+    description: 'Essay on software quality and engineering practices',
+    category: 'assignment',
+    page: 'apcs',
+    keywords: ['software', 'essay', 'quality', 'engineering'],
+    filePath: '/documents/APCS/Assignments/APCS_Assignment13_SoftwareEssay.pdf'
   },
   {
-    id: 15,
-    title: "14: Stacks",
-    description: "Implement and work with stack data structures",
-    category: "assignment",
-    page: "apcs",
-    keywords: ["stacks", "data", "structures", "lifo", "push", "pop", "algorithms"],
-    filePath: "/documents/APCS/Assignments/APCS_Assignment14_Stacks.pdf"
+    id: 'apcs-assignment-14',
+    title: '14: Stacks',
+    description: 'Implementation and use of stack data structure',
+    category: 'assignment',
+    page: 'apcs',
+    keywords: ['stack', 'data', 'structure', 'lifo'],
+    filePath: '/documents/APCS/Assignments/APCS_Assignment14_Stacks.pdf'
   },
   {
-    id: 16,
-    title: "15: Recursion",
-    description: "Master recursive algorithms and problem-solving techniques",
-    category: "assignment",
-    page: "apcs",
-    keywords: ["recursion", "recursive", "algorithms", "base", "case", "problem", "solving"],
-    filePath: "/documents/APCS/Assignments/APCS_Assignment15_Recursion.pdf"
+    id: 'apcs-assignment-15',
+    title: '15: Recursion',
+    description: 'Understanding and implementing recursive algorithms',
+    category: 'assignment',
+    page: 'apcs',
+    keywords: ['recursion', 'recursive', 'algorithms', 'base case'],
+    filePath: '/documents/APCS/Assignments/APCS_Assignment15_Recursion.pdf'
   },
   {
-    id: 17,
-    title: "16: Intel Pentium Bug Essay",
-    description: "Research and write about the famous Intel Pentium floating-point bug",
-    category: "assignment",
-    page: "apcs",
-    keywords: ["intel", "pentium", "bug", "floating", "point", "essay", "research"],
-    filePath: "/documents/APCS/Assignments/APCS_Assignment16_IntelPentiumBugEssay.pdf"
+    id: 'apcs-assignment-16',
+    title: '16: Intel Pentium Bug',
+    description: 'Essay on the Intel Pentium floating-point bug',
+    category: 'assignment',
+    page: 'apcs',
+    keywords: ['intel', 'pentium', 'bug', 'floating point', 'essay'],
+    filePath: '/documents/APCS/Assignments/APCS_Assignment16_IntelPentiumBugEssay.pdf'
   },
   {
-    id: 18,
-    title: "17: Sorting and Searching",
-    description: "Implement and analyze sorting and searching algorithms",
-    category: "assignment",
-    page: "apcs",
-    keywords: ["sorting", "searching", "algorithms", "bubble", "selection", "insertion", "binary"],
-    filePath: "/documents/APCS/Assignments/APCS_Assign17_Sorting_and_Searching.pdf"
+    id: 'apcs-assignment-17',
+    title: '17: Searching and Sorting',
+    description: 'Implementation of search and sort algorithms',
+    category: 'assignment',
+    page: 'apcs',
+    keywords: ['searching', 'sorting', 'algorithms', 'binary search'],
+    filePath: '/documents/APCS/Assignments/APCS_Assign17_Sorting_and_Searching.pdf'
   },
   {
-    id: 19,
-    title: "18: Hangman",
-    description: "Create the classic word-guessing game using arrays and string processing",
-    category: "assignment",
-    page: "apcs",
-    keywords: ["hangman", "game", "arrays", "strings", "guessing", "loops"],
-    filePath: "/documents/APCS/Assignments/APCS_Assignment18_Hangman.pdf"
+    id: 'apcs-assignment-18',
+    title: '18: Hangman',
+    description: 'Creating a hangman word game',
+    category: 'assignment',
+    page: 'apcs',
+    keywords: ['hangman', 'game', 'word', 'project'],
+    filePath: '/documents/APCS/Assignments/APCS_Assignment18_Hangman.pdf'
   },
   {
-    id: 20,
-    title: "Turn Based Strategy Game",
-    description: "Design and implement a complex turn-based strategy game",
-    category: "assignment",
-    page: "apcs",
-    keywords: ["game", "strategy", "turn-based", "complex", "design", "implementation"],
-    filePath: "/documents/APCS/Assignments/APCS_Assignment_TurnBasedStrategyGame.pdf"
+    id: 'apcs-assignment-strategy',
+    title: 'Turn Based Strategy Game',
+    description: 'Final project creating a turn-based strategy game',
+    category: 'assignment',
+    page: 'apcs',
+    keywords: ['strategy', 'game', 'turn-based', 'final project'],
+    filePath: '/documents/APCS/Assignments/APCS_Assignment_TurnBasedStrategyGame.pdf'
   },
 
   // APCS Homework
   {
-    id: 21,
-    title: "Coffee Seller V2",
-    description: "Advanced coffee shop simulation with enhanced features",
-    category: "homework",
-    page: "apcs",
-    keywords: ["coffee", "simulation", "business", "seller", "shop", "advanced"],
-    filePath: "/documents/APCS/Homework/APCSHomework_Coffee_SellerV2.pdf"
+    id: 'apcs-hw-pythagorean',
+    title: 'Pythagorean Triples',
+    description: 'Homework on Pythagorean triples calculation',
+    category: 'homework',
+    page: 'apcs',
+    keywords: ['pythagorean', 'triples', 'math', 'homework'],
+    filePath: '/documents/APCS/Homework/APCS_Homework_PythagoreanTriples.pdf'
   },
   {
-    id: 22,
-    title: "Array Copying",
-    description: "Learn different techniques for copying arrays in Java",
-    category: "homework",
-    page: "apcs",
-    keywords: ["arrays", "copying", "clone", "system.arraycopy", "reference", "deep copy"],
-    filePath: "/documents/APCS/Homework/APCS_Homework_ArrayCopying.pdf"
+    id: 'apcs-hw-stars',
+    title: 'Spread out the Stars',
+    description: 'Graphics homework involving star patterns',
+    category: 'homework',
+    page: 'apcs',
+    keywords: ['stars', 'graphics', 'patterns', 'homework'],
+    filePath: '/documents/APCS/Homework/APCS_Homework_SpreadStars.pdf'
   },
   {
-    id: 23,
-    title: "ENIAC",
-    description: "Research assignment about the first general-purpose computer",
-    category: "homework",
-    page: "apcs",
-    keywords: ["eniac", "computer", "history", "first", "general", "purpose"],
-    filePath: "/documents/APCS/Homework/APCS_Homework_ENIAC.pdf"
+    id: 'apcs-hw-arrays',
+    title: 'Array Copying',
+    description: 'Homework on array copying techniques',
+    category: 'homework',
+    page: 'apcs',
+    keywords: ['array', 'copying', 'homework', 'references'],
+    filePath: '/documents/APCS/Homework/APCS_Homework_ArrayCopying.pdf'
   },
   {
-    id: 24,
-    title: "Graphics Patterns",
-    description: "Create visual patterns using Java graphics programming",
-    category: "homework",
-    page: "apcs",
-    keywords: ["graphics", "patterns", "visual", "drawing", "java", "programming"],
-    filePath: "/documents/APCS/Homework/APCS_Homework_Graphics_Patterns.pdf"
+    id: 'apcs-hw-roach',
+    title: 'Roach Population',
+    description: 'Simulation homework on population growth',
+    category: 'homework',
+    page: 'apcs',
+    keywords: ['roach', 'population', 'simulation', 'growth'],
+    filePath: '/documents/APCS/Homework/APCS_Homework_RoachPopulation.pdf'
   },
   {
-    id: 25,
-    title: "Inheritance Hierarchy",
-    description: "Practice creating class hierarchies using inheritance",
-    category: "homework",
-    page: "apcs",
-    keywords: ["inheritance", "hierarchy", "classes", "extends", "super", "polymorphism"],
-    filePath: "/documents/APCS/Homework/APCS_Homework_InheritanceHierarchy.pdf"
+    id: 'apcs-hw-graphics',
+    title: 'Paint BullsEye and Scalable House',
+    description: 'Graphics homework with geometric shapes',
+    category: 'homework',
+    page: 'apcs',
+    keywords: ['graphics', 'bullseye', 'house', 'shapes'],
+    filePath: '/documents/APCS/Homework/APCS_Homework_PaintBullsEyeHouse.pdf'
   },
   {
-    id: 26,
-    title: "Paint BullsEye and House",
-    description: "Create graphics programs that draw bullseye patterns and scalable houses",
-    category: "homework",
-    page: "apcs",
-    keywords: ["graphics", "painting", "bullseye", "house", "scalable", "drawing"],
-    filePath: "/documents/APCS/Homework/APCS_Homework_PaintBullsEyeHouse.pdf"
+    id: 'apcs-hw-inheritance',
+    title: 'Inheritance Hierarchy',
+    description: 'Homework on inheritance and class hierarchies',
+    category: 'homework',
+    page: 'apcs',
+    keywords: ['inheritance', 'hierarchy', 'classes', 'oop'],
+    filePath: '/documents/APCS/Homework/APCS_Homework_InheritanceHierarchy.pdf'
   },
   {
-    id: 27,
-    title: "Pythagorean Triples",
-    description: "Mathematical programming assignment exploring Pythagorean theorem",
-    category: "homework",
-    page: "apcs",
-    keywords: ["pythagorean", "triples", "mathematics", "theorem", "programming"],
-    filePath: "/documents/APCS/Homework/APCS_Homework_PythagoreanTriples.pdf"
+    id: 'apcs-hw-coffee',
+    title: 'Coffee Seller',
+    description: 'Homework on coffee seller application',
+    category: 'homework',
+    page: 'apcs',
+    keywords: ['coffee', 'seller', 'application', 'business'],
+    filePath: '/documents/APCS/Homework/APCSHomework_Coffee_SellerV2.pdf'
   },
   {
-    id: 28,
-    title: "Roach Population",
-    description: "Simulation modeling population growth dynamics",
-    category: "homework",
-    page: "apcs",
-    keywords: ["population", "growth", "simulation", "modeling", "dynamics"],
-    filePath: "/documents/APCS/Homework/APCS_Homework_RoachPopulation.pdf"
+    id: 'apcs-hw-eniac',
+    title: 'ENIAC Essay',
+    description: 'Essay homework on ENIAC computer history',
+    category: 'homework',
+    page: 'apcs',
+    keywords: ['eniac', 'essay', 'computer', 'history'],
+    filePath: '/documents/APCS/Homework/APCS_Homework_ENIAC.pdf'
   },
   {
-    id: 29,
-    title: "Spread Stars",
-    description: "Graphics programming assignment creating star patterns",
-    category: "homework",
-    page: "apcs",
-    keywords: ["stars", "patterns", "graphics", "spread", "visual"],
-    filePath: "/documents/APCS/Homework/APCS_Homework_SpreadStars.pdf"
+    id: 'apcs-hw-patterns',
+    title: 'Graphics Patterns',
+    description: 'Homework on creating graphics patterns',
+    category: 'homework',
+    page: 'apcs',
+    keywords: ['graphics', 'patterns', 'homework', 'drawing'],
+    filePath: '/documents/APCS/Homework/APCS_Homework_Graphics_Patterns.pdf'
   },
 
   // APCS Lessons
   {
-    id: 30,
-    title: "Advanced OOP",
-    description: "Advanced object-oriented programming concepts and design patterns",
-    category: "lesson",
-    page: "apcs",
-    keywords: ["oop", "advanced", "design", "patterns", "object-oriented", "programming"],
-    filePath: "/documents/APCS/Lessons/APCS_Lesson_AdvancedOOP_FilledOut.docx"
+    id: 'apcs-lesson-java-review',
+    title: 'Java Review',
+    description: 'Review lesson for Java fundamentals',
+    category: 'lesson',
+    page: 'apcs',
+    keywords: ['java', 'review', 'fundamentals', 'lesson'],
+    filePath: '/documents/APCS/Lessons/APCS_Lesson_JavaReview_FilledOut.docx'
   },
   {
-    id: 31,
-    title: "ArrayLists",
-    description: "Learn about dynamic array structures and collections",
-    category: "lesson",
-    page: "apcs",
-    keywords: ["arraylist", "collections", "dynamic", "arrays", "data", "structures"],
-    filePath: "/documents/APCS/Lessons/APCS_Lesson_ArrayLists_FilledOut.docx"
+    id: 'apcs-lesson-imports',
+    title: 'Class Imports',
+    description: 'Lesson on importing classes and packages',
+    category: 'lesson',
+    page: 'apcs',
+    keywords: ['imports', 'classes', 'packages', 'lesson'],
+    filePath: '/documents/APCS/Lessons/APCS_Lesson_ClassImports_FilledOut.docx'
   },
   {
-    id: 32,
-    title: "Arrays",
-    description: "Comprehensive guide to working with arrays in Java",
-    category: "lesson",
-    page: "apcs",
-    keywords: ["arrays", "indexing", "elements", "collections", "data", "structures"],
-    filePath: "/documents/APCS/Lessons/APCS_Lesson_Arrays_FilledOut.docx"
+    id: 'apcs-lesson-bases',
+    title: 'Assigning Bases',
+    description: 'Lesson on number bases and conversion',
+    category: 'lesson',
+    page: 'apcs',
+    keywords: ['bases', 'number', 'conversion', 'binary'],
+    filePath: '/documents/APCS/Lessons/APCS_Lesson_AssigningBases_FilledOut.docx'
   },
   {
-    id: 33,
-    title: "Assigning Bases",
-    description: "Understanding different number bases and conversions",
-    category: "lesson",
-    page: "apcs",
-    keywords: ["bases", "binary", "hexadecimal", "octal", "conversion", "numbers"],
-    filePath: "/documents/APCS/Lessons/APCS_Lesson_AssigningBases_FilledOut.docx"
+    id: 'apcs-lesson-roundoff',
+    title: 'Round Off Error',
+    description: 'Lesson on floating-point precision errors',
+    category: 'lesson',
+    page: 'apcs',
+    keywords: ['roundoff', 'error', 'floating point', 'precision'],
+    filePath: '/documents/APCS/Lessons/APCS_Lesson_RoundOffError_FilledOut.docx'
   },
   {
-    id: 34,
-    title: "Class Imports",
-    description: "Learn how to import and use external classes and packages",
-    category: "lesson",
-    page: "apcs",
-    keywords: ["imports", "packages", "classes", "external", "libraries"],
-    filePath: "/documents/APCS/Lessons/APCS_Lesson_ClassImports_FilledOut.docx"
+    id: 'apcs-lesson-random',
+    title: 'Random',
+    description: 'Lesson on random number generation',
+    category: 'lesson',
+    page: 'apcs',
+    keywords: ['random', 'numbers', 'generation', 'lesson'],
+    filePath: '/documents/APCS/Lessons/APCS_Lesson_Random_FilledOut.docx'
   },
   {
-    id: 35,
-    title: "Files and I/O",
-    description: "File input/output operations and data persistence",
-    category: "lesson",
-    page: "apcs",
-    keywords: ["files", "io", "input", "output", "persistence", "data", "scanner"],
-    filePath: "/documents/APCS/Lessons/APCS_Lesson_FilesIO_FilledOut.docx"
+    id: 'apcs-lesson-objects',
+    title: 'Objects',
+    description: 'Lesson on object-oriented programming concepts',
+    category: 'lesson',
+    page: 'apcs',
+    keywords: ['objects', 'oop', 'classes', 'instances'],
+    filePath: '/documents/APCS/Lessons/APCS_Lesson_Objects_FilledOut.pptx'
   },
   {
-    id: 36,
-    title: "For Each Loop",
-    description: "Enhanced for loops for iterating through collections",
-    category: "lesson",
-    page: "apcs",
-    keywords: ["foreach", "enhanced", "loops", "iteration", "collections"],
-    filePath: "/documents/APCS/Lessons/APCS_Lesson_ForEachLoop_FilledOut.docx"
+    id: 'apcs-lesson-params',
+    title: 'Parameter Passing',
+    description: 'Lesson on parameter passing in methods',
+    category: 'lesson',
+    page: 'apcs',
+    keywords: ['parameter', 'passing', 'methods', 'arguments'],
+    filePath: '/documents/APCS/Lessons/APCS_Lesson_ParamPassing_FilledOut.docx'
   },
   {
-    id: 37,
-    title: "Inheritance",
-    description: "Object-oriented inheritance concepts and implementation",
-    category: "lesson",
-    page: "apcs",
-    keywords: ["inheritance", "extends", "super", "hierarchy", "oop", "polymorphism"],
-    filePath: "/documents/APCS/Lessons/APCS_Lesson_Inheritance_FilledOut.docx"
+    id: 'apcs-lesson-shorteval',
+    title: 'Short Circuit Evaluation',
+    description: 'Lesson on short-circuit evaluation in boolean expressions',
+    category: 'lesson',
+    page: 'apcs',
+    keywords: ['short circuit', 'evaluation', 'boolean', 'expressions'],
+    filePath: '/documents/APCS/Lessons/APCS_Lesson_ShortEval_FilledOut.docx'
   },
   {
-    id: 38,
-    title: "Interfaces",
-    description: "Understanding and implementing interfaces in Java",
-    category: "lesson",
-    page: "apcs",
-    keywords: ["interfaces", "implements", "abstract", "methods", "contracts"],
-    filePath: "/documents/APCS/Lessons/APCS_Lesson_Interfaces_FilledOut.docx"
+    id: 'apcs-lesson-oop',
+    title: 'Object Oriented Programming',
+    description: 'Core lesson on OOP principles',
+    category: 'lesson',
+    page: 'apcs',
+    keywords: ['oop', 'object oriented', 'programming', 'principles'],
+    filePath: '/documents/APCS/Lessons/APCS_Lesson_OOP_FilledOut.docx'
   },
   {
-    id: 39,
-    title: "Java Review",
-    description: "Comprehensive review of fundamental Java concepts",
-    category: "lesson",
-    page: "apcs",
-    keywords: ["review", "fundamentals", "java", "basics", "concepts"],
-    filePath: "/documents/APCS/Lessons/APCS_Lesson_JavaReview_FilledOut.docx"
+    id: 'apcs-lesson-advanced-oop',
+    title: 'Advanced OOP',
+    description: 'Advanced object-oriented programming concepts',
+    category: 'lesson',
+    page: 'apcs',
+    keywords: ['advanced', 'oop', 'inheritance', 'polymorphism'],
+    filePath: '/documents/APCS/Lessons/APCS_Lesson_AdvancedOOP_FilledOut.docx'
   },
   {
-    id: 40,
-    title: "Midterm Review",
-    description: "Review materials for midterm examination",
-    category: "lesson",
-    page: "apcs",
-    keywords: ["midterm", "review", "exam", "preparation", "study"],
-    filePath: "/documents/APCS/Lessons/APCS_Lesson_MidtermReview_FilledOut.docx"
+    id: 'apcs-lesson-interfaces',
+    title: 'Interfaces',
+    description: 'Lesson on Java interfaces and abstract classes',
+    category: 'lesson',
+    page: 'apcs',
+    keywords: ['interfaces', 'abstract', 'classes', 'contracts'],
+    filePath: '/documents/APCS/Lessons/APCS_Lesson_Interfaces_FilledOut.docx'
   },
   {
-    id: 41,
-    title: "Object-Oriented Programming",
-    description: "Introduction to object-oriented programming principles",
-    category: "lesson",
-    page: "apcs",
-    keywords: ["oop", "object-oriented", "classes", "objects", "encapsulation"],
-    filePath: "/documents/APCS/Lessons/APCS_Lesson_OOP_FilledOut.docx"
+    id: 'apcs-lesson-strings',
+    title: 'Strings',
+    description: 'Lesson on string manipulation and methods',
+    category: 'lesson',
+    page: 'apcs',
+    keywords: ['strings', 'manipulation', 'methods', 'text'],
+    filePath: '/documents/APCS/Lessons/APCS_Lesson_Strings_FilledOut.docx'
   },
   {
-    id: 42,
-    title: "Objects Presentation",
-    description: "Visual presentation about objects and classes",
-    category: "lesson",
-    page: "apcs",
-    keywords: ["objects", "classes", "presentation", "visual", "oop"],
-    filePath: "/documents/APCS/Lessons/APCS_Lesson_Objects_FilledOut.pptx"
+    id: 'apcs-lesson-arrays',
+    title: 'Arrays',
+    description: 'Lesson on array creation and manipulation',
+    category: 'lesson',
+    page: 'apcs',
+    keywords: ['arrays', 'creation', 'manipulation', 'data structures'],
+    filePath: '/documents/APCS/Lessons/APCS_Lesson_Arrays_FilledOut.docx'
   },
   {
-    id: 43,
-    title: "Parameter Passing",
-    description: "Understanding how parameters are passed in Java methods",
-    category: "lesson",
-    page: "apcs",
-    keywords: ["parameters", "passing", "methods", "arguments", "reference", "value"],
-    filePath: "/documents/APCS/Lessons/APCS_Lesson_ParamPassing_FilledOut.docx"
+    id: 'apcs-lesson-arraylists',
+    title: 'ArrayLists',
+    description: 'Lesson on ArrayList usage and methods',
+    category: 'lesson',
+    page: 'apcs',
+    keywords: ['arraylist', 'dynamic', 'arrays', 'collections'],
+    filePath: '/documents/APCS/Lessons/APCS_Lesson_ArrayLists_FilledOut.docx'
   },
   {
-    id: 44,
-    title: "Polymorphism",
-    description: "Advanced polymorphism concepts and implementation strategies",
-    category: "lesson",
-    page: "apcs",
-    keywords: ["polymorphism", "override", "overload", "inheritance", "multiple", "forms", "oop"],
-    filePath: "/documents/APCS/Lessons/APCS_Lesson_Polymorphism_FilledOut.docx"
+    id: 'apcs-lesson-foreach',
+    title: 'For-Each Loop',
+    description: 'Lesson on for-each loop syntax and usage',
+    category: 'lesson',
+    page: 'apcs',
+    keywords: ['for each', 'loop', 'enhanced', 'iteration'],
+    filePath: '/documents/APCS/Lessons/APCS_Lesson_ForEachLoop_FilledOut.docx'
   },
   {
-    id: 45,
-    title: "Random Numbers",
-    description: "Generating and working with random numbers in programming",
-    category: "lesson",
-    page: "apcs",
-    keywords: ["random", "numbers", "math", "generation", "probability"],
-    filePath: "/documents/APCS/Lessons/APCS_Lesson_Random_FilledOut.docx"
+    id: 'apcs-lesson-midterm',
+    title: 'Midterm Review',
+    description: 'Review lesson for midterm examination',
+    category: 'lesson',
+    page: 'apcs',
+    keywords: ['midterm', 'review', 'exam', 'preparation'],
+    filePath: '/documents/APCS/Lessons/APCS_Lesson_MidtermReview_FilledOut.docx'
   },
   {
-    id: 46,
-    title: "Recursion",
-    description: "Understanding recursive algorithms and problem-solving",
-    category: "lesson",
-    page: "apcs",
-    keywords: ["recursion", "recursive", "algorithms", "base", "case", "self", "calling"],
-    filePath: "/documents/APCS/Lessons/APCS_Lesson_Recursion_FilledOut.docx"
+    id: 'apcs-lesson-fileio',
+    title: 'File I/O',
+    description: 'Lesson on file input and output operations',
+    category: 'lesson',
+    page: 'apcs',
+    keywords: ['file', 'input', 'output', 'io', 'reading', 'writing'],
+    filePath: '/documents/APCS/Lessons/APCS_Lesson_FilesIO_FilledOut.docx'
   },
   {
-    id: 47,
-    title: "Round-off Error",
-    description: "Understanding floating-point precision and computational errors",
-    category: "lesson",
-    page: "apcs",
-    keywords: ["roundoff", "error", "floating", "point", "precision", "computational"],
-    filePath: "/documents/APCS/Lessons/APCS_Lesson_RoundOffError_FilledOut.docx"
+    id: 'apcs-lesson-inheritance',
+    title: 'Inheritance',
+    description: 'Lesson on inheritance and class hierarchies',
+    category: 'lesson',
+    page: 'apcs',
+    keywords: ['inheritance', 'super', 'extends', 'hierarchy'],
+    filePath: '/documents/APCS/Lessons/APCS_Lesson_Inheritance_FilledOut.docx'
   },
   {
-    id: 48,
-    title: "Short Circuit Evaluation",
-    description: "Boolean logic and short-circuit evaluation in Java",
-    category: "lesson",
-    page: "apcs",
-    keywords: ["boolean", "logic", "short", "circuit", "evaluation", "operators"],
-    filePath: "/documents/APCS/Lessons/APCS_Lesson_ShortEval_FilledOut.docx"
+    id: 'apcs-lesson-polymorphism',
+    title: 'Polymorphism',
+    description: 'Lesson on polymorphism implementation',
+    category: 'lesson',
+    page: 'apcs',
+    keywords: ['polymorphism', 'override', 'dynamic', 'binding'],
+    filePath: '/documents/APCS/Lessons/APCS_Lesson_Polymorphism_FilledOut.docx'
   },
   {
-    id: 49,
-    title: "Strings",
-    description: "String manipulation and processing techniques",
-    category: "lesson",
-    page: "apcs",
-    keywords: ["strings", "manipulation", "processing", "text", "methods"],
-    filePath: "/documents/APCS/Lessons/APCS_Lesson_Strings_FilledOut.docx"
+    id: 'apcs-lesson-recursion',
+    title: 'Recursion',
+    description: 'Lesson on recursive programming techniques',
+    category: 'lesson',
+    page: 'apcs',
+    keywords: ['recursion', 'recursive', 'base case', 'algorithms'],
+    filePath: '/documents/APCS/Lessons/APCS_Lesson_Recursion_FilledOut.docx'
   },
 
   // APCS Resources
   {
-    id: 50,
-    title: "Cookbook",
-    description: "Essential Java programming reference and quick solutions",
-    category: "resource",
-    page: "apcs",
-    keywords: ["cookbook", "reference", "solutions", "java", "programming", "guide"],
-    filePath: "/documents/APCS/Resources/Cookbook.pdf"
+    id: 'apcs-resource-cookbook',
+    title: 'The Cookbook',
+    description: 'Programming cookbook with common code patterns',
+    category: 'resource',
+    page: 'apcs',
+    keywords: ['cookbook', 'patterns', 'code', 'reference'],
+    filePath: '/documents/APCS/Resources/Cookbook.pdf'
   },
   {
-    id: 51,
-    title: "GUI Survival Guide",
-    description: "Complete guide to creating graphical user interfaces in Java",
-    category: "resource",
-    page: "apcs",
-    keywords: ["gui", "interface", "swing", "graphics", "buttons", "windows"],
-    filePath: "/documents/APCS/Resources/GUISurvivalGuide.pdf"
+    id: 'apcs-resource-netbeans',
+    title: 'Printing from Netbeans',
+    description: 'Guide for printing code from NetBeans IDE',
+    category: 'resource',
+    page: 'apcs',
+    keywords: ['netbeans', 'printing', 'ide', 'guide'],
+    filePath: '/documents/APCS/Resources/NetbeansPrintingGuide.pdf'
   },
   {
-    id: 52,
-    title: "NetBeans Printing Guide",
-    description: "Guide for printing code and documents from NetBeans IDE",
-    category: "resource",
-    page: "apcs",
-    keywords: ["printing", "netbeans", "ide", "code", "documentation"],
-    filePath: "/documents/APCS/Resources/NetbeansPrintingGuide.pdf"
+    id: 'apcs-resource-gui',
+    title: 'GUI Survival Guide',
+    description: 'Guide for creating graphical user interfaces',
+    category: 'resource',
+    page: 'apcs',
+    keywords: ['gui', 'interface', 'swing', 'graphics'],
+    filePath: '/documents/APCS/Resources/GUISurvivalGuide.pdf'
+  },
+  {
+    id: 'apcs-resource-sound',
+    title: 'Sound File',
+    description: 'Audio file resource for programming projects',
+    category: 'resource',
+    page: 'apcs',
+    keywords: ['sound', 'audio', 'file', 'wav'],
+    filePath: '/documents/APCS/Resources/SoundFile.wav'
+  },
+  {
+    id: 'apcs-resource-jtattoo',
+    title: 'Making round buttons',
+    description: 'JTattoo library for custom button styling',
+    category: 'resource',
+    page: 'apcs',
+    keywords: ['jtattoo', 'buttons', 'styling', 'gui', 'round'],
+    filePath: '/documents/APCS/Resources/JTattoo-1.6.13.jar'
   },
 
   // APCS Bonus Projects
   {
-    id: 53,
-    title: "Base Converter",
-    description: "Convert numbers between different number bases",
-    category: "bonus",
-    page: "apcs",
-    keywords: ["base", "converter", "binary", "hexadecimal", "octal", "decimal"],
-    filePath: "/documents/APCS/Bonus/APCS_Bonus_BaseConverter.pdf"
+    id: 'apcs-bonus-base-converter',
+    title: '1st Quarter: Base Converter',
+    description: 'Bonus project for converting between number bases',
+    category: 'bonus',
+    page: 'apcs',
+    keywords: ['base', 'converter', 'number', 'binary', 'hexadecimal'],
+    filePath: '/documents/APCS/Bonus/APCS_Bonus_BaseConverter.pdf'
   },
   {
-    id: 54,
-    title: "BlackJack",
-    description: "Implement the classic card game BlackJack",
-    category: "bonus",
-    page: "apcs",
-    keywords: ["blackjack", "card", "game", "casino", "21", "gambling"],
-    filePath: "/documents/APCS/Bonus/APCS_Bonus_BlackJack.pdf"
+    id: 'apcs-bonus-pnz',
+    title: '1st Quarter: PNZ',
+    description: 'PNZ bonus project for first quarter',
+    category: 'bonus',
+    page: 'apcs',
+    keywords: ['pnz', 'bonus', 'project', 'first quarter'],
+    filePath: '/documents/APCS/Bonus/APCS_Bonus_PNZ.pdf'
   },
   {
-    id: 55,
-    title: "Hotel System",
-    description: "Design a hotel management and reservation system",
-    category: "bonus",
-    page: "apcs",
-    keywords: ["hotel", "management", "reservation", "system", "booking"],
-    filePath: "/documents/APCS/Bonus/APCS_Bonus_HotelSystem.pdf"
+    id: 'apcs-bonus-hotel',
+    title: '2nd Quarter: Hotel System',
+    description: 'Hotel management system bonus project',
+    category: 'bonus',
+    page: 'apcs',
+    keywords: ['hotel', 'system', 'management', 'bonus'],
+    filePath: '/documents/APCS/Bonus/APCS_Bonus_HotelSystem.pdf'
   },
   {
-    id: 56,
-    title: "PNZ (Plants vs Zombies Clone)",
-    description: "Create a tower defense game inspired by Plants vs Zombies",
-    category: "bonus",
-    page: "apcs",
-    keywords: ["plants", "zombies", "tower", "defense", "game", "strategy"],
-    filePath: "/documents/APCS/Bonus/APCS_Bonus_PNZ.pdf"
+    id: 'apcs-bonus-blackjack',
+    title: '3rd Quarter: Black Jack',
+    description: 'Blackjack card game bonus project',
+    category: 'bonus',
+    page: 'apcs',
+    keywords: ['blackjack', 'card', 'game', 'bonus'],
+    filePath: '/documents/APCS/Bonus/APCS_Bonus_BlackJack.pdf'
   },
   {
-    id: 57,
-    title: "Risk",
-    description: "Implement the board game Risk as a computer program",
-    category: "bonus",
-    page: "apcs",
-    keywords: ["risk", "board", "game", "strategy", "conquest", "armies"],
-    filePath: "/documents/APCS/Bonus/APCS_Bonus_Risk.pdf"
+    id: 'apcs-bonus-yahtzee',
+    title: 'Yahtzee',
+    description: 'Yahtzee dice game bonus project',
+    category: 'bonus',
+    page: 'apcs',
+    keywords: ['yahtzee', 'dice', 'game', 'bonus'],
+    filePath: '/documents/APCS/Bonus/APCS_Bonus_Yahtzee.pdf'
   },
   {
-    id: 58,
-    title: "Yahtzee",
-    description: "Create the classic dice game Yahtzee",
-    category: "bonus",
-    page: "apcs",
-    keywords: ["yahtzee", "dice", "game", "scoring", "probability"],
-    filePath: "/documents/APCS/Bonus/APCS_Bonus_Yahtzee.pdf"
+    id: 'apcs-bonus-risk',
+    title: 'Risk',
+    description: 'Risk strategy game bonus project',
+    category: 'bonus',
+    page: 'apcs',
+    keywords: ['risk', 'strategy', 'game', 'bonus'],
+    filePath: '/documents/APCS/Bonus/APCS_Bonus_Risk.pdf'
   },
 
   // Java Assignments
   {
-    id: 59,
-    title: "1: Basic Console Applications",
-    description: "Introduction to Java programming with simple console applications",
-    category: "assignment",
-    page: "java",
-    keywords: ["console", "basic", "introduction", "java", "applications", "beginners"],
-    filePath: "/documents/Java/Assignments/Java_Assignment1_BasicConsoleApplications.pdf"
+    id: 'java-assignment-1',
+    title: '1: Basic Console Applications',
+    description: 'Introduction to Java console programming',
+    category: 'assignment',
+    page: 'java',
+    keywords: ['console', 'basic', 'java', 'programming', 'introduction'],
+    filePath: '/documents/Java/Assignments/Java_Assignment1_BasicConsoleApplications.pdf'
   },
   {
-    id: 60,
-    title: "2: Currency Converter",
-    description: "Build a program that converts between different currencies",
-    category: "assignment",
-    page: "java",
-    keywords: ["currency", "converter", "money", "exchange", "rates", "calculation"],
-    filePath: "/documents/Java/Assignments/Java_Assignment2_CurrencyConverter.pdf"
+    id: 'java-assignment-2',
+    title: '2: Currency Converter',
+    description: 'Building a currency conversion application',
+    category: 'assignment',
+    page: 'java',
+    keywords: ['currency', 'converter', 'exchange', 'rates'],
+    filePath: '/documents/Java/Assignments/Java_Assignment2_CurrencyConverter.pdf'
   },
   {
-    id: 61,
-    title: "2.5: Change Calculator",
-    description: "Calculate change for transactions and money handling",
-    category: "assignment",
-    page: "java",
-    keywords: ["change", "calculator", "money", "transactions", "cash", "coins"],
-    filePath: "/documents/Java/Assignments/Java_Assignment2.5_ChangeTwenty.pdf"
+    id: 'java-assignment-2-5',
+    title: '2.5: Change Calculator',
+    description: 'Calculator for making change from purchases',
+    category: 'assignment',
+    page: 'java',
+    keywords: ['change', 'calculator', 'money', 'math'],
+    filePath: '/documents/Java/Assignments/Java_Assignment2.5_ChangeTwenty.pdf'
   },
   {
-    id: 62,
-    title: "3: Loop Practice",
-    description: "Master different types of loops and iteration in Java",
-    category: "assignment",
-    page: "java",
-    keywords: ["loops", "for", "while", "iteration", "repetition", "control", "structures"],
-    filePath: "/documents/Java/Assignments/Java_Assignment3_LoopPractice.pdf"
+    id: 'java-assignment-3',
+    title: '3: Loops',
+    description: 'Loop practice and implementation exercises',
+    category: 'assignment',
+    page: 'java',
+    keywords: ['loops', 'practice', 'for', 'while', 'iteration'],
+    filePath: '/documents/Java/Assignments/Java_Assignment3_LoopPractice.pdf'
   },
   {
-    id: 63,
-    title: "4: Budget",
-    description: "Create a budget management application with arrays",
-    category: "assignment",
-    page: "java",
-    keywords: ["budget", "arrays", "collections", "data", "financial", "management"],
-    filePath: "/documents/Java/Assignments/Java_Assignment4_Budget.pdf"
+    id: 'java-assignment-4-budget',
+    title: '4: Budget',
+    description: 'Budget management application using arrays',
+    category: 'assignment',
+    page: 'java',
+    keywords: ['budget', 'arrays', 'finance', 'management'],
+    filePath: '/documents/Java/Assignments/Java_Assignment4_Budget.pdf'
   },
   {
-    id: 64,
-    title: "4: RackO",
-    description: "Implement the card game RackO using arrays and algorithms",
-    category: "assignment",
-    page: "java",
-    keywords: ["racko", "card", "game", "arrays", "algorithms", "sorting"],
-    filePath: "/documents/Java/Assignments/Java_Assignment4_RackO.pdf"
+    id: 'java-assignment-4-racko',
+    title: '4: RackO',
+    description: 'RackO card game implementation',
+    category: 'assignment',
+    page: 'java',
+    keywords: ['racko', 'card', 'game', 'arrays'],
+    filePath: '/documents/Java/Assignments/Java_Assignment4_RackO.pdf'
   },
   {
-    id: 65,
-    title: "4.5: Object Oriented Basics",
-    description: "Introduction to object-oriented programming concepts",
-    category: "assignment",
-    page: "java",
-    keywords: ["oop", "objects", "classes", "basics", "introduction", "programming"],
-    filePath: "/documents/Java/Assignments/Java_Assignment4.5_Object_Oriented_Basics.pdf"
+    id: 'java-assignment-4-5',
+    title: '4.5: Object Oriented Basics',
+    description: 'Introduction to object-oriented programming in Java',
+    category: 'assignment',
+    page: 'java',
+    keywords: ['object', 'oriented', 'basics', 'classes', 'objects'],
+    filePath: '/documents/Java/Assignments/Java_Assignment4.5_Object_Oriented_Basics.pdf'
   },
   {
-    id: 66,
-    title: "5: Swing Basics",
-    description: "Learn GUI programming with Java Swing components",
-    category: "assignment",
-    page: "java",
-    keywords: ["swing", "gui", "interface", "components", "buttons", "windows"],
-    filePath: "/documents/Java/Assignments/Java_Assignment5_SwingBasics.pdf"
+    id: 'java-assignment-5',
+    title: '5: Swing Basics',
+    description: 'Introduction to GUI programming with Swing',
+    category: 'assignment',
+    page: 'java',
+    keywords: ['swing', 'gui', 'interface', 'basics'],
+    filePath: '/documents/Java/Assignments/Java_Assignment5_SwingBasics.pdf'
   },
   {
-    id: 67,
-    title: "6: Final Project",
-    description: "Comprehensive final project incorporating all course concepts",
-    category: "assignment",
-    page: "java",
-    keywords: ["final", "project", "comprehensive", "culminating", "portfolio"],
-    filePath: "/documents/Java/Assignments/Java_Assignment6_FinalProject.pdf"
+    id: 'java-assignment-6',
+    title: '6: Final Project',
+    description: 'Comprehensive final project for Java course',
+    category: 'assignment',
+    page: 'java',
+    keywords: ['final', 'project', 'comprehensive', 'application'],
+    filePath: '/documents/Java/Assignments/Java_Assignment6_FinalProject.pdf'
   },
 
   // Java Homework
   {
-    id: 68,
-    title: "Glossary Terms",
-    description: "Important programming terminology and definitions",
-    category: "homework",
-    page: "java",
-    keywords: ["glossary", "terms", "definitions", "vocabulary", "programming"],
-    filePath: "/documents/Java/Homework/GlossaryTerms.pdf"
+    id: 'java-hw-glossary',
+    title: 'Glossary Terms',
+    description: 'Java programming terminology and definitions',
+    category: 'homework',
+    page: 'java',
+    keywords: ['glossary', 'terms', 'definitions', 'vocabulary'],
+    filePath: '/documents/Java/Homework/GlossaryTerms.pdf'
   },
   {
-    id: 69,
-    title: "Java Arrays HW",
-    description: "Practice exercises for working with arrays",
-    category: "homework",
-    page: "java",
-    keywords: ["arrays", "practice", "exercises", "indexing", "elements"],
-    filePath: "/documents/Java/Homework/JavaHWArrays.pdf"
+    id: 'java-hw-loops',
+    title: 'Loops',
+    description: 'Homework exercises on loop structures',
+    category: 'homework',
+    page: 'java',
+    keywords: ['loops', 'homework', 'practice', 'exercises'],
+    filePath: '/documents/Java/Homework/Java_Loops_HW.pdf'
   },
   {
-    id: 70,
-    title: "Java Loops HW",
-    description: "Practice exercises for mastering loop structures",
-    category: "homework",
-    page: "java",
-    keywords: ["loops", "practice", "exercises", "for", "while", "iteration"],
-    filePath: "/documents/Java/Homework/Java_Loops_HW.pdf"
+    id: 'java-hw-arrays',
+    title: 'Arrays',
+    description: 'Array homework exercises and problems',
+    category: 'homework',
+    page: 'java',
+    keywords: ['arrays', 'homework', 'exercises', 'data structures'],
+    filePath: '/documents/Java/Homework/JavaHWArrays.pdf'
   },
 
-  // Java Lessons
+  // Java Lessons  
   {
-    id: 71,
-    title: "Arrays",
-    description: "Comprehensive guide to working with arrays in Java",
-    category: "lesson",
-    page: "java",
-    keywords: ["arrays", "indexing", "elements", "collections", "data", "structures"],
-    filePath: "/documents/Java/Lessons/Java_Lesson_Arrays_FilledOut.docx"
+    id: 'java-lesson-math-ops',
+    title: 'Math Operations',
+    description: 'Lesson on mathematical operations in Java',
+    category: 'lesson',
+    page: 'java',
+    keywords: ['math', 'operations', 'arithmetic', 'calculations'],
+    filePath: '/documents/Java/Lessons/Java_Lesson_MathOperators_FilledOut.docx'
   },
   {
-    id: 72,
-    title: "Course Review",
-    description: "Comprehensive review of all course materials",
-    category: "lesson",
-    page: "java",
-    keywords: ["course", "review", "comprehensive", "materials", "study"],
-    filePath: "/documents/Java/Lessons/Java_Lesson_CourseReview.pptm"
+    id: 'java-lesson-data-modeling',
+    title: 'Data Modeling',
+    description: 'Introduction to data modeling concepts',
+    category: 'lesson',
+    page: 'java',
+    keywords: ['data', 'modeling', 'structures', 'design'],
+    filePath: '/documents/Java/Lessons/Java_Lesson_Intro_To_DataModeling_Blank_FilledOut.docx'
   },
   {
-    id: 73,
-    title: "Final Review",
-    description: "Review materials for final examination",
-    category: "lesson",
-    page: "java",
-    keywords: ["final", "review", "exam", "preparation", "study"],
-    filePath: "/documents/Java/Lessons/Java_Lesson_FinalReview.docx"
+    id: 'java-lesson-selection',
+    title: 'Selection Statements',
+    description: 'Lesson on if-else and switch statements',
+    category: 'lesson',
+    page: 'java',
+    keywords: ['selection', 'if', 'else', 'switch', 'conditions'],
+    filePath: '/documents/Java/Lessons/Java_Lesson_SelectionStatements_FilledOut.docx'
   },
   {
-    id: 74,
-    title: "Flowcharting",
-    description: "Learn to create flowcharts for program planning and design",
-    category: "lesson",
-    page: "java",
-    keywords: ["flowchart", "planning", "design", "algorithm", "logic", "diagram"],
-    filePath: "/documents/Java/Lessons/Java_Lesson_FlowCharting_Blank.docx"
+    id: 'java-lesson-looping',
+    title: 'Looping',
+    description: 'Comprehensive lesson on loop structures',
+    category: 'lesson',
+    page: 'java',
+    keywords: ['looping', 'for', 'while', 'do-while', 'iteration'],
+    filePath: '/documents/Java/Lessons/Java_Lesson_Looping_FilledOut.docx'
   },
   {
-    id: 75,
-    title: "Data Modeling Introduction",
-    description: "Introduction to data modeling concepts and techniques",
-    category: "lesson",
-    page: "java",
-    keywords: ["data", "modeling", "introduction", "concepts", "techniques"],
-    filePath: "/documents/Java/Lessons/Java_Lesson_Intro_To_DataModeling_Blank_FilledOut.docx"
+    id: 'java-lesson-random',
+    title: 'Random',
+    description: 'Working with random numbers in Java',
+    category: 'lesson',
+    page: 'java',
+    keywords: ['random', 'numbers', 'generation', 'math'],
+    filePath: '/documents/Java/Lessons/Java_Lesson_Random_FilledOut.docx'
   },
   {
-    id: 76,
-    title: "Looping",
-    description: "Comprehensive guide to loops and iteration structures",
-    category: "lesson",
-    page: "java",
-    keywords: ["loops", "looping", "iteration", "for", "while", "structures"],
-    filePath: "/documents/Java/Lessons/Java_Lesson_Looping_FilledOut.docx"
+    id: 'java-lesson-scope',
+    title: 'Scope',
+    description: 'Understanding variable scope in Java',
+    category: 'lesson',
+    page: 'java',
+    keywords: ['scope', 'variables', 'local', 'global'],
+    filePath: '/documents/Java/Lessons/Java_Lesson_Scope_FilledOut.docx'
   },
   {
-    id: 77,
-    title: "Math Operators",
-    description: "Mathematical operations and calculations in Java programming",
-    category: "lesson",
-    page: "java",
-    keywords: ["math", "operations", "calculations", "arithmetic", "operators"],
-    filePath: "/documents/Java/Lessons/Java_Lesson_MathOperators_FilledOut.docx"
+    id: 'java-lesson-arrays',
+    title: 'Arrays',
+    description: 'Working with arrays in Java',
+    category: 'lesson',
+    page: 'java',
+    keywords: ['arrays', 'data structures', 'collections'],
+    filePath: '/documents/Java/Lessons/Java_Lesson_Arrays_FilledOut.docx'
   },
   {
-    id: 78,
-    title: "Random Numbers",
-    description: "Generating and working with random numbers",
-    category: "lesson",
-    page: "java",
-    keywords: ["random", "numbers", "generation", "math", "probability"],
-    filePath: "/documents/Java/Lessons/Java_Lesson_Random_FilledOut.docx"
-  },
-  {
-    id: 79,
-    title: "Scope",
-    description: "Understanding variable scope and accessibility in Java",
-    category: "lesson",
-    page: "java",
-    keywords: ["scope", "variables", "accessibility", "local", "global"],
-    filePath: "/documents/Java/Lessons/Java_Lesson_Scope_FilledOut.docx"
-  },
-  {
-    id: 80,
-    title: "Selection Statements",
-    description: "Conditional statements and decision-making in programming",
-    category: "lesson",
-    page: "java",
-    keywords: ["selection", "conditional", "if", "else", "switch", "decisions"],
-    filePath: "/documents/Java/Lessons/Java_Lesson_SelectionStatements_FilledOut.docx"
-  },
-  {
-    id: 81,
-    title: "Income Tax Calculator",
-    description: "Flowchart example for calculating income tax",
-    category: "lesson",
-    page: "java",
-    keywords: ["income", "tax", "calculator", "flowchart", "example"],
-    filePath: "/documents/Java/Lessons/Flowchart_Income_Tax_Problem.pdf"
-  },
-  {
-    id: 82,
-    title: "Tax Calculator Program",
-    description: "Implementation guide for tax calculation program",
-    category: "lesson",
-    page: "java",
-    keywords: ["tax", "calculator", "program", "implementation", "guide"],
-    filePath: "/documents/Java/Lessons/TaxCalc.pdf"
-  },
-  {
-    id: 83,
-    title: "TeachJava Textbook",
-    description: "Foundational textbook covering Java basics and programming fundamentals",
-    category: "lesson",
-    page: "java",
-    keywords: ["textbook", "teachjava", "basics", "fundamentals", "foundation"],
-    filePath: "/documents/Java/Lessons/TeachJavaVer1.pdf"
+    id: 'java-lesson-final-review',
+    title: 'Final Review',
+    description: 'Final exam review material for Java course',
+    category: 'lesson',
+    page: 'java',
+    keywords: ['final', 'review', 'exam', 'preparation'],
+    filePath: '/documents/Java/Lessons/Java_Lesson_FinalReview.docx'
   },
 
   // Java Resources
   {
-    id: 84,
-    title: "Cookbook (Java)",
-    description: "Essential Java programming reference and quick solutions",
-    category: "resource",
-    page: "java",
-    keywords: ["cookbook", "reference", "solutions", "java", "programming", "guide"],
-    filePath: "/documents/Java/Resources/Cookbook.pdf"
+    id: 'java-resource-cookbook',
+    title: 'The Cookbook',
+    description: 'Java programming cookbook with examples',
+    category: 'resource',
+    page: 'java',
+    keywords: ['cookbook', 'examples', 'reference', 'patterns'],
+    filePath: '/documents/Java/Resources/Cookbook.pdf'
   },
   {
-    id: 85,
-    title: "GUI Survival Guide (Java)",
-    description: "Complete guide to creating graphical user interfaces in Java",
-    category: "resource",
-    page: "java",
-    keywords: ["gui", "interface", "swing", "graphics", "buttons", "windows"],
-    filePath: "/documents/Java/Resources/GUISurvivalGuide.pdf"
+    id: 'java-resource-netbeans',
+    title: 'Printing from Netbeans',
+    description: 'Guide for printing from NetBeans IDE',
+    category: 'resource',
+    page: 'java',
+    keywords: ['netbeans', 'printing', 'ide', 'guide'],
+    filePath: '/documents/Java/Resources/NetbeansPrintingGuide.pdf'
   },
   {
-    id: 86,
-    title: "NetBeans Printing Guide (Java)",
-    description: "Guide for printing code and documents from NetBeans IDE",
-    category: "resource",
-    page: "java",
-    keywords: ["printing", "netbeans", "ide", "code", "documentation"],
-    filePath: "/documents/Java/Resources/NetbeansPrintingGuide.pdf"
+    id: 'java-resource-gui-guide',
+    title: 'GUI Survival Guide',
+    description: 'Guide for Java GUI programming',
+    category: 'resource',
+    page: 'java',
+    keywords: ['gui', 'swing', 'interface', 'guide'],
+    filePath: '/documents/Java/Resources/GUISurvivalGuide.pdf'
   },
 
-  // Java Bonus Projects
+  // Java Bonus
   {
-    id: 87,
-    title: "Coin Flip",
-    description: "Simple probability simulation with coin flipping",
-    category: "bonus",
-    page: "java",
-    keywords: ["coin", "flip", "probability", "simulation", "random"],
-    filePath: "/documents/Java/Bonus/Java_Bonus_CoinFlip.pdf"
+    id: 'java-bonus-coinflip',
+    title: 'Coinflip Problem',
+    description: 'Bonus problem involving coin flip simulation',
+    category: 'bonus',
+    page: 'java',
+    keywords: ['coinflip', 'simulation', 'probability', 'bonus'],
+    filePath: '/documents/Java/Bonus/Java_Bonus_CoinFlip.pdf'
   },
   {
-    id: 88,
-    title: "Fox, Goose, and Grain",
-    description: "Classic logic puzzle implementation",
-    category: "bonus",
-    page: "java",
-    keywords: ["fox", "goose", "grain", "puzzle", "logic", "classic"],
-    filePath: "/documents/Java/Bonus/Java_Bonus_FoxGooseGrain.pdf"
+    id: 'java-bonus-fox-goose',
+    title: 'Fox Goose Grain Problem',
+    description: 'Classic logic puzzle bonus problem',
+    category: 'bonus',
+    page: 'java',
+    keywords: ['fox', 'goose', 'grain', 'logic', 'puzzle'],
+    filePath: '/documents/Java/Bonus/Java_Bonus_FoxGooseGrain.pdf'
   },
 
   // Gallery Items
   {
-    id: 89,
-    title: "P5.js Interactive Game",
-    description: "A creative JavaScript game built with p5.js created by Mr. Hanley",
-    category: "gallery",
-    page: "gallery",
-    keywords: ["p5js", "javascript", "game", "interactive", "creative", "hanley"],
-    filePath: "/gallery/files/p5-game.js"
+    id: 'gallery-p5js-game',
+    title: 'P5.js Game',
+    description: 'A creative JavaScript game built with p5.js created by Mr. Hanley',
+    category: 'gallery',
+    page: 'gallery',
+    keywords: ['p5js', 'javascript', 'game', 'interactive', 'creative'],
+    filePath: '/GalleryPages/FallingBlocks/index.html'
   },
   {
-    id: 90,
-    title: "Java Swing Demo",
-    description: "Java Swing example demonstrating GUI programming",
-    category: "gallery",
-    page: "gallery",
-    keywords: ["java", "swing", "gui", "demo", "programming", "example"],
-    filePath: "/gallery/files/swing-demo.jar"
+    id: 'gallery-java-swing',
+    title: 'Java Swing Example',
+    description: 'Java Swing example demonstrating GUI programming',
+    category: 'gallery',
+    page: 'gallery',
+    keywords: ['java', 'swing', 'gui', 'example', 'demo'],
+    filePath: '/gallery/files/swing-demo.jar'
+  },
+
+  // References
+  {
+    id: 'reference-w3schools',
+    title: 'W3Schools',
+    description: 'Comprehensive web development tutorials and references',
+    category: 'reference',
+    page: 'references',
+    keywords: ['w3schools', 'tutorials', 'web', 'development', 'reference']
+  },
+  {
+    id: 'reference-sololearn',
+    title: 'SoloLearn',
+    description: 'Interactive coding lessons and practice',
+    category: 'reference',
+    page: 'references',
+    keywords: ['sololearn', 'interactive', 'coding', 'lessons', 'practice']
+  },
+  {
+    id: 'reference-programiz',
+    title: 'Programiz',
+    description: 'Programming tutorials and examples',
+    category: 'reference',
+    page: 'references',
+    keywords: ['programiz', 'programming', 'tutorials', 'examples']
+  },
+  {
+    id: 'reference-codecademy',
+    title: 'Code Academy',
+    description: 'Interactive programming courses',
+    category: 'reference',
+    page: 'references',
+    keywords: ['codecademy', 'interactive', 'courses', 'programming']
+  },
+  {
+    id: 'reference-hackerrank',
+    title: 'HackerRank',
+    description: 'Coding challenges and practice problems',
+    category: 'reference',
+    page: 'references',
+    keywords: ['hackerrank', 'coding', 'challenges', 'practice', 'problems']
+  },
+  {
+    id: 'reference-codingbat',
+    title: 'CodingBat',
+    description: 'Java and Python coding practice',
+    category: 'reference',
+    page: 'references',
+    keywords: ['codingbat', 'java', 'python', 'coding', 'practice']
+  },
+  {
+    id: 'reference-codechef',
+    title: 'CodeChef',
+    description: 'Competitive programming platform',
+    category: 'reference',
+    page: 'references',
+    keywords: ['codechef', 'competitive', 'programming', 'contests']
+  },
+  {
+    id: 'reference-codewars',
+    title: 'CodeWars',
+    description: 'Coding challenges and kata',
+    category: 'reference',
+    page: 'references',
+    keywords: ['codewars', 'challenges', 'kata', 'coding']
+  },
+  {
+    id: 'reference-replit',
+    title: 'Repl.it',
+    description: 'Online IDE for various programming languages',
+    category: 'reference',
+    page: 'references',
+    keywords: ['replit', 'online', 'ide', 'programming', 'editor']
   }
 ];
 
-// Enhanced keyword matching for better semantic search
-const getKeywordScore = (searchTerm: string, keywords: string[]): number => {
-  const lowerTerm = searchTerm.toLowerCase();
+// Semantic keyword mappings for better search
+const semanticMappings: { [key: string]: string[] } = {
+  'oop': ['object oriented', 'object-oriented', 'classes', 'objects', 'inheritance', 'polymorphism', 'encapsulation'],
+  'arrays': ['array', 'list', 'collection', 'data structure', 'arraylist'],
+  'loops': ['loop', 'iteration', 'for', 'while', 'do-while', 'foreach', 'enhanced for'],
+  'string': ['strings', 'text', 'character', 'char', 'manipulation'],
+  'gui': ['swing', 'interface', 'graphics', 'buttons', 'windows', 'frames'],
+  'math': ['mathematics', 'calculation', 'arithmetic', 'numbers', 'operations'],
+  'game': ['games', 'gaming', 'interactive', 'play', 'simulation'],
+  'recursion': ['recursive', 'self-calling', 'base case'],
+  'inheritance': ['extends', 'super', 'hierarchy', 'parent', 'child'],
+  'polymorphism': ['override', 'overload', 'multiple forms', 'dynamic binding'],
+  'file': ['files', 'io', 'input', 'output', 'reading', 'writing', 'data'],
+  'review': ['exam', 'test', 'preparation', 'study', 'practice'],
+  'bonus': ['extra', 'additional', 'challenge', 'optional']
+};
+
+function getKeywordScore(searchTerm: string, keywords: string[]): number {
+  const term = searchTerm.toLowerCase();
   let score = 0;
   
-  // Special mappings for common abbreviations and concepts
-  const semanticMappings: { [key: string]: string[] } = {
-    'oop': ['object', 'oriented', 'programming', 'class', 'inheritance', 'polymorphism', 'encapsulation'],
-    'gui': ['swing', 'graphics', 'interface', 'window', 'button', 'frame'],
-    'io': ['input', 'output', 'file', 'scanner', 'reader', 'writer'],
-    'ai': ['artificial', 'intelligence', 'machine', 'learning'],
-    'api': ['application', 'programming', 'interface'],
-    'sql': ['database', 'query', 'structured', 'language'],
-    'html': ['markup', 'web', 'browser', 'tag'],
-    'css': ['style', 'design', 'layout', 'formatting'],
-    'js': ['javascript', 'web', 'browser', 'script'],
-    'recursion': ['recursive', 'function', 'call', 'itself', 'base', 'case'],
-    'array': ['list', 'collection', 'data', 'structure', 'index'],
-    'loop': ['iteration', 'for', 'while', 'repeat', 'cycle'],
-    'string': ['text', 'character', 'word', 'manipulation'],
-    'inheritance': ['extends', 'super', 'parent', 'child', 'class', 'hierarchy'],
-    'polymorphism': ['override', 'overload', 'method', 'different', 'forms', 'multiple'],
-    'encapsulation': ['private', 'public', 'protected', 'access', 'modifier', 'data', 'hiding'],
-    'abstraction': ['abstract', 'interface', 'concept', 'implementation', 'hiding'],
-    'sorting': ['bubble', 'selection', 'insertion', 'merge', 'quick', 'heap'],
-    'searching': ['linear', 'binary', 'find', 'locate', 'search'],
-    'data structures': ['array', 'list', 'stack', 'queue', 'tree', 'graph'],
-    'algorithms': ['sorting', 'searching', 'recursive', 'iterative', 'optimization']
-  };
+  // Direct keyword matches
+  for (const keyword of keywords) {
+    if (keyword.toLowerCase().includes(term)) {
+      score += keyword.toLowerCase() === term ? 10 : 5;
+    }
+  }
   
-  // Check for semantic mappings first
-  if (semanticMappings[lowerTerm]) {
-    const relatedTerms = semanticMappings[lowerTerm];
+  // Semantic matches
+  const semanticWords = semanticMappings[term] || [];
+  for (const semanticWord of semanticWords) {
     for (const keyword of keywords) {
-      const lowerKeyword = keyword.toLowerCase();
-      for (const relatedTerm of relatedTerms) {
-        if (lowerKeyword.includes(relatedTerm) || relatedTerm.includes(lowerKeyword)) {
-          score += 10; // High score for semantic matches
-        }
+      if (keyword.toLowerCase().includes(semanticWord)) {
+        score += 3;
       }
     }
   }
   
-  // Original keyword matching
-  for (const keyword of keywords) {
-    const lowerKeyword = keyword.toLowerCase();
-    if (lowerKeyword === lowerTerm) {
-      score += 15; // Exact match
-    } else if (lowerKeyword.includes(lowerTerm)) {
-      score += 8; // Partial match
-    } else if (lowerTerm.includes(lowerKeyword)) {
-      score += 5; // Reverse partial match
-    }
-  }
-  
   return score;
-};
+}
 
-export const searchAssignments = (query: string): SearchItem[] => {
+export function searchAssignments(query: string): SearchItem[] {
   if (!query.trim()) return [];
   
-  const lowerQuery = query.toLowerCase();
-  const results: Array<SearchItem & { score: number }> = [];
+  const searchTerm = query.toLowerCase().trim();
+  const results: (SearchItem & { score: number })[] = [];
   
-  searchItems.forEach(item => {
+  for (const item of searchItems) {
     let score = 0;
     
     // Title matching (highest priority)
-    if (item.title.toLowerCase().includes(lowerQuery)) {
-      score += 20;
+    if (item.title.toLowerCase().includes(searchTerm)) {
+      score += item.title.toLowerCase() === searchTerm ? 100 : 50;
     }
     
     // Description matching
-    if (item.description.toLowerCase().includes(lowerQuery)) {
-      score += 10;
+    if (item.description.toLowerCase().includes(searchTerm)) {
+      score += 20;
     }
     
     // Category matching
-    if (item.category.toLowerCase().includes(lowerQuery)) {
-      score += 8;
+    if (item.category.toLowerCase().includes(searchTerm)) {
+      score += 15;
     }
-    
-    // Enhanced keyword matching
-    score += getKeywordScore(lowerQuery, item.keywords);
     
     // Page matching
-    if (item.page.toLowerCase().includes(lowerQuery)) {
-      score += 5;
+    if (item.page.toLowerCase().includes(searchTerm)) {
+      score += 10;
     }
+    
+    // Keyword matching with semantic support
+    score += getKeywordScore(searchTerm, item.keywords);
     
     if (score > 0) {
       results.push({ ...item, score });
     }
-  });
+  }
   
-  // Sort by score (highest first)
+  // Sort by score (highest first) and return top 10
   return results
     .sort((a, b) => b.score - a.score)
+    .slice(0, 10)
     .map(({ score, ...item }) => item);
-};
+}
 
-// Get all items for a specific page
-export const getItemsByPage = (page: 'java' | 'apcs' | 'gallery' | 'references'): SearchItem[] => {
+// Utility functions for filtering
+export function getItemsByPage(page: 'java' | 'apcs' | 'gallery' | 'references'): SearchItem[] {
   return searchItems.filter(item => item.page === page);
-};
+}
 
-// Get all items by category
-export const getItemsByCategory = (category: SearchItem['category']): SearchItem[] => {
+export function getItemsByCategory(category: SearchItem['category']): SearchItem[] {
   return searchItems.filter(item => item.category === category);
-};
+}
 
-// Get all available categories
-export const getAllCategories = (): string[] => {
-  return Array.from(new Set(searchItems.map(item => item.category)));
-};
+export function getAllCategories(): string[] {
+  return [...new Set(searchItems.map(item => item.category))];
+}
 
-// Get all available pages
-export const getAllPages = (): string[] => {
-  return Array.from(new Set(searchItems.map(item => item.page)));
-};
+export function getAllPages(): string[] {
+  return [...new Set(searchItems.map(item => item.page))];
+}
