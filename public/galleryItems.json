@@ -6,7 +6,7 @@
       "description": "A creative JavaScript game built with p5.js created by Mr. Hanley",
       "type": "JavaScript/P5.js",
       "slug": "p5-interactive-game",
-      "link": "/src//GalleryPages/FallingBlocks/index.html"
+      "link": "/src/pages/GalleryPages/FallingBlocks/index.html"
     },
     {
       "title": "Java Swing Example", 
