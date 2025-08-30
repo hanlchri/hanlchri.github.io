@@ -6,34 +6,28 @@
       "description": "A creative JavaScript game built with p5.js created by Mr. Hanley",
       "type": "JavaScript/P5.js",
       "slug": "p5-interactive-game",
-      "fileName": "p5-game.js",
-      "linkType": "file",
-      "buildRequired": false
+      "link": "/gallery/files/p5-game.js"
     },
     {
-      "title": "Java Swing Example",
+      "title": "Java Swing Example", 
       "description": "Java Swing example demonstrating GUI programming",
       "type": "Java Swing",
       "slug": "java-swing",
-      "fileName": "swing-demo.jar",
-      "linkType": "file",
-      "buildRequired": false
+      "link": "/gallery/files/swing-demo.jar"
     },
     {
       "title": "External Learning Resource",
-      "description": "Visit Oracle's Java documentation for comprehensive learning",
+      "description": "Visit Oracle's Java documentation for comprehensive learning", 
       "type": "External Link",
       "slug": "oracle-java-docs",
-      "externalUrl": "https://docs.oracle.com/javase/tutorial/",
-      "linkType": "external"
+      "link": "https://docs.oracle.com/javase/tutorial/"
     },
     {
       "title": "About This Site",
       "description": "Learn more about the creator and purpose of this educational platform",
-      "type": "Internal Page",
+      "type": "Internal Page", 
       "slug": "about-page",
-      "internalPath": "/about",
-      "linkType": "internal"
+      "link": "/about"
     }
   ]
 }

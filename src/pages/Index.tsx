@@ -48,11 +48,11 @@ const Index = () => {
           Hanley's Hood
         </h1>
         <div className="max-w-3xl mx-auto px-4">
-          <p className="text-lg sm:text-xl md:text-2xl mb-4 font-mono min-h-[3rem] sm:h-16">
+          <p className="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-4 font-mono min-h-[3rem] sm:h-16">
             {displayedText}
             {characterIndex < fullText.length && <span className="animate-terminal-blink">_</span>}
           </p>
-          <p className="text-xs text-muted-foreground/70 mb-6 sm:mb-10 font-mono min-h-[1rem] px-2">
+          <p className="text-xs text-muted-foreground/70 mb-8 sm:mb-10 font-mono min-h-[1rem] px-2">
             {watermarkText}
             {showWatermark && watermarkIndex < watermarkFullText.length && <span className="animate-terminal-blink">_</span>}
           </p>

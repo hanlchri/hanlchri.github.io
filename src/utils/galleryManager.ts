@@ -55,15 +55,17 @@ export class GalleryManager {
 
   // Helper method to generate appropriate URL based on link type
   static getItemUrl(item: GalleryItem): string {
-    switch (item.linkType) {
-      case 'file':
-        return `/gallery/files/${item.fileName}`;
-      case 'external':
-        return item.externalUrl || '#';
-      case 'internal':
-        return item.internalPath || '#';
-      default:
-        return '#';
+    return item.link;
+  }
+
+  // Determine link type from URL format
+  static getLinkType(item: GalleryItem): 'file' | 'external' | 'internal' {
+    if (item.link.startsWith('http://') || item.link.startsWith('https://')) {
+      return 'external';
+    } else if (item.link.startsWith('/gallery/files/')) {
+      return 'file';
+    } else {
+      return 'internal';
     }
   }
 
