@@ -464,7 +464,7 @@ const searchItems: SearchItem[] = [
     category: 'resource',
     page: 'apcs',
     keywords: ['cookbook', 'patterns', 'code', 'reference'],
-    filePath: '/documents/APCS/Resources/Cookbook.pdf'
+    filePath: '/documents/Resources/Cookbook.pdf'
   },
   {
     id: 'apcs-resource-netbeans',
@@ -473,7 +473,7 @@ const searchItems: SearchItem[] = [
     category: 'resource',
     page: 'apcs',
     keywords: ['netbeans', 'printing', 'ide', 'guide'],
-    filePath: '/documents/APCS/Resources/NetbeansPrintingGuide.pdf'
+    filePath: '/documents/Resources/NetbeansPrintingGuide.pdf'
   },
   {
     id: 'apcs-resource-gui',
@@ -482,7 +482,7 @@ const searchItems: SearchItem[] = [
     category: 'resource',
     page: 'apcs',
     keywords: ['gui', 'interface', 'swing', 'graphics'],
-    filePath: '/documents/APCS/Resources/GUISurvivalGuide.pdf'
+    filePath: '/documents/Resources/GUISurvivalGuide.pdf'
   },
   {
     id: 'apcs-resource-sound',
@@ -491,7 +491,7 @@ const searchItems: SearchItem[] = [
     category: 'resource',
     page: 'apcs',
     keywords: ['sound', 'audio', 'file', 'wav'],
-    filePath: '/documents/APCS/Resources/SoundFile.wav'
+    filePath: '/documents/Resources/SoundFile.wav'
   },
   {
     id: 'apcs-resource-jtattoo',
@@ -500,7 +500,7 @@ const searchItems: SearchItem[] = [
     category: 'resource',
     page: 'apcs',
     keywords: ['jtattoo', 'buttons', 'styling', 'gui', 'round'],
-    filePath: '/documents/APCS/Resources/JTattoo-1.6.13.jar'
+    filePath: '/documents/Resources/JTattoo-1.6.13.jar'
   },
 
   // APCS Bonus Projects
@@ -753,7 +753,7 @@ const searchItems: SearchItem[] = [
     category: 'resource',
     page: 'java',
     keywords: ['cookbook', 'examples', 'reference', 'patterns'],
-    filePath: '/documents/Java/Resources/Cookbook.pdf'
+    filePath: '/documents/Resources/Cookbook.pdf'
   },
   {
     id: 'java-resource-netbeans',
@@ -762,7 +762,7 @@ const searchItems: SearchItem[] = [
     category: 'resource',
     page: 'java',
     keywords: ['netbeans', 'printing', 'ide', 'guide'],
-    filePath: '/documents/Java/Resources/NetbeansPrintingGuide.pdf'
+    filePath: '/documents/Resources/NetbeansPrintingGuide.pdf'
   },
   {
     id: 'java-resource-gui-guide',
@@ -771,7 +771,7 @@ const searchItems: SearchItem[] = [
     category: 'resource',
     page: 'java',
     keywords: ['gui', 'swing', 'interface', 'guide'],
-    filePath: '/documents/Java/Resources/GUISurvivalGuide.pdf'
+    filePath: '/documents/Resources/GUISurvivalGuide.pdf'
   },
 
   // Java Bonus
@@ -906,23 +906,54 @@ const semanticMappings: { [key: string]: string[] } = {
   'bonus': ['extra', 'additional', 'challenge', 'optional']
 };
 
-function getKeywordScore(searchTerm: string, keywords: string[]): number {
-  const term = searchTerm.toLowerCase();
+// Preprocessed search items for performance
+interface PreprocessedSearchItem extends SearchItem {
+  titleLower: string;
+  descriptionLower: string;
+  keywordsLower: string[];
+  keywordSet: Set<string>;
+}
+
+const preprocessedItems: PreprocessedSearchItem[] = searchItems.map(item => ({
+  ...item,
+  titleLower: item.title.toLowerCase(),
+  descriptionLower: item.description.toLowerCase(),
+  keywordsLower: item.keywords.map(k => k.toLowerCase()),
+  keywordSet: new Set(item.keywords.map(k => k.toLowerCase()))
+}));
+
+function getKeywordScore(searchTerm: string, item: PreprocessedSearchItem): number {
   let score = 0;
   
-  // Direct keyword matches
-  for (const keyword of keywords) {
-    if (keyword.toLowerCase().includes(term)) {
-      score += keyword.toLowerCase() === term ? 10 : 5;
+  // O(1) exact match check
+  if (item.keywordSet.has(searchTerm)) {
+    score += 10;
+  }
+  
+  // Partial keyword matches
+  for (const keyword of item.keywordsLower) {
+    if (keyword !== searchTerm && keyword.includes(searchTerm)) {
+      score += 5;
     }
   }
   
-  // Semantic matches
-  const semanticWords = semanticMappings[term] || [];
-  for (const semanticWord of semanticWords) {
-    for (const keyword of keywords) {
-      if (keyword.toLowerCase().includes(semanticWord)) {
+  // Semantic matches - optimized
+  const semanticWords = semanticMappings[searchTerm];
+  if (semanticWords) {
+    for (const semanticWord of semanticWords) {
+      if (item.keywordSet.has(semanticWord)) {
         score += 3;
+        break; // Only count once per semantic group
+      }
+    }
+    
+    // Check for partial semantic matches
+    for (const semanticWord of semanticWords) {
+      for (const keyword of item.keywordsLower) {
+        if (keyword.includes(semanticWord)) {
+          score += 1;
+          break;
+        }
       }
     }
   }
@@ -930,48 +961,81 @@ function getKeywordScore(searchTerm: string, keywords: string[]): number {
   return score;
 }
 
-export function searchAssignments(query: string): SearchItem[] {
+export function searchAssignments(query: string, options?: { 
+  pageFilter?: string;
+  categoryFilter?: string;
+  maxResults?: number;
+}): SearchItem[] {
   if (!query.trim()) return [];
   
-  const searchTerm = query.toLowerCase().trim();
-  const results: (SearchItem & { score: number })[] = [];
+  const { pageFilter = 'all', categoryFilter = 'all', maxResults = 20 } = options || {};
   
-  for (const item of searchItems) {
-    let score = 0;
+  // Multi-word search support
+  const searchTerms = query.toLowerCase().trim().split(/\s+/);
+  const results: (PreprocessedSearchItem & { score: number })[] = [];
+  
+  for (const item of preprocessedItems) {
+    // Apply filters early for performance
+    if (pageFilter !== 'all' && item.page !== pageFilter) continue;
+    if (categoryFilter !== 'all' && item.category !== categoryFilter) continue;
     
-    // Title matching (highest priority)
-    if (item.title.toLowerCase().includes(searchTerm)) {
-      score += item.title.toLowerCase() === searchTerm ? 100 : 50;
+    let totalScore = 0;
+    
+    // Score each search term
+    for (const term of searchTerms) {
+      let termScore = 0;
+      
+      // Title matching (highest priority)
+      if (item.titleLower.includes(term)) {
+        termScore += item.titleLower === term ? 100 : 50;
+      }
+      
+      // Description matching
+      if (item.descriptionLower.includes(term)) {
+        termScore += 20;
+      }
+      
+      // Category matching
+      if (item.category.toLowerCase().includes(term)) {
+        termScore += 15;
+      }
+      
+      // Page matching
+      if (item.page.toLowerCase().includes(term)) {
+        termScore += 10;
+      }
+      
+      // Keyword matching with semantic support
+      termScore += getKeywordScore(term, item);
+      
+      totalScore += termScore;
     }
     
-    // Description matching
-    if (item.description.toLowerCase().includes(searchTerm)) {
-      score += 20;
+    // Bonus for matching all terms
+    if (searchTerms.length > 1) {
+      let matchedTerms = 0;
+      for (const term of searchTerms) {
+        if (item.titleLower.includes(term) || 
+            item.descriptionLower.includes(term) ||
+            item.keywordsLower.some(k => k.includes(term))) {
+          matchedTerms++;
+        }
+      }
+      if (matchedTerms === searchTerms.length) {
+        totalScore += 25; // Bonus for matching all search terms
+      }
     }
     
-    // Category matching
-    if (item.category.toLowerCase().includes(searchTerm)) {
-      score += 15;
-    }
-    
-    // Page matching
-    if (item.page.toLowerCase().includes(searchTerm)) {
-      score += 10;
-    }
-    
-    // Keyword matching with semantic support
-    score += getKeywordScore(searchTerm, item.keywords);
-    
-    if (score > 0) {
-      results.push({ ...item, score });
+    if (totalScore > 0) {
+      results.push({ ...item, score: totalScore });
     }
   }
   
-  // Sort by score (highest first) and return top 10
+  // Sort by score and return limited results
   return results
     .sort((a, b) => b.score - a.score)
-    .slice(0, 10)
-    .map(({ score, ...item }) => item);
+    .slice(0, maxResults)
+    .map(({ score, keywordSet, keywordsLower, titleLower, descriptionLower, ...item }) => item as SearchItem);
 }
 
 // Utility functions for filtering

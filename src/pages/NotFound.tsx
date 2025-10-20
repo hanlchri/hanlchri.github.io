@@ -18,12 +18,17 @@ const NotFound = () => {
     "Java: System.out.println(\"Page not found. Try again!\");",
     "Python: print(\"Page not found. Try again!\")",
     "JavaScript: console.log(\"Page not found. Try again!\");",
+    "TypeScript: console.log(\"Page not found. Try again!\" as string);",
     "C++: cout << \"Page not found. Try again!\" << endl;",
-    "Ruby: puts \"Page not found. Try again!\"",
-    "PHP: echo \"Page not found. Try again!\";",
     "C#: Console.WriteLine(\"Page not found. Try again!\");",
+    "Rust: println!(\"Page not found. Try again!\");",
     "Go: fmt.Println(\"Page not found. Try again!\")",
     "Swift: print(\"Page not found. Try again!\")",
+    "Kotlin: println(\"Page not found. Try again!\")",
+    "Ruby: puts \"Page not found. Try again!\"",
+    "PHP: echo \"Page not found. Try again!\";",
+    "SQL: SELECT 'Page not found. Try again!';",
+    "Bash: echo \"Page not found. Try again!\"",
     "",
     "// Redirecting to home page in 10 seconds...",
     "// Or click the button below to go back home",
@@ -93,12 +98,13 @@ const NotFound = () => {
       }
     };
     
-    const animationInterval = setInterval(typeText, 50);
+    const animationInterval = setInterval(typeText, 20);
     
-    // Optional: redirect to home page after 10 seconds
+    // Redirect to home page after typing completes + 3 seconds
+    const typingDuration = consoleMessagesRef.current.reduce((acc, line) => acc + line.length, 0) * 20;
     const redirectTimeout = setTimeout(() => {
-      // window.location.href = '/'; // Uncomment if you want auto-redirect
-    }, 10000);
+      window.location.href = '/';
+    }, typingDuration + 3000);
     
     return () => {
       clearInterval(animationInterval);

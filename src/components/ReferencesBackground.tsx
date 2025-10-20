@@ -178,8 +178,14 @@ const ReferencesBackground: React.FC = () => {
     const animate = () => {
       if (!ctx || !canvas) return;
 
-      // Dark industrial background
-      ctx.fillStyle = 'rgba(15, 20, 25, 0.1)';
+      // Reset shadow properties to prevent accumulation
+      ctx.shadowColor = 'transparent';
+      ctx.shadowBlur = 0;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 0;
+      
+      // Dark industrial background with faster fade for clean trails
+      ctx.fillStyle = 'rgba(15, 20, 25, 0.20)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       const time = Date.now() * 0.001;
@@ -213,6 +219,10 @@ const ReferencesBackground: React.FC = () => {
           ctx.beginPath();
           ctx.arc(flowX, flowY, 2, 0, Math.PI * 2);
           ctx.fill();
+          
+          // Reset shadow immediately
+          ctx.shadowColor = 'transparent';
+          ctx.shadowBlur = 0;
         } else {
           // Inactive connection
           ctx.strokeStyle = 'rgba(100, 100, 100, 0.2)';
@@ -251,6 +261,8 @@ const ReferencesBackground: React.FC = () => {
             break;
         }
         
+        // Reset shadow immediately
+        ctx.shadowColor = 'transparent';
         ctx.shadowBlur = 0;
       });
 

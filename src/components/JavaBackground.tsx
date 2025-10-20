@@ -53,8 +53,8 @@ const JavaBackground: React.FC = () => {
     const JAVA_SYMBOL_OPACITY = 0.15;
     const JAVA_SYMBOL_SIZE_SCALE = 0.3;
 
-    // Improved trail effect parameters - removed periodic clearing
-    const TRAIL_EFFECT_ALPHA = 0.08;
+    // Improved trail effect parameters - faster fade for clean trails
+    const TRAIL_EFFECT_ALPHA = 0.20;
     const BACKGROUND_COLOR_FOR_TRAIL = `rgba(26, 31, 44, ${TRAIL_EFFECT_ALPHA})`;
     // --- END OF ADJUSTABLE PARAMETERS ---
 
@@ -187,6 +187,13 @@ const JavaBackground: React.FC = () => {
 
     const animate = () => {
       if (!ctx || !canvas) return;
+      
+      // Reset canvas properties to prevent persistence
+      ctx.shadowColor = 'transparent';
+      ctx.shadowBlur = 0;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 0;
+      ctx.globalCompositeOperation = 'source-over';
       
       // Consistent trail effect without periodic clearing
       ctx.fillStyle = BACKGROUND_COLOR_FOR_TRAIL;

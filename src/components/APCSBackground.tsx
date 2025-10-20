@@ -51,8 +51,8 @@ const APCSBackground: React.FC = () => {
     const MAX_VELOCITY = 5;
     const MAX_ANGULAR_VELOCITY = 0.1;
     
-    // Enhanced trail effect - faster fade
-    const TRAIL_EFFECT_ALPHA = 0.08;
+    // Enhanced trail effect - faster fade for clean trails
+    const TRAIL_EFFECT_ALPHA = 0.20;
     const BACKGROUND_COLOR_FOR_TRAIL = `rgba(26, 31, 44, ${TRAIL_EFFECT_ALPHA})`;
     // --- END OF ADJUSTABLE PARAMETERS ---
 
@@ -209,8 +209,11 @@ const APCSBackground: React.FC = () => {
       ctx.fillStyle = color;
       ctx.fill();
       
-      // Inner hexagon
+      // Reset shadow immediately after use
+      ctx.shadowColor = 'transparent';
       ctx.shadowBlur = 0;
+      
+      // Inner hexagon
       ctx.beginPath();
       for (let i = 0; i < 6; i++) {
         const pointX = size * 0.6 * Math.cos(i * (Math.PI / 3));
@@ -233,6 +236,12 @@ const APCSBackground: React.FC = () => {
 
     const animate = () => {
       if (!ctx || !canvas) return;
+      
+      // Reset shadow properties to prevent persistence
+      ctx.shadowColor = 'transparent';
+      ctx.shadowBlur = 0;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 0;
       
       // Quick fade for smooth trails
       ctx.globalCompositeOperation = 'source-over';

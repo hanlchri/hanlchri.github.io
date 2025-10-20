@@ -53,7 +53,7 @@ const APCS = () => {
                          <ul className="list-disc pl-6 space-y-1 text-sm">
                           <li><a href="/documents/APCS/Assignments/APCS_Assignment5_DoubleIntVerifier.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Details</a></li>
                           <li><a href="/documents/APCS/Assignments/Assign5Tester.java" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Tester</a></li>
-                          <li><a href="/documents/APCS/Resources/SoundFile.wav" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Explosion.wav</a></li>
+                          <li><a href="/documents/Resources/Explosion.wav" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Explosion.wav</a></li>
                         </ul>
                       </CollapsibleSection>
                     </li>
@@ -371,11 +371,11 @@ const APCS = () => {
 
                 <CollapsibleSection title="Resources" defaultOpen={true}>
                   <ul className="list-disc pl-6 space-y-2">
-                    <li><a href="/documents/APCS/Resources/Cookbook.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">The Cookbook</a></li>
-                    <li><a href="/documents/APCS/Resources/NetbeansPrintingGuide.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Printing from Netbeans</a></li>
-                    <li><a href="/documents/APCS/Resources/GUISurvivalGuide.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">GUI Survival Guide</a></li>
-                    <li><a href="/documents/APCS/Resources/SoundFile.wav" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Sound File</a></li>
-                    <li><a href="/documents/APCS/Resources/JTattoo-1.6.13.jar" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Making round buttons</a></li>
+                    <li><a href="/documents/Resources/Cookbook.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">The Cookbook</a></li>
+                    <li><a href="/documents/Resources/NetbeansPrintingGuide.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Printing from Netbeans</a></li>
+                    <li><a href="/documents/Resources/GUISurvivalGuide.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">GUI Survival Guide</a></li>
+                    <li><a href="/documents/Resources/SoundFile.wav" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Sound File</a></li>
+                    <li><a href="/documents/Resources/JTattoo-1.6.13.jar" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Making round buttons</a></li>
                   </ul>
                 </CollapsibleSection>
               </div>

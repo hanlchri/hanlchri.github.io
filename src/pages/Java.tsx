@@ -177,21 +177,21 @@ const Java = () => {
 
                 <CollapsibleSection title="Resources" titleColor="#FF8C42" defaultOpen={true}>
                   <ul className="list-disc pl-6 space-y-1">
-                    <li><a href="/documents/Java/Resources/TextbookChapters1_2.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Textbook Chapters 1 and 2</a></li>
-                    <li><a href="/documents/Java/Resources/TheCookbook.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>The Cookbook</a></li>
-                    <li><a href="/documents/Java/Resources/PrintingFromNetbeans.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Printing from Netbeans</a></li>
-                    <li><a href="/documents/Java/Resources/GUISurvivalGuide.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>GUI Survival Guide</a></li>
-                    <li><a href="/documents/Java/Resources/GuideForRoundButtons.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Guide for Round Buttons</a></li>
+                    <li><a href="/documents/Resources/TextbookChapters1_2.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Textbook Chapters 1 and 2</a></li>
+                    <li><a href="/documents/Resources/Cookbook.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>The Cookbook</a></li>
+                    <li><a href="/documents/Resources/NetbeansPrintingGuide.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Printing from Netbeans</a></li>
+                    <li><a href="/documents/Resources/GUISurvivalGuide.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>GUI Survival Guide</a></li>
+                    <li><a href="/documents/Resources/JTattoo-1.6.13.jar" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Guide for Round Buttons</a></li>
                     <li>
                       <CollapsibleSection title="Sounds" isNested={true} titleColor="#FF8C42">
                          <ul className="list-disc pl-6 space-y-1">
-                          <li><a href="/documents/Java/Resources/Ring10.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Ring10.wav</a></li>
-                          <li><a href="/documents/Java/Resources/chimes.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>chimes.wav</a></li>
-                          <li><a href="/documents/Java/Resources/drumroll.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>drumroll.wav</a></li>
-                          <li><a href="/documents/Java/Resources/fanfare.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>fanfare.wav</a></li>
-                          <li><a href="/documents/Java/Resources/vibe.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>vibe.wav</a></li>
-                          <li><a href="/documents/Java/Resources/Wind.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Wind.wav</a></li>
-                          <li><a href="/documents/Java/Resources/Explosion.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Explosion.wav</a></li>
+                          <li><a href="/documents/Resources/Ring10.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Ring10.wav</a></li>
+                          <li><a href="/documents/Resources/chimes.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>chimes.wav</a></li>
+                          <li><a href="/documents/Resources/DRUMROLL.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>drumroll.wav</a></li>
+                          <li><a href="/documents/Resources/fanfare.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>fanfare.wav</a></li>
+                          <li><a href="/documents/Resources/VIBE.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>vibe.wav</a></li>
+                          <li><a href="/documents/Resources/WIND.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Wind.wav</a></li>
+                          <li><a href="/documents/Resources/Explosion.wav" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Explosion.wav</a></li>
                         </ul>
                       </CollapsibleSection>
                     </li>
