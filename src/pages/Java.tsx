@@ -138,8 +138,8 @@ const Java = () => {
                     </li>
                     <li>
                       Random:
-                      <a href="/documents/Java/Lessons/Random_Blank.pdf" target="_blank" rel="noopener noreferrer" className="ml-2 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Blank</a> |
-                      <a href="/documents/Java/Lessons/Random_Filled.pdf" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Filled</a> |
+                      <a href="/documents/Java/Lessons/Java_Lesson_Random_Blank.docx" target="_blank" rel="noopener noreferrer" className="ml-2 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Blank</a> |
+                      <a href="/documents/Java/Lessons/Java_Lesson_Random_FilledOut.docx" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Filled</a> |
                       <a href="/documents/Java/Lessons/RandExamples.java" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>RandExamples.java</a>
                     </li>
                   </ul>
