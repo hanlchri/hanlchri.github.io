@@ -1,0 +1,57 @@
+@charset "utf-8";
+:root {
+  --bg: #000000;
+  --fg: #e0e0e0;
+  --accent: #ff004d; /* hot pink/red */
+  --accent2: #00e436; /* neon green */
+  --accent3: #29adff; /* cyan blue */
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: monospace;
+}
+
+#game-root {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 100dvh;
+}
+
+#game {
+  width: min(95vmin, 960px);
+  height: calc(min(95vmin, 960px) * 240 / 256);
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  border: 3px solid #222;
+  box-shadow: 0 0 0 8px #000, 0 0 48px 16px rgba(0,0,0,0.7) inset;
+  background: #000;
+}
+
+/* subtle CRT scanlines overlay */
+.crt-scanlines {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.02) 0px,
+    rgba(255,255,255,0.02) 2px,
+    rgba(0,0,0,0.05) 3px,
+    rgba(0,0,0,0.05) 4px
+  );
+  mix-blend-mode: overlay;
+}
+
+/* Simple helper for centered overlay messages if needed */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--fg);
+}

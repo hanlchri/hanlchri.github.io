@@ -9,11 +9,11 @@
       "link": "/GalleryPages/FallingBlocks/index.html"
     },
     {
-      "title": "Java Swing Example", 
-      "description": "Java Swing example demonstrating GUI programming",
-      "type": "Java Swing",
-      "slug": "java-swing",
-      "link": "/gallery/files/swing-demo.jar"
+      "title": "Whammy The Sammy",
+      "description": "A short game inspired by a very important Student",
+      "type": "JavaScript/HTML5",
+      "slug": "whammy-the-sammy",
+      "link": "/GalleryPages/Don't Whammy The Sammy/index.html"
     },
     {
       "title": "External Learning Resource",
