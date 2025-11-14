@@ -148,8 +148,8 @@ const Java = () => {
                 <CollapsibleSection title="Unit 5 Scope" titleColor="#FF8C42">
                   <p className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>
                     Scope:
-                    <a href="/documents/Java/Lessons/Scope_Blank.pdf" target="_blank" rel="noopener noreferrer" className="ml-2 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Blank</a> |
-                    <a href="/documents/Java/Lessons/Scope_Filled.pdf" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Filled</a>
+                    <a href="/documents/Java/Lessons/Java_Lesson_Scope_Blank.docx" target="_blank" rel="noopener noreferrer" className="ml-2 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Blank</a> |
+                    <a href="/documents/Java/Lessons/Java_Lesson_Scope_FilledOut.docx" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Filled</a>
                   </p>
                 </CollapsibleSection>
 
