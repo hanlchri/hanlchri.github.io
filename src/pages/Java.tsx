@@ -146,35 +146,43 @@ const Java = () => {
                 </CollapsibleSection>
 
                  <CollapsibleSection title="Unit 5 Processing" titleColor="#FF8C42">
-                  <p className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>
-                    Scope:
+                  <ul className="list-disc pl-6 space-y-1"> 
+                    <li>
+                    Processing:
                     <a href="/documents/Java/Lessons/Java_Lesson_Processing_Blank.docx" target="_blank" rel="noopener noreferrer" className="ml-2 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Blank</a> |
                     <a href="/documents/Java/Lessons/Java_Lesson_Processing_FilledOut.docx" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Filled</a>
-                  </p>
+                  </li>
+                  </ul>
                 </CollapsibleSection>
                 
                 <CollapsibleSection title="Unit 6 Scope" titleColor="#FF8C42">
-                  <p className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>
+                 <ul className="list-disc pl-6 space-y-1">
+                   <li>
                     Scope:
                     <a href="/documents/Java/Lessons/Java_Lesson_Scope_Blank.docx" target="_blank" rel="noopener noreferrer" className="ml-2 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Blank</a> |
                     <a href="/documents/Java/Lessons/Java_Lesson_Scope_FilledOut.docx" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Filled</a>
-                  </p>
+                  </li>
+                 </ul>
                 </CollapsibleSection>
 
                 <CollapsibleSection title="Unit 7 Arrays" titleColor="#FF8C42">
-                  <p className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>
+                 <ul className="list-disc pl-6 space-y-1">
+                   <li>
                     Arrays:
                     <a href="/documents/Java/Lessons/Java_Lesson_Arrays_Blank.docx" target="_blank" rel="noopener noreferrer" className="ml-2 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Blank</a> |
                     <a href="/documents/Java/Lessons/Java_Lesson_Arrays_FilledOut.docx" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Filled</a>
-                  </p>
+                  </li>
+                 </ul>
                 </CollapsibleSection>
 
                 <CollapsibleSection title="Final Review" titleColor="#FF8C42">
-                  <p className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>
+                 <ul className="list-disc pl-6 space-y-1">
+                   <li>
                     Final Exam:
                     <a href="/documents/Java/Lessons/FinalExam_Review.pdf" target="_blank" rel="noopener noreferrer" className="ml-2 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Review</a> |
                     <a href="/documents/Java/Lessons/FinalExam_Powerpoint.pptx" target="_blank" rel="noopener noreferrer" className="ml-1 hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Powerpoint</a>
-                  </p>
+                  </li>
+                 </ul>
                 </CollapsibleSection>
               </div>
             </TabsContent>
