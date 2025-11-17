@@ -145,7 +145,7 @@ Random:
 </ul>
 </CollapsibleSection>
 
-                <CollapsibleSection title="Unit 5 Scope" titleColor="#FF8C42">
+
                  <CollapsibleSection title="Unit 5 Processing" titleColor="#FF8C42">
                   <p className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>
                     Scope:
@@ -162,7 +162,6 @@ Scope:
 </p>
 </CollapsibleSection>
 
-                <CollapsibleSection title="Unit 6 Arrays" titleColor="#FF8C42">
                 <CollapsibleSection title="Unit 7 Arrays" titleColor="#FF8C42">
 <p className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>
 Arrays:
