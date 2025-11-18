@@ -45,6 +45,15 @@ return (
 </ul>
 </CollapsibleSection>
 </li>
+  <li>
+  <CollapsibleSection title="3.5: Processing" isNested={true} titleColor="#FF8C42">
+<ul className="list-disc pl-6 space-y-1 text-sm">
+<li><a href="/documents/Java/Assignments/JavaAssignment3_5-Processing.docx" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors" style={{ color: '#FF8C42' }}>Details</a></li>
+
+</ul>
+</CollapsibleSection>
+  </li>
+  
 <li>
 <CollapsibleSection title="4: Arrays" isNested={true} titleColor="#FF8C42">
 <ul className="list-disc pl-6 space-y-1 text-sm">
