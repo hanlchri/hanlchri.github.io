@@ -79,7 +79,7 @@ const TerminalBackground: React.FC = () => {
   '    }',
   '  }',
   '  public static void keepGoing() {',
-  '    System.out.println("You\'re doing great. Debugging is just future-proofing.");',
+  '    System.out.println("Good Boy. Debugging is just future-proofing.");',
   '  }',
   '  HashMap<String, Integer> scores = new HashMap<>();',
   '  scores.put("Hassaan", 2027);',
@@ -98,6 +98,23 @@ const TerminalBackground: React.FC = () => {
   '  public static void drinkCoffee() {',
   '    System.out.println("Compiling... definitely compiling...");',
   '  }',
+  '  import com.openai.GPT;',
+  '  public static class Liter {',
+  '    public static boolean isEven(int num) {',
+  '      String response = GPT.prompt("Is " + num + " even? Answer true or false.");',
+  '      return response.trim().equalsIgnoreCase("true");',
+  '    }',
+  '  }',
+  '  public static void askNumber(int num) {',
+  '    boolean even = Liter.isEven(num);',
+  '    if (even) {',
+  '      System.out.println(num + " is even");',
+  '    } else {',
+  '      System.out.println(num + " is odd");',
+  '    }',
+  '  }',
+  '  askNumber(42);',
+  '  askNumber(13);'
 ];
   
   // Set up canvas dimensions
