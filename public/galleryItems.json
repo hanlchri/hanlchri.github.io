@@ -13,7 +13,14 @@
       "description": "A short game inspired by a very important Student",
       "type": "JavaScript/HTML5",
       "slug": "whammy-the-sammy",
-      "link": "/GalleryPages/Don't Whammy The Sammy/index.html"
+      "link": "/GalleryPages/WhammyTheSammy/dist/index.html"
+    },
+    {
+      "title": "Catch The Mangoose",
+      "description": "I bet you can't!",
+      "type": "JavaScript/HTML5",
+      "slug": "catch-the-mangoose",
+      "link": "/GalleryPages/CatchTheMangoose/dist/index.html"
     },
     {
       "title": "External Learning Resource",
