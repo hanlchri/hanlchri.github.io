@@ -1,0 +1,33 @@
+
+{
+  "items": [
+    {
+      "title": "P5.js Game",
+      "description": "A creative JavaScript game built with p5.js created by Mr. Hanley",
+      "type": "JavaScript/P5.js",
+      "slug": "p5-interactive-game",
+      "link": "/GalleryPages/FallingBlocks/index.html"
+    },
+    {
+      "title": "Whammy The Sammy",
+      "description": "A short game inspired by a very important Student",
+      "type": "JavaScript/HTML5",
+      "slug": "whammy-the-sammy",
+      "link": "/GalleryPages/Don't Whammy The Sammy/index.html"
+    },
+    {
+      "title": "External Learning Resource",
+      "description": "Visit Oracle's Java documentation for comprehensive learning", 
+      "type": "External Link",
+      "slug": "oracle-java-docs",
+      "link": "https://docs.oracle.com/javase/tutorial/"
+    },
+    {
+      "title": "About This Site",
+      "description": "Learn more about the creator and purpose of this educational platform",
+      "type": "Internal Page", 
+      "slug": "about-page",
+      "link": "/about"
+    }
+  ]
+}
