@@ -9,7 +9,3 @@ A web-based remake of Mr. Hanley's Hood, updated with modern web technologies, s
 ## Tech Stack
 
 React, TypeScript, Vite, Framer Motion, Shadcn UI, React Query, Recharts, Tailwind CSS
-
-## Live Demo
-
-`[DEMO_URL_PLACEHOLDER]`
