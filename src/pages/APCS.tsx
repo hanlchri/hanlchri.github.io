@@ -64,7 +64,7 @@ const APCS = () => {
                       <CollapsibleSection title="7: Object Oriented Programming" isNested={true}>
                          <ul className="list-disc pl-6 space-y-1 text-sm">
                           <li><a href="/documents/APCS/Assignments/APCS_Assignment7_DevelopingClasses.pdf" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Details</a></li>
-                          <li><a href="/documents/APCS/Assignments/Assign7Skeleton.java" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Skeleton (MOOSK)</a></li>
+                          <li><a href="/documents/APCS/Assignments/Assign7Skeleton.java" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Skeleton</a></li>
                           <li><a href="https://www.youtube.com/watch?v=DDjtNVQKhtU" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">JUnit Tutorial</a></li>
                           <li><a href="https://www.youtube.com/watch?v=qHiSuJ1_qSw" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Employee Class Example</a></li>
                           <li><a href="https://www.youtube.com/watch?v=GJ1AArWb0Rk&feature=youtu.be" target="_blank" rel="noopener noreferrer" className="text-tech-cyan hover:text-tech-purple transition-colors">Car Class Example</a></li>
