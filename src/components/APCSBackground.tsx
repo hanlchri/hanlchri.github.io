@@ -51,9 +51,6 @@ const APCSBackground: React.FC = () => {
     const MAX_VELOCITY = 5;
     const MAX_ANGULAR_VELOCITY = 0.1;
     
-    // Enhanced trail effect - faster fade for clean trails
-    const TRAIL_EFFECT_ALPHA = 0.20;
-    const BACKGROUND_COLOR_FOR_TRAIL = `rgba(26, 31, 44, ${TRAIL_EFFECT_ALPHA})`;
     // --- END OF ADJUSTABLE PARAMETERS ---
 
     const initHexagons = () => {
@@ -92,10 +89,15 @@ const APCSBackground: React.FC = () => {
       }
     };
 
+    const trailCanvas = document.createElement('canvas');
+    const trailCtx = trailCanvas.getContext('2d');
+
     const resizeCanvas = () => {
       if (!canvas) return;
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      trailCanvas.width = canvas.width;
+      trailCanvas.height = canvas.height;
       initHexagons();
     };
 
@@ -243,10 +245,17 @@ const APCSBackground: React.FC = () => {
       ctx.shadowOffsetX = 0;
       ctx.shadowOffsetY = 0;
       
-      // Quick fade for smooth trails
       ctx.globalCompositeOperation = 'source-over';
-      ctx.fillStyle = BACKGROUND_COLOR_FOR_TRAIL;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      if (trailCtx) {
+        trailCtx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
+        trailCtx.drawImage(canvas, 0, 0);
+      }
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (trailCtx) {
+        ctx.globalAlpha = 0.82;
+        ctx.drawImage(trailCanvas, 0, 0);
+        ctx.globalAlpha = 1.0;
+      }
 
       hexagonsRef.current.forEach((hexagon) => {
         // Apply angular momentum to rotation

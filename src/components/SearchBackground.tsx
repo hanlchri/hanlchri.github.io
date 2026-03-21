@@ -48,9 +48,14 @@ const SearchBackground: React.FC = () => {
       }
     };
 
+    const trailCanvas = document.createElement('canvas');
+    const trailCtx = trailCanvas.getContext('2d');
+
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      trailCanvas.width = canvas.width;
+      trailCanvas.height = canvas.height;
       initParticles();
     };
 
@@ -111,9 +116,16 @@ const SearchBackground: React.FC = () => {
     const animate = () => {
       if (!ctx || !canvas) return;
 
-      // Consistent trail effect without periodic clearing
-      ctx.fillStyle = 'rgba(26, 31, 44, 0.08)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      if (trailCtx) {
+        trailCtx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
+        trailCtx.drawImage(canvas, 0, 0);
+      }
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (trailCtx) {
+        ctx.globalAlpha = 0.82;
+        ctx.drawImage(trailCanvas, 0, 0);
+        ctx.globalAlpha = 1.0;
+      }
 
       // Update particles
       particlesRef.current.forEach((particle, i) => {

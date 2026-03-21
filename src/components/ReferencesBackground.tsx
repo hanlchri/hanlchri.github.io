@@ -77,9 +77,14 @@ const ReferencesBackground: React.FC = () => {
       });
     };
 
+    const trailCanvas = document.createElement('canvas');
+    const trailCtx = trailCanvas.getContext('2d');
+
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      trailCanvas.width = canvas.width;
+      trailCanvas.height = canvas.height;
       initializeCircuit();
     };
 
@@ -184,9 +189,16 @@ const ReferencesBackground: React.FC = () => {
       ctx.shadowOffsetX = 0;
       ctx.shadowOffsetY = 0;
       
-      // Dark industrial background with faster fade for clean trails
-      ctx.fillStyle = 'rgba(15, 20, 25, 0.20)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      if (trailCtx) {
+        trailCtx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
+        trailCtx.drawImage(canvas, 0, 0);
+      }
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (trailCtx) {
+        ctx.globalAlpha = 0.82;
+        ctx.drawImage(trailCanvas, 0, 0);
+        ctx.globalAlpha = 1.0;
+      }
 
       const time = Date.now() * 0.001;
 

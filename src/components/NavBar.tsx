@@ -119,7 +119,7 @@ const NavBar: React.FC = () => {
         <div className="hidden lg:flex items-center gap-1">
           <Link to="/" className={`nav-link ${isActive('/')}`}>Home</Link>
           <Link to="/java" className={`nav-link ${isActive('/java')}`}>Java</Link>
-          <Link to="/ap-cs" className={`nav-link text-sm xl:text-base ${isActive('/ap-cs')}`}>
+          <Link to="/ap-cs" className={`nav-link ${isActive('/ap-cs')}`}>
             <span className="hidden xl:inline">AP Computer Science</span>
             <span className="xl:hidden">AP CS</span>
           </Link>

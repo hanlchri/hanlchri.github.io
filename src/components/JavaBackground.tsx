@@ -53,9 +53,6 @@ const JavaBackground: React.FC = () => {
     const JAVA_SYMBOL_OPACITY = 0.15;
     const JAVA_SYMBOL_SIZE_SCALE = 0.3;
 
-    // Improved trail effect parameters - faster fade for clean trails
-    const TRAIL_EFFECT_ALPHA = 0.20;
-    const BACKGROUND_COLOR_FOR_TRAIL = `rgba(26, 31, 44, ${TRAIL_EFFECT_ALPHA})`;
     // --- END OF ADJUSTABLE PARAMETERS ---
 
     const initNodes = () => {
@@ -101,9 +98,14 @@ const JavaBackground: React.FC = () => {
       });
     };
     
+    const trailCanvas = document.createElement('canvas');
+    const trailCtx = trailCanvas.getContext('2d');
+
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      trailCanvas.width = canvas.width;
+      trailCanvas.height = canvas.height;
       initNodes();
     };
     window.addEventListener('resize', resizeCanvas);
@@ -168,20 +170,57 @@ const JavaBackground: React.FC = () => {
         symbolCtx.save();
         symbolCtx.translate(x, y);
         symbolCtx.globalAlpha = JAVA_SYMBOL_OPACITY;
-        symbolCtx.fillStyle = '#FF8C42';
+
+        const s = size;
+
+        // --- Chunky round cup body (original cartoonish shape) ---
         symbolCtx.beginPath();
-        symbolCtx.moveTo(-size * 0.3, -size * 0.4);
-        symbolCtx.bezierCurveTo(-size * 0.35, size * 0.2, size * 0.35, size * 0.2, size * 0.3, -size * 0.4);
-        symbolCtx.lineTo(size * 0.2, -size * 0.5);
-        symbolCtx.lineTo(-size * 0.2, -size * 0.5);
+        symbolCtx.moveTo(-s * 0.3, -s * 0.4);
+        symbolCtx.bezierCurveTo(-s * 0.35, s * 0.2, s * 0.35, s * 0.2, s * 0.3, -s * 0.4);
+        symbolCtx.lineTo(s * 0.2, -s * 0.5);
+        symbolCtx.lineTo(-s * 0.2, -s * 0.5);
         symbolCtx.closePath();
+        symbolCtx.fillStyle = '#FF8C42';
         symbolCtx.fill();
+
+        // --- Chubby handle (endpoints inside cup fill for solid connection) ---
         symbolCtx.beginPath();
-        symbolCtx.moveTo(0, -size * 0.5);
-        symbolCtx.bezierCurveTo(size * 0.2, -size * 0.7, -size * 0.2, -size * 0.9, 0, -size * 0.7);
+        symbolCtx.moveTo(s * 0.26, -s * 0.30);
+        symbolCtx.bezierCurveTo(s * 0.48, -s * 0.25, s * 0.48, s * 0.05, s * 0.17, s * 0.0);
         symbolCtx.strokeStyle = '#FF8C42';
-        symbolCtx.lineWidth = size * 0.05;
+        symbolCtx.lineWidth = s * 0.06;
+        symbolCtx.lineCap = 'round';
         symbolCtx.stroke();
+
+        // --- Steam wisps (animated) ---
+        const time = Date.now() * 0.002;
+        symbolCtx.lineCap = 'round';
+        symbolCtx.lineWidth = s * 0.025;
+
+        for (let i = 0; i < 3; i++) {
+          const offsetX = (i - 1) * s * 0.1;
+          const phase = time + i * 1.2;
+          const steamAlpha = 0.35 + Math.sin(phase * 0.8) * 0.15;
+
+          symbolCtx.beginPath();
+          symbolCtx.strokeStyle = `rgba(255, 200, 150, ${steamAlpha})`;
+
+          const startY = -s * 0.53;
+          const endY = -s * 0.85;
+          const steps = 16;
+
+          for (let t = 0; t <= steps; t++) {
+            const frac = t / steps;
+            const py = startY + (endY - startY) * frac;
+            const wave = Math.sin(frac * Math.PI * 2.5 + phase) * s * 0.07 * (1 - frac * 0.4);
+            const px = offsetX + wave;
+
+            if (t === 0) symbolCtx.moveTo(px, py);
+            else symbolCtx.lineTo(px, py);
+          }
+          symbolCtx.stroke();
+        }
+
         symbolCtx.restore();
     };
 
@@ -195,10 +234,18 @@ const JavaBackground: React.FC = () => {
       ctx.shadowOffsetY = 0;
       ctx.globalCompositeOperation = 'source-over';
       
-      // Consistent trail effect without periodic clearing
-      ctx.fillStyle = BACKGROUND_COLOR_FOR_TRAIL;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      
+      // Save current frame, clear, draw faded trail
+      if (trailCtx) {
+        trailCtx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
+        trailCtx.drawImage(canvas, 0, 0);
+      }
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (trailCtx) {
+        ctx.globalAlpha = 0.82;
+        ctx.drawImage(trailCanvas, 0, 0);
+        ctx.globalAlpha = 1.0;
+      }
+
       drawJavaSymbol(ctx, canvas.width / 2, canvas.height / 2, canvas.height * JAVA_SYMBOL_SIZE_SCALE);
 
       const time = Date.now() * NODE_DRIFT_SPEED_FACTOR;
