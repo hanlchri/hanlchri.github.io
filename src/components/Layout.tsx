@@ -19,51 +19,53 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const location = useLocation();
-  
+  // Normalize pathname: strip trailing slash so "/gallery/" matches "/gallery"
+  const pathname = location.pathname.replace(/\/+$/, '') || '/';
+
   const renderBackground = () => {
-    if (location.pathname === '/') {
+    if (pathname === '/') {
       return (
         <div className="terminal-bg fixed inset-0">
           <TerminalBackground />
         </div>
       );
-    } else if (location.pathname === '/about') {
+    } else if (pathname === '/about') {
       return (
         <div className="retro-grid-bg fixed inset-0">
           <RetroGridBackground />
         </div>
       );
-    } else if (location.pathname === '/java') {
+    } else if (pathname === '/java') {
       return (
         <div className="network-bg fixed inset-0">
           <JavaBackground />
         </div>
       );
-    } else if (location.pathname === '/ap-cs') {
+    } else if (pathname === '/ap-cs') {
       return (
         <div className="network-bg fixed inset-0">
           <APCSBackground />
         </div>
       );
-    } else if (location.pathname === '/gallery') {
+    } else if (pathname === '/gallery') {
       return (
         <div className="fixed inset-0">
           <GalleryBackground />
         </div>
       );
-    } else if (location.pathname === '/references') {
+    } else if (pathname === '/references') {
       return (
         <div className="network-bg fixed inset-0">
           <ReferencesBackground />
         </div>
       );
-    } else if (location.pathname === '/contact') {
+    } else if (pathname === '/contact') {
       return (
         <div className="network-bg fixed inset-0">
           <ContactBackground />
         </div>
       );
-    } else if (location.pathname === '/search') {
+    } else if (pathname === '/search') {
       return (
         <div className="network-bg fixed inset-0">
           <SearchBackground />
@@ -106,7 +108,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <div className="min-h-screen relative overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
-          key={location.pathname + '-bg'}
+          key={pathname + '-bg'}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -120,7 +122,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <main className="relative pt-16 pb-12 container mx-auto px-4">
         <AnimatePresence mode="wait">
           <motion.div
-            key={location.pathname}
+            key={pathname}
             initial="initial"
             animate="in"
             exit="out"
