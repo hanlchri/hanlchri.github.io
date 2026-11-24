@@ -1,25 +1,29 @@
 
 /**
- * ---------------------------------------------------------------------------
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * S-h-e-n-e-n-d-e-h-o-w-a--H-i-g-h--S-c-h-o-o-l--T-e-c-h-n-o-l-o-g-y--D-e-p-t
- * ---------------------------------------------------------------------------
- * FILE: EmpCarStuClientTemplateV1.java
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *      FILE:       EmpCarStuClientTemplateV2.java
+ *      DATE:       October 23, 2015 (original)
+ *      AUTHOR:     mr Hanley
+ *      VERSION:    2.0
+ *      PURPOSE:    Sample Client for Car, Student, Employee(no longer assigned)
+ *                  12/7/20 Figured out that Netbeans switched default
+ *                  encoding for console output Stream so we need to add
+ *                  a line of code in order to see wicked cool unicode menus
+ *                  Thanks to https://issues.apache.org/jira/browse/NETBEANS-2374
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *
- * DATE: October 23, 2015
- *
- * PURPOSE: Sample Client for Car, Student, Employee
- *
- * @author mr Hanley
- * @version 1.0
- * ---------------------------------------------------------------------------
- *
- * h-a-n-l-e-y.c-o-.-n-r------t-e-a-m-2-0-.-c-o-m-----------------------------
+ * m-r-h-a-n-l-e-y-c-.c-o-m~~~~~~~~~~t-e-a-m-2-0-.-c-o-m~~~~~~~~~~~~~~~~~~~~~~
  */
+import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-public class EmpCarStuClientTemplateV1 {
+public class EmpCarStuClientTemplateV2 {
 
     static final char ur = '\u2557';
     static final char ul = '\u2554';
@@ -37,8 +41,10 @@ public class EmpCarStuClientTemplateV1 {
     static final char six = '\u277B';
     static final char sev = '\u277C';
 
+    Scanner input = new Scanner(System.in);  //global Scanner so we can pass to Verifiers
+
     public static void main(String[] args) {
-        EmpCarStuClientTemplateV1 es = new EmpCarStuClientTemplateV1();  //invoke constructor
+        EmpCarStuClientTemplateV2 es = new EmpCarStuClientTemplateV2();  //invoke constructor
     }
 
     /**
@@ -51,7 +57,7 @@ public class EmpCarStuClientTemplateV1 {
     public String padding(String text, int totalLength) {
         int difference = totalLength - text.length();
         if (difference > 0) {
-        
+
             for (int i = 0; i < difference; i++) {
                 text += " ";
             }
@@ -59,13 +65,23 @@ public class EmpCarStuClientTemplateV1 {
         return text;
     }
 
-    public EmpCarStuClientTemplateV1() {
+    public EmpCarStuClientTemplateV2() {
         menu();
     }
 
     public void menu() {
+        //Added 12/7/2022 as NB switched default encoding for output
+        //window with the latest NB release
+        PrintStream out = new PrintStream(System.out, true, StandardCharsets.UTF_8);
+        System.setOut(out);
+
         while (true) {
             Date now = new Date();
+            String display = DateFormat.getDateTimeInstance(DateFormat.MEDIUM,
+                    DateFormat.MEDIUM).format(now);
+            //Figure out padding
+            int padLen = ("        OO Practice Main Menu            ").length();
+            String pad = Utility.padding(display, padLen, true);
             System.out.print("\t\t" + ul);
             for (int i = 0; i < 41; i++) {
                 System.out.print(top);
@@ -74,6 +90,7 @@ public class EmpCarStuClientTemplateV1 {
             System.out.println(ur);
             System.out.println("\t\t" + side + "        OO Practice Main Menu            " + side);
             System.out.println("\t\t" + side + "  $@$ OO is Delicious and Nutritious $@$ " + side);
+            System.out.println("\t\t" + side + pad + side);
             System.out.print("\t\t" + sideTL);
 
             for (int i = 0; i < 41; i++) {
@@ -96,7 +113,7 @@ public class EmpCarStuClientTemplateV1 {
             //+"_________________________________________
             System.out.println(br);
             System.out.println("\t\tYour Selection?");
-            Scanner input = new Scanner(System.in);
+
             int choice = input.nextInt();
             switch (choice) {
                 case 1:
@@ -170,7 +187,6 @@ public class EmpCarStuClientTemplateV1 {
                     Employee e = new Employee();
                     //FINISH
 
-                   
                     System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
                     System.out.println("Employee " + which + " Updated");
                     System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
@@ -209,13 +225,13 @@ public class EmpCarStuClientTemplateV1 {
             //_________________________________________");
             System.out.println(ur);
             System.out.println("\t\t" + side + "  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% " + side);
-            System.out.println("\t\t" + side + "  %       E M P L O Y E E     M E N U  % " + side);
+            System.out.println("\t\t" + side + "  %  EMPLOYEE_MENU_WITH_MODIFICATIONS  % " + side);
             System.out.println("\t\t" + side + "  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% " + side);
             //
             //Num Employees Stuff
             //
-           //FINISH in ASSIGN 8
-
+            //FINISH in ASSIGN 8
+            System.out.print("\t\t" + sideTL);
             for (int i = 0; i < 41; i++) {
                 System.out.print(top);
             }
@@ -241,15 +257,14 @@ public class EmpCarStuClientTemplateV1 {
                     System.out.println("_____________Display Employees____________");
                     System.out.println("Name\t\t\t$Salary");
                     System.out.println("----\t\t\t------");
-                   //FINISH
+                    //FINISH
                     break;
                 case 2:
                     System.out.println("_____________Recreate Employee____________");
                     System.out.println("Which employee? 1 2 or 3:");
                     int which = input.nextInt();
                     Employee e = new Employee();
-                   //FINISH
-                    
+                    //FINISH
 
                     System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
                     System.out.println("Employee " + which + " Updated");
@@ -259,8 +274,8 @@ public class EmpCarStuClientTemplateV1 {
                     System.out.println("$$$$$$$$$$$ Give Employee Raise $$$$$$$$$$$");
                     System.out.println("Which employee? 1 2 or 3:");
                     int whichOne = input.nextInt();
-                   //FINISH
-                    
+                    //FINISH
+
                     System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
                     System.out.println("Employee " + whichOne + " Given Raise");
                     System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
@@ -300,7 +315,7 @@ public class EmpCarStuClientTemplateV1 {
             System.out.println("\t\t" + side + "  ______________________________________ " + side);
             System.out.println("\t\t" + side + "       C A R     M E N U                 " + side);
             System.out.println("\t\t" + side + "  ______________________________________ " + side);
-            
+
             System.out.print("\t\t" + sideTL);
 
             for (int i = 0; i < 41; i++) {
@@ -329,13 +344,13 @@ public class EmpCarStuClientTemplateV1 {
                     System.out.println("_____________Display Cars____________");
                     System.out.println("Name\t\t\tMPG\t\tGas in Tank");
                     System.out.println("----\t\t\t----\t\t---------");
-                  //FINISH
+                    //FINISH
                     break;
                 case 2:
                     System.out.println("_____________Recreate Car____________");
                     System.out.println("Which car? 1 2 or 3:");
                     int which = input.nextInt();
-         //FINISH
+                    //FINISH
                     System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
                     System.out.println("Car " + which + " Updated");
                     System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
@@ -345,9 +360,9 @@ public class EmpCarStuClientTemplateV1 {
 
                     System.out.println("Which car? 1 2 or 3:");
                     int whichOne = input.nextInt();
-          //FINISH
+                    //FINISH
                     System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-                   // System.out.println("Car " + whichOne + " Added " + gas + " gallons!");
+                    // System.out.println("Car " + whichOne + " Added " + gas + " gallons!");
                     System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
                     break;
                 case 4:
@@ -357,7 +372,7 @@ public class EmpCarStuClientTemplateV1 {
                     System.out.println("Which car? 1 2 or 3:");
                     int wh = input.nextInt();
 
-         //FINISH
+                    //FINISH
                     System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
                     //System.out.println("Car " + wh + " Drove " + f + " Miles");
                     System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
@@ -376,7 +391,7 @@ public class EmpCarStuClientTemplateV1 {
     public void carModuleWithMods() {
         //Declare some Cars
         Car c1 = new Car();
-   //FINISH
+        //FINISH
         while (true) {
             System.out.print("\t\t" + ul);
             for (int i = 0; i < 41; i++) {
@@ -387,8 +402,8 @@ public class EmpCarStuClientTemplateV1 {
             System.out.println("\t\t" + side + "  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ " + side);
             System.out.println("\t\t" + side + "    C A R  M E N U  W I T H  M O D S     " + side);
             System.out.println("\t\t" + side + "  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ " + side);
-     //FINISH
-
+            //FINISH
+            System.out.print("\t\t" + sideTL);
             for (int i = 0; i < 41; i++) {
                 System.out.print(top);
             }
@@ -414,9 +429,9 @@ public class EmpCarStuClientTemplateV1 {
                 case 1:
                     System.out.println("_____________Display Cars____________");
                     // CAR 1
-       //FINISH
+                    //FINISH
                     System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-                   // System.out.println("Car " + which + " Updated");
+                    // System.out.println("Car " + which + " Updated");
                     System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
                     break;
                 case 3:
@@ -424,9 +439,9 @@ public class EmpCarStuClientTemplateV1 {
 
                     System.out.println("Which car? 1 2 or 3:");
                     int whichOne = input.nextInt();
-          //FINISH
+                    //FINISH
                     System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-                 //   System.out.println("Car " + wh + " Drove " + f + " Miles");
+                    //   System.out.println("Car " + wh + " Drove " + f + " Miles");
                     System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
                     break;
                 case 5:
@@ -453,7 +468,7 @@ public class EmpCarStuClientTemplateV1 {
 
         //DecimalFormat df = new DecimalFormat("###,###,###");
         //Declare some Students
-     //FINISH
+        //FINISH
         char menuBox = '\u2660';
         while (true) {
             System.out.print("\t\t" + ul);
@@ -518,7 +533,7 @@ public class EmpCarStuClientTemplateV1 {
                     System.out.println("");
                     System.out.println("Name\t\t\tQuizzes\t\tAverage");
                     System.out.println("----\t\t\t----\t\t---------");
-       //FINISH
+                    //FINISH
                     for (int i = 0; i < 50; i++) {
                         if (i % 2 == 0) {
                             System.out.print("\u263A");
@@ -537,7 +552,7 @@ public class EmpCarStuClientTemplateV1 {
                     System.out.println("_____________Recreate Student____________");
                     System.out.println("Which student? 1 2 or 3:");
                     int which = input.nextInt();
-          //FINISH
+                    //FINISH
                     System.out.println("((((((((((((()))))))))))))))))");
                     System.out.println("Student " + which + " Updated");
                     System.out.println("((((((((((((()))))))))))))))))");
@@ -549,7 +564,7 @@ public class EmpCarStuClientTemplateV1 {
 
                     System.out.println("Enter Quiz Grade");
                     int score = input.nextInt();
-          //FINISH
+                    //FINISH
                     System.out.println("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-");
                     System.out.println("Student " + whichOne + " added quiz");
                     System.out.println("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-");
@@ -559,7 +574,6 @@ public class EmpCarStuClientTemplateV1 {
                     System.out.println("Which student? 1 2 or 3:");
                     int whichStu = input.nextInt();
 
-                  
                     System.out.println("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-");
                     System.out.println("Student " + whichStu + " cleared");
                     System.out.println("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-");
